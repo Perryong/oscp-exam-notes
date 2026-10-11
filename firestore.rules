@@ -1,0 +1,15 @@
+rules_version = '2';
+
+// Each signed-in person can read and write only their own notes and images, under users/<their uid>/.
+// Recommended: also lock the database to your own Google account by replacing YOUR_EMAIL below
+// and removing the two slashes in front of that line, so nobody else can store data in your project.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{uid}/{document=**} {
+      allow read, write: if request.auth != null
+        && request.auth.uid == uid
+        // && request.auth.token.email == "YOUR_EMAIL@gmail.com"
+        ;
+    }
+  }
+}

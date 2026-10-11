@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"></head><body><title>OSCP Practice Ladder</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><script src="firebase-config.js"></script></head><body><title>OSCP Practice Ladder</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&family=Chakra+Petch:wght@600;700&display=swap">
 <style>
 /* Layout: one narrow column; sticky phase tabs; each week is a row with its boxes listed like a lab queue; walkthrough and notes open in modal panels */
@@ -89,6 +89,15 @@ dialog::backdrop{background:rgb(0 0 0 / .45)}
 .ed.drag{outline:2px dashed var(--accent);outline-offset:-6px}
 .dlg-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 16px;border-top:1px solid var(--line);font:400 .78rem var(--mono);color:var(--muted)}
 #nstatus.ok{color:var(--ok)} #nstatus.bad{color:var(--bad)}
+.acct{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;padding:10px 12px;margin:0 0 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:.85rem;color:var(--muted)}
+.acct-btns{display:flex;gap:8px}
+.q{display:block;width:100%;box-sizing:border-box;margin:4px 0 12px;padding:10px 12px;min-height:44px;font:400 .95rem var(--body);color:var(--fg);background:var(--bg);border:1px solid var(--ctl);border-radius:8px}
+.an-list{display:grid;gap:8px}
+.an-item{display:grid;gap:2px;width:100%;text-align:left;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg);cursor:pointer;font:inherit}
+.an-item:hover{border-color:var(--accent)}
+.an-item b{font-family:var(--display)}
+.snip{color:var(--muted);font-size:.85rem;overflow-wrap:anywhere}
+.btn:disabled{opacity:.6;cursor:progress}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 @media (max-width:420px){.week{grid-template-columns:52px 1fr}.wk b{font-size:1.25rem}.links{margin-left:0}}
 @media (pointer:coarse){
@@ -104,7 +113,15 @@ dialog::backdrop{background:rgb(0 0 0 / .45)}
 <div class="wrap">
   <h1>OSCP Practice Ladder</h1>
   <p class="lede">Every box from the LainKusanagi OSCP-like list, ordered easiest to hardest, in weeks of at least 2 hours. Tick boxes as you root them, read a walkthrough inside the app, and keep notes, screenshots and commands for each week.</p>
+  <div class="acct" id="acct">
+    <span id="acct-status" role="status" aria-live="polite"></span>
+    <span class="acct-btns">
+      <button type="button" class="btn primary" id="signin" hidden>Sign in with Google</button>
+      <button type="button" class="btn" id="signout" hidden>Sign out</button>
+    </span>
+  </div>
   <div class="stats" id="stats"></div>
+  <p style="margin:0 0 16px"><button type="button" class="btn" id="allnotes">All notes</button></p>
   <div class="bar"><i id="barfill"></i></div>
   <nav id="tabs" aria-label="Difficulty phase"></nav>
   <div id="list"></div>
@@ -121,7 +138,8 @@ dialog::backdrop{background:rgb(0 0 0 / .45)}
     <h2>Notes</h2>
     <ul>
       <li>Each week has its own notes. Add headings, lists, inline code and code blocks for commands. Add screenshots with the Image button, by pasting, or by dragging them in.</li>
-      <li>Notes save automatically to your account and are private to you. If the page can't reach your account, they save in this browser only, and the status line says so.</li>
+      <li>On claude.ai, notes save to your Claude account. On your own site, sign in with Google and notes sync to your Firebase project, so they're on every device. Until you sign in, they save in this browser only.</li>
+      <li><b>All notes</b> lists every week you've written up. Search across notes, commands and box names, or export everything as one Markdown file.</li>
     </ul>
     <h2>How this was built</h2>
     <ul>
@@ -158,6 +176,18 @@ dialog::backdrop{background:rgb(0 0 0 / .45)}
         data-ph="Write what worked: enumeration, foothold, privesc. Use Code block for commands, and paste or drop screenshots here."></div>
     </div>
     <div class="dlg-foot"><span id="nstatus" role="status" aria-live="polite"></span><span id="nwhere"></span></div>
+  </div>
+</dialog>
+
+<dialog id="an" aria-labelledby="an-title">
+  <div class="dlg">
+    <div class="dlg-head"><div style="flex:1;min-width:0"><h2 id="an-title">All notes</h2><p id="an-count"></p></div><button class="x" type="button" id="an-close" aria-label="Close all notes">×</button></div>
+    <div class="dlg-body">
+      <label for="an-q" class="muted">Search notes, commands and box names</label>
+      <input type="search" id="an-q" class="q" placeholder="e.g. sudo -l, kerberoast, Nibbles" autocomplete="off">
+      <ul id="an-list" class="an-list"></ul>
+    </div>
+    <div class="dlg-foot"><span>Markdown keeps your text, code blocks and screenshots.</span><button type="button" class="btn" id="an-export">Export all as Markdown</button></div>
   </div>
 </dialog>
 
@@ -252,31 +282,125 @@ function openWalk(w, b){
 }
 $("wt-close").onclick = () => $("wt").close();
 
-/* ---------- notes: storage ---------- */
-let db = null, assets = null, uid = null, coll = null;
+/* ---------- notes: storage backends ---------- */
+// claude.ai artifact -> Claude account; standalone site -> Firebase once signed in; otherwise -> this browser
+const notesCache = new Map();          // week -> saved html
 const status = (t, cls="") => { const s=$("nstatus"); s.textContent=t; s.className=cls; };
+const acctMsg = t => { $("acct-status").textContent = t; };
+const toDataURL = blob => new Promise((ok, no) => { const fr = new FileReader(); fr.onload = () => ok(fr.result); fr.onerror = no; fr.readAsDataURL(blob); });
+
+const local = {
+  kind: "local", where: "Saved in this browser only",
+  async get(w){ return ls.get("oscp-note-" + w) || ""; },
+  async put(w, html){ if (!ls.set("oscp-note-" + w, html)) throw { code: "local_full" }; },
+  async del(w){ try { localStorage.removeItem("oscp-note-" + w); } catch(e) {} },
+  async image(blob){ return { src: await toDataURL(blob) }; },
+};
+let backend = local;
+function localNotes(){
+  const m = new Map();
+  for (let i = 0; ; i++) { let k; try { k = localStorage.key(i); } catch(e) { break; } if (k == null) break;
+    const x = /^oscp-note-(\d+)$/.exec(k); const v = x && ls.get(k); if (v && v.trim()) m.set(+x[1], v); }
+  return m;
+}
+function setNotes(m){
+  notesCache.clear(); noted.clear();
+  m.forEach((html, w) => { if (html && html.trim()) { notesCache.set(w, html); noted.add(w); } });
+  renderStats(); renderList(); if ($("an").open) renderAll();
+}
+setNotes(localNotes());
+
+// --- Claude account (only when this page runs as a claude.ai artifact)
+async function startClaude(){
+  const [d, u, a] = await Promise.all([claude.use("db"), claude.use("user"), claude.use("assets")]);
+  const uid = u ? await u.id() : null;
+  if (!d || !uid) return;
+  const coll = d.collection("data/users/" + uid);
+  backend = { kind: "claude", where: "Private to your account",
+    async get(w){ const s = await coll.doc("week-" + w).get(); return s.exists ? (s.data().html || "") : ""; },
+    async put(w, html, text){ await coll.doc("week-" + w).set({ html, text, week: w, updatedAt: new Date().toISOString() }); },
+    async del(w){ await coll.doc("week-" + w).delete(); },
+    async image(blob){ if (!a) return { src: await toDataURL(blob) };
+      const r = await a.upload(blob, { type: blob.type || "image/webp" }); return { src: r.url, "data-asset": r.id }; },
+  };
+  coll.onSnapshot(snap => {
+    const m = new Map();
+    snap.docs.forEach(doc => { const x = /^week-(\d+)$/.exec(doc.id); if (x) m.set(+x[1], doc.data()?.html || ""); });
+    setNotes(m);
+  }, () => { backend = local; setNotes(localNotes()); });
+}
+
+// --- Firebase (standalone site, e.g. on Vercel, with firebase-config.js filled in)
+const FB = "https://www.gstatic.com/firebasejs/10.12.2/";
+async function startFirebase(cfg){
+  const [A, AU, F] = await Promise.all([import(FB + "firebase-app.js"), import(FB + "firebase-auth.js"), import(FB + "firebase-firestore.js")]);
+  const app = A.initializeApp(cfg), auth = AU.getAuth(app);
+  let fdb; try { fdb = F.initializeFirestore(app, { localCache: F.persistentLocalCache() }); } catch(e) { fdb = F.getFirestore(app); }
+  $("signin").onclick = async () => {
+    try { await AU.signInWithPopup(auth, new AU.GoogleAuthProvider()); }
+    catch (e) { acctMsg(e.code === "auth/popup-blocked" ? "Your browser blocked the sign-in window. Allow pop-ups for this site and try again." :
+                       e.code === "auth/unauthorized-domain" ? "This site's address isn't on Firebase's authorized domains list yet. See the README." :
+                       e.code === "auth/popup-closed-by-user" ? "Sign-in was cancelled." : "Sign-in failed: " + (e.code || e.message)); }
+  };
+  $("signout").onclick = () => AU.signOut(auth);
+  let unsub = null;
+  AU.onAuthStateChanged(auth, user => {
+    if (unsub) { unsub(); unsub = null; }
+    $("signin").hidden = !!user; $("signout").hidden = !user;
+    if (!user) { backend = local; setNotes(localNotes()); acctMsg("Not signed in. Notes are saved in this browser only."); return; }
+    const notes = F.collection(fdb, "users", user.uid, "notes"), images = F.collection(fdb, "users", user.uid, "images");
+    const imgCache = new Map();
+    backend = { kind: "firebase", where: "Synced to Firebase",
+      async get(w){ const s = await F.getDoc(F.doc(notes, "week-" + w)); return s.exists() ? (s.data().html || "") : ""; },
+      async put(w, html, text){ await F.setDoc(F.doc(notes, "week-" + w), { html, text, week: w, updatedAt: F.serverTimestamp() }); },
+      async del(w){ await F.deleteDoc(F.doc(notes, "week-" + w)); },
+      // images live in their own documents (each under Firestore's 1 MiB limit) so no Storage bucket is needed
+      async image(blob){ const data = await toDataURL(blob); if (data.length > 1000000) throw { code: "too_large" };
+        const r = await F.addDoc(images, { data, createdAt: F.serverTimestamp() }); imgCache.set(r.id, data); return { src: data, "data-fimg": r.id }; },
+      async imageSrc(id){ if (!imgCache.has(id)) { const s = await F.getDoc(F.doc(images, id)); imgCache.set(id, s.exists() ? s.data().data : ""); } return imgCache.get(id); },
+    };
+    acctMsg(`Signed in as ${user.email || "you"}. Notes sync to Firebase.`);
+    let migrated = false;
+    unsub = F.onSnapshot(notes, { includeMetadataChanges: true }, snap => {
+      const m = new Map();
+      snap.forEach(d => { const x = /^week-(\d+)$/.exec(d.id); if (x) m.set(+x[1], d.data().html || ""); });
+      setNotes(m);
+      if (!migrated && !snap.metadata.fromCache) { migrated = true; migrateLocal(m); }
+    }, e => acctMsg("Couldn't read your notes from Firebase (" + (e.code || e.message) + "). Check the security rules in the README."));
+  });
+}
+
+// first sign-in: copy notes written in this browser up to Firebase (never overwrites a week already in Firebase)
+async function migrateLocal(remote){
+  const todo = [...localNotes()].filter(([w]) => !remote.has(w));
+  if (!todo.length) return;
+  acctMsg(`Copying ${todo.length} week${todo.length > 1 ? "s" : ""} of notes from this browser to Firebase…`);
+  let ok = 0;
+  for (const [w, html] of todo) {
+    try {
+      const box = document.createElement("div"); box.innerHTML = clean(html);
+      for (const img of box.querySelectorAll('img[src^="data:"]')) {
+        const r = await backend.image(await (await fetch(img.src)).blob());
+        img.setAttribute("data-fimg", r["data-fimg"]); img.removeAttribute("src");
+      }
+      await backend.put(w, clean(box.innerHTML), box.textContent); ok++;
+    } catch (e) { /* left in this browser; retried on the next sign-in */ }
+  }
+  acctMsg(`Copied ${ok} of ${todo.length} weeks of notes to Firebase. Your notes now sync across devices.`);
+}
+
 (async () => {
-  if (!window.claude?.use) return;
-  try {
-    const [d, u, a] = await Promise.all([claude.use("db"), claude.use("user"), claude.use("assets")]);
-    assets = a;
-    uid = u ? await u.id() : null;
-    if (d && uid) {
-      db = d; coll = db.collection("data/users/" + uid);
-      coll.onSnapshot(snap => {
-        noted.clear();
-        snap.docs.forEach(doc => { const m = /^week-(\d+)$/.exec(doc.id); if (m && (doc.data()?.html||"").trim()) noted.add(+m[1]); });
-        renderStats(); renderList();
-      }, () => { db = null; });
-    }
-  } catch (e) { db = null; }
+  if (window.claude?.use) { $("acct").hidden = true; $("an-export").hidden = true; try { await startClaude(); } catch(e) {} return; }
+  const cfg = window.FIREBASE_CONFIG;
+  if (!cfg || !cfg.apiKey) { acctMsg("Notes are saved in this browser only. Add a Firebase config to sync them across devices (see the README)."); return; }
+  acctMsg("Connecting to Firebase…");
+  try { await startFirebase(cfg); }
+  catch (e) { acctMsg("Couldn't load Firebase, so notes are saved in this browser only. Check your connection and reload."); }
 })();
-// local notes are the fallback when the account store isn't available
-for (let i = 0; ; i++) { let k; try { k = localStorage.key(i); } catch(e) { break; } if (k == null) break;
-  const m = /^oscp-note-(\d+)$/.exec(k); if (m && (ls.get(k)||"").trim()) noted.add(+m[1]); }
 
 /* ---------- notes: sanitizer (only our own formatting survives) ---------- */
 const OK = new Set(["P","DIV","BR","B","STRONG","I","EM","U","H3","UL","OL","LI","PRE","CODE","IMG","SPAN"]);
+const ID = /^[A-Za-z0-9]+$/;
 function clean(html){
   const doc = new DOMParser().parseFromString(`<body>${html}</body>`, "text/html");
   (function walk(n){
@@ -287,62 +411,133 @@ function clean(html){
         continue;
       }
       for (const a of [...c.attributes]) {
-        const keep = c.tagName === "IMG" && (a.name === "data-asset" || (a.name === "src" && /^(\/_blob\/[A-Za-z0-9]+|data:image\/(png|jpeg|webp|gif);base64,)/.test(a.value)) || a.name === "alt");
+        const keep = c.tagName === "IMG" && (a.name === "alt" || ((a.name === "data-asset" || a.name === "data-fimg") && ID.test(a.value)) ||
+          (a.name === "src" && /^(\/_blob\/[A-Za-z0-9]+|data:image\/(png|jpeg|webp|gif);base64,)/.test(a.value)));
         if (!keep) c.removeAttribute(a.name);
       }
-      if (c.tagName === "IMG") { const id = c.getAttribute("data-asset"); if (id && /^[A-Za-z0-9]+$/.test(id)) c.setAttribute("src", "/_blob/" + id); if (!c.getAttribute("src")) { c.remove(); continue; } }
+      if (c.tagName === "IMG") {
+        const id = c.getAttribute("data-asset"); if (id) c.setAttribute("src", "/_blob/" + id);
+        if (!c.getAttribute("src") && !c.getAttribute("data-fimg")) { c.remove(); continue; }
+      }
       walk(c);
     }
   })(doc.body);
   return doc.body.innerHTML;
 }
+const textOf = html => new DOMParser().parseFromString(`<body>${html}</body>`, "text/html").body.textContent;
 
 /* ---------- notes: editor ---------- */
 const ed = $("ed");
 let curWeek = null, saveTimer = null, dirty = false;
+async function fillImages(root){
+  if (!backend.imageSrc) return;
+  for (const img of root.querySelectorAll("img[data-fimg]:not([src])")) {
+    try { const s = await backend.imageSrc(img.getAttribute("data-fimg")); if (s) img.src = s; else img.alt = "Image not found"; } catch(e) { img.alt = "Image couldn't load"; }
+  }
+}
 async function openNotes(week){
   curWeek = week; dirty = false;
   const w = PLAN.find(x=>x.week===week);
   $("nt-title").textContent = `Week ${week} notes`;
   $("nt-sub").textContent = w.boxes.map(b=>b.name).join(" · ");
-  $("nwhere").textContent = db ? "Private to your account" : "Saved in this browser only";
-  $("imgbtn").hidden = false;
+  $("nwhere").textContent = backend.where;
   ed.innerHTML = ""; status("Loading…");
-  $("nt").showModal(); ed.focus();
+  if (!$("nt").open) $("nt").showModal();
+  ed.focus();
   let html = "";
-  try {
-    if (db) { const s = await coll.doc("week-" + week).get(); html = s.exists ? (s.data().html || "") : ""; }
-    else html = ls.get("oscp-note-" + week) || "";
-  } catch (e) { status("Couldn't load your saved notes. Close and reopen to try again.", "bad"); return; }
+  try { html = await backend.get(week); }
+  catch (e) { status("Couldn't load your saved notes. Close and reopen to try again.", "bad"); return; }
   if (curWeek !== week) return;
   ed.innerHTML = clean(html);
+  fillImages(ed);
   status(html ? "Saved" : "", html ? "ok" : "");
 }
 function queueSave(){ dirty = true; status("Unsaved changes…"); clearTimeout(saveTimer); saveTimer = setTimeout(flush, 1200); }
+// Firebase images are stored separately, so the note keeps only their ids
+function serialize(){ const c = ed.cloneNode(true); c.querySelectorAll("img[data-fimg]").forEach(i => i.removeAttribute("src")); return clean(c.innerHTML); }
 let saving = Promise.resolve();
 function flush(){
   clearTimeout(saveTimer);
   if (!dirty || curWeek == null) return saving;
   dirty = false;
-  const week = curWeek, html = clean(ed.innerHTML), empty = !ed.textContent.trim() && !ed.querySelector("img");
+  const week = curWeek, html = serialize(), text = ed.innerText, empty = !ed.textContent.trim() && !ed.querySelector("img"), be = backend;
   saving = saving.then(async () => {
     status("Saving…");
     try {
-      if (db) { const ref = coll.doc("week-" + week); empty ? await ref.delete() : await ref.set({ html, week, updatedAt: new Date().toISOString() }); }
-      else if (!ls.set("oscp-note-" + week, empty ? "" : html)) throw { code: "local_full" };
-      empty ? noted.delete(week) : noted.add(week);
+      empty ? await be.del(week) : await be.put(week, html, text);
+      empty ? (notesCache.delete(week), noted.delete(week)) : (notesCache.set(week, html), noted.add(week));
       status("Saved", "ok"); renderStats(); renderList();
     } catch (e) {
       dirty = true;
       status(e && e.code === "quota_exceeded" ? "Not saved: your notes storage is full." :
-             e && e.code === "local_full" ? "Not saved: this browser is full or blocks storage for this page. Remove an image or open the page signed in." :
-             e && e.code === "invalid_argument" ? "Not saved: this note is too large. Split it or remove an image." :
+             e && e.code === "local_full" ? "Not saved: this browser is full or blocks storage for this page. Remove an image, or sign in to save to Firebase." :
+             e && (e.code === "invalid_argument" || e.code === "invalid-argument") ? "Not saved: this note is too large. Split it or remove an image." :
+             e && e.code === "permission-denied" ? "Not saved: Firebase refused the write. Check the security rules in the README." :
              "Not saved yet. Keep this panel open and it will try again.", "bad");
       if (e && e.code === "unavailable") saveTimer = setTimeout(flush, 3000);
     }
   });
   return saving;
 }
+
+/* ---------- all notes: search and export ---------- */
+const textCache = new Map();
+const noteText = (w, html) => { const k = w + "|" + html.length; if (!textCache.has(k)) textCache.set(k, textOf(html)); return textCache.get(k); };
+function renderAll(){
+  const q = $("an-q").value.trim().toLowerCase();
+  const weeks = [...notesCache.keys()].sort((a, b) => a - b);
+  const rows = weeks.map(w => {
+    const plan = PLAN.find(x => x.week === w), boxes = plan ? plan.boxes.map(b => b.name).join(" · ") : "";
+    const t = noteText(w, notesCache.get(w)), hay = (boxes + " " + t).toLowerCase();
+    if (q && !hay.includes(q)) return "";
+    const i = q ? t.toLowerCase().indexOf(q) : -1, start = Math.max(0, i - 40);
+    const snip = (i >= 0 ? (start ? "…" : "") + t.slice(start, start + 160) : t.slice(0, 160)).replace(/\s+/g, " ");
+    return `<li><button type="button" class="an-item" data-w="${w}"><b>Week ${w}</b> <span class="tag">${esc(boxes)}</span><span class="snip">${esc(snip) || "(screenshots only)"}</span></button></li>`;
+  }).filter(Boolean);
+  $("an-list").innerHTML = rows.join("") || `<li class="muted">${weeks.length ? "No notes match that search." : "No notes yet. Open a week and press Notes to start."}</li>`;
+  $("an-count").textContent = `${rows.length} of ${weeks.length} weeks`;
+  $("an-list").querySelectorAll("[data-w]").forEach(b => b.onclick = () => { $("an").close(); openNotes(+b.dataset.w); });
+}
+$("allnotes").onclick = () => { renderAll(); $("an").showModal(); $("an-q").focus(); };
+$("an-close").onclick = () => $("an").close();
+$("an-q").addEventListener("input", renderAll);
+
+function toMd(node){
+  let out = "";
+  for (const c of node.childNodes) {
+    if (c.nodeType === 3) { out += c.textContent; continue; }
+    if (c.nodeType !== 1) continue;
+    const t = c.tagName, inner = () => toMd(c);
+    if (t === "PRE") out += "\n```\n" + c.textContent.replace(/\n$/, "") + "\n```\n";
+    else if (t === "CODE") out += "`" + c.textContent + "`";
+    else if (t === "H3") out += "\n### " + inner().trim() + "\n";
+    else if (t === "B" || t === "STRONG") out += "**" + inner() + "**";
+    else if (t === "I" || t === "EM") out += "_" + inner() + "_";
+    else if (t === "LI") out += "\n- " + inner().trim();
+    else if (t === "UL" || t === "OL") out += inner() + "\n";
+    else if (t === "BR") out += "\n";
+    else if (t === "IMG") out += `\n![${c.getAttribute("alt") || "screenshot"}](${c.getAttribute("src") || ""})\n`;
+    else if (t === "P" || t === "DIV") out += "\n" + inner() + "\n";
+    else out += inner();
+  }
+  return out;
+}
+$("an-export").onclick = async () => {
+  const btn = $("an-export"); btn.disabled = true; btn.textContent = "Preparing…";
+  try {
+    let md = `# OSCP practice notes\n\nExported ${new Date().toISOString().slice(0, 10)}\n`;
+    for (const w of [...notesCache.keys()].sort((a, b) => a - b)) {
+      const plan = PLAN.find(x => x.week === w), box = document.createElement("div");
+      box.innerHTML = clean(notesCache.get(w)); await fillImages(box);
+      md += `\n\n## Week ${w}${plan ? " — " + plan.boxes.map(b => b.name).join(", ") : ""}\n` + toMd(box).replace(/\n{3,}/g, "\n\n");
+    }
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([md], { type: "text/markdown" }));
+    a.download = `oscp-notes-${new Date().toISOString().slice(0, 10)}.md`;
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+  } finally { btn.disabled = false; btn.textContent = "Export all as Markdown"; }
+};
+
 ed.addEventListener("input", queueSave);
 $("nt-close").onclick = async () => { await flush(); $("nt").close(); };
 $("nt").addEventListener("cancel", e => { e.preventDefault(); $("nt-close").click(); });
@@ -404,31 +599,31 @@ ed.addEventListener("keydown", e => {
 
 /* ---------- images: shrink, then store ---------- */
 async function shrink(file){
-  // shortcut: re-encodes every image as WebP at most 1600px wide; animated GIFs lose their animation
+  // shortcut: re-encodes every image as WebP; animated GIFs lose their animation
   const bmp = await createImageBitmap(file);
-  const scale = Math.min(1, 1600 / bmp.width);
-  const c = document.createElement("canvas"); c.width = Math.round(bmp.width*scale); c.height = Math.round(bmp.height*scale);
-  c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
-  return await new Promise(r => c.toBlob(r, "image/webp", 0.85)) || file;
+  for (const [maxW, q] of [[1600, .85], [1600, .7], [1200, .7], [1000, .6]]) {
+    const scale = Math.min(1, maxW / bmp.width);
+    const c = document.createElement("canvas"); c.width = Math.round(bmp.width*scale); c.height = Math.round(bmp.height*scale);
+    c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
+    const blob = await new Promise(r => c.toBlob(r, "image/webp", q));
+    if (blob && blob.size < 700000) return blob;   // ~950 KB once base64-encoded, under Firestore's 1 MiB document limit
+  }
+  throw { code: "too_large" };
 }
 async function addImages(files){
   const imgs = [...files].filter(f => f.type.startsWith("image/"));
   for (const f of imgs) {
     status("Adding image…");
     try {
-      const blob = await shrink(f);
+      const attrs = await backend.image(await shrink(f));
       const img = document.createElement("img"); img.alt = "Screenshot";
-      if (assets && db) {
-        const res = await assets.upload(blob, { type: blob.type || "image/webp" });
-        img.src = res.url; img.setAttribute("data-asset", res.id);
-      } else {
-        img.src = await new Promise((ok, no) => { const fr = new FileReader(); fr.onload = () => ok(fr.result); fr.onerror = no; fr.readAsDataURL(blob); });
-      }
+      for (const [k, v] of Object.entries(attrs)) img.setAttribute(k, v);
       insertNode(img);
     } catch (e) {
       status(e && e.code === "too_large" ? "That image is too large. Crop it and try again." :
              e && e.code === "quota_or_state" ? "Image storage is full for this page." :
              e && e.code === "rate_limited" ? "Too many images at once. Wait a moment and add it again." :
+             e && e.code === "permission-denied" ? "Firebase refused the image. Check the security rules in the README." :
              "Couldn't add that image. Try a PNG or JPG.", "bad");
     }
   }
