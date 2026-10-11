@@ -13,7 +13,8 @@
 :root[data-theme="dark"]{
   --bg:#0f141a; --surface:#161d26; --fg:#e4e8ee; --muted:#93a0b0; --line:#28323e; --ctl:#5d6b7c; --accent:#f59e0b; --code-bg:#0b1016;
   --t1:#2dd4bf; --t2:#facc15; --t3:#fb923c; --t4:#f87171; --t5:#a78bfa; --ok:#4ade80; --bad:#f87171; color-scheme:dark}
-body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5}
 .wrap{max-width:780px;margin:0 auto;padding-inline:16px;padding-block:24px 64px}
 h1{font-family:var(--display);font-size:2rem;line-height:1.1;margin:0 0 6px;letter-spacing:.01em;text-wrap:balance}
 .lede{color:var(--muted);margin:0 0 18px;max-width:62ch}
@@ -90,7 +91,11 @@ dialog::backdrop{background:rgb(0 0 0 / .45)}
 .dlg-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 16px;border-top:1px solid var(--line);font:400 .78rem var(--mono);color:var(--muted)}
 #nstatus.ok{color:var(--ok)} #nstatus.bad{color:var(--bad)}
 .acct{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;padding:10px 12px;margin:0 0 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:.85rem;color:var(--muted)}
-.acct-btns{display:flex;gap:8px}
+.acct-btns{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.authform{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px 12px;width:100%}
+.field{display:grid;gap:4px;flex:1 1 200px;min-width:0}
+.field label{font:600 .74rem var(--mono);color:var(--fg)}
+.field input{box-sizing:border-box;width:100%;min-height:44px;padding:8px 10px;font:400 .95rem var(--body);color:var(--fg);background:var(--bg);border:1px solid var(--ctl);border-radius:8px}
 .q{display:block;width:100%;box-sizing:border-box;margin:4px 0 12px;padding:10px 12px;min-height:44px;font:400 .95rem var(--body);color:var(--fg);background:var(--bg);border:1px solid var(--ctl);border-radius:8px}
 .an-list{display:grid;gap:8px}
 .an-item{display:grid;gap:2px;width:100%;text-align:left;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg);cursor:pointer;font:inherit}
@@ -115,10 +120,16 @@ dialog::backdrop{background:rgb(0 0 0 / .45)}
   <p class="lede">Every box from the LainKusanagi OSCP-like list, ordered easiest to hardest, in weeks of at least 2 hours. Tick boxes as you root them, read a walkthrough inside the app, and keep notes, screenshots and commands for each week.</p>
   <div class="acct" id="acct">
     <span id="acct-status" role="status" aria-live="polite"></span>
-    <span class="acct-btns">
-      <button type="button" class="btn primary" id="signin" hidden>Sign in with Google</button>
-      <button type="button" class="btn" id="signout" hidden>Sign out</button>
-    </span>
+    <span class="acct-btns"><button type="button" class="btn" id="signout" hidden>Sign out</button></span>
+    <form id="authform" class="authform" hidden novalidate>
+      <div class="field"><label for="au-email">Email</label><input id="au-email" type="email" autocomplete="username" required></div>
+      <div class="field"><label for="au-pass">Password</label><input id="au-pass" type="password" autocomplete="current-password" minlength="6" required></div>
+      <div class="acct-btns">
+        <button type="submit" class="btn primary" id="signin">Sign in</button>
+        <button type="button" class="btn" id="signup">Create account</button>
+        <button type="button" class="read" id="forgot">Forgot password?</button>
+      </div>
+    </form>
   </div>
   <div class="stats" id="stats"></div>
   <p style="margin:0 0 16px"><button type="button" class="btn" id="allnotes">All notes</button></p>
@@ -138,7 +149,7 @@ dialog::backdrop{background:rgb(0 0 0 / .45)}
     <h2>Notes</h2>
     <ul>
       <li>Each week has its own notes. Add headings, lists, inline code and code blocks for commands. Add screenshots with the Image button, by pasting, or by dragging them in.</li>
-      <li>On claude.ai, notes save to your Claude account. On your own site, sign in with Google and notes sync to your Firebase project, so they're on every device. Until you sign in, they save in this browser only.</li>
+      <li>On claude.ai, notes save to your Claude account. On your own site, sign in with your email and password and notes sync to your Firebase project, so they're on every device. Until you sign in, they save in this browser only.</li>
       <li><b>All notes</b> lists every week you've written up. Search across notes, commands and box names, or export everything as one Markdown file.</li>
     </ul>
     <h2>How this was built</h2>
@@ -336,18 +347,51 @@ async function startFirebase(cfg){
   const [A, AU, F] = await Promise.all([import(FB + "firebase-app.js"), import(FB + "firebase-auth.js"), import(FB + "firebase-firestore.js")]);
   const app = A.initializeApp(cfg), auth = AU.getAuth(app);
   let fdb; try { fdb = F.initializeFirestore(app, { localCache: F.persistentLocalCache() }); } catch(e) { fdb = F.getFirestore(app); }
-  $("signin").onclick = async () => {
-    try { await AU.signInWithPopup(auth, new AU.GoogleAuthProvider()); }
-    catch (e) { acctMsg(e.code === "auth/popup-blocked" ? "Your browser blocked the sign-in window. Allow pop-ups for this site and try again." :
-                       e.code === "auth/unauthorized-domain" ? "This site's address isn't on Firebase's authorized domains list yet. See the README." :
-                       e.code === "auth/popup-closed-by-user" ? "Sign-in was cancelled." : "Sign-in failed: " + (e.code || e.message)); }
+  const authErr = e => ({
+    "auth/invalid-credential": "Wrong email or password.",
+    "auth/wrong-password": "Wrong email or password.",
+    "auth/user-not-found": "No account with that email. Press Create account to make one.",
+    "auth/email-already-in-use": "That email already has an account. Press Sign in instead.",
+    "auth/weak-password": "Use a password of at least 6 characters.",
+    "auth/invalid-email": "That doesn't look like an email address.",
+    "auth/missing-password": "Enter your password.",
+    "auth/too-many-requests": "Too many attempts. Wait a few minutes, or reset your password.",
+    "auth/operation-not-allowed": "Email/password sign-in isn't turned on in Firebase yet. Run setup-firebase.sh (see the README).",
+    "auth/network-request-failed": "Couldn't reach Firebase. Check your connection and try again.",
+  })[e && e.code] || "Sign-in failed: " + ((e && (e.code || e.message)) || "unknown error");
+  const creds = () => {
+    const bad = $("authform").querySelector(":invalid");
+    if (bad) {
+      acctMsg(bad.id === "au-email" ? (bad.value ? "That doesn't look like an email address." : "Enter your email.")
+                                    : (bad.value ? "Use a password of at least 6 characters." : "Enter your password."));
+      bad.focus(); return null;
+    }
+    return [$("au-email").value.trim(), $("au-pass").value];
+  };
+  const busy = on => ["signin", "signup", "forgot"].forEach(id => $(id).disabled = on);
+  $("authform").onsubmit = async e => {
+    e.preventDefault(); const c = creds(); if (!c) return;
+    busy(true); acctMsg("Signing in…");
+    try { await AU.signInWithEmailAndPassword(auth, ...c); } catch (err) { acctMsg(authErr(err)); } finally { busy(false); }
+  };
+  $("signup").onclick = async () => {
+    const c = creds(); if (!c) return;
+    busy(true); acctMsg("Creating your account…");
+    try { await AU.createUserWithEmailAndPassword(auth, ...c); } catch (err) { acctMsg(authErr(err)); } finally { busy(false); }
+  };
+  $("forgot").onclick = async () => {
+    const email = $("au-email").value.trim();
+    if (!email) { acctMsg("Type your email above, then press Forgot password?"); $("au-email").focus(); return; }
+    try { await AU.sendPasswordResetEmail(auth, email); acctMsg(`If ${email} has an account, a reset link is on its way. Check your inbox.`); }
+    catch (err) { acctMsg(authErr(err)); }
   };
   $("signout").onclick = () => AU.signOut(auth);
   let unsub = null;
   AU.onAuthStateChanged(auth, user => {
     if (unsub) { unsub(); unsub = null; }
-    $("signin").hidden = !!user; $("signout").hidden = !user;
-    if (!user) { backend = local; setNotes(localNotes()); acctMsg("Not signed in. Notes are saved in this browser only."); return; }
+    $("authform").hidden = !!user; $("signout").hidden = !user;
+    if (user) $("au-pass").value = "";
+    if (!user) { backend = local; setNotes(localNotes()); acctMsg("Not signed in. Notes are saved in this browser only. Sign in to sync them to Firebase."); return; }
     const notes = F.collection(fdb, "users", user.uid, "notes"), images = F.collection(fdb, "users", user.uid, "images");
     const imgCache = new Map();
     backend = { kind: "firebase", where: "Synced to Firebase",
@@ -464,6 +508,7 @@ function flush(){
   saving = saving.then(async () => {
     status("Saving…");
     try {
+      if (!empty && (html.length > 400000 || text.length > 200000)) throw { code: "invalid_argument" };  // same limits as firestore.rules
       empty ? await be.del(week) : await be.put(week, html, text);
       empty ? (notesCache.delete(week), noted.delete(week)) : (notesCache.set(week, html), noted.add(week));
       status("Saved", "ok"); renderStats(); renderList();

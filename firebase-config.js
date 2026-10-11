@@ -1,14 +1,11 @@
-// Paste your Firebase web app config here (Firebase console > Project settings > Your apps > Web app).
-// This config is not a secret: access to your notes is protected by firestore.rules and Google sign-in.
-// Leave it as null to keep notes in this browser only.
-window.FIREBASE_CONFIG = null;
-
-// Example:
-// window.FIREBASE_CONFIG = {
-//   apiKey: "AIza...",
-//   authDomain: "your-project.firebaseapp.com",
-//   projectId: "your-project",
-//   storageBucket: "your-project.appspot.com",
-//   messagingSenderId: "1234567890",
-//   appId: "1:1234567890:web:abc123"
-// };
+// Firebase web app config for the "oscp-notes" project.
+// This config is not a secret: access to notes is protected by Firebase Auth
+// (email/password) and the rules in firestore.rules.
+window.FIREBASE_CONFIG = {
+  apiKey: "AIzaSyBZiDK9TeJsHynqtXdPsh70HYquIbKs5y4",
+  authDomain: "oscp-notes.firebaseapp.com",
+  projectId: "oscp-notes",
+  storageBucket: "oscp-notes.firebasestorage.app",
+  messagingSenderId: "523190466253",
+  appId: "1:523190466253:web:486d2ef37cf66294851b84"
+};

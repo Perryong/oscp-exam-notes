@@ -1,0 +1,13 @@
+{
+  "name": "oscp-notes-rules-tests",
+  "private": true,
+  "type": "module",
+  "description": "Checks firestore.rules against the Firestore emulator. Run from the repo root: npx -y firebase-tools@latest emulators:exec --only firestore \"npm --prefix tests test\"",
+  "scripts": {
+    "test": "node --test rules.test.mjs"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "^3.0.4",
+    "firebase": "^10.12.2"
+  }
+}
