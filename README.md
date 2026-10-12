@@ -6,6 +6,7 @@ A week-by-week OSCP practice ladder built from the LainKusanagi OSCP-like list, 
 - Every box links to a recognised walkthrough (0xdf, IppSec, OffSec official, VulnHub, community GitHub write-ups). HackTheBox boxes with an IppSec video show his chapter outline inside the app.
 - Each week has a notes editor with headings, lists, code blocks for commands, and screenshots (paste, drag or the Image button).
 - **All notes** lists every week you've written up, searches across notes, commands and box names, and exports everything as one Markdown file.
+- **Cheat sheet** opens a searchable reference built from the [oscp_cheat_sheet_2025](https://github.com/Perryong/oscp_cheat_sheet_2025) repo: 19 sections (enumeration, reverse shells, privesc, Active Directory, tunnelling, and more), with collapsible sections and copy buttons on code blocks.
 
 It's a static site: `index.html` plus `firebase-config.js`. Nothing needs building.
 
