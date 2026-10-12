@@ -22,8 +22,8 @@ h1{font-family:var(--display);font-size:2rem;line-height:1.1;margin:0 0 6px;lett
 .stats b{color:var(--fg);font-weight:600}
 .bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:20px}
 .bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:2;background:var(--bg);padding-block:8px;display:flex;gap:6px;overflow-x:auto;border-bottom:1px solid var(--line);margin-bottom:16px}
-nav button{font:600 .8rem var(--mono);white-space:nowrap;padding:8px 12px;min-height:40px;border-radius:999px;border:1px solid var(--ctl);background:var(--surface);color:var(--muted);cursor:pointer}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:2;background:var(--bg);padding-block:8px;display:flex;flex-wrap:wrap;gap:6px;border-bottom:1px solid var(--line);margin-bottom:16px}
+nav button{flex:0 0 auto;font:600 .8rem var(--mono);white-space:nowrap;padding:8px 12px;min-height:40px;border-radius:999px;border:1px solid var(--ctl);background:var(--surface);color:var(--muted);cursor:pointer}
 nav button[aria-pressed="true"]{border-color:currentColor;color:var(--c,var(--accent))}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .phase-head{display:flex;align-items:baseline;gap:10px;margin:22px 0 8px;font-family:var(--display);font-size:1.15rem;color:var(--c)}
