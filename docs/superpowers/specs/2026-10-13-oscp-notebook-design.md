@@ -1,7 +1,7 @@
 # Personal OSCP notebook design
 
 Date: 2026-10-13
-Status: Ready for user review; architecture selected, implementation not started.
+Status: Approved by the user on 2026-10-13; implementation planning authorized, implementation not started.
 
 ## 1. Purpose and decisions
 
@@ -138,7 +138,7 @@ Implement in reviewable increments: foundation and reference-data preservation; 
 
 The first release is accepted when the user can create/edit machine and topic notes, retain the weekly ladder and cheat sheet, synchronize notes and completion state between devices, recover offline drafts, resolve competing edits without silent loss, export/import a complete notebook with screenshots, and migrate existing data without overwriting originals.
 
-The architecture recommendation has been accepted in chat. This written design is the next review artifact. After its approval, create the detailed implementation plan and select its execution method under the Superpowers workflow.
+The architecture recommendation and this written design have been accepted in chat. Create the detailed implementation plan and select its execution method under the Superpowers workflow.
 
 ## References
 
