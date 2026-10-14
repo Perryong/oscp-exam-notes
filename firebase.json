@@ -9,7 +9,12 @@
     }
   },
   "emulators": {
-    "firestore": { "port": 8080 },
-    "singleProjectMode": true
+    "firestore": {
+      "port": 8180
+    },
+    "singleProjectMode": false,
+    "auth": {
+      "port": 9199
+    }
   }
 }
