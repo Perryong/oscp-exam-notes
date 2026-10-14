@@ -3,7 +3,7 @@ import StarterKit from '@tiptap/starter-kit';
 import TaskList from '@tiptap/extension-task-list';
 import TaskItem from '@tiptap/extension-task-item';
 import { Node } from '@tiptap/core';
-export const Screenshot=Node.create({name:'screenshot',group:'block',atom:true,addAttributes(){return{imageId:{default:null},alt:{default:'Screenshot'}}},parseHTML(){return[{tag:'img[data-image-id]'}]},renderHTML({HTMLAttributes}){return['img',{'data-image-id':HTMLAttributes.imageId,alt:HTMLAttributes.alt}]}});
+export const Screenshot=Node.create({name:'screenshot',group:'block',atom:true,addAttributes(){return{imageId:{default:null,parseHTML:(element:HTMLElement)=>element.getAttribute('data-image-id')},alt:{default:'Screenshot'}}},parseHTML(){return[{tag:'img[data-image-id]'}]},renderHTML({HTMLAttributes}){return['img',{'data-image-id':HTMLAttributes.imageId,alt:HTMLAttributes.alt}]}});
 export const extensions=[StarterKit.configure({link:{openOnClick:false,protocols:['http','https']}}),TaskList,TaskItem.configure({nested:true}),Screenshot];
 const schema=getSchema(extensions);
 export const safeLink=(href:string)=>/^https?:\/\/[^\s]+$/i.test(href)||/^\/notes\/[A-Za-z0-9_-]{1,128}$/.test(href);

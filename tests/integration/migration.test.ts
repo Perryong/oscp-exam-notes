@@ -1,0 +1,13 @@
+import 'fake-indexeddb/auto';
+import {test,expect,beforeAll} from 'vitest';
+import {signInAnonymously} from 'firebase/auth';
+import {collection,getDocs,doc,getDoc} from 'firebase/firestore';
+import {getClient} from '../../src/firebase/client';
+import {applyMigration} from '../../src/firebase/migration';
+import {commitNote} from '../../src/firebase/notes';
+import {draft,noteContent} from '../fixtures/builders';
+import type {MigrationItem} from '../../src/notebook/model';
+let uid:string;beforeAll(async()=>{uid=(await signInAnonymously(getClient().auth)).user.uid});
+test('completed import never overwrites edited destinations and retries are idempotent',async()=>{const id='legacy-'+crypto.randomUUID(),item:MigrationItem={id,destinationId:id,digest:'a'.repeat(64),source:'cloud',payload:noteContent()};expect((await applyMigration(uid,[item])).completed).toHaveLength(1);await commitNote(uid,draft({uid,id,baseRevision:1,content:noteContent({title:'edited'})}));expect((await applyMigration(uid,[item])).skipped).toHaveLength(1);const s=await getDoc(doc(getClient().db,'users',uid,'notebookNotes',id));expect(s.data()?.title).toBe('edited');expect((await getDocs(collection(getClient().db,'users',uid,'migrations'))).size).toBe(1)});
+test('a failed import has no completion marker',async()=>{const id='legacy-'+crypto.randomUUID(),item:MigrationItem={id,destinationId:id,digest:'a'.repeat(64),source:'cloud',payload:noteContent({text:'x'.repeat(620000)})};expect((await applyMigration(uid,[item])).failed).toHaveLength(1);expect((await getDoc(doc(getClient().db,'users',uid,'migrations',id))).exists()).toBe(false)});
+test('deleted destinations are not recreated by migration retry',async()=>{const {purgeNote}=await import('../../src/notebook/repository');const id='legacy-'+crypto.randomUUID(),item:MigrationItem={id,destinationId:id,digest:'b'.repeat(64),source:'cloud',payload:noteContent({deletedAt:1})};expect((await applyMigration(uid,[item])).completed).toHaveLength(1);await purgeNote(uid,id,1);expect((await applyMigration(uid,[item])).skipped).toHaveLength(1);expect((await getDoc(doc(getClient().db,'users',uid,'notebookNotes',id))).exists()).toBe(false)});

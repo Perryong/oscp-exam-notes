@@ -160,6 +160,19 @@ service cloud.firestore {
         getAfter(/databases/$(database)/documents/users/$(uid)/noteHistory/$(noteId)/versions/$(string(resource.data.revision))).data == resource.data;
       allow delete: if isOwner(uid) && resource.data.deletedAt != null && existsAfter(/databases/$(database)/documents/users/$(uid)/purgedNotes/$(noteId));
     }
+    match /users/{uid}/migrations/{migrationId} {
+      allow read: if isOwner(uid);
+      allow create: if isOwner(uid) && pathId(migrationId) &&
+        request.resource.data.keys().hasAll(['destinationId','kind','digest','createdAt']) &&
+        request.resource.data.keys().hasOnly(['destinationId','kind','digest','createdAt']) &&
+        pathId(request.resource.data.destinationId) && request.resource.data.digest.matches('^[a-f0-9]{64}$') && request.resource.data.createdAt == request.time &&
+        ((request.resource.data.kind == 'note' &&
+          !exists(/databases/$(database)/documents/users/$(uid)/notebookNotes/$(request.resource.data.destinationId)) &&
+          getAfter(/databases/$(database)/documents/users/$(uid)/notebookNotes/$(request.resource.data.destinationId)).data.lastMutationId == migrationId) ||
+         (request.resource.data.kind == 'machine' &&
+          !exists(/databases/$(database)/documents/users/$(uid)/machines/$(request.resource.data.destinationId)) &&
+          getAfter(/databases/$(database)/documents/users/$(uid)/machines/$(request.resource.data.destinationId)).data.lastMutationId == migrationId));
+    }
     match /users/{uid}/purgedNotes/{noteId} {
       allow read: if isOwner(uid);
       allow create: if isOwner(uid) && request.resource.data.keys().hasOnly(['deletedAt']) && request.resource.data.deletedAt == request.time &&
