@@ -1,0 +1,5 @@
+import {test,expect,vi} from 'vitest';
+import {prepareImage} from './images';
+test('oversized input is rejected before decoding',async()=>{await expect(prepareImage(new File([new Uint8Array(20*1024*1024+1)],'x.png',{type:'image/png'}))).rejects.toThrow('20 MiB')});
+test('oversized decoded image closes bitmap and is rejected',async()=>{const close=vi.fn();vi.stubGlobal('createImageBitmap',async()=>({width:5001,height:5000,close}));await expect(prepareImage(new File(['x'],'x.png',{type:'image/png'}))).rejects.toThrow('25 megapixels');expect(close).toHaveBeenCalledOnce();vi.unstubAllGlobals()});
+test('uncompressible screenshot fails without storing an oversized payload',async()=>{vi.stubGlobal('createImageBitmap',async()=>({width:1600,height:1000,close(){}}));vi.spyOn(HTMLCanvasElement.prototype,'getContext').mockReturnValue({drawImage(){}} as never);vi.spyOn(HTMLCanvasElement.prototype,'toBlob').mockImplementation(cb=>cb(new Blob([new Uint8Array(800000)])));await expect(prepareImage(new File(['x'],'x.png',{type:'image/png'}))).rejects.toThrow('still too large');vi.restoreAllMocks();vi.unstubAllGlobals()});
