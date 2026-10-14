@@ -1,7 +1,80 @@
-import {test,expect} from 'vitest';
-import {validateBundle,remapBundle} from './backup';
-import {bundle,noteContent,imageRecord,machineContent} from '../../tests/fixtures/builders';
-const saved=<T,>(id:string,content:T)=>({id,content,revision:1,lastMutationId:'m',createdAt:1,updatedAt:1});
-test('rejects invalid versions, duplicate IDs and missing screenshot bytes',()=>{expect(()=>validateBundle({...bundle(),version:2})).toThrow();const n=saved('n',noteContent());expect(()=>validateBundle(bundle({notes:[n,n]}))).toThrow();expect(()=>validateBundle(bundle({notes:[saved('n',noteContent({attachmentIds:['missing']}))]}))).toThrow()});
-test('remaps machines, screenshot nodes and internal note links consistently',()=>{const input=bundle({machines:[saved('m',machineContent())],images:[imageRecord()],notes:[saved('n',noteContent({machineId:'m',attachmentIds:['img1'],contentJson:JSON.stringify({type:'doc',content:[{type:'paragraph',content:[{type:'text',text:'link',marks:[{type:'link',attrs:{href:'/notes/n'}}]}]},{type:'screenshot',attrs:{imageId:'img1',alt:'shot'}}]})}))]});const result=remapBundle(validateBundle(input));expect(result.bundle.notes[0].id).not.toBe('n');expect(result.bundle.notes[0].content.machineId).toBe(result.bundle.machines[0].id);expect(result.bundle.notes[0].content.attachmentIds[0]).toBe(result.bundle.images[0].id);expect(result.bundle.notes[0].content.contentJson).toContain('/notes/'+result.bundle.notes[0].id)});
-test('rejects IDs reused across entity kinds before allocating a restore map',()=>{expect(()=>validateBundle(bundle({notes:[saved('same',noteContent())],images:[imageRecord({id:'same'})]}))).toThrow()});
+import { test, expect } from "vitest";
+import { validateBundle, remapBundle } from "./backup";
+import {
+  bundle,
+  noteContent,
+  imageRecord,
+  machineContent,
+} from "../../tests/fixtures/builders";
+const saved = <T>(id: string, content: T) => ({
+  id,
+  content,
+  revision: 1,
+  lastMutationId: "m",
+  createdAt: 1,
+  updatedAt: 1,
+});
+test("rejects invalid versions, duplicate IDs and missing screenshot bytes", () => {
+  expect(() => validateBundle({ ...bundle(), version: 2 })).toThrow();
+  const n = saved("n", noteContent());
+  expect(() => validateBundle(bundle({ notes: [n, n] }))).toThrow();
+  expect(() =>
+    validateBundle(
+      bundle({
+        notes: [saved("n", noteContent({ attachmentIds: ["missing"] }))],
+      }),
+    ),
+  ).toThrow();
+});
+test("remaps machines, screenshot nodes and internal note links consistently", () => {
+  const input = bundle({
+    machines: [saved("m", machineContent())],
+    images: [imageRecord()],
+    notes: [
+      saved(
+        "n",
+        noteContent({
+          machineId: "m",
+          attachmentIds: ["img1"],
+          contentJson: JSON.stringify({
+            type: "doc",
+            content: [
+              {
+                type: "paragraph",
+                content: [
+                  {
+                    type: "text",
+                    text: "link",
+                    marks: [{ type: "link", attrs: { href: "/notes/n" } }],
+                  },
+                ],
+              },
+              { type: "screenshot", attrs: { imageId: "img1", alt: "shot" } },
+            ],
+          }),
+        }),
+      ),
+    ],
+  });
+  const result = remapBundle(validateBundle(input));
+  expect(result.bundle.notes[0].id).not.toBe("n");
+  expect(result.bundle.notes[0].content.machineId).toBe(
+    result.bundle.machines[0].id,
+  );
+  expect(result.bundle.notes[0].content.attachmentIds[0]).toBe(
+    result.bundle.images[0].id,
+  );
+  expect(result.bundle.notes[0].content.contentJson).toContain(
+    "/notes/" + result.bundle.notes[0].id,
+  );
+});
+test("rejects IDs reused across entity kinds before allocating a restore map", () => {
+  expect(() =>
+    validateBundle(
+      bundle({
+        notes: [saved("same", noteContent())],
+        images: [imageRecord({ id: "same" })],
+      }),
+    ),
+  ).toThrow();
+});

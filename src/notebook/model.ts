@@ -1,13 +1,84 @@
-export type EntityKind='note'|'machine';
-export type NoteContent={title:string;contentJson:string;text:string;tags:string[];machineId:string|null;week:number|null;attachmentIds:string[];schemaVersion:1;deletedAt:number|null;sourceHtml:string|null};
-export type MachineContent={name:string;platform:string;os:string;tags:string[];legacyKey:string|null;week:number|null;progress:'not-started'|'in-progress'|'completed'};
-export type Saved<T>={id:string;content:T;revision:number;lastMutationId:string;createdAt:number;updatedAt:number};
-export type Draft<T>={uid:string;kind:EntityKind;id:string;content:T;baseRevision:number;localRevision:number;mutationId:string;modifiedAt:number};
-export type SaveResult<T>={kind:'saved';value:Saved<T>}|{kind:'conflict';remote:Saved<T>|null};
-export type LocalWriteResult<T>={kind:'saved';draft:Draft<T>}|{kind:'conflict';draft:Draft<T>};
-export type ImageRecord={id:string;data:string};
-export type NotebookBundle={version:1;notes:Saved<NoteContent>[];machines:Saved<MachineContent>[];history:Record<string,Saved<NoteContent>[]>;images:ImageRecord[];legacySources:Record<string,string>;unmatchedProgress:Record<string,unknown>};
-export type TransferReport={completed:string[];failed:{id:string;reason:string}[];skipped:string[]};
-export type OfflineReport={complete:boolean;missing:string[];completedAt:number|null};
-export type MigrationItem={id:string;digest:string;source:'cloud'|'browser'|'progress';destinationId:string;payload:NoteContent|MachineContent};
-export const emptyNote=():NoteContent=>({title:'Untitled note',contentJson:'{"type":"doc","content":[{"type":"paragraph"}]}',text:'',tags:[],machineId:null,week:null,attachmentIds:[],schemaVersion:1,deletedAt:null,sourceHtml:null});
+export type EntityKind = "note" | "machine";
+export type NoteContent = {
+  title: string;
+  contentJson: string;
+  text: string;
+  tags: string[];
+  machineId: string | null;
+  week: number | null;
+  attachmentIds: string[];
+  schemaVersion: 1;
+  deletedAt: number | null;
+  sourceHtml: string | null;
+};
+export type MachineContent = {
+  name: string;
+  platform: string;
+  os: string;
+  tags: string[];
+  legacyKey: string | null;
+  week: number | null;
+  progress: "not-started" | "in-progress" | "completed";
+};
+export type Saved<T> = {
+  id: string;
+  content: T;
+  revision: number;
+  lastMutationId: string;
+  createdAt: number;
+  updatedAt: number;
+};
+export type Draft<T> = {
+  uid: string;
+  kind: EntityKind;
+  id: string;
+  content: T;
+  baseRevision: number;
+  localRevision: number;
+  mutationId: string;
+  modifiedAt: number;
+};
+export type SaveResult<T> =
+  | { kind: "saved"; value: Saved<T> }
+  | { kind: "conflict"; remote: Saved<T> | null };
+export type LocalWriteResult<T> =
+  { kind: "saved"; draft: Draft<T> } | { kind: "conflict"; draft: Draft<T> };
+export type ImageRecord = { id: string; data: string };
+export type NotebookBundle = {
+  version: 1;
+  notes: Saved<NoteContent>[];
+  machines: Saved<MachineContent>[];
+  history: Record<string, Saved<NoteContent>[]>;
+  images: ImageRecord[];
+  legacySources: Record<string, string>;
+  unmatchedProgress: Record<string, unknown>;
+};
+export type TransferReport = {
+  completed: string[];
+  failed: { id: string; reason: string }[];
+  skipped: string[];
+};
+export type OfflineReport = {
+  complete: boolean;
+  missing: string[];
+  completedAt: number | null;
+};
+export type MigrationItem = {
+  id: string;
+  digest: string;
+  source: "cloud" | "browser" | "progress";
+  destinationId: string;
+  payload: NoteContent | MachineContent;
+};
+export const emptyNote = (): NoteContent => ({
+  title: "Untitled note",
+  contentJson: '{"type":"doc","content":[{"type":"paragraph"}]}',
+  text: "",
+  tags: [],
+  machineId: null,
+  week: null,
+  attachmentIds: [],
+  schemaVersion: 1,
+  deletedAt: null,
+  sourceHtml: null,
+});

@@ -1,2 +1,66 @@
-import {test,expect,type Page} from '@playwright/test';
-test('two devices retain both versions and offer a separate copy',async({browser,request})=>{test.setTimeout(60000);const email=`conflict-${Date.now()}@example.test`,password='testing-password-123';await (await request.post('http://127.0.0.1:9199/identitytoolkit.googleapis.com/v1/accounts:signUp?key=demo-key',{data:{email,password,returnSecureToken:true}})).json();const a=await browser.newContext(),b=await browser.newContext(),one=await a.newPage(),two=await b.newPage();async function login(page:Page){await page.bringToFront();await page.goto('/settings');await page.getByLabel('Email',{exact:true}).fill(email);await page.getByLabel('Password',{exact:true}).fill(password);await page.getByRole('button',{name:'Sign in',exact:true}).click();await expect(page.getByText(`Signed in as ${email}`)).toBeVisible()}await login(one);await one.getByRole('link',{name:'All notes',exact:true}).click();await one.getByRole('button',{name:'New note',exact:true}).click();await one.bringToFront();await one.getByLabel('Note title').fill('Original');await expect(one.getByLabel('Note title')).toHaveValue('Original');await expect(one.getByText('Synced',{exact:true})).toBeVisible({timeout:15000});const url=one.url();await login(two);await two.goto(url);await expect(two.getByLabel('Note title')).toHaveValue('Original');await b.setOffline(true);await two.getByLabel('Note title').fill('Device two');await expect(two.getByText('Saved locally',{exact:true}).first()).toBeVisible();await one.bringToFront();await one.getByLabel('Note title').fill('Device one');await expect(one.getByLabel('Note title')).toHaveValue('Device one');await expect(one.getByText('Synced',{exact:true})).toBeVisible({timeout:15000});await two.bringToFront();await b.setOffline(false);await expect(two.getByRole('heading',{name:'Two versions need your review'})).toBeVisible({timeout:15000});await two.getByRole('button',{name:'Keep mine as a copy'}).click();await two.getByRole('link',{name:'← All notes'}).click();await expect(two.getByRole('link',{name:'Device one',exact:true})).toBeVisible();await expect(two.getByRole('link',{name:'Device two',exact:true})).toBeVisible();await a.close();await b.close()});
+import { test, expect, type Page } from "@playwright/test";
+test("two devices retain both versions and offer a separate copy", async ({
+  browser,
+  request,
+}) => {
+  test.setTimeout(60000);
+  const email = `conflict-${Date.now()}@example.test`,
+    password = "testing-password-123";
+  await (
+    await request.post(
+      "http://127.0.0.1:9199/identitytoolkit.googleapis.com/v1/accounts:signUp?key=demo-key",
+      { data: { email, password, returnSecureToken: true } },
+    )
+  ).json();
+  const a = await browser.newContext(),
+    b = await browser.newContext(),
+    one = await a.newPage(),
+    two = await b.newPage();
+  async function login(page: Page) {
+    await page.bringToFront();
+    await page.goto("/settings");
+    await page.getByLabel("Email", { exact: true }).fill(email);
+    await page.getByLabel("Password", { exact: true }).fill(password);
+    await page.getByRole("button", { name: "Sign in", exact: true }).click();
+    await expect(page.getByText(`Signed in as ${email}`)).toBeVisible();
+  }
+  await login(one);
+  await one.getByRole("link", { name: "All notes", exact: true }).click();
+  await one.getByRole("button", { name: "New note", exact: true }).click();
+  await one.bringToFront();
+  await one.getByLabel("Note title").fill("Original");
+  await expect(one.getByLabel("Note title")).toHaveValue("Original");
+  await expect(one.getByText("Synced", { exact: true })).toBeVisible({
+    timeout: 15000,
+  });
+  const url = one.url();
+  await login(two);
+  await two.goto(url);
+  await expect(two.getByLabel("Note title")).toHaveValue("Original");
+  await b.setOffline(true);
+  await two.getByLabel("Note title").fill("Device two");
+  await expect(
+    two.getByText("Saved locally", { exact: true }).first(),
+  ).toBeVisible();
+  await one.bringToFront();
+  await one.getByLabel("Note title").fill("Device one");
+  await expect(one.getByLabel("Note title")).toHaveValue("Device one");
+  await expect(one.getByText("Synced", { exact: true })).toBeVisible({
+    timeout: 15000,
+  });
+  await two.bringToFront();
+  await b.setOffline(false);
+  await expect(
+    two.getByRole("heading", { name: "Two versions need your review" }),
+  ).toBeVisible({ timeout: 15000 });
+  await two.getByRole("button", { name: "Keep mine as a copy" }).click();
+  await two.getByRole("link", { name: "← All notes" }).click();
+  await expect(
+    two.getByRole("link", { name: "Device one", exact: true }),
+  ).toBeVisible();
+  await expect(
+    two.getByRole("link", { name: "Device two", exact: true }),
+  ).toBeVisible();
+  await a.close();
+  await b.close();
+});

@@ -74,86 +74,32 @@
           }
         ],
         "outline": [
-          [
-            18,
-            "Start of Recon"
-          ],
-          [
-            75,
-            "Finding hidden directory via Source"
-          ],
+          [18, "Start of Recon"],
+          [75, "Finding hidden directory via Source"],
           [
             135,
             "Downloading NibbleBlog to help us with finding version information"
           ],
-          [
-            239,
-            "Identifying what vresion of NibblesBlog is running"
-          ],
-          [
-            282,
-            "Using SearchSploit to find vulnerabilities"
-          ],
-          [
-            336,
-            "Examining the Exploit"
-          ],
-          [
-            368,
-            "Explanation of exploit"
-          ],
-          [
-            445,
-            "Attempting to find valid usernames for NibblesBlog"
-          ],
-          [
-            553,
-            "Finding usernames in /content/private"
-          ],
-          [
-            615,
-            "Using Hydra to attempt to bruteforce"
-          ],
-          [
-            848,
-            "Oh crap. Hydra not good idea we're blocked..."
-          ],
-          [
-            0,
-            "-- Some minor panicing about how to continue"
-          ],
-          [
-            940,
-            "Using SSH Proxies to hit nibbles from another box (Falafel)"
-          ],
-          [
-            1100,
-            "Guessing the password"
-          ],
-          [
-            1210,
-            "Logged in, lets attempt our exploit!"
-          ],
-          [
-            1366,
-            "Code Execution achieved.  Lets get a reverse shell"
-          ],
-          [
-            1493,
-            "Reverse shell returned."
-          ],
+          [239, "Identifying what vresion of NibblesBlog is running"],
+          [282, "Using SearchSploit to find vulnerabilities"],
+          [336, "Examining the Exploit"],
+          [368, "Explanation of exploit"],
+          [445, "Attempting to find valid usernames for NibblesBlog"],
+          [553, "Finding usernames in /content/private"],
+          [615, "Using Hydra to attempt to bruteforce"],
+          [848, "Oh crap. Hydra not good idea we're blocked..."],
+          [0, "-- Some minor panicing about how to continue"],
+          [940, "Using SSH Proxies to hit nibbles from another box (Falafel)"],
+          [1100, "Guessing the password"],
+          [1210, "Logged in, lets attempt our exploit!"],
+          [1366, "Code Execution achieved.  Lets get a reverse shell"],
+          [1493, "Reverse shell returned."],
           [
             1560,
             "Running sudo -l examine sudoer, then finding out why sudo took forever to return"
           ],
-          [
-            1610,
-            "Privesc via bad sudo rules"
-          ],
-          [
-            1930,
-            "Alternative PrivEsc via RationalLove"
-          ]
+          [1610, "Privesc via bad sudo rules"],
+          [1930, "Alternative PrivEsc via RationalLove"]
         ]
       },
       {
@@ -205,18 +151,9 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            50,
-            "Start of nmap"
-          ],
-          [
-            240,
-            "Running a VHOST Scan to discover CRM Subdomain"
-          ],
+          [0, "Introduction"],
+          [50, "Start of nmap"],
+          [240, "Running a VHOST Scan to discover CRM Subdomain"],
           [
             290,
             "Discovering Dolibarr is running at version 17.0.0 which is vulnerable to CVE-2023-30253"
@@ -233,10 +170,7 @@
             765,
             "Manually stepping through the exploit to understand exactly what it does"
           ],
-          [
-            1155,
-            "Reverse shell returned, dumping the local database"
-          ],
+          [1155, "Reverse shell returned, dumping the local database"],
           [
             1370,
             "Just trying the MySQL Password with Larissa and finding password re-use"
@@ -249,14 +183,8 @@
             1800,
             "BEYOND Root: Understanding how the Enlightenment_sys privesc works and doing source code analysis"
           ],
-          [
-            2100,
-            "Discovering why the exploit uses /tmp///net"
-          ],
-          [
-            2315,
-            "Looking at how the command injection happens"
-          ],
+          [2100, "Discovering why the exploit uses /tmp///net"],
+          [2315, "Looking at how the command injection happens"],
           [
             2455,
             "Looking at why we couldn't use www-data to exploit this binary"
@@ -284,14 +212,8 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Intro"
-          ],
-          [
-            60,
-            "Start of nmap"
-          ],
+          [0, "Intro"],
+          [60, "Start of nmap"],
           [
             105,
             "Logging into ActiveMQ with admin:admin and then failing to use the exploit from 2016"
@@ -312,10 +234,7 @@
             750,
             "Modifying the payload to execute a reverse shell, instead of downloading and executing an elf file. Need to HTML Entity Encode the payload"
           ],
-          [
-            990,
-            "Reverse shell returned, seeing we can run nginx as root"
-          ],
+          [990, "Reverse shell returned, seeing we can run nginx as root"],
           [
             1040,
             "Building an nginx config that runs as root and shares the entire filesystem"
@@ -357,22 +276,13 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            60,
-            "Start of the nmap"
-          ],
+          [0, "Introduction"],
+          [60, "Start of the nmap"],
           [
             260,
             "Copying the request in burpsuite to a file so we can use FFUF to fuzz"
           ],
-          [
-            360,
-            "Just testing for SSTI"
-          ],
+          [360, "Just testing for SSTI"],
           [
             405,
             "Found two bad characters, putting a comment after a bad character to see where it is failing"
@@ -381,22 +291,13 @@
             500,
             "Discovering we can append to the string, then trying for executing code with print to test for eval statements"
           ],
-          [
-            600,
-            "Getting a reverse shell"
-          ],
-          [
-            900,
-            "Reverse shell returned"
-          ],
+          [600, "Getting a reverse shell"],
+          [900, "Reverse shell returned"],
           [
             1020,
             "Looking at apache virtualhosts to discover a hidden vhost that is running gitea"
           ],
-          [
-            1140,
-            "Finding creds in the .git folder which lets us run sudo"
-          ],
+          [1140, "Finding creds in the .git folder which lets us run sudo"],
           [
             1320,
             "Inspecting the docker containers to discover passwords in environment variables which lets us log into gitea as administrator and view the script we are running as sudo"
@@ -428,14 +329,8 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            60,
-            "Start of nmap"
-          ],
+          [0, "Introduction"],
+          [60, "Start of nmap"],
           [
             170,
             "Playing with the Javascript Editor, discovering filesystem calls are blocked"
@@ -444,18 +339,12 @@
             285,
             "Discovering the sandbox is vm2, going to github discovering it is discontinued with known security issues"
           ],
-          [
-            390,
-            "Getting code execution, then a reverse shell"
-          ],
+          [390, "Getting code execution, then a reverse shell"],
           [
             590,
             "Discovering a second website with a database, cracking hashes in the database"
           ],
-          [
-            770,
-            "Discovering Joshua can run a bash script with sudo"
-          ],
+          [770, "Discovering Joshua can run a bash script with sudo"],
           [
             900,
             "Looking at the Bash Common Pitfall guide which shows the error in the if/then logic in the bash script"
@@ -476,26 +365,14 @@
             1310,
             "Showing HIDEPIDS in /etc/fstab to hide processes of other users"
           ],
-          [
-            1470,
-            "Writing a program that can spoof argv on linux"
-          ],
-          [
-            1590,
-            "Showing how we grab the memory location of argv"
-          ],
+          [1470, "Writing a program that can spoof argv on linux"],
+          [1590, "Showing how we grab the memory location of argv"],
           [
             1650,
             "Looping over each argument, so we could overwrite a specific one if we wanted to"
           ],
-          [
-            1755,
-            "Showing our process run with a blank process"
-          ],
-          [
-            2010,
-            "Making our program ps output blend in more"
-          ]
+          [1755, "Showing our process run with a blank process"],
+          [2010, "Making our program ps output blend in more"]
         ]
       }
     ]
@@ -525,14 +402,8 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            60,
-            "Start of nmap"
-          ],
+          [0, "Introduction"],
+          [60, "Start of nmap"],
           [
             190,
             "Identify JSESSIONID with nginx, but nginx appears to be configured correctly"
@@ -545,26 +416,14 @@
             630,
             "Using the Sessions Actuator and seeing a session for kanderson, logging in to get to the admin interface"
           ],
-          [
-            855,
-            "Finding RCE in the ExecSSH Page"
-          ],
-          [
-            1400,
-            "Shell on CozyHosting, looking at running services"
-          ],
+          [855, "Finding RCE in the ExecSSH Page"],
+          [1400, "Shell on CozyHosting, looking at running services"],
           [
             1560,
             "Examining the CozyHosting Jar to identify PostGres credentials then dumping the users table and cracking hashes"
           ],
-          [
-            1980,
-            "Josh can run SSH with sudo, using proxy command to get root"
-          ],
-          [
-            2050,
-            "Explaining what ProxyCommand is"
-          ]
+          [1980, "Josh can run SSH with sudo, using proxy command to get root"],
+          [2050, "Explaining what ProxyCommand is"]
         ]
       },
       {
@@ -588,14 +447,8 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Intro"
-          ],
-          [
-            60,
-            "Start of nmap"
-          ],
+          [0, "Intro"],
+          [60, "Start of nmap"],
           [
             225,
             "Discovering dev.devvortex.htb is a Joomla Page, showing JoomScan and enumerating version manually through manifests"
@@ -657,14 +510,8 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            57,
-            "Start of nmap, discovering an open .git directory"
-          ],
+          [0, "Introduction"],
+          [57, "Start of nmap, discovering an open .git directory"],
           [
             255,
             "Using git-dumper to download the source code and discovering MySQL credentials"
@@ -677,10 +524,7 @@
             765,
             "Looking for other ways to enumerate users, finding BackDropScan which shows another endpoint which is unprotected"
           ],
-          [
-            1020,
-            "Logging into backdrop, then installing a malicious module"
-          ],
+          [1020, "Logging into backdrop, then installing a malicious module"],
           [
             1260,
             "Getting a shell on the box and then password re-use lets us switch to a different user"
@@ -716,26 +560,11 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            60,
-            "Start of box"
-          ],
-          [
-            120,
-            "Checking out Request Tracker, login with default creds"
-          ],
-          [
-            390,
-            "Finding a password in the users description on RT"
-          ],
-          [
-            540,
-            "Googling how to get keepass passwords from memory"
-          ],
+          [0, "Introduction"],
+          [60, "Start of box"],
+          [120, "Checking out Request Tracker, login with default creds"],
+          [390, "Finding a password in the users description on RT"],
+          [540, "Googling how to get keepass passwords from memory"],
           [
             660,
             "Talking about how this exploit actually works, its because of the textbox!"
@@ -744,18 +573,9 @@
             900,
             "Using strings on the dump file to show how the password looks in memory"
           ],
-          [
-            1230,
-            "Searching the keepass, finding a putty private key"
-          ],
-          [
-            1380,
-            "Converting the putty key to openssh"
-          ],
-          [
-            1560,
-            "Grabbing root"
-          ]
+          [1230, "Searching the keepass, finding a putty private key"],
+          [1380, "Converting the putty key to openssh"],
+          [1560, "Grabbing root"]
         ]
       }
     ]
@@ -785,14 +605,8 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            60,
-            "Start of nmap"
-          ],
+          [0, "Introduction"],
+          [60, "Start of nmap"],
           [
             120,
             "Checking out the web page and finding command injection in the URL"
@@ -821,18 +635,9 @@
             1230,
             "End of edit, shell as ruby, discovering credentials in a config file for henry"
           ],
-          [
-            1373,
-            "Henry can run sudo, discover he can execute a ruby script"
-          ],
-          [
-            1550,
-            "Looking up a ruby deserialization exploit with YAML"
-          ],
-          [
-            1655,
-            "Finding a different payload and getting a root shell"
-          ]
+          [1373, "Henry can run sudo, discover he can execute a ruby script"],
+          [1550, "Looking up a ruby deserialization exploit with YAML"],
+          [1655, "Finding a different payload and getting a root shell"]
         ]
       },
       {
@@ -856,14 +661,8 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            38,
-            "Start of nmap"
-          ],
+          [0, "Introduction"],
+          [38, "Start of nmap"],
           [
             110,
             "Checking if SNMP is open and then installing the MIBS so we get more readable output"
@@ -1001,26 +800,14 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            40,
-            "Start of nmap"
-          ],
+          [0, "Introduction"],
+          [40, "Start of nmap"],
           [
             250,
             "Noticing the docs link which directs us to xwiki which discloses its version, searching for vulnerabilities"
           ],
-          [
-            380,
-            "Looking into XWIKI CVE-2025-24893"
-          ],
-          [
-            600,
-            "Got Code Execution, getting a reverse shell now"
-          ],
+          [380, "Looking into XWIKI CVE-2025-24893"],
+          [600, "Got Code Execution, getting a reverse shell now"],
           [
             945,
             "Finding the xwiki config, getting a password, which lets us SSH as oliver but oddly cannot use SU (go into this at the end of the video)"
@@ -1029,14 +816,8 @@
             1330,
             "Finding a vulnerable SetUID File, ndsudo from netdata. Vulnerable to Path Injection, lets exploit it"
           ],
-          [
-            1660,
-            "Just talking about SetUID vs Sudo"
-          ],
-          [
-            1900,
-            "Digging into why we could not run SU"
-          ],
+          [1660, "Just talking about SetUID vs Sudo"],
+          [1900, "Digging into why we could not run SU"],
           [
             2194,
             "Why we couldn't run SU, the SystemD Unit file has NoNewPrivileges"
@@ -1070,14 +851,8 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            40,
-            "Start of nmap"
-          ],
+          [0, "Introduction"],
+          [40, "Start of nmap"],
           [
             180,
             "Logging into zoneminder with default credentials, flailing around trying to find the date this version was released"
@@ -1098,14 +873,8 @@
             1190,
             "Getting SQLMap to exploit this with boolean using prefix and suffix"
           ],
-          [
-            1450,
-            "Cracking the password"
-          ],
-          [
-            1800,
-            "Got marks credentials, can login now"
-          ],
+          [1450, "Cracking the password"],
+          [1800, "Got marks credentials, can login now"],
           [
             1950,
             "Forwarding port 8765 back to us and accessing the MotionEye webserver, looking at configs and getting an admin password that lets us login"
@@ -1149,78 +918,33 @@
           }
         ],
         "outline": [
-          [
-            45,
-            "Introduction, nmap"
-          ],
-          [
-            90,
-            "Clicking around in Tomcat"
-          ],
-          [
-            140,
-            "Playing around with HTTP Authentication"
-          ],
-          [
-            345,
-            "Bruteforcing tomcat default creds with Hydra and seclists"
-          ],
-          [
-            500,
-            "Sending hydra through a proxy to examine what is happening"
-          ],
+          [45, "Introduction, nmap"],
+          [90, "Clicking around in Tomcat"],
+          [140, "Playing around with HTTP Authentication"],
+          [345, "Bruteforcing tomcat default creds with Hydra and seclists"],
+          [500, "Sending hydra through a proxy to examine what is happening"],
           [
             770,
             "Logging into tomcat and using msfvenom + metasploit to upload a malicious war file"
           ],
-          [
-            1362,
-            "Begin of doing this box without MSF"
-          ],
-          [
-            1425,
-            "Downloading a cmd jsp shell and making a malicious war file"
-          ],
-          [
-            1585,
-            "WebShell returned"
-          ],
-          [
-            1680,
-            "Begin of installing SilentTrinity"
-          ],
+          [1362, "Begin of doing this box without MSF"],
+          [1425, "Downloading a cmd jsp shell and making a malicious war file"],
+          [1585, "WebShell returned"],
+          [1680, "Begin of installing SilentTrinity"],
           [
             1855,
             "SilentyTrinity Started, starting listener and generating a payload"
           ],
-          [
-            1980,
-            "Pasting the payload into the webshell"
-          ],
-          [
-            2040,
-            "Debugging SSL Handshake errors"
-          ],
-          [
-            2220,
-            "Starting SilentTrinity back up, how to use modules"
-          ],
-          [
-            2350,
-            "Start of Execute-Assembly, compiling Watson"
-          ],
-          [
-            2590,
-            "Running Watson"
-          ],
+          [1980, "Pasting the payload into the webshell"],
+          [2040, "Debugging SSL Handshake errors"],
+          [2220, "Starting SilentTrinity back up, how to use modules"],
+          [2350, "Start of Execute-Assembly, compiling Watson"],
+          [2590, "Running Watson"],
           [
             2610,
             "Start of Seatbelt and debugging why some dotNet code may not run (versioning issues)"
           ],
-          [
-            0,
-            "SilentTrinity Talk: https://www.youtube.com/watch?v=NaFiAx737qg"
-          ]
+          [0, "SilentTrinity Talk: https://www.youtube.com/watch?v=NaFiAx737qg"]
         ]
       }
     ]
@@ -1250,54 +974,27 @@
           }
         ],
         "outline": [
-          [
-            60,
-            "Begin of Recon"
-          ],
-          [
-            230,
-            "Searching for good files to view via FTP"
-          ],
+          [60, "Begin of Recon"],
+          [230, "Searching for good files to view via FTP"],
           [
             540,
             "Nothing really found, searching for where PRTG creation file is"
           ],
-          [
-            874,
-            "Backup configuration found!"
-          ],
-          [
-            980,
-            "Logging in by incrementing the password from 2018 to 2019"
-          ],
-          [
-            1075,
-            "Searching for CVE's"
-          ],
+          [874, "Backup configuration found!"],
+          [980, "Logging in by incrementing the password from 2018 to 2019"],
+          [1075, "Searching for CVE's"],
           [
             1185,
             "Searching for where to send notification emails like CVE Said"
           ],
-          [
-            1230,
-            "Testing for Command Injection via Cmd"
-          ],
-          [
-            1340,
-            "Testing for Command Injection via Powershell"
-          ],
-          [
-            1380,
-            "Getting a reverse shell"
-          ],
+          [1230, "Testing for Command Injection via Cmd"],
+          [1340, "Testing for Command Injection via Powershell"],
+          [1380, "Getting a reverse shell"],
           [
             1615,
             "Encoding powershell in Base64 to eliminate potential bad characters"
           ],
-          [
-            1750,
-            "Getting a reverse shell"
-          ]
+          [1750, "Getting a reverse shell"]
         ]
       },
       {
@@ -1321,14 +1018,8 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            45,
-            "Begin of nmap and poking at the website"
-          ],
+          [0, "Introduction"],
+          [45, "Begin of nmap and poking at the website"],
           [
             180,
             "Checking when an image was uploaded to the server with wget and exiftool"
@@ -1341,18 +1032,12 @@
             370,
             "Editing the Python Exploit to force everything through a proxy, so we can examine what the exploit does."
           ],
-          [
-            510,
-            "Running the exploit and examining in Burp"
-          ],
+          [510, "Running the exploit and examining in Burp"],
           [
             860,
             "Having trouble getting a reverse shell via PS, Uploading NC.EXE to do it"
           ],
-          [
-            1030,
-            "Running WinPEAS.exe"
-          ],
+          [1030, "Running WinPEAS.exe"],
           [
             1260,
             "Discovering CloudMe in the Downloads directory then looking at the exploit"
@@ -1377,10 +1062,7 @@
             2070,
             "Replacing the payload in the CloudMe exploit with a reverse shell"
           ],
-          [
-            2240,
-            "Running the exploit and getting root"
-          ]
+          [2240, "Running the exploit and getting root"]
         ]
       }
     ]
@@ -1542,14 +1224,8 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            60,
-            "Start of nmap"
-          ],
+          [0, "Introduction"],
+          [60, "Start of nmap"],
           [
             150,
             "Running NetExec discovering an open share (HR), which contains a password for new hires"
@@ -1574,10 +1250,7 @@
             880,
             "Using Reg Save to backup the SAM and SYSTEM Hive, and then extracting administrator password from it, which gives root"
           ],
-          [
-            990,
-            "Showing we could also backup the NTDS.DIT with RoboCopy"
-          ],
+          [990, "Showing we could also backup the NTDS.DIT with RoboCopy"],
           [
             1610,
             "Talking about the Impacket Reg.Py script and showing we could try to backup the registry directly to our box, but the file transfer is unreliable"
@@ -1769,22 +1442,13 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            45,
-            "Start of nmap"
-          ],
+          [0, "Introduction"],
+          [45, "Start of nmap"],
           [
             105,
             "Looking at Jenkins Advisory 3314 (CVE-2024-23897), which has a File Read vulnerability in the CLI. Then downloading the Jar"
           ],
-          [
-            180,
-            "Explaining the Vulnerability with a quick demo"
-          ],
+          [180, "Explaining the Vulnerability with a quick demo"],
           [
             360,
             "Creating a really nasty bash script to fuzz many of the Jenkins Paramaters to see which produce the most number of lines"
@@ -1813,10 +1477,7 @@
             2100,
             "Flailing around, trying to export all the secrets needed to decrypt the SSH Key... Don't get it working unfortunately but thought it was good to leave in here."
           ],
-          [
-            3636,
-            "Exporting the SSH Key through a Jenkins Pipeline"
-          ]
+          [3636, "Exporting the SSH Key through a Jenkins Pipeline"]
         ]
       },
       {
@@ -1840,18 +1501,9 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            47,
-            "Start of nmap"
-          ],
-          [
-            120,
-            "Discovering the webserver is likely running Flask"
-          ],
+          [0, "Introduction"],
+          [47, "Start of nmap"],
+          [120, "Discovering the webserver is likely running Flask"],
           [
             210,
             "Discovering a SSRF in the request to publish books, showing we could leak the servers IPv6 Address but its not too useful here"
@@ -1901,90 +1553,33 @@
           }
         ],
         "outline": [
-          [
-            49,
-            "Begin of recon"
-          ],
-          [
-            105,
-            "Running gobuster to find /support"
-          ],
-          [
-            170,
-            "Searching for a way to find version of HelpdeskZ"
-          ],
+          [49, "Begin of recon"],
+          [105, "Running gobuster to find /support"],
+          [170, "Searching for a way to find version of HelpdeskZ"],
           [
             215,
             "Reading over the File Upload exploit script to see it requires server time"
           ],
-          [
-            310,
-            "Uploading a PHP Reverse Shell Script"
-          ],
-          [
-            465,
-            "Going back to GitHub to find where uploads are saved"
-          ],
+          [310, "Uploading a PHP Reverse Shell Script"],
+          [465, "Going back to GitHub to find where uploads are saved"],
           [
             550,
             "Begin of modifying the script to pull the server time out of HTTP Headers"
           ],
-          [
-            630,
-            "Figuring out the python to pull the \"Date\" HTTP Header"
-          ],
-          [
-            870,
-            "Getting the Time Format right with STRFTIME.COM"
-          ],
-          [
-            1180,
-            "Testing out the exploit and getting a shell"
-          ],
-          [
-            1400,
-            "Discovery of an old kernel, looking for an exploit"
-          ],
-          [
-            1470,
-            "Copying the exploit, compiling, and privesc!"
-          ],
-          [
-            1550,
-            "Looking into port 3000"
-          ],
-          [
-            1620,
-            "/graphql discovered"
-          ],
-          [
-            1662,
-            "Dumping the schema to discover what data is inside"
-          ],
-          [
-            1815,
-            "Dumping username, password from the database"
-          ],
-          [
-            1932,
-            "Logging into HelpdeskZ"
-          ],
-          [
-            2020,
-            "Discovering the Boolean SQL Injection"
-          ],
-          [
-            2090,
-            "Running SQLMap"
-          ],
-          [
-            2160,
-            "Explaining the Injection"
-          ],
-          [
-            2230,
-            "Begin of creating a python script to exploit this"
-          ]
+          [630, "Figuring out the python to pull the \"Date\" HTTP Header"],
+          [870, "Getting the Time Format right with STRFTIME.COM"],
+          [1180, "Testing out the exploit and getting a shell"],
+          [1400, "Discovery of an old kernel, looking for an exploit"],
+          [1470, "Copying the exploit, compiling, and privesc!"],
+          [1550, "Looking into port 3000"],
+          [1620, "/graphql discovered"],
+          [1662, "Dumping the schema to discover what data is inside"],
+          [1815, "Dumping username, password from the database"],
+          [1932, "Logging into HelpdeskZ"],
+          [2020, "Discovering the Boolean SQL Injection"],
+          [2090, "Running SQLMap"],
+          [2160, "Explaining the Injection"],
+          [2230, "Begin of creating a python script to exploit this"]
         ]
       },
       {
@@ -2012,70 +1607,31 @@
             0,
             "Last video was missing about 2 minutes and cut off at 31:35.  Sorry, was an extremely busy week and didn't get to verify everything was good."
           ],
-          [
-            39,
-            "Begin on Recon"
-          ],
-          [
-            99,
-            "Starting a full nmap scan"
-          ],
-          [
-            255,
-            "Discovery of IRC"
-          ],
-          [
-            275,
-            "Manually looking at IRC"
-          ],
+          [39, "Begin on Recon"],
+          [99, "Starting a full nmap scan"],
+          [255, "Discovery of IRC"],
+          [275, "Manually looking at IRC"],
           [
             360,
             "Looking at the IRC to understand how to connect to an IRC Server"
           ],
-          [
-            420,
-            "Pulling the IRC Version and discovering the exploit"
-          ],
-          [
-            530,
-            "Going into the history of the IRC Backdoor"
-          ],
-          [
-            585,
-            "Manually exploiting the IRC Server"
-          ],
-          [
-            790,
-            "Shell returned on the server"
-          ],
-          [
-            870,
-            "Discovery of .backup which gives a steg password"
-          ],
-          [
-            1005,
-            "Logging in with djmardov"
-          ],
-          [
-            1280,
-            "Discovery of SetUID enabled custom binary, viewuser"
-          ],
+          [420, "Pulling the IRC Version and discovering the exploit"],
+          [530, "Going into the history of the IRC Backdoor"],
+          [585, "Manually exploiting the IRC Server"],
+          [790, "Shell returned on the server"],
+          [870, "Discovery of .backup which gives a steg password"],
+          [1005, "Logging in with djmardov"],
+          [1280, "Discovery of SetUID enabled custom binary, viewuser"],
           [
             1405,
             "Using ltrace to see what the binary does, executes the file /tmp/listusers"
           ],
-          [
-            1430,
-            "Getting a root shell"
-          ],
+          [1430, "Getting a root shell"],
           [
             1550,
             "Testing exploiting the binary with \"who\", fails due to no setuid"
           ],
-          [
-            1670,
-            "Looking at the binary within Ghidra"
-          ]
+          [1670, "Looking at the binary within Ghidra"]
         ]
       }
     ]
@@ -2105,14 +1661,8 @@
           }
         ],
         "outline": [
-          [
-            60,
-            "Begin of Recon"
-          ],
-          [
-            150,
-            "Running Gobuster and examining the web page"
-          ],
+          [60, "Begin of Recon"],
+          [150, "Running Gobuster and examining the web page"],
           [
             310,
             "Room.php is the only page that accepts user input, basic testing for SQL Injection"
@@ -2121,34 +1671,19 @@
             340,
             "Using wfuzz to fuzz for special characters then getting our IP Banned :("
           ],
-          [
-            600,
-            "Unbanned, running wfuzz again and examining unique responses"
-          ],
+          [600, "Unbanned, running wfuzz again and examining unique responses"],
           [
             780,
             "Showing several ways to test for SQL Injection (subtraction and hex())"
           ],
-          [
-            990,
-            "Examining the MySQL Query Structure"
-          ],
-          [
-            1050,
-            "Explaining Union Injection"
-          ],
-          [
-            1275,
-            "Nested queries with union statements"
-          ],
+          [990, "Examining the MySQL Query Structure"],
+          [1050, "Explaining Union Injection"],
+          [1275, "Nested queries with union statements"],
           [
             1400,
             "Extracting information out of Information_Schema to databases, tables, columns"
           ],
-          [
-            1448,
-            "Using LIMIT to ensure only one row is returned"
-          ],
+          [1448, "Using LIMIT to ensure only one row is returned"],
           [
             1525,
             "Using GROUP_CONCAT to allow us to return multiple rows within union"
@@ -2161,14 +1696,8 @@
             2110,
             "Another way to get the password, LOAD_FILE() to view PHP Source Code"
           ],
-          [
-            2550,
-            "PHPMyAdmin 4.8.0 RCE (LFI + Tainted PHP Cookie)"
-          ],
-          [
-            3460,
-            "Dropping a shell via the PHPMyAdmin exploit"
-          ],
+          [2550, "PHPMyAdmin 4.8.0 RCE (LFI + Tainted PHP Cookie)"],
+          [3460, "Dropping a shell via the PHPMyAdmin exploit"],
           [
             3570,
             "ALTERNATE Way to get Shell:Dropping a file from the SQL Injection"
@@ -2216,22 +1745,13 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            60,
-            "Start of nmap"
-          ],
+          [0, "Introduction"],
+          [60, "Start of nmap"],
           [
             180,
             "Discovering the Forgot Password lets us enumerate valid emails"
           ],
-          [
-            240,
-            "Using ffuf to enumerate subdomains via virtual host"
-          ],
+          [240, "Using ffuf to enumerate subdomains via virtual host"],
           [
             415,
             "Discovering .git on the dev subdomain, using git-dumper to download the repo"
@@ -2244,10 +1764,7 @@
             608,
             "Logged into Ghost, finding the version which shows its vulnerable to CVE-2023-40028"
           ],
-          [
-            740,
-            "Manually performing the Ghost File Disclosure exploit"
-          ],
+          [740, "Manually performing the Ghost File Disclosure exploit"],
           [
             900,
             "Using the public exploit script to leak the ghost config which gives us an SSH Credential"
@@ -2297,50 +1814,29 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Intro"
-          ],
-          [
-            50,
-            "Nmap"
-          ],
-          [
-            160,
-            "Starting GoBuster on the root and images"
-          ],
+          [0, "Intro"],
+          [50, "Nmap"],
+          [160, "Starting GoBuster on the root and images"],
           [
             300,
             "Finding Auth Bypass via SQL Injection on login then throwing it to SQLMap"
           ],
-          [
-            540,
-            "Creating a basic PHP Shell, then attempting to upload it"
-          ],
+          [540, "Creating a basic PHP Shell, then attempting to upload it"],
           [
             750,
             "Grabbing the magic bytes off a JPG, then prepending it to our shell"
           ],
-          [
-            960,
-            "File uploaded, hunting for an LFI and doing more SQLMap"
-          ],
+          [960, "File uploaded, hunting for an LFI and doing more SQLMap"],
           [
             1100,
             "Turns out we don't need the PHP Extension (.htaccess allows anything)"
           ],
-          [
-            1580,
-            "Reverse Shell returned"
-          ],
+          [1580, "Reverse Shell returned"],
           [
             1670,
             "Grabbing the username and password out of Website Configuration"
           ],
-          [
-            2170,
-            "Using VirusTotal to identify when a file was created"
-          ],
+          [2170, "Using VirusTotal to identify when a file was created"],
           [
             2240,
             "Examining the .htaccess to see why we could execute code (should have a $ at the end)"
@@ -2361,10 +1857,7 @@
             3060,
             "Using Path Injection since absolute paths were not used in exec() and getting a root shell"
           ],
-          [
-            3300,
-            "Showing SQLMap did complete with the increased level/risk"
-          ]
+          [3300, "Showing SQLMap did complete with the increased level/risk"]
         ]
       },
       {
@@ -2388,14 +1881,8 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Intro"
-          ],
-          [
-            60,
-            "Start of Nmap"
-          ],
+          [0, "Intro"],
+          [60, "Start of Nmap"],
           [
             210,
             "Enumerating for virtual hosts with ffuf to find the api.mentorquotes.htb page"
@@ -2412,22 +1899,13 @@
             640,
             "Using ffuf to search for extra endpoints and discover /admin/ but can't do anything"
           ],
-          [
-            840,
-            "Running NMAP again with UDP to discover SNMP"
-          ],
+          [840, "Running NMAP again with UDP to discover SNMP"],
           [
             1030,
             "EDIT: Showing the minrate with nmap to scan UDP much quicker"
           ],
-          [
-            1110,
-            "Using SNMP Walk"
-          ],
-          [
-            1180,
-            "Using SNMP-BRUTE to bruteforce other community strings"
-          ],
+          [1110, "Using SNMP Walk"],
+          [1180, "Using SNMP-BRUTE to bruteforce other community strings"],
           [
             1245,
             "EDIT: Showing Hydra and OneSixtyOne fail to enumerate the second community string"
@@ -2444,14 +1922,8 @@
             1695,
             "Accessing the Admin Endpoint, and figuring out what parameters it expects via error messages"
           ],
-          [
-            1850,
-            "Discovering command injection in the backup endpoint"
-          ],
-          [
-            2119,
-            "Shell returned!"
-          ],
+          [1850, "Discovering command injection in the backup endpoint"],
+          [2119, "Shell returned!"],
           [
             2250,
             "Editing the User Endpoint in FastAPI to dump password hashes. Talking about Pydantic"
@@ -2468,10 +1940,7 @@
             3180,
             "Doing some light forensics looking for files edited on the box shortly after linux was installed"
           ],
-          [
-            3405,
-            "Finding a password in the snmpd password which gets us root"
-          ],
+          [3405, "Finding a password in the snmpd password which gets us root"],
           [
             3670,
             "Editing LinPEAS to add an extra regex to pull passwords out of SNMPd configuration"
@@ -2496,22 +1965,13 @@
             4710,
             "Doing some light edits on the FastAPI Code, so we can run it within an IDE and set breakpoints"
           ],
-          [
-            5054,
-            "Start of adding auth to the /user/ endpoint."
-          ],
+          [5054, "Start of adding auth to the /user/ endpoint."],
           [
             5415,
             "Fixing our /auth/login endpoint to accept our new login request"
           ],
-          [
-            5840,
-            "Getting the browser to accept our bearer token"
-          ],
-          [
-            6330,
-            "Fixing up the /user/ endpoint to work with our bearer token"
-          ],
+          [5840, "Getting the browser to accept our bearer token"],
+          [6330, "Fixing up the /user/ endpoint to work with our bearer token"],
           [
             6620,
             "Getting the user decorator to return the User Object which makes it easy for our code to identify our group"
@@ -2545,18 +2005,9 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            60,
-            "Start of nmap"
-          ],
-          [
-            160,
-            "Examining the webpage, not finding much"
-          ],
+          [0, "Introduction"],
+          [60, "Start of nmap"],
+          [160, "Examining the webpage, not finding much"],
           [
             330,
             "Checking out SNMP, discovering its open with the default community string. Installing MIBS so we can make sense of the data"
@@ -2593,22 +2044,10 @@
             2145,
             "Finding a way to register a new user with our API KEY and make them an administrator"
           ],
-          [
-            2340,
-            "Creating a Nagios Check to send us a shell"
-          ],
-          [
-            2480,
-            "Showing how to perform the SQL Injection through SQLMap"
-          ],
-          [
-            2940,
-            "Finding the MySQL Password of Nagios"
-          ],
-          [
-            3060,
-            "Discovering the Nagios user has a bunch of sudo rules"
-          ],
+          [2340, "Creating a Nagios Check to send us a shell"],
+          [2480, "Showing how to perform the SQL Injection through SQLMap"],
+          [2940, "Finding the MySQL Password of Nagios"],
+          [3060, "Discovering the Nagios user has a bunch of sudo rules"],
           [
             3420,
             "(Root method 1) Exploiting GetProfile through creating a SymLink"
@@ -2640,18 +2079,9 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Intro"
-          ],
-          [
-            45,
-            "Begin of recon"
-          ],
-          [
-            105,
-            "Looking at the website, checking source, robots.txt, etc"
-          ],
+          [0, "Intro"],
+          [45, "Begin of recon"],
+          [105, "Looking at the website, checking source, robots.txt, etc"],
           [
             150,
             "Using GoBuster with PHP Extensions as HTTP Header said it had PHP Enabled"
@@ -2668,30 +2098,15 @@
             460,
             "Searching php scripts for superglobals as that will show user-input"
           ],
-          [
-            670,
-            "Explaining what magic bytes are"
-          ],
-          [
-            870,
-            "Using PHP interactive mode to demonstrate what is happening"
-          ],
+          [670, "Explaining what magic bytes are"],
+          [870, "Using PHP interactive mode to demonstrate what is happening"],
           [
             975,
             "Showing error codes are different based upon where image validation failed"
           ],
-          [
-            1050,
-            "Uploading a malicious PHP Shell"
-          ],
-          [
-            1120,
-            "Navigating to our php shell and getting a reverse shell"
-          ],
-          [
-            1300,
-            "Reverse shell returned"
-          ],
+          [1050, "Uploading a malicious PHP Shell"],
+          [1120, "Navigating to our php shell and getting a reverse shell"],
+          [1300, "Reverse shell returned"],
           [
             1420,
             "Examining check_attack.php to discover vulnerability when doing exec() to escalate to guly"
@@ -2700,14 +2115,8 @@
             1650,
             "Explaining the code execution vulnerability of creating a malicious file"
           ],
-          [
-            1710,
-            "Creating the malicious file"
-          ],
-          [
-            1917,
-            "Shell returned as Guly, checking sudo list"
-          ],
+          [1710, "Creating the malicious file"],
+          [1917, "Shell returned as Guly, checking sudo list"],
           [
             1989,
             "Examining the changename.sh script (guly can run it as root)"
@@ -2720,10 +2129,7 @@
             2320,
             "Explaining why Apache executed PHP when files did not have the PHP Extension"
           ],
-          [
-            2348,
-            "Checking php.conf to see it was user created"
-          ],
+          [2348, "Checking php.conf to see it was user created"],
           [
             2475,
             "Modifying php.conf to include \"FilesMatch .php$\", so it only executes php when the name ends in .php"
@@ -2757,74 +2163,23 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Intro"
-          ],
-          [
-            118,
-            "Begin Recon (NMAP)"
-          ],
-          [
-            259,
-            "GoBuster HTTP + HTTPS"
-          ],
-          [
-            395,
-            "Accessing Pages"
-          ],
-          [
-            425,
-            "Using Hydra against HTTP + HTTPS Web Forms"
-          ],
-          [
-            690,
-            "Logging into HTTP and hunting for vulns"
-          ],
-          [
-            1020,
-            "Second Hydra attempt against HTTPS"
-          ],
-          [
-            1077,
-            "Logging into HTTPS (phpLiteAdmin)"
-          ],
-          [
-            1217,
-            "Chaining Exploits to get Code Execution"
-          ],
-          [
-            1598,
-            "Reverse Shell Returned"
-          ],
-          [
-            1680,
-            "LinEnum.sh Script Review"
-          ],
-          [
-            1890,
-            "Watching for new Processes"
-          ],
-          [
-            2220,
-            "Found the error in script :)"
-          ],
-          [
-            2370,
-            "Getting reverse root shell"
-          ],
-          [
-            2511,
-            "Intended Route to get User"
-          ],
-          [
-            2772,
-            "Reviewing Knockd configuration"
-          ],
-          [
-            2973,
-            "Doing the PortKnock"
-          ]
+          [0, "Intro"],
+          [118, "Begin Recon (NMAP)"],
+          [259, "GoBuster HTTP + HTTPS"],
+          [395, "Accessing Pages"],
+          [425, "Using Hydra against HTTP + HTTPS Web Forms"],
+          [690, "Logging into HTTP and hunting for vulns"],
+          [1020, "Second Hydra attempt against HTTPS"],
+          [1077, "Logging into HTTPS (phpLiteAdmin)"],
+          [1217, "Chaining Exploits to get Code Execution"],
+          [1598, "Reverse Shell Returned"],
+          [1680, "LinEnum.sh Script Review"],
+          [1890, "Watching for new Processes"],
+          [2220, "Found the error in script :)"],
+          [2370, "Getting reverse root shell"],
+          [2511, "Intended Route to get User"],
+          [2772, "Reviewing Knockd configuration"],
+          [2973, "Doing the PortKnock"]
         ]
       },
       {
@@ -2848,10 +2203,7 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Intro"
-          ],
+          [0, "Intro"],
           [
             155,
             "Running GoBuster to discover /music/, checking the page to try to find out what it is."
@@ -2860,10 +2212,7 @@
             300,
             "Going to login reveals this is OpenNetAdmin version 18.1.1, searchsploit isn't updated and fails to find the correct exploit"
           ],
-          [
-            360,
-            "Showing what to do when an web exploit script gives HTML"
-          ],
+          [360, "Showing what to do when an web exploit script gives HTML"],
           [
             630,
             "Finding the correct exploit script, setting it to go through burpsuite"
@@ -2872,22 +2221,10 @@
             930,
             "Failing to get a reverse shell for a bit because of bad characters (explained at end, we needed to URL Encode it)."
           ],
-          [
-            1410,
-            "Reverse shell worked when doing the python one."
-          ],
-          [
-            1530,
-            "Running LinPEAS"
-          ],
-          [
-            1890,
-            "Looking for a config file with database connection info"
-          ],
-          [
-            1980,
-            "Exploring the MySQL Database to get additional creds"
-          ],
+          [1410, "Reverse shell worked when doing the python one."],
+          [1530, "Running LinPEAS"],
+          [1890, "Looking for a config file with database connection info"],
+          [1980, "Exploring the MySQL Database to get additional creds"],
           [
             2260,
             "Running Medusa to test the passwords against users on the box to discover we can login as jimmy"
@@ -2908,18 +2245,9 @@
             2890,
             "Lets try it the \"correct\" way with an SSH Tunnel and using firefox to login, going down a \"magic hash (===)\" rabbit hole. When we could just crack the pw."
           ],
-          [
-            3680,
-            "Running John to crack the SSH Key"
-          ],
-          [
-            4115,
-            "Linpeas shows Joanna can run nano with sudo"
-          ],
-          [
-            4470,
-            "GTFOBins shows a way to have nano execute commands"
-          ],
+          [3680, "Running John to crack the SSH Key"],
+          [4115, "Linpeas shows Joanna can run nano with sudo"],
+          [4470, "GTFOBins shows a way to have nano execute commands"],
           [
             4740,
             "GOING BACK: URL Encoding the the original RCE to see a standard bash revshell would work"
@@ -2953,18 +2281,9 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Intro"
-          ],
-          [
-            58,
-            "Start of nmap"
-          ],
-          [
-            310,
-            "Using nmap to scan NMAP"
-          ],
+          [0, "Intro"],
+          [58, "Start of nmap"],
+          [310, "Using nmap to scan NMAP"],
           [
             440,
             "Doing a SNMPWalk talking about SNMP Mibs and how to install them, then using snmpbulkwalk to speed up the scan"
@@ -2989,10 +2308,7 @@
             1400,
             "Finding an unauthenticated pandora fms exploit via google, playing with the injection manually"
           ],
-          [
-            1665,
-            "Using SQLMap to automatically dump the database of pandora"
-          ],
+          [1665, "Using SQLMap to automatically dump the database of pandora"],
           [
             2205,
             "Testing sessions, should have used wfuzz or something to test all of these quickly"
@@ -3005,22 +2321,13 @@
             2340,
             "With admin access to Pandora FMS we can upload a shell and get code execution"
           ],
-          [
-            2613,
-            "Going over LinPEAS Results"
-          ],
-          [
-            2850,
-            "Finding a custom SetUID File called Pandora_Backup"
-          ],
+          [2613, "Going over LinPEAS Results"],
+          [2850, "Finding a custom SetUID File called Pandora_Backup"],
           [
             2940,
             "Running strings against the binary shows the tar command without an absolute path, so it is likely vulnerable to command injection, going into Ghidra to confirm"
           ],
-          [
-            3045,
-            "Showing the path traversal"
-          ],
+          [3045, "Showing the path traversal"],
           [
             3150,
             "The exploit didn't work because something isn't letting us do a SetUID. Digging into it"
@@ -3056,14 +2363,8 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            55,
-            "Start of nmap"
-          ],
+          [0, "Introduction"],
+          [55, "Start of nmap"],
           [
             180,
             "Uploading an image file and trying to identify how the upload works"
@@ -3084,22 +2385,13 @@
             1170,
             "Doing a PS and seeing inotifywait is being used to run a bash script when files created in web directory"
           ],
-          [
-            1295,
-            "Showing why the bash script is not vulnerable"
-          ],
+          [1295, "Showing why the bash script is not vulnerable"],
           [
             1680,
             "Finding a binwalk exploit for version 2.3.2, which takes advantage of path traversal in PFS files"
           ],
-          [
-            1970,
-            "Taking a look into the exploit to see how it works"
-          ],
-          [
-            2130,
-            "Showing the PFS File Format"
-          ]
+          [1970, "Taking a look into the exploit to see how it works"],
+          [2130, "Showing the PFS File Format"]
         ]
       }
     ]
@@ -3129,86 +2421,38 @@
           }
         ],
         "outline": [
-          [
-            56,
-            "Start of recon, use Bootstrap XSL Script to make nmap pretty"
-          ],
-          [
-            190,
-            "Looking at nmap in web browser"
-          ],
-          [
-            232,
-            "Navigating to the web page, and testing all the pages."
-          ],
-          [
-            385,
-            "Testing for LFI"
-          ],
+          [56, "Start of recon, use Bootstrap XSL Script to make nmap pretty"],
+          [190, "Looking at nmap in web browser"],
+          [232, "Navigating to the web page, and testing all the pages."],
+          [385, "Testing for LFI"],
           [
             420,
             "Using PHP  Filters to view the contents of php file through LFI (Local File Inclusion)"
           ],
-          [
-            520,
-            "Testing for RFI (Remote File Inclusion) [not vuln]"
-          ],
-          [
-            600,
-            "Code Execution via LFI + phpinfo()"
-          ],
-          [
-            885,
-            "Modifying the PHP-LFI Script code to get it working"
-          ],
-          [
-            1030,
-            "Debugging the script to see why tmp_name couldn't be found"
-          ],
-          [
-            1212,
-            "Shell returned!"
-          ],
+          [520, "Testing for RFI (Remote File Inclusion) [not vuln]"],
+          [600, "Code Execution via LFI + phpinfo()"],
+          [885, "Modifying the PHP-LFI Script code to get it working"],
+          [1030, "Debugging the script to see why tmp_name couldn't be found"],
+          [1212, "Shell returned!"],
           [
             1285,
             "Looking at pwdbackup.txt and decoding 13 times to get password."
           ],
-          [
-            1417,
-            "SSH into the box (Do not privesc right away!)"
-          ],
-          [
-            1469,
-            "Getting shell via Log Poisoning"
-          ],
+          [1417, "SSH into the box (Do not privesc right away!)"],
+          [1469, "Getting shell via Log Poisoning"],
           [
             1599,
             "Whoops.  Broke the exploit, because of bad PHP Code... We'll come back to this! (42:50)"
           ],
-          [
-            1727,
-            "Begin of PrivEsc, grabbing secret.zip off"
-          ],
-          [
-            1958,
-            "Searching for processes running as root, find VNC"
-          ],
-          [
-            2029,
-            "Setting up SSH Tunnels without exiting SSH Session."
-          ],
-          [
-            2263,
-            "Something weird happend... Setting up SSH Tunnels manually."
-          ],
+          [1727, "Begin of PrivEsc, grabbing secret.zip off"],
+          [1958, "Searching for processes running as root, find VNC"],
+          [2029, "Setting up SSH Tunnels without exiting SSH Session."],
+          [2263, "Something weird happend... Setting up SSH Tunnels manually."],
           [
             2410,
             "PrivEsc: VNC through the SSH Tunnel, passing the encrypted VNC Password"
           ],
-          [
-            2500,
-            "Decrypting the VNC Password because we can."
-          ],
+          [2500, "Decrypting the VNC Password because we can."],
           [
             2570,
             "Examining the log file to see why our Log Poison Failed, then doing the Log Poison"
@@ -3236,66 +2480,24 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Intro"
-          ],
-          [
-            25,
-            "TMUX and Connecting to HTB"
-          ],
-          [
-            120,
-            "Virtual Host Routing Explanation"
-          ],
-          [
-            160,
-            "File Enumeration (Dirb)"
-          ],
-          [
-            239,
-            "Discover of Web App"
-          ],
-          [
-            345,
-            "Starting SQLMap in the Background"
-          ],
-          [
-            570,
-            "Uploading a PHP Shell"
-          ],
-          [
-            841,
-            "Python PTY Reverse Shell (Tab Autocomplete!)"
-          ],
-          [
-            1165,
-            "MOTD Root (Method 1)"
-          ],
-          [
-            1430,
-            "Dirtyc0w Root (Method 2)"
-          ],
-          [
-            0,
-            "Twitter: @ippSec"
-          ],
-          [
-            0,
-            "Low Priv - File Upload (Torrent image)"
-          ],
-          [
-            0,
-            "Roots: MOTD/PAM exploit and DirtC0w"
-          ],
+          [0, "Intro"],
+          [25, "TMUX and Connecting to HTB"],
+          [120, "Virtual Host Routing Explanation"],
+          [160, "File Enumeration (Dirb)"],
+          [239, "Discover of Web App"],
+          [345, "Starting SQLMap in the Background"],
+          [570, "Uploading a PHP Shell"],
+          [841, "Python PTY Reverse Shell (Tab Autocomplete!)"],
+          [1165, "MOTD Root (Method 1)"],
+          [1430, "Dirtyc0w Root (Method 2)"],
+          [0, "Twitter: @ippSec"],
+          [0, "Low Priv - File Upload (Torrent image)"],
+          [0, "Roots: MOTD/PAM exploit and DirtC0w"],
           [
             0,
             "Stuff about phpinfo(): https://www.insomniasec.com/downloads/publications/LFI%20With%20PHPInfo%20Assistance.pdf"
           ],
-          [
-            0,
-            "Python PTY Shells: https://github.com/infodox/python-pty-shells"
-          ]
+          [0, "Python PTY Shells: https://github.com/infodox/python-pty-shells"]
         ]
       }
     ]
@@ -3347,38 +2549,14 @@
           }
         ],
         "outline": [
-          [
-            48,
-            "Begin of NMAP Discovery of Finger"
-          ],
-          [
-            216,
-            "Enumerating Finger with Finger-User-Enum"
-          ],
-          [
-            300,
-            "Nmap'ing all port quickly by lowering max-retries"
-          ],
-          [
-            520,
-            "Adding an old Key Exchange Alogorithm to SSH"
-          ],
-          [
-            570,
-            "Showing Hydra doesn't work, then using Patator"
-          ],
-          [
-            0,
-            "(Patator also can do Finger Enum!  Try it out)"
-          ],
-          [
-            679,
-            "Using find to count lines in all wordlist files"
-          ],
-          [
-            847,
-            "Logged in with sunny:sunday"
-          ],
+          [48, "Begin of NMAP Discovery of Finger"],
+          [216, "Enumerating Finger with Finger-User-Enum"],
+          [300, "Nmap'ing all port quickly by lowering max-retries"],
+          [520, "Adding an old Key Exchange Alogorithm to SSH"],
+          [570, "Showing Hydra doesn't work, then using Patator"],
+          [0, "(Patator also can do Finger Enum!  Try it out)"],
+          [679, "Using find to count lines in all wordlist files"],
+          [847, "Logged in with sunny:sunday"],
           [
             885,
             "Grabbing /backup/shadow.backup and cracking sha256crypt with Hashcat"
@@ -3387,42 +2565,18 @@
             1006,
             "Just noticed this box is oooooold, try to privesc with sudo and ShellShock (Fail)"
           ],
-          [
-            1133,
-            "Privesc by overwriting the /root/troll binary"
-          ],
-          [
-            0,
-            "== Box Done"
-          ],
-          [
-            1410,
-            "Using wget to exfil files quickly"
-          ],
-          [
-            1490,
-            "Viewing what wget --post-file looks like"
-          ],
-          [
-            1550,
-            "Creating a PHP Script to accept uploaded files"
-          ],
+          [1133, "Privesc by overwriting the /root/troll binary"],
+          [0, "== Box Done"],
+          [1410, "Using wget to exfil files quickly"],
+          [1490, "Viewing what wget --post-file looks like"],
+          [1550, "Creating a PHP Script to accept uploaded files"],
           [
             1650,
             "Hardening our upload location to prevent executing PHP Files and/or reading what was uploaded"
           ],
-          [
-            1750,
-            "Starting a php webserver with php -S (ip):(port) -t ."
-          ],
-          [
-            1870,
-            "Replacing the root password by changing the shadow file"
-          ],
-          [
-            2010,
-            "Demoing a way to create directories and upload files!"
-          ]
+          [1750, "Starting a php webserver with php -S (ip):(port) -t ."],
+          [1870, "Replacing the root password by changing the shadow file"],
+          [2010, "Demoing a way to create directories and upload files!"]
         ]
       }
     ]
@@ -3452,10 +2606,7 @@
           }
         ],
         "outline": [
-          [
-            45,
-            "Begin of recon"
-          ],
+          [45, "Begin of recon"],
           [
             96,
             "Examining the web page to find Magento, noticing /index.php/ mod-rewrite misconfig and old copyright"
@@ -3464,18 +2615,9 @@
             290,
             "Whoops should of done apt search magescan, either way this package is not in Kali"
           ],
-          [
-            330,
-            "Running MageScan to scan the website"
-          ],
-          [
-            500,
-            "Finding an open configuration file (app/etc/local.xml)"
-          ],
-          [
-            630,
-            "Running searchsploit to identify public exploits"
-          ],
+          [330, "Running MageScan to scan the website"],
+          [500, "Finding an open configuration file (app/etc/local.xml)"],
+          [630, "Running searchsploit to identify public exploits"],
           [
             730,
             "Examining an exploit that will add an administrative user via SQL Injection"
@@ -3492,10 +2634,7 @@
             1165,
             "Going back to SearchSploit and using the Authenticated RCE Exploit"
           ],
-          [
-            1290,
-            "Making the obvious changes to fix the exploit script"
-          ],
+          [1290, "Making the obvious changes to fix the exploit script"],
           [
             1457,
             "Debugging the exploit by running it through burpsuite, find out we need to use an login page"
@@ -3508,22 +2647,13 @@
             1830,
             "The regex is failing due to page not returning anything, the URL has a time span lets increase that"
           ],
-          [
-            1995,
-            "Finally fixed this exploit! Reverse Shell Returned"
-          ],
-          [
-            2130,
-            "Noticing we can exec vim with sudo, lets privesc"
-          ],
+          [1995, "Finally fixed this exploit! Reverse Shell Returned"],
+          [2130, "Noticing we can exec vim with sudo, lets privesc"],
           [
             2230,
             "Mentioning GTFOBins which helps find privesc paths from privileged programs"
           ],
-          [
-            2295,
-            "EXTRA: Examining the PHP Object Injection RCE Exploit"
-          ]
+          [2295, "EXTRA: Examining the PHP Object Injection RCE Exploit"]
         ]
       },
       {
@@ -3547,26 +2677,11 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Intro"
-          ],
-          [
-            55,
-            "Start of Nmap"
-          ],
-          [
-            85,
-            "Taking a look at the web page"
-          ],
-          [
-            160,
-            "Discovering Megahosting.HTB and adding it to /etc/hosts"
-          ],
-          [
-            244,
-            "Playing with news.php and explaining the logic of LFI"
-          ],
+          [0, "Intro"],
+          [55, "Start of Nmap"],
+          [85, "Taking a look at the web page"],
+          [160, "Discovering Megahosting.HTB and adding it to /etc/hosts"],
+          [244, "Playing with news.php and explaining the logic of LFI"],
           [
             520,
             "Discovering it is a file_get_contents(), which means we can skip all our \"RCE Tests\" as it won't execute PHP Code"
@@ -3579,10 +2694,7 @@
             1050,
             "Uploading a JSP Webshell to tomcat with credentials found in tomcat-users.xml"
           ],
-          [
-            1220,
-            "Using Curl to upload the JSP webshell."
-          ],
+          [1220, "Using Curl to upload the JSP webshell."],
           [
             1390,
             "Whoops was uploading to the wrong port and then forgot to convert the JSP to a WAR File"
@@ -3607,22 +2719,13 @@
             2340,
             "Trying the zip password as users on the box and getting a shell as Ash, dropping an SSH key and logging in with ash"
           ],
-          [
-            2520,
-            "Running linpeas"
-          ],
-          [
-            2580,
-            "Discovering user is a member of LXD Group"
-          ],
+          [2520, "Running linpeas"],
+          [2580, "Discovering user is a member of LXD Group"],
           [
             2682,
             "Building an alpine container, then uploading it to the target machine"
           ],
-          [
-            2865,
-            "Uploading the alpine container and using lxc to privesc"
-          ]
+          [2865, "Uploading the alpine container and using lxc to privesc"]
         ]
       }
     ]
@@ -3652,54 +2755,24 @@
           }
         ],
         "outline": [
-          [
-            70,
-            "Begin of recon"
-          ],
-          [
-            180,
-            "Discovery of Wordpress and fixing broken links with burp"
-          ],
-          [
-            410,
-            "Start of WPScan"
-          ],
-          [
-            434,
-            "Start of poking at Monstra, (Rabbit Hole)"
-          ],
+          [70, "Begin of recon"],
+          [180, "Discovery of Wordpress and fixing broken links with burp"],
+          [410, "Start of WPScan"],
+          [434, "Start of poking at Monstra, (Rabbit Hole)"],
           [
             785,
             "Back to looking at WPScan, Find Gwolle Plugin is vulnerable to RFI Exploits"
           ],
-          [
-            990,
-            "Reverse shell returned as www-data"
-          ],
-          [
-            1088,
-            "Confirming monstra was read-only"
-          ],
-          [
-            1130,
-            "Running LinEnum.sh to see www-data can run tar via sudo"
-          ],
-          [
-            1230,
-            "Use GTFOBins to find a way to execute code with Tar"
-          ],
+          [990, "Reverse shell returned as www-data"],
+          [1088, "Confirming monstra was read-only"],
+          [1130, "Running LinEnum.sh to see www-data can run tar via sudo"],
+          [1230, "Use GTFOBins to find a way to execute code with Tar"],
           [
             1320,
             "Begin of Onuma user, use LinEnum again to see SystemD Timer of a custom script"
           ],
-          [
-            1450,
-            "Examining backuperer script"
-          ],
-          [
-            1560,
-            "Hunting for vulnerabilities in Backuperer"
-          ],
+          [1450, "Examining backuperer script"],
+          [1560, "Hunting for vulnerabilities in Backuperer"],
           [
             1935,
             "Playing with If/Then exit codes in Bash.  Tuns out exit(0/1) evaluate as True, 2 is false"
@@ -3708,10 +2781,7 @@
             2060,
             "Begin of exploiting the backuperer service by exploiting intregrity check"
           ],
-          [
-            2200,
-            "Creating our 32-bit setuid binary"
-          ],
+          [2200, "Creating our 32-bit setuid binary"],
           [
             2356,
             "Replacing backup tar, with our malicious one.  (File Owner of Shell is wrong)"
@@ -3720,10 +2790,7 @@
             2454,
             "Explaning file owners are embedded within Tar, creating tar on our local box so we can have the SetUID File owned by root"
           ],
-          [
-            2550,
-            "Exploiting the Backuperer Service via SetUID!"
-          ],
+          [2550, "Exploiting the Backuperer Service via SetUID!"],
           [
             2700,
             "Unintended Exploit: Using SymLinks to read files via backuperer service"
@@ -3751,30 +2818,15 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Intro"
-          ],
-          [
-            60,
-            "Start of nmap"
-          ],
-          [
-            90,
-            "Testing the webhook, examining the request the server makes"
-          ],
-          [
-            330,
-            "Trying other URL Wrappers to see how the application behaves"
-          ],
+          [0, "Intro"],
+          [60, "Start of nmap"],
+          [90, "Testing the webhook, examining the request the server makes"],
+          [330, "Trying other URL Wrappers to see how the application behaves"],
           [
             490,
             "Finding the .git sub directory, running git-dumper to extract source code"
           ],
-          [
-            655,
-            "Finding and explaining the LFI Vulnerability"
-          ],
+          [655, "Finding and explaining the LFI Vulnerability"],
           [
             730,
             "Attempting to use the php filter to extract source code, does not work, turns out there's another website"
@@ -3783,10 +2835,7 @@
             840,
             "Discovering there is a special header requried to access the DEV Website"
           ],
-          [
-            960,
-            "Configuring BurpSuite to add the header for us"
-          ],
+          [960, "Configuring BurpSuite to add the header for us"],
           [
             1095,
             "Explaining the LFI And why we are going to use a phar file to get code execution"
@@ -3819,10 +2868,7 @@
             2120,
             "Exploring the developer home directory, finding a setuid python binary that uses input(), exploiting to get developer user"
           ],
-          [
-            2370,
-            "We can run easy_install with sudo, getting root"
-          ],
+          [2370, "We can run easy_install with sudo, getting root"],
           [
             2430,
             "Explaining the Code Execution without dropping a file, by using gadgets with php filters to create text for us"
@@ -4371,18 +3417,9 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            53,
-            "Start of nmap"
-          ],
-          [
-            180,
-            "Discovering the staging subdomain with ffuf"
-          ],
+          [0, "Introduction"],
+          [53, "Start of nmap"],
+          [180, "Discovering the staging subdomain with ffuf"],
           [
             307,
             "The login has 3 different error messages allowing us to enumerate valid emails"
@@ -4407,10 +3444,7 @@
             1540,
             "Creating a Git Repo so we can trigger the File Write uploading our SSH key to the root directory"
           ],
-          [
-            1670,
-            "Sending the File Write command to GOGS"
-          ]
+          [1670, "Sending the File Write command to GOGS"]
         ]
       },
       {
@@ -4721,18 +3755,9 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Intro"
-          ],
-          [
-            50,
-            "Start of NMAP"
-          ],
-          [
-            225,
-            "Using SMBClient to search for open shares (None)"
-          ],
+          [0, "Intro"],
+          [50, "Start of NMAP"],
+          [225, "Using SMBClient to search for open shares (None)"],
           [
             270,
             "Checking out the web page, some light fuzzing on login and examining how the language selection works"
@@ -4741,10 +3766,7 @@
             475,
             "Taking a Screenshot on Parrot and pasting it into Cherry Tree (Shift+PrintScreen)"
           ],
-          [
-            870,
-            "Checking out FTP and downloading the two txt files"
-          ],
+          [870, "Checking out FTP and downloading the two txt files"],
           [
             990,
             "Viewing port 8443, and realizing this page really hates firefox.  Switch to Chromium"
@@ -4761,22 +3783,10 @@
             1370,
             "Using CrackMapExec to bruteforce logins for SMB and SSH (SSH alread bug fixed in DEV Branch)"
           ],
-          [
-            1560,
-            "Logging in with SSH, then looking for WebServer directories"
-          ],
-          [
-            1820,
-            "Examining the NSClient directory to view the config"
-          ],
-          [
-            2020,
-            "Using SSH to setup a port forward"
-          ],
-          [
-            2150,
-            "Lots of flailing around trying to get code execution"
-          ],
+          [1560, "Logging in with SSH, then looking for WebServer directories"],
+          [1820, "Examining the NSClient directory to view the config"],
+          [2020, "Using SSH to setup a port forward"],
+          [2150, "Lots of flailing around trying to get code execution"],
           [
             2640,
             "Enough flailing, box reverted and do a clean run of this exploit"
@@ -4789,10 +3799,7 @@
             3570,
             "Giving up with Defender Evasion, switching to nc.exe to get a reverse shell"
           ],
-          [
-            3680,
-            "Reverse shell returned as System grabbing root.txt"
-          ]
+          [3680, "Reverse shell returned as System grabbing root.txt"]
         ]
       },
       {
@@ -4816,10 +3823,7 @@
           }
         ],
         "outline": [
-          [
-            78,
-            "Begin of Recon"
-          ],
+          [78, "Begin of Recon"],
           [
             295,
             "Start of aChat buffer Overflow: Finding the exploit script with Searchsploit"
@@ -4836,14 +3840,8 @@
             870,
             "Whoops, erased too much out of POC.  Lets correctly replace the shellcode this time and get a shell."
           ],
-          [
-            1070,
-            "Running PowerUp to find AutoLogon Credentials"
-          ],
-          [
-            1205,
-            "Running Code as Administrator"
-          ],
+          [1070, "Running PowerUp to find AutoLogon Credentials"],
+          [1205, "Running Code as Administrator"],
           [
             1458,
             "First Privesc Method: Using Start-Process to execute commands as a different user because Invoke-Command did not work."
@@ -4852,26 +3850,14 @@
             1650,
             "Alternate way to read root.txt -- Alfred owns root.txt, so he can edit the files access list. Get-ACL to view access list and cacls to modify"
           ],
-          [
-            1992,
-            "Summary of the box"
-          ],
-          [
-            0,
-            "### BOX DONE"
-          ],
-          [
-            2077,
-            "Doing the box with Metasaploit, Warning: Lots of fails."
-          ],
+          [1992, "Summary of the box"],
+          [0, "### BOX DONE"],
+          [2077, "Doing the box with Metasaploit, Warning: Lots of fails."],
           [
             2590,
             "Using meterpreters PortFwd to bypass ChatterBox's firewall and access port 445"
           ],
-          [
-            3085,
-            "Doing the box with Empire !"
-          ],
+          [3085, "Doing the box with Empire !"],
           [
             3500,
             "Using Empire's Run_As module to execute commands as Administrator"
@@ -4905,74 +3891,32 @@
           }
         ],
         "outline": [
-          [
-            79,
-            "Begin of Enumeration"
-          ],
-          [
-            255,
-            "Avoiding the Rabbit Hole on port 80 (IIS)"
-          ],
-          [
-            360,
-            "Begin of Jenkins"
-          ],
-          [
-            540,
-            "Using Jenkins Script Console (Groovy) to gain code execution"
-          ],
-          [
-            720,
-            "Reverse TCP Shell via Nishang"
-          ],
+          [79, "Begin of Enumeration"],
+          [255, "Avoiding the Rabbit Hole on port 80 (IIS)"],
+          [360, "Begin of Jenkins"],
+          [540, "Using Jenkins Script Console (Groovy) to gain code execution"],
+          [720, "Reverse TCP Shell via Nishang"],
           [
             1020,
             "Reverse Shell returned.  PowerSplit dev branch to find unintended privesc (Tokens)"
           ],
-          [
-            1340,
-            "Powersploit's Invoke-AllChecks completes"
-          ],
+          [1340, "Powersploit's Invoke-AllChecks completes"],
           [
             1460,
             "Finding Keepass Database using Impack-SMBServer to transfer files"
           ],
-          [
-            1620,
-            "Cracking the KeePass Database"
-          ],
-          [
-            1820,
-            "Using KeePass2 to open database"
-          ],
-          [
-            2065,
-            "PassTheHash via pth-winexe to gain administrator shell"
-          ],
+          [1620, "Cracking the KeePass Database"],
+          [1820, "Using KeePass2 to open database"],
+          [2065, "PassTheHash via pth-winexe to gain administrator shell"],
           [
             2120,
             "Grabbing root.txt that is hidden via Alternate Data Streams (ADS)"
           ],
-          [
-            0,
-            "### BOX DONE"
-          ],
-          [
-            2340,
-            "Using RottenPotato to escalate to root via MSF"
-          ],
-          [
-            2460,
-            "Using Unicorn to gain a reverse MSF SHell"
-          ],
-          [
-            2720,
-            "Performing the attack"
-          ],
-          [
-            2880,
-            "Impersonating Token to gain root"
-          ],
+          [0, "### BOX DONE"],
+          [2340, "Using RottenPotato to escalate to root via MSF"],
+          [2460, "Using Unicorn to gain a reverse MSF SHell"],
+          [2720, "Performing the attack"],
+          [2880, "Impersonating Token to gain root"],
           [
             0,
             "### Unintended Done.  Rest of video is me failing around, may be useful?"
@@ -5008,10 +3952,7 @@
           }
         ],
         "outline": [
-          [
-            65,
-            "Begin of Nmap scans"
-          ],
+          [65, "Begin of Nmap scans"],
           [
             150,
             "Checking out the website and running a few GoBuster dir searches"
@@ -5040,10 +3981,7 @@
             1150,
             "Powershell Reverse Shells fail, find out we are in constrained language mode, switch to netcat for reverse shell"
           ],
-          [
-            1470,
-            "Reverse Shell Returned!"
-          ],
+          [1470, "Reverse Shell Returned!"],
           [
             1740,
             "Discovering Chris's password then using Powershell to run a command as him to upgrade the shell."
@@ -5060,26 +3998,14 @@
             3090,
             "Using Out-CHM to have it execute NC out of c:\\users\\chris\\downloads\\ instead of a SMB Share and getting shell as administrator"
           ],
-          [
-            3205,
-            "Start of doing the box the second way."
-          ],
-          [
-            3255,
-            "Explaining the LFI + PHP Session Exploit Chain"
-          ],
+          [3205, "Start of doing the box the second way."],
+          [3255, "Explaining the LFI + PHP Session Exploit Chain"],
           [
             3390,
             "Identify bad characters by creating a in python to to create accounts and test logins"
           ],
-          [
-            4020,
-            "Testing minimal php code for code execution"
-          ],
-          [
-            4110,
-            "Testing Code exeuction with Powershell Encoded commands"
-          ],
+          [4020, "Testing minimal php code for code execution"],
+          [4110, "Testing Code exeuction with Powershell Encoded commands"],
           [
             4706,
             "Downloading Netcat to the box then executing it for a reverse shell"
@@ -5096,18 +4022,9 @@
             5540,
             "Creating a CHM File that includes a file off a SMB Server so we can use Responder to steal the hash"
           ],
-          [
-            6000,
-            "Uploading the CHM and stealing the hash with Responder"
-          ],
-          [
-            5480,
-            "Using Hashcat to crack a NetNTLMv2 hash from Hashcat (5600)"
-          ],
-          [
-            6160,
-            "Using PSexec to remote into the boxh"
-          ]
+          [6000, "Uploading the CHM and stealing the hash with Responder"],
+          [5480, "Using Hashcat to crack a NetNTLMv2 hash from Hashcat (5600)"],
+          [6160, "Using PSexec to remote into the boxh"]
         ]
       }
     ]
@@ -5137,18 +4054,9 @@
           }
         ],
         "outline": [
-          [
-            50,
-            "Begin of Reocn"
-          ],
-          [
-            210,
-            "Using SMBMap to enumerate fileshares"
-          ],
-          [
-            345,
-            "Discovering an Excel Macro File"
-          ],
+          [50, "Begin of Reocn"],
+          [210, "Using SMBMap to enumerate fileshares"],
+          [345, "Discovering an Excel Macro File"],
           [
             565,
             "Using olevba to extract macro from the document to discover credentials"
@@ -5161,10 +4069,7 @@
             735,
             "Doing the SQL CMD:XP_DIRTREE to read a file off a UNC Share to steal the hash with Responder"
           ],
-          [
-            795,
-            "Cracking the NetNTLMv2 Hash"
-          ],
+          [795, "Cracking the NetNTLMv2 Hash"],
           [
             851,
             "Explaining the Responder Database file to view previously captured hashes"
@@ -5173,10 +4078,7 @@
             990,
             "Logging into the SQL Server with the cracked account, then doing XP_CMDSHELL to run commands"
           ],
-          [
-            1070,
-            "Getting a Nishang Reverse Shell"
-          ],
+          [1070, "Getting a Nishang Reverse Shell"],
           [
             1320,
             "Running PowerUp, doing Invoke-ServiceAbuse and discovering creds in an old Group Policy Object"
@@ -5193,14 +4095,8 @@
             1680,
             "Explaining how the PowerUp module decrypted a password out of Group Policy"
           ],
-          [
-            1750,
-            "Getting VIM to highlight the syntax of Powershell"
-          ],
-          [
-            2090,
-            "Rooting the box with Invoke-ServiceAbuse"
-          ]
+          [1750, "Getting VIM to highlight the syntax of Powershell"],
+          [2090, "Rooting the box with Invoke-ServiceAbuse"]
         ]
       },
       {
@@ -5224,102 +4120,45 @@
           }
         ],
         "outline": [
-          [
-            60,
-            "Begin of intro"
-          ],
-          [
-            137,
-            "Examining port 80 and 443"
-          ],
-          [
-            195,
-            "Using gobuster to discover directories"
-          ],
-          [
-            260,
-            "/remote discovered, nothing to do here"
-          ],
-          [
-            325,
-            "/mvc discovered"
-          ],
-          [
-            375,
-            "SQL Injection everywhere"
-          ],
-          [
-            555,
-            "Attempt to perform union injection on search"
-          ],
+          [60, "Begin of intro"],
+          [137, "Examining port 80 and 443"],
+          [195, "Using gobuster to discover directories"],
+          [260, "/remote discovered, nothing to do here"],
+          [325, "/mvc discovered"],
+          [375, "SQL Injection everywhere"],
+          [555, "Attempt to perform union injection on search"],
           [
             615,
             "Having trouble, send to SQLMap look at other places in the applicaiton"
           ],
-          [
-            740,
-            "SQLMap having trouble with search SQL, change to ITEM"
-          ],
-          [
-            1010,
-            "Attempting XP_CMDSHELL (Fails)"
-          ],
-          [
-            1190,
-            "Using XP_DIRTREE to read files off SMBShare"
-          ],
+          [740, "SQLMap having trouble with search SQL, change to ITEM"],
+          [1010, "Attempting XP_CMDSHELL (Fails)"],
+          [1190, "Using XP_DIRTREE to read files off SMBShare"],
           [
             1410,
             "Use Responder to steal the authentication attempt of XP_DIRTREE"
           ],
-          [
-            1500,
-            "Cracking the NetNTLMv2 Hash"
-          ],
-          [
-            1560,
-            "Logging into /remote with cracked credentials"
-          ],
+          [1500, "Cracking the NetNTLMv2 Hash"],
+          [1560, "Logging into /remote with cracked credentials"],
           [
             1600,
             "Discovering unifi video is installed, this has a known privesc"
           ],
-          [
-            1770,
-            "Attempting to use Meterpreter. (Fail: AV)"
-          ],
-          [
-            1935,
-            "Grabbing and compiling a DotNet Reverse Shell"
-          ],
-          [
-            2115,
-            "Actually compiling the reverse shell"
-          ],
-          [
-            2338,
-            "Using xcopy to copy our reverse shell to the victim"
-          ],
+          [1770, "Attempting to use Meterpreter. (Fail: AV)"],
+          [1935, "Grabbing and compiling a DotNet Reverse Shell"],
+          [2115, "Actually compiling the reverse shell"],
+          [2338, "Using xcopy to copy our reverse shell to the victim"],
           [
             2340,
             "Attempting to find Unifi Service name so we can restart it. End up searching registry due to permission issues."
           ],
-          [
-            2530,
-            "Restarting Unifi Service so it executes TaskKill.exe"
-          ],
-          [
-            0,
-            "# Box Done"
-          ],
+          [2530, "Restarting Unifi Service so it executes TaskKill.exe"],
+          [0, "# Box Done"],
           [
             2665,
             "Start of Bypassing AppLocker Bypass by copying executable into a directory under Windows"
           ],
-          [
-            2750,
-            "Escaping powershell constrained mode with PSBypassCLM"
-          ],
+          [2750, "Escaping powershell constrained mode with PSBypassCLM"],
           [
             3625,
             "Showing the Powershell History file which contained a hint at Unifi"
@@ -5353,58 +4192,25 @@
           }
         ],
         "outline": [
-          [
-            38,
-            "Begin of recon"
-          ],
-          [
-            108,
-            "Gobuster, using -x aspx to find aspx pages"
-          ],
-          [
-            196,
-            "Playing with a file upload form, seeing what can be uploaded"
-          ],
-          [
-            315,
-            "Using Burp Intruder to automate checking file extensions"
-          ],
+          [38, "Begin of recon"],
+          [108, "Gobuster, using -x aspx to find aspx pages"],
+          [196, "Playing with a file upload form, seeing what can be uploaded"],
+          [315, "Using Burp Intruder to automate checking file extensions"],
           [
             420,
             "Finding a way to execute code from file upload in ASPX (web.config)"
           ],
-          [
-            655,
-            "Executing code via web.config file upload"
-          ],
-          [
-            788,
-            "Installing Merlin to be our C2"
-          ],
-          [
-            925,
-            "Compiling the Merlin Windows Agent"
-          ],
-          [
-            1117,
-            "Modifying web.config to upload and execute merlin"
-          ],
-          [
-            1274,
-            "Merlin Shell returned!"
-          ],
+          [655, "Executing code via web.config file upload"],
+          [788, "Installing Merlin to be our C2"],
+          [925, "Compiling the Merlin Windows Agent"],
+          [1117, "Modifying web.config to upload and execute merlin"],
+          [1274, "Merlin Shell returned!"],
           [
             1458,
             "Checking for SEImpersonatePrivilege Token then doing Juicy Potato"
           ],
-          [
-            1664,
-            "Getting Admin via Juicy Potato"
-          ],
-          [
-            1784,
-            "Box completed"
-          ],
+          [1664, "Getting Admin via Juicy Potato"],
+          [1784, "Box completed"],
           [
             1800,
             "Start of doing this box again, with Metasploit! Creating a payload with Unicorn"
@@ -5425,10 +4231,7 @@
             2401,
             "Comparing local_exploit_suggester on x32 and x64 meterpreter sessions"
           ],
-          [
-            2430,
-            "Getting Admin via MS10-092"
-          ],
+          [2430, "Getting Admin via MS10-092"],
           [
             2525,
             "Attempting to pivot through the Firewall using Meterpreter and doing Eternal Blue! (Fails, think I screwed up listening host #PivotProblems)"
@@ -5460,58 +4263,19 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Intro"
-          ],
-          [
-            12,
-            "Enumerate with nmap"
-          ],
-          [
-            40,
-            "Going to the webpage"
-          ],
-          [
-            110,
-            "Using SearchSploit to find ColdFusion Exploits"
-          ],
-          [
-            160,
-            "Attempt to exploit through MSF. Debug why it failed."
-          ],
-          [
-            230,
-            "Setting up a Burp Redirect listener"
-          ],
-          [
-            295,
-            "Examining request send by MSF Exploit"
-          ],
-          [
-            395,
-            "Getting a reverse shell"
-          ],
-          [
-            470,
-            "Using Unicorn to create a Powershell Meterpreter Loa"
-          ],
-          [
-            0,
-            "der"
-          ],
-          [
-            695,
-            "Reverseshell returned"
-          ],
-          [
-            730,
-            "Using the MSF post module local_exploit_suggestor"
-          ],
-          [
-            929,
-            "Privesc via MS10-092"
-          ]
+          [0, "Intro"],
+          [12, "Enumerate with nmap"],
+          [40, "Going to the webpage"],
+          [110, "Using SearchSploit to find ColdFusion Exploits"],
+          [160, "Attempt to exploit through MSF. Debug why it failed."],
+          [230, "Setting up a Burp Redirect listener"],
+          [295, "Examining request send by MSF Exploit"],
+          [395, "Getting a reverse shell"],
+          [470, "Using Unicorn to create a Powershell Meterpreter Loa"],
+          [0, "der"],
+          [695, "Reverseshell returned"],
+          [730, "Using the MSF post module local_exploit_suggestor"],
+          [929, "Privesc via MS10-092"]
         ]
       }
     ]
@@ -5541,22 +4305,10 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Intro"
-          ],
-          [
-            60,
-            "Begin of nmap, enumerate ftp, and smb"
-          ],
-          [
-            332,
-            "Taking a look at the website to discover umbraco"
-          ],
-          [
-            650,
-            "Examining NFS with showmount"
-          ],
+          [0, "Intro"],
+          [60, "Begin of nmap, enumerate ftp, and smb"],
+          [332, "Taking a look at the website to discover umbraco"],
+          [650, "Examining NFS with showmount"],
           [
             960,
             "Discovering umbraco.sdf on NFS is a database and contains the admin password"
@@ -5565,26 +4317,14 @@
             1275,
             "Logging into umbraco and discovering the unauthenticated RCE"
           ],
-          [
-            1415,
-            "Editing the umbraco exploit to ping our box"
-          ],
+          [1415, "Editing the umbraco exploit to ping our box"],
           [
             1590,
             "Getting a reverse shell using Invoke-WebRequest instead of (New-Object Net.WebClient)"
           ],
-          [
-            1830,
-            "Running WinPEAS to discover UsoSvc service is editable"
-          ],
-          [
-            2220,
-            "Editing the UsoSvc binpath to execute our reverse shell"
-          ],
-          [
-            2415,
-            "Alternate Path: Using Rogue Potato to get a shell"
-          ]
+          [1830, "Running WinPEAS to discover UsoSvc service is editable"],
+          [2220, "Editing the UsoSvc binpath to execute our reverse shell"],
+          [2415, "Alternate Path: Using Rogue Potato to get a shell"]
         ]
       },
       {
@@ -5608,30 +4348,15 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Intro"
-          ],
-          [
-            62,
-            "Running nmap against all ports"
-          ],
-          [
-            295,
-            "Attempting to enumerate the initial web page (Voting System)"
-          ],
+          [0, "Intro"],
+          [62, "Running nmap against all ports"],
+          [295, "Attempting to enumerate the initial web page (Voting System)"],
           [
             480,
             "Nmap finished, checking staging.love.htb from the SSL Certificate"
           ],
-          [
-            605,
-            "Finding an SSRF Vulnerability in the file scanner"
-          ],
-          [
-            750,
-            "Having trouble using WFUZZ to fuzz all ports"
-          ],
+          [605, "Finding an SSRF Vulnerability in the file scanner"],
+          [750, "Having trouble using WFUZZ to fuzz all ports"],
           [
             1065,
             "Switching to FFUF and still having trouble to fuzz all ports"
@@ -5648,10 +4373,7 @@
             2380,
             "Enough with the exploit script, manually exploiting the application with an image upload"
           ],
-          [
-            2623,
-            "Using Nishang to get a reverse shell, then running WinPEAS"
-          ],
+          [2623, "Using Nishang to get a reverse shell, then running WinPEAS"],
           [
             3150,
             "Seeing AlwaysInstallElevated is set on the system, using msfvenom to build an msi"
@@ -5689,38 +4411,20 @@
           }
         ],
         "outline": [
-          [
-            65,
-            "Begin of recon"
-          ],
-          [
-            165,
-            "Checking out the website"
-          ],
-          [
-            230,
-            "Using wfuzz to enumerate usernames"
-          ],
-          [
-            345,
-            "Logging in with an account we created"
-          ],
+          [65, "Begin of recon"],
+          [165, "Checking out the website"],
+          [230, "Using wfuzz to enumerate usernames"],
+          [345, "Logging in with an account we created"],
           [
             443,
             "Checking out Change Password and noticing it does this poorly"
           ],
-          [
-            565,
-            "Using the contact form, to see if tyler will follow links"
-          ],
+          [565, "Using the contact form, to see if tyler will follow links"],
           [
             854,
             "Changing Tyler's password by sending him to the ChangePassword Page"
           ],
-          [
-            900,
-            "Logged in and find SMB Share with credentials."
-          ],
+          [900, "Logged in and find SMB Share with credentials."],
           [
             975,
             "Found a webshare but not sure the directory it executes from. Begin hunting for a different webserver."
@@ -5729,26 +4433,11 @@
             1068,
             "Port 8808 found via nmap'ing all ports.  Creating a php script to gain code execution"
           ],
-          [
-            1155,
-            "Downloading netcat for windows to use as a Reverse Shell"
-          ],
-          [
-            1274,
-            "Playing with Bash on Windows"
-          ],
-          [
-            1355,
-            "Finding the administrator password in ~/.bash_history"
-          ],
-          [
-            0,
-            "-- Box done"
-          ],
-          [
-            1425,
-            "Alternate way to find the .bash_history file"
-          ],
+          [1155, "Downloading netcat for windows to use as a Reverse Shell"],
+          [1274, "Playing with Bash on Windows"],
+          [1355, "Finding the administrator password in ~/.bash_history"],
+          [0, "-- Box done"],
+          [1425, "Alternate way to find the .bash_history file"],
           [
             1536,
             "Unintended way to bypass the CSRF. SQL Injection + bad Static Code analysis"
@@ -5757,10 +4446,7 @@
             0,
             "In the Holiday video, I do a bit more that may be helpful with card type attacks"
           ],
-          [
-            0,
-            ": https://www.youtube.com/watch?v=FvHyt7KrsPE&app=desktop"
-          ]
+          [0, ": https://www.youtube.com/watch?v=FvHyt7KrsPE&app=desktop"]
         ]
       },
       {
@@ -5784,22 +4470,10 @@
           }
         ],
         "outline": [
-          [
-            58,
-            "Begin of recon: ftp, telnet, IIS 7.5"
-          ],
-          [
-            180,
-            "Downloading all files off an FTP Server with WGET"
-          ],
-          [
-            330,
-            "Examining the \"Access Control.zip\" file."
-          ],
-          [
-            390,
-            "Cracking a zip file with John"
-          ],
+          [58, "Begin of recon: ftp, telnet, IIS 7.5"],
+          [180, "Downloading all files off an FTP Server with WGET"],
+          [330, "Examining the \"Access Control.zip\" file."],
+          [390, "Cracking a zip file with John"],
           [
             465,
             "Creating a wordlist for cracking the zip (strings of the mdb file)"
@@ -5816,18 +4490,9 @@
             815,
             "Converting the PST File (Outlook Email) to PlainText via readpst"
           ],
-          [
-            900,
-            "Logging into telnet with the credentials from the email"
-          ],
-          [
-            945,
-            "Switching to a Nishang Shell to execute powershell"
-          ],
-          [
-            1095,
-            "Running JAWS (Just Another Windows Scanner)"
-          ],
+          [900, "Logging into telnet with the credentials from the email"],
+          [945, "Switching to a Nishang Shell to execute powershell"],
+          [1095, "Running JAWS (Just Another Windows Scanner)"],
           [
             1414,
             "Discovering Stored Credentials on the box for ACCESS\\Administrator"
@@ -5836,38 +4501,20 @@
             1511,
             "Examining the Shortcut on PUBLIC\\DESKTOP which shows us how the \"Stored Credential\" is used."
           ],
-          [
-            1558,
-            "Using powershell to view information of a Shortcut"
-          ],
-          [
-            1645,
-            "Using the Stored Credential via runas /savecred"
-          ],
-          [
-            0,
-            "(some flailing around, darn windows quotes)"
-          ],
+          [1558, "Using powershell to view information of a Shortcut"],
+          [1645, "Using the Stored Credential via runas /savecred"],
+          [0, "(some flailing around, darn windows quotes)"],
           [
             1831,
             "Creating Base64 (UTF-16LE) on linux to use in as a Powershell EncodedCommand"
           ],
-          [
-            1914,
-            "Box done, Administrator returned."
-          ],
-          [
-            0,
-            "(Flailing around until 54:20)"
-          ],
+          [1914, "Box done, Administrator returned."],
+          [0, "(Flailing around until 54:20)"],
           [
             1958,
             "Begin of decrypting the Stored Credential, uploading Mimikatz"
           ],
-          [
-            2020,
-            "Using powershell to download files"
-          ],
+          [2020, "Using powershell to download files"],
           [
             2196,
             "Discovering that I was trying to save mimikatz to a directory i cannot write to :("
@@ -5880,14 +4527,8 @@
             2330,
             "Trying to get Meterpreter shell via Unicorn (Fails, unknown reason)"
           ],
-          [
-            2488,
-            "Getting a Empire Agent running"
-          ],
-          [
-            2615,
-            "Empire Agent Returned, Injecting meterpreter shellcode."
-          ],
+          [2488, "Getting a Empire Agent running"],
+          [2615, "Empire Agent Returned, Injecting meterpreter shellcode."],
           [
             2746,
             "Attempting to use Mimikatz from within Meterpreter to decrypt dpapi::creds"
@@ -5896,18 +4537,9 @@
             2812,
             "Explaining Mimikatz Arguments when in \"non-interactive\" mode"
           ],
-          [
-            3260,
-            "Grabbing needed files to decrypt DPAPI::CREDS offline"
-          ],
-          [
-            3369,
-            "Switing to Windows to run Mimikatz"
-          ],
-          [
-            3752,
-            "Decrypting the Creds stored in DPAPI"
-          ]
+          [3260, "Grabbing needed files to decrypt DPAPI::CREDS offline"],
+          [3369, "Switing to Windows to run Mimikatz"],
+          [3752, "Decrypting the Creds stored in DPAPI"]
         ]
       }
     ]
@@ -5937,34 +4569,22 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
+          [0, "Introduction"],
           [
             60,
             "Start of nmap, discovering potential username convention from SSL Certificate"
           ],
-          [
-            250,
-            "Checking out the website"
-          ],
+          [250, "Checking out the website"],
           [
             435,
             "Examining the request being made to download the PDF and talking about how Metadata can leak if it came from disk or the webapp"
           ],
-          [
-            585,
-            "Discovering File Disclosure in the download script"
-          ],
+          [585, "Discovering File Disclosure in the download script"],
           [
             720,
             "Downloading the hMailServer configuration file, to get credentials"
           ],
-          [
-            915,
-            "Discovering the credentials work with SMTP"
-          ],
+          [915, "Discovering the credentials work with SMTP"],
           [
             1044,
             "Talking about the Moniker Link (CVE-2024-21413) vulnerability and sending a malicious document to Maya to get NTLM Hash"
@@ -6000,22 +4620,10 @@
           }
         ],
         "outline": [
-          [
-            65,
-            "Begin of recon"
-          ],
-          [
-            265,
-            "Logging into the webpage as guest and viewing attachments"
-          ],
-          [
-            285,
-            "Examining the cisco type 7 passwords, using  ciscot7"
-          ],
-          [
-            420,
-            "Decrypting the MD5Crypt password using Hashcat"
-          ],
+          [65, "Begin of recon"],
+          [265, "Logging into the webpage as guest and viewing attachments"],
+          [285, "Examining the cisco type 7 passwords, using  ciscot7"],
+          [420, "Decrypting the MD5Crypt password using Hashcat"],
           [
             620,
             "Using CrackMapExec to perform a SMB password spray with users/credentials we have"
@@ -6036,26 +4644,14 @@
             1165,
             "Doing the Winrm_Login again with new usernames and see Chase can login"
           ],
-          [
-            1225,
-            "Using Evil WinRM to login to the box"
-          ],
-          [
-            1320,
-            "Low Priv shell returned"
-          ],
+          [1225, "Using Evil WinRM to login to the box"],
+          [1320, "Low Priv shell returned"],
           [
             1440,
             "Examining wwwroot, and sourcecode to see if we can get a shell as the IIS User (cannot)"
           ],
-          [
-            1605,
-            "See firefox running with Get-Process"
-          ],
-          [
-            1740,
-            "Upload procdump64.exe to dump firefox's memory"
-          ],
+          [1605, "See firefox running with Get-Process"],
+          [1740, "Upload procdump64.exe to dump firefox's memory"],
           [
             1860,
             "Running strings against the binary and finding the administrator password"
@@ -6187,34 +4783,13 @@
           }
         ],
         "outline": [
-          [
-            70,
-            "Begin of recon"
-          ],
-          [
-            180,
-            "Poking at DNS - Nothing really important."
-          ],
-          [
-            240,
-            "Examining what NMAP Scripts are ran."
-          ],
-          [
-            395,
-            "Lets just try out smbclient to list shares available"
-          ],
-          [
-            445,
-            "Using SMBMap to show the same thing, a great recon tool!"
-          ],
-          [
-            510,
-            "Pillaging the Replication Share with SMBMap"
-          ],
-          [
-            560,
-            "Discovering Groups.xml and then decrypting passwords from it"
-          ],
+          [70, "Begin of recon"],
+          [180, "Poking at DNS - Nothing really important."],
+          [240, "Examining what NMAP Scripts are ran."],
+          [395, "Lets just try out smbclient to list shares available"],
+          [445, "Using SMBMap to show the same thing, a great recon tool!"],
+          [510, "Pillaging the Replication Share with SMBMap"],
+          [560, "Discovering Groups.xml and then decrypting passwords from it"],
           [
             790,
             "Dumping Active Directory users from linux with Impacket GetADUsers"
@@ -6223,26 +4798,14 @@
             988,
             "Using SMBMap with our user credentials to look for more shares"
           ],
-          [
-            1105,
-            "Switching to Windows to run BloodHound against the domain"
-          ],
-          [
-            1560,
-            "Analyzing BloodHound Output to discover Kerberostable user"
-          ],
+          [1105, "Switching to Windows to run BloodHound against the domain"],
+          [1560, "Analyzing BloodHound Output to discover Kerberostable user"],
           [
             1645,
             "Performing Kerberoast attack from linux with Impacket GetUsersSPNs"
           ],
-          [
-            1740,
-            "Cracking tgs 23 with Hashcat"
-          ],
-          [
-            1800,
-            "Getting root on the box via PSEXEC"
-          ]
+          [1740, "Cracking tgs 23 with Hashcat"],
+          [1800, "Getting root on the box via PSEXEC"]
         ]
       }
     ]
@@ -6272,14 +4835,8 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Intro"
-          ],
-          [
-            75,
-            "Running NMAP and queuing a second nmap to do all ports"
-          ],
+          [0, "Intro"],
+          [75, "Running NMAP and queuing a second nmap to do all ports"],
           [
             340,
             "Using LDAPSEARCH to extract information out of Active Directory"
@@ -6316,14 +4873,8 @@
             2250,
             "Setting up a SMBShare, using New-PSDRive to mount the share, then running WinPEAS"
           ],
-          [
-            2540,
-            "Going over WinPEAS Output"
-          ],
-          [
-            2660,
-            "Downloading Bloodhound and the SharpHound Ingestor"
-          ],
+          [2540, "Going over WinPEAS Output"],
+          [2660, "Downloading Bloodhound and the SharpHound Ingestor"],
           [
             2930,
             "Importing the Bloodhound Results and finding an AD Attack Path"
@@ -6383,30 +4934,18 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Intro"
-          ],
-          [
-            65,
-            "Running Nmap"
-          ],
+          [0, "Intro"],
+          [65, "Running Nmap"],
           [
             127,
             "Poking at SMB with CrackMapExec, SMBMap, and RPCClient to get nothing"
           ],
-          [
-            255,
-            "Checking out the web page"
-          ],
+          [255, "Checking out the web page"],
           [
             360,
             "Playing with user input in the website and getting an error \"HTTP VERB used is not allowed\""
           ],
-          [
-            500,
-            "Copying names from the website"
-          ],
+          [500, "Copying names from the website"],
           [
             650,
             "Using some VIM/VI Magic (macro) to convert names into potential usernames"
@@ -6431,18 +4970,9 @@
             1390,
             "Using Evil-WinRM to log into the box with FSMITH and run WinPEAS to get saved credentials"
           ],
-          [
-            1740,
-            "Running BloodHound"
-          ],
-          [
-            2065,
-            "Identifying that svc_loanmgr can perform a DCSYNC"
-          ],
-          [
-            2140,
-            "Running SecretsDump with svc_loanmgr to perform a DCSYNC"
-          ],
+          [1740, "Running BloodHound"],
+          [2065, "Identifying that svc_loanmgr can perform a DCSYNC"],
+          [2140, "Running SecretsDump with svc_loanmgr to perform a DCSYNC"],
           [
             2265,
             "Performing a Pass The Hash with the administrator user using PSExec"
@@ -6476,14 +5006,8 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Into"
-          ],
-          [
-            54,
-            "Begin of recon"
-          ],
+          [0, "Into"],
+          [54, "Begin of recon"],
           [
             216,
             "Using rpcclient with null authentication and dumping active directory users"
@@ -6496,30 +5020,15 @@
             521,
             "CrackMapExec shows SABatchJobs:SABatchJobs are valid credentials"
           ],
-          [
-            726,
-            "Using SMBMap to list contents of directories"
-          ],
+          [726, "Using SMBMap to list contents of directories"],
           [
             980,
             "Using SMBMap to download azure.xml which has a hardcoded credential in it then testing with WinRM to see if we can get a shell"
           ],
-          [
-            1190,
-            "Downloading and running Seatbelt on the server"
-          ],
-          [
-            1520,
-            "Running WinPEAS for a second opinion"
-          ],
-          [
-            1665,
-            "Talking about the Azure Admins group"
-          ],
-          [
-            1735,
-            "Playing with SQLCMD to view the MSSQL Database"
-          ],
+          [1190, "Downloading and running Seatbelt on the server"],
+          [1520, "Running WinPEAS for a second opinion"],
+          [1665, "Talking about the Azure Admins group"],
+          [1735, "Playing with SQLCMD to view the MSSQL Database"],
           [
             1845,
             "Downloading and running PowerUpSQL to see if there's any obvious escalation paths"
@@ -6540,10 +5049,7 @@
             2900,
             "Executing the Azure AD Connectdecryption script and having Evil-WinRM Crash on us"
           ],
-          [
-            2950,
-            "Stepping through the script to see where it is failing"
-          ],
+          [2950, "Stepping through the script to see where it is failing"],
           [
             3085,
             "Updating the SQL Connection script to work with our MSSQL Configuration, then fixing the script"
@@ -6556,10 +5062,7 @@
             3510,
             "Using DNSPY to decompile the MCRYPT.DLL binary to just explore what is going on"
           ],
-          [
-            3830,
-            "Dumping the DNS Zone for MEGABANK.LOCAL via powershell"
-          ]
+          [3830, "Dumping the DNS Zone for MEGABANK.LOCAL via powershell"]
         ]
       },
       {
@@ -6583,54 +5086,18 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Intro"
-          ],
-          [
-            60,
-            "Start of nmap"
-          ],
-          [
-            230,
-            "Enumerating the file server"
-          ],
-          [
-            390,
-            "Cracking the zip file with John"
-          ],
-          [
-            520,
-            "Cracking the pfx file (PKCS12) with John"
-          ],
-          [
-            627,
-            "Extracting the certificate and key from the pfx file"
-          ],
-          [
-            684,
-            "Using evil-winrm to login with the certificate"
-          ],
-          [
-            880,
-            "Checking the PSReadline file and getting another credential"
-          ],
-          [
-            965,
-            "Logging in with svc_deploy, failing to run bloodhound"
-          ],
-          [
-            1260,
-            "Running net user discovering we are in LAPS Group"
-          ],
-          [
-            1380,
-            "Running get-adcomputer to get the LAPS Password"
-          ],
-          [
-            1620,
-            "Showing a python script to extract LAPS Passwords"
-          ]
+          [0, "Intro"],
+          [60, "Start of nmap"],
+          [230, "Enumerating the file server"],
+          [390, "Cracking the zip file with John"],
+          [520, "Cracking the pfx file (PKCS12) with John"],
+          [627, "Extracting the certificate and key from the pfx file"],
+          [684, "Using evil-winrm to login with the certificate"],
+          [880, "Checking the PSReadline file and getting another credential"],
+          [965, "Logging in with svc_deploy, failing to run bloodhound"],
+          [1260, "Running net user discovering we are in LAPS Group"],
+          [1380, "Running get-adcomputer to get the LAPS Password"],
+          [1620, "Showing a python script to extract LAPS Passwords"]
         ]
       }
     ]
@@ -6660,30 +5127,18 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            60,
-            "Start of nmap"
-          ],
+          [0, "Introduction"],
+          [60, "Start of nmap"],
           [
             190,
             "Examining SSL Certificates and seeing \"sequel-DC-CA\", which hints towards there being a Certificate Authority"
           ],
-          [
-            345,
-            "Using CrackMapExec to enumerate file shares"
-          ],
+          [345, "Using CrackMapExec to enumerate file shares"],
           [
             390,
             "Accessing the Public Share, downloading a PDF File and finding credentials in it, using CME again and using CME to test smb, winrm, and mssql"
           ],
-          [
-            600,
-            "Using mssqlclient to login to access MSSQL"
-          ],
+          [600, "Using mssqlclient to login to access MSSQL"],
           [
             650,
             "Using XP_DIRTREE to request a file off an SMB Share in order to intercept the hash of the user running MSSQL, then cracking it"
@@ -6751,22 +5206,13 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction, assumed breach box"
-          ],
-          [
-            58,
-            "Start of nmap"
-          ],
+          [0, "Introduction, assumed breach box"],
+          [58, "Start of nmap"],
           [
             180,
             "Checking out what the credentials we are given go to, see WinRM but it doesn't give us much"
           ],
-          [
-            410,
-            "Running python bloodhound as olivia"
-          ],
+          [410, "Running python bloodhound as olivia"],
           [
             585,
             "Looking at the json output manually to discover non-default groups"
@@ -6775,10 +5221,7 @@
             890,
             "Examining Olivia's outbound controls to see there is a chain to Benjamin, who has FTP Access"
           ],
-          [
-            1080,
-            "Using Net RPC to change Michael and Benjamin's password"
-          ],
+          [1080, "Using Net RPC to change Michael and Benjamin's password"],
           [
             1200,
             "Downloading the Password Safe database off the FTP Server, then cracking it"
@@ -6828,14 +5271,8 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            45,
-            "Start of nmap"
-          ],
+          [0, "Introduction"],
+          [45, "Start of nmap"],
           [
             180,
             "Doing some low-priv AD recon with NetExec (SMB, MSSQL, User Dump, Shares, Bloodhound, etc)"
@@ -6856,10 +5293,7 @@
             930,
             "Discovering the SQL Install directory with a configuration file that has a password, spraying all users with that password to see it works with Ryan"
           ],
-          [
-            1140,
-            "Looking at what our owned users can do via bloodhound"
-          ],
+          [1140, "Looking at what our owned users can do via bloodhound"],
           [
             1360,
             "Showing SharpHound collects more data than the python ingestor"
@@ -6872,10 +5306,7 @@
             1770,
             "Using OwnerEdit/DaclEdit to take over CA_SVC then Certipy to create a shadow credential and get the NTLM Hash"
           ],
-          [
-            1920,
-            "Talking about the ESC4 Exploit"
-          ],
+          [1920, "Talking about the ESC4 Exploit"],
           [
             2085,
             "Performing the ESC4 Exploit to make the template vulnerable then performing ESC1 to get administrator"
@@ -6903,18 +5334,12 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
+          [0, "Introduction"],
           [
             68,
             "Start of nmap discovering only Active Directory (AD) Related ports"
           ],
-          [
-            255,
-            "Running Certipy both with and without the vulnerable flag"
-          ],
+          [255, "Running Certipy both with and without the vulnerable flag"],
           [
             420,
             "Outputting Certipy to JSON and then writing a JQ Query that will show us non-default users that can enroll certificates"
@@ -6923,10 +5348,7 @@
             540,
             "Explaining the JQ Query that will take the list, filter out specific words, then show us items that still have an item"
           ],
-          [
-            810,
-            "Running Bloodhound.py to get some bloodhound data"
-          ],
+          [810, "Running Bloodhound.py to get some bloodhound data"],
           [
             960,
             "Looking at what Judith can do in Bloodhound, showing discovering by clicking outbound permissions"
@@ -6943,10 +5365,7 @@
             1410,
             "Using Certipy to abuse GenericAll/GenericWrite to create a shadow credential and grab the NTLM Hash"
           ],
-          [
-            1808,
-            "Going over ESC9"
-          ],
+          [1808, "Going over ESC9"],
           [
             1880,
             "Using Certipy to exploit ESC9, updating UPN, requesting cert, updating UPN, and then using the certificate"
@@ -6955,10 +5374,7 @@
             2065,
             "Grabbing the NTLM Hash of administrator with certipy, then logging in with WinRM"
           ],
-          [
-            2145,
-            "Showing the certificate we generated"
-          ],
+          [2145, "Showing the certificate we generated"],
           [
             2440,
             "Running SharpHound with a low privilege user to show it grabs more than the Python Bloodhound Module"
@@ -7004,22 +5420,13 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            60,
-            "Start of nmap"
-          ],
+          [0, "Introduction"],
+          [60, "Start of nmap"],
           [
             207,
             "NFS is listening on Windows which is odd, looking into it briefly and not finding anything"
           ],
-          [
-            300,
-            "Using NXC to list shares and running RustHound"
-          ],
+          [300, "Using NXC to list shares and running RustHound"],
           [
             535,
             "Adding ourself to developers, which will let us access the develoeprs share"
@@ -7044,10 +5451,7 @@
             1380,
             "Finding a backup. Looking into it to discover another set of credentials"
           ],
-          [
-            1650,
-            "Running WinPEAS, finding DPAPI Data"
-          ],
+          [1650, "Running WinPEAS, finding DPAPI Data"],
           [
             2070,
             "Downloading the DPAPI Master Key and Credential Blobs, to download with EvilWINRM need to remove the hidden attribute"
@@ -7195,14 +5599,8 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            60,
-            "Start of nmap"
-          ],
+          [0, "Introduction"],
+          [60, "Start of nmap"],
           [
             125,
             "Logging into the SQL Database with the provided credentials, going over basic enumeration"
@@ -7219,10 +5617,7 @@
             650,
             "Explaining how the SUSER_SID command performs a SID Bruteforce, converting the SID from binary to String notation"
           ],
-          [
-            900,
-            "Creating a Silver Ticket with Ticketer.py"
-          ],
+          [900, "Creating a Silver Ticket with Ticketer.py"],
           [
             1410,
             "Impersonating an admin, so we can enable xp_cmdshell to get a shell on the box"
@@ -7231,10 +5626,7 @@
             1640,
             "Showing CVE-2025-33073 posts, which explains the attack we will do with NTLM Relay and cred marshalling"
           ],
-          [
-            1710,
-            "Getting Chisel up and running so we can add DNS Names"
-          ],
+          [1710, "Getting Chisel up and running so we can add DNS Names"],
           [
             1880,
             "Adding a special DNS Name so we can impersonate DC01, then starting NTLMRelay and forwarding connections to WinRM"
@@ -8165,14 +6557,8 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            60,
-            "Start of Nmap"
-          ],
+          [0, "Introduction"],
+          [60, "Start of Nmap"],
           [
             180,
             "Playing with the web page, but everything is static doing a VHOST Bruteforce to discover school.flight.htb"
@@ -8201,18 +6587,12 @@
             1290,
             "Using NTLM_Theft to create a bunch of files that would attempt to steal NTLM Hashes of users when browsing to a directory getting C.Bum's creds with Desktop.ini"
           ],
-          [
-            1578,
-            "C.Bum can write to Web, dropping a reverse shell"
-          ],
+          [1578, "C.Bum can write to Web, dropping a reverse shell"],
           [
             1770,
             "Reverse shell returned as svc_apache, discovering inetpub directory that c.bum can write to"
           ],
-          [
-            1960,
-            "Using RunasCS.EXE to switch users to cbum"
-          ],
+          [1960, "Using RunasCS.EXE to switch users to cbum"],
           [
             2250,
             "Creating an ASPX Reverse shell on the IIS Server and getting a shell as DefaultAppPool"
@@ -8225,10 +6605,7 @@
             3005,
             "Uploading Rubeus and stealing the kerberos ticket of the system account, which because this is a DC we can DCSync"
           ],
-          [
-            3170,
-            "Running DCSync"
-          ]
+          [3170, "Running DCSync"]
         ]
       }
     ]
@@ -8258,14 +6635,8 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Intro"
-          ],
-          [
-            60,
-            "Start of nmap"
-          ],
+          [0, "Intro"],
+          [60, "Start of nmap"],
           [
             180,
             "Enumerating fileshares with SMBClient and CrackMapExec, highlighting some picky syntax"
@@ -8274,22 +6645,13 @@
             375,
             "Mounting the profiles$ directory so we can build a username list"
           ],
-          [
-            540,
-            "Using Kerbrute to enumerate valid usernames"
-          ],
-          [
-            820,
-            "Running GetNPUsers to perform an ASREP Roast"
-          ],
+          [540, "Using Kerbrute to enumerate valid usernames"],
+          [820, "Running GetNPUsers to perform an ASREP Roast"],
           [
             1070,
             "Checking what we can do with the Support User from the ASREP Roast"
           ],
-          [
-            1245,
-            "Running the python Bloodhound ingestor from Linux"
-          ],
+          [1245, "Running the python Bloodhound ingestor from Linux"],
           [
             1675,
             "Bloodhound ran, playing around with the data, eventually seeing support can reset audit2020's password"
@@ -8306,10 +6668,7 @@
             2540,
             "Using Evil-WinRM to access the box as SVC_Backup and discovering the backup privilege"
           ],
-          [
-            2610,
-            "Failing to get WBADMIN to send a backup file to impacket"
-          ],
+          [2610, "Failing to get WBADMIN to send a backup file to impacket"],
           [
             2850,
             "Creating a NTFS Block Device/Partition but does not fix our impacket issues"
@@ -8371,14 +6730,8 @@
           }
         ],
         "outline": [
-          [
-            0,
-            "Introduction"
-          ],
-          [
-            32,
-            "Start of nmap"
-          ],
+          [0, "Introduction"],
+          [32, "Start of nmap"],
           [
             200,
             "Discovering Gibbon LMS is running and enumerating the version"
@@ -8387,10 +6740,7 @@
             285,
             "Using CVEDetails to look at CVE's for Gibbon, then discovering an unauth file upload"
           ],
-          [
-            420,
-            "Getting a shell by uploading a malicious PHP Script"
-          ],
+          [420, "Getting a shell by uploading a malicious PHP Script"],
           [
             690,
             "Using the MySQL binary to dump the database to get the password hash"
@@ -8399,10 +6749,7 @@
             955,
             "The password is salted, searching Gibbon Source Code for how the salt is used so we know which hashcat ruleset to use"
           ],
-          [
-            1195,
-            "Running RustHound, doesn't really tell us too much"
-          ],
+          [1195, "Running RustHound, doesn't really tell us too much"],
           [
             1380,
             "Using SSH with Kerberos to login to the box, showing the hostfile needs to have the box name as the first item"

@@ -1,12 +1,52 @@
-import 'fake-indexeddb/auto';
-import {test,expect,vi} from 'vitest';
-import {clearDeviceData,signIn} from '../firebase/auth';
-import {validateEnvironment} from '../firebase/client';
-import {saveDraft,listDrafts} from '../persistence/local';
-import {draft} from '../../tests/fixtures/builders';
-vi.mock('firebase/auth',()=>({getAuth:()=>({currentUser:null}),connectAuthEmulator:vi.fn(),setPersistence:vi.fn(),browserLocalPersistence:{},browserSessionPersistence:{},signInWithEmailAndPassword:vi.fn().mockRejectedValue(Error('Invalid credentials')),sendPasswordResetEmail:vi.fn(),signOut:vi.fn()}));
-vi.mock('../editor/NoteEditor',()=>({beforeLeaveEditor:async()=>true}));
-test('preview configuration refuses production Firebase',()=>{expect(()=>validateEnvironment('production','oscp-notes',true)).toThrow('Preview')});
-test('clearing device data blocks unexported pending drafts',async()=>{await saveDraft(draft({uid:'pending-account'}),0);await expect(clearDeviceData('pending-account')).rejects.toThrow('pending');expect(await listDrafts('pending-account','note')).toHaveLength(1)});
-test('invalid sign-in retains saved drafts',async()=>{await saveDraft(draft({uid:'original-account'}),0);await expect(signIn('wrong@example.test','wrong',false)).rejects.toThrow();expect(await listDrafts('original-account','note')).toHaveLength(1)});
-test('an older backup does not authorize clearing a newer draft',async()=>{const {setMeta}=await import('../persistence/local');const d=(await saveDraft(draft({uid:'old-export'}),0)).draft;await setMeta('old-export','last-export',{draftRevisions:[{kind:d.kind,id:d.id,localRevision:d.localRevision,mutationId:d.mutationId}]});await saveDraft({...d,mutationId:'newer'},d.localRevision);await expect(clearDeviceData('old-export')).rejects.toThrow('pending')});
+import "fake-indexeddb/auto";
+import { test, expect, vi } from "vitest";
+import { clearDeviceData, signIn } from "../firebase/auth";
+import { validateEnvironment } from "../firebase/client";
+import { saveDraft, listDrafts } from "../persistence/local";
+import { draft } from "../../tests/fixtures/builders";
+vi.mock("firebase/auth", () => ({
+  getAuth: () => ({ currentUser: null }),
+  connectAuthEmulator: vi.fn(),
+  setPersistence: vi.fn(),
+  browserLocalPersistence: {},
+  browserSessionPersistence: {},
+  signInWithEmailAndPassword: vi
+    .fn()
+    .mockRejectedValue(Error("Invalid credentials")),
+  sendPasswordResetEmail: vi.fn(),
+  signOut: vi.fn(),
+}));
+vi.mock("../editor/NoteEditor", () => ({
+  beforeLeaveEditor: async () => true,
+}));
+test("preview configuration refuses production Firebase", () => {
+  expect(() => validateEnvironment("production", "oscp-notes", true)).toThrow(
+    "Preview",
+  );
+});
+test("clearing device data blocks unexported pending drafts", async () => {
+  await saveDraft(draft({ uid: "pending-account" }), 0);
+  await expect(clearDeviceData("pending-account")).rejects.toThrow("pending");
+  expect(await listDrafts("pending-account", "note")).toHaveLength(1);
+});
+test("invalid sign-in retains saved drafts", async () => {
+  await saveDraft(draft({ uid: "original-account" }), 0);
+  await expect(signIn("wrong@example.test", "wrong", false)).rejects.toThrow();
+  expect(await listDrafts("original-account", "note")).toHaveLength(1);
+});
+test("an older backup does not authorize clearing a newer draft", async () => {
+  const { setMeta } = await import("../persistence/local");
+  const d = (await saveDraft(draft({ uid: "old-export" }), 0)).draft;
+  await setMeta("old-export", "last-export", {
+    draftRevisions: [
+      {
+        kind: d.kind,
+        id: d.id,
+        localRevision: d.localRevision,
+        mutationId: d.mutationId,
+      },
+    ],
+  });
+  await saveDraft({ ...d, mutationId: "newer" }, d.localRevision);
+  await expect(clearDeviceData("old-export")).rejects.toThrow("pending");
+});

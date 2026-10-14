@@ -1,12 +1,116 @@
-import { NavLink, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import NotebookView,{NotePage} from '../notebook/NotebookView';
-import MachineView from '../notebook/MachineView';
-import TrashView from '../notebook/TrashView';
-import {NotebookProvider} from '../notebook/NotebookContext';
-import {useAccount} from './useAccount';
-import AccountPanel from './AccountPanel';
-import UpdateNotice from './UpdateNotice';
-import DemoEditor from '../editor/DemoEditor';
-import StudyPlan from '../reference/StudyPlan';
-import CheatSheet from '../reference/CheatSheet';
-export default function App(){const account=useAccount(),location=useLocation();const uid=account.user?.uid;return <NotebookProvider key={uid||'public'} uid={uid||null}><div className="app"><aside className="sidebar"><a className="brand" href="/study-plan"><span className="brand-icon">⌘</span><span>FIELDNOTES<small>OSCP STUDY WORKSPACE</small></span></a><p className="nav-label">YOUR WORKSPACE</p><nav>{[['/study-plan','Study plan'],['/machines','Machines'],['/topics','Topics'],['/notes','All notes'],['/cheat-sheet','Cheat sheet'],['/settings','Settings']].map(([to,label])=><NavLink key={to} to={to}>{label}</NavLink>)}</nav><div className="sidebar-foot"><span className="dot"/> Personal notebook<p>Practice. Document. Repeat.</p></div></aside><main><UpdateNotice/><header className="topbar"><span>OSCP / Personal workspace</span><span className="badge">Study edition</span></header>{account.error&&<p className="status">Cloud sync is not configured. Study references and the local demo remain available.</p>}<Routes><Route path="/settings" element={<AccountPanel user={account.user}/>}/><Route path="/notes" element={uid?<NotebookView uid={uid}/>:<AccountPanel user={null}/>}/><Route path="/topics" element={uid?<NotebookView uid={uid} topics/>:<AccountPanel user={null}/>}/><Route path="/notes/:id" element={uid?<NotePage key={location.pathname} uid={uid}/>:<AccountPanel user={null}/>}/><Route path="/machines" element={uid?<MachineView uid={uid}/>:<AccountPanel user={null}/>}/><Route path="/trash" element={uid?<TrashView uid={uid}/>:<AccountPanel user={null}/>}/><Route path="/demo" element={<DemoEditor/>}/><Route path="/study-plan" element={<StudyPlan uid={uid}/>}/><Route path="/cheat-sheet" element={<CheatSheet/>}/><Route path="*" element={<Navigate to="/study-plan" replace/>}/></Routes></main></div></NotebookProvider>}
+import {
+  NavLink,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
+import NotebookView, { NotePage } from "../notebook/NotebookView";
+import MachineView from "../notebook/MachineView";
+import TrashView from "../notebook/TrashView";
+import { NotebookProvider } from "../notebook/NotebookContext";
+import { useAccount } from "./useAccount";
+import AccountPanel from "./AccountPanel";
+import UpdateNotice from "./UpdateNotice";
+import DemoEditor from "../editor/DemoEditor";
+import StudyPlan from "../reference/StudyPlan";
+import CheatSheet from "../reference/CheatSheet";
+export default function App() {
+  const account = useAccount(),
+    location = useLocation();
+  const uid = account.user?.uid;
+  return (
+    <NotebookProvider key={uid || "public"} uid={uid || null}>
+      <div className="app">
+        <aside className="sidebar">
+          <a className="brand" href="/study-plan">
+            <span className="brand-icon">⌘</span>
+            <span>
+              FIELDNOTES<small>OSCP STUDY WORKSPACE</small>
+            </span>
+          </a>
+          <p className="nav-label">YOUR WORKSPACE</p>
+          <nav>
+            {[
+              ["/study-plan", "Study plan"],
+              ["/machines", "Machines"],
+              ["/topics", "Topics"],
+              ["/notes", "All notes"],
+              ["/cheat-sheet", "Cheat sheet"],
+              ["/settings", "Settings"],
+            ].map(([to, label]) => (
+              <NavLink key={to} to={to}>
+                {label}
+              </NavLink>
+            ))}
+          </nav>
+          <div className="sidebar-foot">
+            <span className="dot" /> Personal notebook
+            <p>Practice. Document. Repeat.</p>
+          </div>
+        </aside>
+        <main>
+          <UpdateNotice />
+          <header className="topbar">
+            <span>OSCP / Personal workspace</span>
+            <span className="badge">Study edition</span>
+          </header>
+          {account.error && (
+            <p className="status">
+              Cloud sync is not configured. Study references and the local demo
+              remain available.
+            </p>
+          )}
+          <Routes>
+            <Route
+              path="/settings"
+              element={<AccountPanel user={account.user} />}
+            />
+            <Route
+              path="/notes"
+              element={
+                uid ? <NotebookView uid={uid} /> : <AccountPanel user={null} />
+              }
+            />
+            <Route
+              path="/topics"
+              element={
+                uid ? (
+                  <NotebookView uid={uid} topics />
+                ) : (
+                  <AccountPanel user={null} />
+                )
+              }
+            />
+            <Route
+              path="/notes/:id"
+              element={
+                uid ? (
+                  <NotePage key={location.pathname} uid={uid} />
+                ) : (
+                  <AccountPanel user={null} />
+                )
+              }
+            />
+            <Route
+              path="/machines"
+              element={
+                uid ? <MachineView uid={uid} /> : <AccountPanel user={null} />
+              }
+            />
+            <Route
+              path="/trash"
+              element={
+                uid ? <TrashView uid={uid} /> : <AccountPanel user={null} />
+              }
+            />
+            <Route path="/demo" element={<DemoEditor />} />
+            <Route path="/study-plan" element={<StudyPlan uid={uid} />} />
+            <Route path="/cheat-sheet" element={<CheatSheet />} />
+            <Route path="*" element={<Navigate to="/study-plan" replace />} />
+          </Routes>
+        </main>
+      </div>
+    </NotebookProvider>
+  );
+}

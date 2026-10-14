@@ -1,2 +1,25 @@
-import type {Saved,NoteContent,MachineContent} from './model';
-export function searchNotes(notes:Saved<NoteContent>[],machines:Saved<MachineContent>[],query:string){const words=query.toLocaleLowerCase().trim().split(/\s+/);const names=new Map(machines.map(m=>[m.id,m.content.name]));return notes.filter(n=>n.content.deletedAt===null&&words.every(q=>[n.content.title,n.content.text,...n.content.tags,names.get(n.content.machineId||'')||'',n.content.week?`week ${n.content.week}`:''].join(' ').toLocaleLowerCase().includes(q)))}
+import type { Saved, NoteContent, MachineContent } from "./model";
+export function searchNotes(
+  notes: Saved<NoteContent>[],
+  machines: Saved<MachineContent>[],
+  query: string,
+) {
+  const words = query.toLocaleLowerCase().trim().split(/\s+/);
+  const names = new Map(machines.map((m) => [m.id, m.content.name]));
+  return notes.filter(
+    (n) =>
+      n.content.deletedAt === null &&
+      words.every((q) =>
+        [
+          n.content.title,
+          n.content.text,
+          ...n.content.tags,
+          names.get(n.content.machineId || "") || "",
+          n.content.week ? `week ${n.content.week}` : "",
+        ]
+          .join(" ")
+          .toLocaleLowerCase()
+          .includes(q),
+      ),
+  );
+}

@@ -1,4 +1,63 @@
-import {useState} from 'react';
-import type {EntityKind,NoteContent,MachineContent} from '../notebook/model';
-import {resolveConflict,type Conflict} from './sync';
-export default function ConflictPanel({uid,kind,id,conflict,onResolved}:{uid:string;kind:EntityKind;id:string;conflict:Conflict<NoteContent|MachineContent>;onResolved:()=>void}){const[error,setError]=useState(''),[busy,setBusy]=useState(false);async function choose(choice:'remote'|'local'|'copy'){setBusy(true);try{await resolveConflict(uid,kind,id,choice);onResolved()}catch(e){setError(String(e))}finally{setBusy(false)}}return <section className="error" aria-label="Resolve conflict"><h2>Two versions need your review</h2><p>Your local version is retained until you choose. A newer cloud edit will be checked again before saving.</p><div className="row"><pre>{JSON.stringify(conflict.draft.content,null,2)}</pre><pre>{conflict.remote?JSON.stringify(conflict.remote.content,null,2):'Cloud note is unavailable'}</pre></div><button disabled={busy} onClick={()=>choose('remote')}>Use cloud version</button><button disabled={busy} onClick={()=>choose('local')}>Keep my version</button>{kind==='note'&&<button disabled={busy} onClick={()=>choose('copy')}>Keep mine as a copy</button>}{error&&<p role="alert">{error}</p>}</section>}
+import { useState } from "react";
+import type {
+  EntityKind,
+  NoteContent,
+  MachineContent,
+} from "../notebook/model";
+import { resolveConflict, type Conflict } from "./sync";
+export default function ConflictPanel({
+  uid,
+  kind,
+  id,
+  conflict,
+  onResolved,
+}: {
+  uid: string;
+  kind: EntityKind;
+  id: string;
+  conflict: Conflict<NoteContent | MachineContent>;
+  onResolved: () => void;
+}) {
+  const [error, setError] = useState(""),
+    [busy, setBusy] = useState(false);
+  async function choose(choice: "remote" | "local" | "copy") {
+    setBusy(true);
+    try {
+      await resolveConflict(uid, kind, id, choice);
+      onResolved();
+    } catch (e) {
+      setError(String(e));
+    } finally {
+      setBusy(false);
+    }
+  }
+  return (
+    <section className="error" aria-label="Resolve conflict">
+      <h2>Two versions need your review</h2>
+      <p>
+        Your local version is retained until you choose. A newer cloud edit will
+        be checked again before saving.
+      </p>
+      <div className="row">
+        <pre>{JSON.stringify(conflict.draft.content, null, 2)}</pre>
+        <pre>
+          {conflict.remote
+            ? JSON.stringify(conflict.remote.content, null, 2)
+            : "Cloud note is unavailable"}
+        </pre>
+      </div>
+      <button disabled={busy} onClick={() => choose("remote")}>
+        Use cloud version
+      </button>
+      <button disabled={busy} onClick={() => choose("local")}>
+        Keep my version
+      </button>
+      {kind === "note" && (
+        <button disabled={busy} onClick={() => choose("copy")}>
+          Keep mine as a copy
+        </button>
+      )}
+      {error && <p role="alert">{error}</p>}
+    </section>
+  );
+}
