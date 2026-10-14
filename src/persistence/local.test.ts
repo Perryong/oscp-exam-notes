@@ -1,0 +1,11 @@
+import 'fake-indexeddb/auto';
+import {test,expect,beforeEach,vi} from 'vitest';
+import {saveDraft,listDrafts,acknowledge,clearAccountCache,putLocalImage,getLocalImage,listConflicts} from './local';
+import {draft,imageRecord} from '../../tests/fixtures/builders';
+beforeEach(async()=>{await clearAccountCache('alice');await clearAccountCache('bob')});
+test('simultaneous stale editors retain both drafts',async()=>{const a=draft(),b=draft({content:{...a.content,title:'other'}});const r=await Promise.all([saveDraft(a,0),saveDraft(b,0)]);expect(r.map(x=>x.kind).sort()).toEqual(['conflict','saved']);expect((await listConflicts('alice')).length).toBe(1);expect((await listDrafts('alice','note')).length).toBe(1)});
+test('acknowledgment never discards a newer edit',async()=>{const a=(await saveDraft(draft(),0)).draft;const b=(await saveDraft({...a,mutationId:crypto.randomUUID(),content:{...a.content,title:'new'}},1)).draft;await acknowledge(a,{id:a.id,content:a.content,revision:1,lastMutationId:a.mutationId,createdAt:1,updatedAt:1});const [pending]=await listDrafts('alice','note');expect(pending.content).toEqual(b.content);expect(pending.baseRevision).toBe(1);expect(pending.localRevision).toBe(2)});
+test('account keys isolate draft and image reads',async()=>{await saveDraft(draft(),0);await putLocalImage('alice',imageRecord());expect(await listDrafts('bob','note')).toEqual([]);expect(await getLocalImage('bob','img1')).toBe(null);expect(await getLocalImage('alice','img1')).toEqual(imageRecord())});
+test('a reopened database retains the committed draft',async()=>{const a=(await saveDraft(draft(),0)).draft;expect((await listDrafts('alice','note'))[0]).toEqual(a)});
+
+test('quota rejection preserves the previous draft',async()=>{const old=(await saveDraft(draft(),0)).draft;const spy=vi.spyOn(IDBObjectStore.prototype,'put').mockImplementationOnce(()=>{throw new DOMException('Full','QuotaExceededError')});await expect(saveDraft({...old,content:{...old.content,title:'new'}},1)).rejects.toThrow('Full');spy.mockRestore();expect((await listDrafts('alice','note'))[0].content).toEqual(old.content)});
