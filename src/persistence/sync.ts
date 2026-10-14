@@ -9,7 +9,7 @@ type Content=NoteContent|MachineContent;
 export type Conflict<T>={draft:Draft<T>;remote:Saved<T>|null};
 let generation=0,activeUid:string|null=null;
 const statusKey=(kind:EntityKind,id:string)=>`sync:${kind}:${id}`;
-export async function getSyncStatus(uid:string,kind:EntityKind,id:string){return getMeta<{state:SyncState;error?:string}>(uid,statusKey(kind,id))}
+export async function getSyncStatus(uid:string,kind:EntityKind,id:string){const value=await getMeta<{state:SyncState;error?:string}>(uid,statusKey(kind,id));if(value?.state==='Synced'&&(await listDrafts(uid,kind)).some(d=>d.id===id))return{state:'Saved locally' as SyncState};return value}
 async function status(uid:string,kind:EntityKind,id:string,state:SyncState,error?:string){await setMeta(uid,statusKey(kind,id),{state,error});announce()}
 export async function enableSingleTab(uid:string){await setMeta(uid,'single-tab',true);announce()}
 export async function syncDraft<T extends Content>(candidate:Draft<T>):Promise<SaveResult<T>>{
@@ -19,7 +19,7 @@ export async function syncDraft<T extends Content>(candidate:Draft<T>):Promise<S
   await status(candidate.uid,candidate.kind,candidate.id,'Syncing');
   if(candidate.kind==='note')for(const id of (candidate.content as NoteContent).attachmentIds){const image=await getLocalImage(candidate.uid,id);check();if(image)await ensureImage(candidate.uid,image);else {const {loadImage}=await import('../firebase/images');if(!await loadImage(candidate.uid,id))throw Error('Screenshot missing: '+id)}}
   check();const result=(candidate.kind==='note'?await commitNote(candidate.uid,candidate as Draft<NoteContent>):await commitMachine(candidate.uid,candidate as Draft<MachineContent>)) as SaveResult<T>;check();
-  if(result.kind==='saved'){await acknowledge(candidate,result.value);check();await status(candidate.uid,candidate.kind,candidate.id,'Synced');if(candidate.kind==='note')void pruneHistory(candidate.uid,candidate.id).catch(()=>{})}
+  if(result.kind==='saved'){await acknowledge(candidate,result.value);check();await status(candidate.uid,candidate.kind,candidate.id,(await listDrafts(candidate.uid,candidate.kind)).some(d=>d.id===candidate.id)?'Saved locally':'Synced');if(candidate.kind==='note')void pruneHistory(candidate.uid,candidate.id).catch(()=>{})}
   else {await setMeta(candidate.uid,`conflict:${candidate.kind}:${candidate.id}`,{draft:candidate,remote:result.remote});await status(candidate.uid,candidate.kind,candidate.id,'Conflict')}
   return result;
  };

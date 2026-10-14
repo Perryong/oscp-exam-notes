@@ -1,6 +1,6 @@
 import 'fake-indexeddb/auto';
 import {test,expect,beforeEach,vi} from 'vitest';
-import {saveDraft,listDrafts,acknowledge,clearAccountCache,putLocalImage,getLocalImage,listConflicts} from './local';
+import {saveDraft,listDrafts,acknowledge,clearAccountCache,putLocalImage,getLocalImage,listConflicts,forgetEntity} from './local';
 import {draft,imageRecord} from '../../tests/fixtures/builders';
 beforeEach(async()=>{await clearAccountCache('alice');await clearAccountCache('bob')});
 test('simultaneous stale editors retain both drafts',async()=>{const a=draft(),b=draft({content:{...a.content,title:'other'}});const r=await Promise.all([saveDraft(a,0),saveDraft(b,0)]);expect(r.map(x=>x.kind).sort()).toEqual(['conflict','saved']);expect((await listConflicts('alice')).length).toBe(1);expect((await listDrafts('alice','note')).length).toBe(1)});
@@ -9,3 +9,7 @@ test('account keys isolate draft and image reads',async()=>{await saveDraft(draf
 test('a reopened database retains the committed draft',async()=>{const a=(await saveDraft(draft(),0)).draft;expect((await listDrafts('alice','note'))[0]).toEqual(a)});
 
 test('quota rejection preserves the previous draft',async()=>{const old=(await saveDraft(draft(),0)).draft;const spy=vi.spyOn(IDBObjectStore.prototype,'put').mockImplementationOnce(()=>{throw new DOMException('Full','QuotaExceededError')});await expect(saveDraft({...old,content:{...old.content,title:'new'}},1)).rejects.toThrow('Full');spy.mockRestore();expect((await listDrafts('alice','note'))[0].content).toEqual(old.content)});
+test('a clean acknowledged row accepts a newer remote base revision',async()=>{const a=(await saveDraft(draft(),0)).draft;await acknowledge(a,{id:a.id,content:a.content,revision:1,lastMutationId:a.mutationId,createdAt:1,updatedAt:1});const r=await saveDraft({...a,baseRevision:5,mutationId:'fresh'},a.localRevision);expect(r.draft.baseRevision).toBe(5)});
+test('an editor keeps its acknowledged base after the background save',async()=>{const a=(await saveDraft(draft(),0)).draft;await acknowledge(a,{id:a.id,content:a.content,revision:1,lastMutationId:a.mutationId,createdAt:1,updatedAt:1});const r=await saveDraft({...a,mutationId:'next'},a.localRevision);expect(r.draft.baseRevision).toBe(1)});
+
+test("purge cache cleanup preserves concurrent local edits for recovery",async()=>{await saveDraft(draft(),0);await forgetEntity("alice","note","note1");expect(await listConflicts("alice")).toHaveLength(1)});

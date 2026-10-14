@@ -18,6 +18,14 @@ export async function commitEntity<T extends NoteContent|MachineContent>(uid:str
   const revision=(old?.revision||0)+1;
   tx.set(ref,{...draft.content,revision,lastMutationId:draft.mutationId,createdAt:snap.data()?.createdAt||serverTimestamp(),updatedAt:serverTimestamp()});
   return{kind:'written' as const,revision};
+ }).catch(async error=>{
+  // A concurrent replacement can make immutable-history rules reject before
+  // the transaction precondition triggers the SDK's normal retry.
+  if(!['permission-denied','aborted'].includes(error.code))throw error;
+  requireOwner(uid);const latest=await getDoc(ref);const remote=latest.exists()?fromSnapshot<T>(latest):null;
+  if(remote?.lastMutationId===draft.mutationId)return{kind:'saved' as const,value:remote};
+  if((remote?.revision||0)!==draft.baseRevision)return{kind:'conflict' as const,remote};
+  throw error;
  });
  if(result.kind!=='written')return result;
  let saved=await getDoc(ref);if(saved.data()?.lastMutationId!==draft.mutationId&&kind==='note')saved=await getDoc(history(result.revision));

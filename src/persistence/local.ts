@@ -17,7 +17,7 @@ export async function saveDraft<T>(input:Draft<T>,expectedLocalRevision:number):
   const conflict={...input,mutationId:crypto.randomUUID()};
   await tx.objectStore('conflicts').put({uid:input.uid,draft:conflict,pending:true},key(input.uid,conflict.mutationId));await tx.done;d.close();announce();return{kind:'conflict',draft:conflict};
  }
- const draft={...input,baseRevision:current?.draft.baseRevision??input.baseRevision,localRevision:expectedLocalRevision+1,modifiedAt:Date.now()};
+ const draft={...input,baseRevision:current?.pending?current.draft.baseRevision:Math.max(current?.draft.baseRevision||0,input.baseRevision),localRevision:expectedLocalRevision+1,modifiedAt:Date.now()};
  await tx.objectStore('drafts').put({uid:input.uid,draft,pending:true},k);await tx.done;d.close();announce();return{kind:'saved',draft};
 }
 export async function getDraft<T>(uid:string,kind:EntityKind,id:string):Promise<Draft<T>|null>{const d=await db();try{return(await d.get('drafts',key(uid,kind,id)))?.draft as Draft<T>||null}finally{d.close()}}
@@ -44,3 +44,5 @@ export async function clearAccountCache(uid:string){const d=await db();try{const
 export async function replaceDraft<T>(expected:Draft<T>,replacement:Draft<T>,pending:boolean){
  const d=await db();try{const tx=d.transaction(['drafts','conflicts'],'readwrite'),k=key(expected.uid,expected.kind,expected.id);const row=await tx.objectStore('drafts').get(k);if(!row||row.draft.localRevision!==expected.localRevision||row.draft.mutationId!==expected.mutationId){await tx.done;throw Error('The draft changed. Review the latest version before resolving.')}await tx.objectStore('conflicts').put({uid:expected.uid,draft:expected,pending:true},key(expected.uid,crypto.randomUUID()));await tx.objectStore('drafts').put({uid:expected.uid,draft:{...replacement,localRevision:expected.localRevision+1},pending},k);await tx.done;}finally{d.close()}announce();
 }
+export async function replaceCached<T>(uid:string,kind:EntityKind,values:Saved<T>[]){const d=await db();try{const tx=d.transaction('saved','readwrite');let c=await tx.store.openCursor();while(c){if(c.value.uid===uid&&c.value.kind===kind)await c.delete();c=await c.continue()}for(const value of values)await tx.store.put({uid,kind,value},key(uid,kind,value.id));await tx.done}finally{d.close()}}
+export async function forgetEntity(uid:string,kind:EntityKind,id:string){const d=await db();try{const tx=d.transaction(['saved','drafts','conflicts'],'readwrite');const k=key(uid,kind,id),row=await tx.objectStore('drafts').get(k);if(row?.pending)await tx.objectStore('conflicts').put(row,key(uid,crypto.randomUUID()));await tx.objectStore('saved').delete(k);await tx.objectStore('drafts').delete(k);await tx.done}finally{d.close()}announce()}

@@ -127,10 +127,10 @@ service cloud.firestore {
     function bounded(value, max) { return value is string && value.toUtf8().size() <= max; }
     function pathId(value) { return value is string && value.matches('^[A-Za-z0-9_-]{1,128}$'); }
     function weekValue(value) { return value == null || (value is int && value >= 1 && value <= 500); }
-    function tagList0(v) { return (v.size() <= 0 || bounded(v[0],40)) && (v.size() <= 1 || bounded(v[1],40)) && (v.size() <= 2 || bounded(v[2],40)) && (v.size() <= 3 || bounded(v[3],40)) && (v.size() <= 4 || bounded(v[4],40)) && (v.size() <= 5 || bounded(v[5],40)) && (v.size() <= 6 || bounded(v[6],40)) && (v.size() <= 7 || bounded(v[7],40)) && (v.size() <= 8 || bounded(v[8],40)) && (v.size() <= 9 || bounded(v[9],40)); }
-    function tagList10(v) { return (v.size() <= 10 || bounded(v[10],40)) && (v.size() <= 11 || bounded(v[11],40)) && (v.size() <= 12 || bounded(v[12],40)) && (v.size() <= 13 || bounded(v[13],40)) && (v.size() <= 14 || bounded(v[14],40)) && (v.size() <= 15 || bounded(v[15],40)) && (v.size() <= 16 || bounded(v[16],40)) && (v.size() <= 17 || bounded(v[17],40)) && (v.size() <= 18 || bounded(v[18],40)) && (v.size() <= 19 || bounded(v[19],40)); }
-    function tagList20(v) { return (v.size() <= 20 || bounded(v[20],40)) && (v.size() <= 21 || bounded(v[21],40)) && (v.size() <= 22 || bounded(v[22],40)) && (v.size() <= 23 || bounded(v[23],40)) && (v.size() <= 24 || bounded(v[24],40)) && (v.size() <= 25 || bounded(v[25],40)) && (v.size() <= 26 || bounded(v[26],40)) && (v.size() <= 27 || bounded(v[27],40)) && (v.size() <= 28 || bounded(v[28],40)) && (v.size() <= 29 || bounded(v[29],40)); }
-    function tagList(v) { return v is list && v.size() <= 30 && v.toSet().size() == v.size() && tagList0(v) && tagList10(v) && tagList20(v); }
+    function tagList0(v) { let n = v.size(); return (n <= 0 || v[0].toUtf8().size() <= 40) && (n <= 1 || v[1].toUtf8().size() <= 40) && (n <= 2 || v[2].toUtf8().size() <= 40) && (n <= 3 || v[3].toUtf8().size() <= 40) && (n <= 4 || v[4].toUtf8().size() <= 40) && (n <= 5 || v[5].toUtf8().size() <= 40) && (n <= 6 || v[6].toUtf8().size() <= 40) && (n <= 7 || v[7].toUtf8().size() <= 40) && (n <= 8 || v[8].toUtf8().size() <= 40) && (n <= 9 || v[9].toUtf8().size() <= 40); }
+    function tagList10(v) { let n = v.size(); return (n <= 10 || v[10].toUtf8().size() <= 40) && (n <= 11 || v[11].toUtf8().size() <= 40) && (n <= 12 || v[12].toUtf8().size() <= 40) && (n <= 13 || v[13].toUtf8().size() <= 40) && (n <= 14 || v[14].toUtf8().size() <= 40) && (n <= 15 || v[15].toUtf8().size() <= 40) && (n <= 16 || v[16].toUtf8().size() <= 40) && (n <= 17 || v[17].toUtf8().size() <= 40) && (n <= 18 || v[18].toUtf8().size() <= 40) && (n <= 19 || v[19].toUtf8().size() <= 40); }
+    function tagList20(v) { let n = v.size(); return (n <= 20 || v[20].toUtf8().size() <= 40) && (n <= 21 || v[21].toUtf8().size() <= 40) && (n <= 22 || v[22].toUtf8().size() <= 40) && (n <= 23 || v[23].toUtf8().size() <= 40) && (n <= 24 || v[24].toUtf8().size() <= 40) && (n <= 25 || v[25].toUtf8().size() <= 40) && (n <= 26 || v[26].toUtf8().size() <= 40) && (n <= 27 || v[27].toUtf8().size() <= 40) && (n <= 28 || v[28].toUtf8().size() <= 40) && (n <= 29 || v[29].toUtf8().size() <= 40); }
+    function tagList(v) { return v is list && v.size() <= 30 && v.toSet().size() == v.size() && (v.size() == 0 || tagList0(v)) && (v.size() <= 10 || tagList10(v)) && (v.size() <= 20 || tagList20(v)); }
     function imageIds(v) {
       // Round-trip equality rejects non-strings and embedded separators.
       let joined = v.join('|');
@@ -155,10 +155,16 @@ service cloud.firestore {
     function replacing(d) { return d.revision == resource.data.revision + 1 && d.createdAt == resource.data.createdAt && d.updatedAt == request.time && d.lastMutationId != resource.data.lastMutationId; }
     match /users/{uid}/notebookNotes/{noteId} {
       allow read: if isOwner(uid);
-      allow create: if isOwner(uid) && pathId(noteId) && validNoteData(request.resource.data) && creating(request.resource.data);
+      allow create: if isOwner(uid) && pathId(noteId) && !exists(/databases/$(database)/documents/users/$(uid)/purgedNotes/$(noteId)) && validNoteData(request.resource.data) && creating(request.resource.data);
       allow update: if isOwner(uid) && validNoteData(request.resource.data) && replacing(request.resource.data) &&
         getAfter(/databases/$(database)/documents/users/$(uid)/noteHistory/$(noteId)/versions/$(string(resource.data.revision))).data == resource.data;
-      allow delete: if isOwner(uid) && resource.data.deletedAt != null;
+      allow delete: if isOwner(uid) && resource.data.deletedAt != null && existsAfter(/databases/$(database)/documents/users/$(uid)/purgedNotes/$(noteId));
+    }
+    match /users/{uid}/purgedNotes/{noteId} {
+      allow read: if isOwner(uid);
+      allow create: if isOwner(uid) && request.resource.data.keys().hasOnly(['deletedAt']) && request.resource.data.deletedAt == request.time &&
+        get(/databases/$(database)/documents/users/$(uid)/notebookNotes/$(noteId)).data.deletedAt != null &&
+        !existsAfter(/databases/$(database)/documents/users/$(uid)/notebookNotes/$(noteId));
     }
     match /users/{uid}/machines/{machineId} {
       allow read: if isOwner(uid);
