@@ -1,0 +1,9 @@
+import {initializeApp,getApps,type FirebaseApp} from 'firebase/app';
+import {getAuth,connectAuthEmulator} from 'firebase/auth';
+import {getFirestore,connectFirestoreEmulator} from 'firebase/firestore';
+export function validateEnvironment(mode:string,projectId:string,preview:boolean){if(preview&&projectId==='oscp-notes')throw Error('Preview builds cannot use production Firebase');if(!['production','test','emulator'].includes(mode))throw Error('Firebase is not configured. Use the local demo or configure sign-in.');if(mode==='emulator'&&!projectId.startsWith('demo-'))throw Error('Emulators require a demo project');if(mode==='test'&&projectId==='oscp-notes')throw Error('Test mode cannot use production Firebase')}
+let client:ReturnType<typeof initializeClient>|undefined;
+export function createFirebaseClient(mode:'production'|'test'|'emulator'):FirebaseApp{const env=import.meta.env;const projectId=env.VITE_FIREBASE_PROJECT_ID||(mode==='emulator'?'demo-oscp-notebook':'');validateEnvironment(mode,projectId,env.VITE_VERCEL_ENV==='preview');if(!projectId)throw Error('Firebase project is missing');return getApps()[0]||initializeApp({projectId,apiKey:env.VITE_FIREBASE_API_KEY||'demo-key',authDomain:env.VITE_FIREBASE_AUTH_DOMAIN||'localhost',appId:env.VITE_FIREBASE_APP_ID||'demo-app'});}
+function initializeClient(){const mode=import.meta.env.VITE_FIREBASE_MODE;const app=createFirebaseClient(mode);const auth=getAuth(app),db=getFirestore(app);if(mode==='emulator'){connectAuthEmulator(auth,'http://127.0.0.1:9199',{disableWarnings:true});connectFirestoreEmulator(db,'127.0.0.1',8180)}return{app,auth,db}}
+export function getClient(){return client??=initializeClient()}
+export function requireOwner(uid:string){if(getClient().auth.currentUser?.uid!==uid)throw Error('Sign in to the original account before syncing this draft')}

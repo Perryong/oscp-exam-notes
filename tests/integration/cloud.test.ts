@@ -1,0 +1,9 @@
+import {test,expect,beforeAll} from 'vitest';
+import {signInAnonymously} from 'firebase/auth';
+import {getClient} from '../../src/firebase/client';
+import {commitNote,listHistory,pruneHistory} from '../../src/firebase/notes';
+import {draft,noteContent} from '../fixtures/builders';
+let uid:string;beforeAll(async()=>{uid=(await signInAnonymously(getClient().auth)).user.uid});
+test('compare-and-save rejects stale edits and recognizes retries',async()=>{const a=draft({uid,id:crypto.randomUUID()});const first=await commitNote(uid,a);expect(first.kind).toBe('saved');const retry=await commitNote(uid,a);expect(retry).toEqual(first);const stale=await commitNote(uid,{...a,mutationId:crypto.randomUUID()});expect(stale.kind).toBe('conflict');const next=await commitNote(uid,{...a,baseRevision:1,mutationId:crypto.randomUUID(),content:noteContent({title:'updated'})});expect(next.kind).toBe('saved');expect((await listHistory(uid,a.id))[0].content.title).toBe('Untitled note');expect((await commitNote(uid,a)).kind).toBe('saved')});
+test('history pruning retains twenty previous versions',async()=>{let a=draft({uid,id:crypto.randomUUID()});for(let i=0;i<22;i++){const r=await commitNote(uid,a);expect(r.kind).toBe('saved');if(r.kind==='saved')a={...a,baseRevision:r.value.revision,mutationId:crypto.randomUUID(),content:noteContent({title:String(i)})}}await pruneHistory(uid,a.id);expect(await listHistory(uid,a.id)).toHaveLength(20)});
+test('unknown pruned retry stays a conflict',async()=>{const original=draft({uid,id:crypto.randomUUID()});let current=original;for(let i=0;i<23;i++){const r=await commitNote(uid,current);if(r.kind!=='saved')throw Error('Unexpected conflict');current={...current,baseRevision:r.value.revision,mutationId:crypto.randomUUID()}}await pruneHistory(uid,original.id);expect((await commitNote(uid,original)).kind).toBe('conflict')});
