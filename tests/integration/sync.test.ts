@@ -1,0 +1,12 @@
+import 'fake-indexeddb/auto';
+import {test,expect,beforeAll,afterAll} from 'vitest';
+import {signInAnonymously} from 'firebase/auth';
+import {getClient} from '../../src/firebase/client';
+import {commitNote,listHistory} from '../../src/firebase/notes';
+import {saveDraft,listDrafts} from '../../src/persistence/local';
+import {startSync,syncDraft,resolveConflict,enableSingleTab} from '../../src/persistence/sync';
+import {draft} from '../fixtures/builders';
+let uid:string,stop:()=>void;
+beforeAll(async()=>{Object.defineProperty(globalThis,'window',{value:new EventTarget(),configurable:true});Object.defineProperty(navigator,'onLine',{value:true,configurable:true});uid=(await signInAnonymously(getClient().auth)).user.uid;await enableSingleTab(uid);stop=startSync(uid)});afterAll(()=>stop());
+test('lost acknowledgment then a newer device write recovers without duplicate history',async()=>{const a=(await saveDraft(draft({uid,id:crypto.randomUUID()}),0)).draft;await commitNote(uid,a);await commitNote(uid,{...a,baseRevision:1,mutationId:crypto.randomUUID(),content:{...a.content,title:'Other device'}});const retry=await syncDraft(a);expect(retry.kind).toBe('saved');expect(await listDrafts(uid,'note')).toHaveLength(0);expect(await listHistory(uid,a.id)).toHaveLength(1)});
+test('conflicting edit can be explicitly saved as a separate note',async()=>{const a=(await saveDraft(draft({uid,id:crypto.randomUUID()}),0)).draft;await commitNote(uid,{...a,mutationId:crypto.randomUUID(),content:{...a.content,title:'Remote'}});expect((await syncDraft(a)).kind).toBe('conflict');await resolveConflict(uid,'note',a.id,'copy');const pending=await listDrafts(uid,'note');expect(pending).toHaveLength(1);expect(pending[0].id).not.toBe(a.id);expect((await syncDraft(pending[0] as typeof a)).kind).toBe('saved')});
