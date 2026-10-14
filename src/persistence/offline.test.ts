@@ -7,6 +7,7 @@ const state = vi.hoisted(() => ({
   uid: "alice",
   image: null as unknown,
   switchOnImage: false,
+  offline: false,
 }));
 vi.mock("../firebase/client", () => ({
   requireOwner: (uid: string) => {
@@ -22,35 +23,41 @@ vi.mock("../firebase/images", () => ({
 }));
 vi.mock("firebase/firestore", () => ({
   collection: (_db: unknown, ...path: string[]) => path.at(-1),
-  getDocs: async (kind: string) => ({
-    docs:
-      kind === "notebookNotes"
-        ? [
-            {
-              id: "n",
-              data: () => ({
-                contentJson: '{"type":"doc","content":[{"type":"paragraph"}]}',
-                title: "n",
-                text: "",
-                tags: [],
-                machineId: null,
-                week: null,
-                attachmentIds: ["missing"],
-                schemaVersion: 1,
-                deletedAt: null,
-                sourceHtml: null,
-                revision: 1,
-                lastMutationId: "m",
-                createdAt: { toMillis: () => 1 },
-                updatedAt: { toMillis: () => 1 },
-              }),
-            },
-          ]
-        : [],
-  }),
+  getDocsFromServer: async (kind: string) => {
+    if (state.offline) throw Error("offline");
+    return query(kind);
+  },
+  getDocs: async (kind: string) => (state.offline ? { docs: [] } : query(kind)),
 }));
+const query = async (kind: string) => ({
+  docs:
+    kind === "notebookNotes"
+      ? [
+          {
+            id: "n",
+            data: () => ({
+              contentJson: '{"type":"doc","content":[{"type":"paragraph"}]}',
+              title: "n",
+              text: "",
+              tags: [],
+              machineId: null,
+              week: null,
+              attachmentIds: ["missing"],
+              schemaVersion: 1,
+              deletedAt: null,
+              sourceHtml: null,
+              revision: 1,
+              lastMutationId: "m",
+              createdAt: { toMillis: () => 1 },
+              updatedAt: { toMillis: () => 1 },
+            }),
+          },
+        ]
+      : [],
+});
 beforeEach(async () => {
   state.uid = "alice";
+  state.offline = false;
   state.image = null;
   state.switchOnImage = false;
   await clearAccountCache("alice");
@@ -110,4 +117,9 @@ test("quota failure leaves the previous completed timestamp intact", async () =>
 test("switching accounts during image download cannot complete the previous snapshot", async () => {
   state.switchOnImage = true;
   await expect(downloadOffline("alice")).rejects.toThrow("Account changed");
+});
+
+test("offline query cannot certify an empty downloaded snapshot", async () => {
+  state.offline = true;
+  await expect(downloadOffline("alice")).rejects.toThrow("offline");
 });

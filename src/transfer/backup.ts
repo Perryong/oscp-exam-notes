@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocsFromServer } from "firebase/firestore";
 import type {
   NotebookBundle,
   NoteContent,
@@ -25,6 +25,7 @@ import {
   getMeta,
   setMeta,
   listConflicts,
+  storeRecovery,
 } from "../persistence/local";
 import { seedMachines } from "../notebook/seeds";
 import { digest } from "./legacy";
@@ -44,6 +45,29 @@ export function validateBundle(input: unknown): NotebookBundle {
   )
     throw Error("Invalid backup version or structure");
   const b = input as unknown as NotebookBundle;
+  if (b.recovery !== undefined && !Array.isArray(b.recovery))
+    throw Error("Invalid recovery records");
+  const recovery = b.recovery || [];
+  const mutationIds = new Set<string>();
+  for (const d of recovery) {
+    if (
+      !d ||
+      !validId(d.id) ||
+      !validId(d.mutationId) ||
+      mutationIds.has(d.mutationId) ||
+      typeof d.uid !== "string" ||
+      !Number.isSafeInteger(d.localRevision) ||
+      d.localRevision < 0 ||
+      !Number.isSafeInteger(d.baseRevision) ||
+      d.baseRevision < 0 ||
+      !Number.isFinite(d.modifiedAt)
+    )
+      throw Error("Invalid recovery draft");
+    mutationIds.add(d.mutationId);
+    if (d.kind === "note") validateNote(d.content);
+    else if (d.kind === "machine") validateMachine(d.content);
+    else throw Error("Invalid recovery kind");
+  }
   const allIds = [...b.notes, ...b.machines, ...b.images].map(
     (item) => item?.id,
   );
@@ -96,7 +120,11 @@ export function validateBundle(input: unknown): NotebookBundle {
       rev.add(v.revision);
     }
   }
-  for (const n of [...b.notes, ...Object.values(b.history).flat()]) {
+  for (const n of [
+    ...b.notes,
+    ...Object.values(b.history).flat(),
+    ...(recovery.filter((d) => d.kind === "note") as Draft<NoteContent>[]),
+  ]) {
     if (n.content.machineId && !machineIds.has(n.content.machineId))
       throw Error("Missing linked machine");
     for (const id of n.content.attachmentIds)
@@ -120,10 +148,15 @@ export function remapBundle(
   const map =
     mapping ||
     Object.fromEntries(
-      [...input.notes, ...input.machines, ...input.images].map((item) => [
-        item.id,
-        crypto.randomUUID(),
-      ]),
+      [
+        ...input.notes,
+        ...input.machines,
+        ...input.images,
+        ...(input.recovery || []),
+        ...(input.recovery || []).map((d) => ({
+          id: "recovery:" + d.mutationId,
+        })),
+      ].map((item) => [item.id, crypto.randomUUID()]),
     );
   const content = (n: NoteContent): NoteContent => {
     const doc = decodeEditor(n.contentJson);
@@ -148,6 +181,13 @@ export function remapBundle(
     mapping: map,
     bundle: {
       ...input,
+      recovery: (input.recovery || []).map((d) => ({
+        ...d,
+        id: map[d.id],
+        mutationId: map["recovery:" + d.mutationId],
+        content:
+          d.kind === "note" ? content(d.content as NoteContent) : d.content,
+      })),
       notes: input.notes.map((n) => ({
         ...n,
         id: map[n.id],
@@ -174,12 +214,18 @@ export async function collectBackup(uid: string) {
   let notes = await listCached<NoteContent>(uid, "note"),
     machines = await listCached<MachineContent>(uid, "machine");
   try {
-    notes = (
-      await getDocs(collection(getClient().db, "users", uid, "notebookNotes"))
+    const serverNotes = (
+      await getDocsFromServer(
+        collection(getClient().db, "users", uid, "notebookNotes"),
+      )
     ).docs.map((s) => fromSnapshot<NoteContent>(s));
-    machines = (
-      await getDocs(collection(getClient().db, "users", uid, "machines"))
+    const serverMachines = (
+      await getDocsFromServer(
+        collection(getClient().db, "users", uid, "machines"),
+      )
     ).docs.map((s) => fromSnapshot<MachineContent>(s));
+    notes = serverNotes;
+    machines = serverMachines;
   } catch (e) {
     report.failed.push({ id: "cloud-snapshot", reason: String(e) });
   }
@@ -219,8 +265,25 @@ export async function collectBackup(uid: string) {
       updatedAt: d.modifiedAt,
     });
   }
+  const conflicts = await listConflicts<NoteContent | MachineContent>(uid);
+  for (const d of conflicts.filter((d) => d.kind === "machine"))
+    if (!machines.some((m) => m.id === d.id))
+      machines.push({
+        id: d.id,
+        content: d.content as MachineContent,
+        revision: d.baseRevision,
+        lastMutationId: d.mutationId,
+        createdAt: d.modifiedAt,
+        updatedAt: d.modifiedAt,
+      });
   for (const id of new Set(
-    notes.map((n) => n.content.machineId).filter(Boolean),
+    [
+      ...notes,
+      ...Object.values(history).flat(),
+      ...(conflicts.filter((d) => d.kind === "note") as Draft<NoteContent>[]),
+    ]
+      .map((n) => n.content.machineId)
+      .filter(Boolean),
   )) {
     if (!machines.some((m) => m.id === id)) {
       const seed = seedMachines.find((m) => m.id === id);
@@ -232,7 +295,6 @@ export async function collectBackup(uid: string) {
         });
     }
   }
-  const conflicts = await listConflicts<NoteContent | MachineContent>(uid);
   const images: NotebookBundle["images"] = [];
   const ids = new Set(
     [
@@ -257,13 +319,12 @@ export async function collectBackup(uid: string) {
   }
   const legacySources =
     (await getMeta<Record<string, string>>(uid, "legacySources")) || {};
-  conflicts.forEach((d, i) => {
-    legacySources["recovery-draft:" + i] = JSON.stringify(d);
-  });
+
   const sources =
     (await getMeta<Record<string, string>>(uid, "portableSources")) || {};
   const bundle: NotebookBundle = {
     version: 1,
+    recovery: conflicts,
     notes,
     machines,
     history,
@@ -271,6 +332,14 @@ export async function collectBackup(uid: string) {
     legacySources: { ...legacySources, ...sources },
     unmatchedProgress: (await getMeta(uid, "unmatchedProgress")) || {},
   };
+  requireOwner(uid);
+  if (!report.failed.length) {
+    try {
+      validateBundle(bundle);
+    } catch (e) {
+      report.failed.push({ id: "backup-validation", reason: String(e) });
+    }
+  }
   return {
     bundle,
     report,
@@ -287,9 +356,10 @@ export async function collectBackup(uid: string) {
 export async function exportBackup(uid: string) {
   const { bundle, report, draftRevisions } = await collectBackup(uid);
   const blob = new Blob([JSON.stringify(bundle)], { type: "application/json" });
-  if (!report.failed.length)
-    await setMeta(uid, "prepared-export", { draftRevisions, at: Date.now() });
-  return { blob, report };
+  const acknowledgment = report.failed.length
+    ? undefined
+    : { draftRevisions, at: Date.now() };
+  return { blob, report, acknowledgment };
 }
 export async function importBackup(
   uid: string,
@@ -374,6 +444,19 @@ export async function importBackup(
         if (result.kind === "conflict")
           throw Error("Concurrent import edit; preserved for review");
       }
+    });
+  for (const recovery of bundle.recovery || [])
+    await record("recovery:" + recovery.mutationId, async () => {
+      if (recovery.kind === "note")
+        for (const id of (recovery.content as NoteContent).attachmentIds)
+          if (!session!.done.includes(id))
+            throw Error("Screenshot import incomplete: " + id);
+      await storeRecovery({
+        ...recovery,
+        uid,
+        baseRevision: 0,
+        localRevision: 0,
+      });
     });
   const sources =
     (await getMeta<Record<string, string>>(uid, "portableSources")) || {};

@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocsFromServer } from "firebase/firestore";
 import { getClient, requireOwner } from "../firebase/client";
 import { fromSnapshot } from "../firebase/notes";
 import { loadImage } from "../firebase/images";
@@ -44,10 +44,14 @@ export async function downloadOffline(uid: string): Promise<OfflineReport> {
   requireOwner(uid);
   const old = await getMeta<Snapshot>(uid, "offline"),
     notes = (
-      await getDocs(collection(getClient().db, "users", uid, "notebookNotes"))
+      await getDocsFromServer(
+        collection(getClient().db, "users", uid, "notebookNotes"),
+      )
     ).docs.map((s) => fromSnapshot<NoteContent>(s)),
     machines = (
-      await getDocs(collection(getClient().db, "users", uid, "machines"))
+      await getDocsFromServer(
+        collection(getClient().db, "users", uid, "machines"),
+      )
     ).docs.map((s) => fromSnapshot<MachineContent>(s));
   requireOwner(uid);
   const missing: string[] = [],
@@ -91,7 +95,7 @@ export async function downloadOffline(uid: string): Promise<OfflineReport> {
 }
 export async function getStoredImageBytes(uid: string) {
   requireOwner(uid);
-  const images = await getDocs(
+  const images = await getDocsFromServer(
     collection(getClient().db, "users", uid, "images"),
   );
   requireOwner(uid);

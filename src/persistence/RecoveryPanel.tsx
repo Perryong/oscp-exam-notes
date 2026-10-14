@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import type { NoteContent, Saved } from "../notebook/model";
 import { listHistory, readEntity } from "../firebase/notes";
-import { getDraft, saveDraft } from "./local";
+import { beforeLeaveEditor } from "../editor/NoteEditor";
+import { getDraft, saveDraft, replaceDraft } from "./local";
 export default function RecoveryPanel({
   uid,
   id,
@@ -24,23 +25,23 @@ export default function RecoveryPanel({
   }, [uid, id]);
   async function restore(v: Saved<NoteContent>) {
     try {
+      if (!(await beforeLeaveEditor()))
+        throw Error("Save or export the live edit before restoring");
       const local = await getDraft<NoteContent>(uid, "note", id),
         remote = await readEntity<NoteContent>(uid, "note", id);
       if (!remote) throw Error("Note unavailable");
-      const result = await saveDraft(
-        {
-          uid,
-          kind: "note",
-          id,
-          content: { ...v.content, deletedAt: null },
-          baseRevision: remote.revision,
-          localRevision: local?.localRevision || 0,
-          mutationId: crypto.randomUUID(),
-          modifiedAt: Date.now(),
-        },
-        local?.localRevision || 0,
-      );
-      if (result.kind === "conflict")
+      const replacement = {
+        uid,
+        kind: "note" as const,
+        id,
+        content: { ...v.content, deletedAt: null },
+        baseRevision: remote.revision,
+        localRevision: local?.localRevision || 0,
+        mutationId: crypto.randomUUID(),
+        modifiedAt: Date.now(),
+      };
+      if (local) await replaceDraft(local, replacement, true);
+      else if ((await saveDraft(replacement, 0)).kind === "conflict")
         throw Error(
           "Another tab edited this note. Your restoration is retained for recovery.",
         );

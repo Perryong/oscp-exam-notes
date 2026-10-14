@@ -2,13 +2,16 @@ import { useRef, useState } from "react";
 import { exportBackup, importBackup } from "./backup";
 import { exportMarkdown } from "./markdown";
 import { downloadBlob } from "./TransferPanel";
-import { getMeta, setMeta } from "../persistence/local";
+import { setMeta } from "../persistence/local";
 import type { TransferReport } from "../notebook/model";
 export default function BackupPanel({ uid }: { uid: string }) {
   const [prepared, setPrepared] = useState<{
       blob: Blob;
       report: TransferReport;
       name: string;
+      acknowledgment?: Awaited<
+        ReturnType<typeof exportBackup>
+      >["acknowledgment"];
     } | null>(null),
     [report, setReport] = useState<TransferReport | null>(null),
     [error, setError] = useState(""),
@@ -65,8 +68,8 @@ export default function BackupPanel({ uid }: { uid: string }) {
                 !prepared.report.failed.length &&
                 prepared.name.endsWith(".json")
               )
-                void getMeta(uid, "prepared-export").then((value) =>
-                  setMeta(uid, "last-export", value),
+                void setMeta(uid, "last-export", prepared.acknowledgment).catch(
+                  (e) => setError(String(e)),
                 );
             }}
           >

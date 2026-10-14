@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNotebook } from "../notebook/NotebookContext";
 import { changeMachine } from "../notebook/MachineView";
@@ -116,6 +117,29 @@ export default function StudyPlan({ uid }: { uid?: string }) {
                 </div>
               </article>
             ))}
+            {machines
+              .filter(
+                (m) =>
+                  m.content.week === w.week &&
+                  !Object.values(ids).includes(m.id),
+              )
+              .map((m) => (
+                <article className="machine-row" key={m.id}>
+                  <div>
+                    <h3>
+                      <Link to={"/machines#" + m.id}>{m.content.name}</Link>
+                    </h3>
+                    <div className="tags">
+                      <span>{m.content.platform}</span>
+                      <span>{m.content.os}</span>
+                      {m.content.tags.map((t) => (
+                        <span key={t}>{t}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <span>{m.content.progress.replaceAll("-", " ")}</span>
+                </article>
+              ))}
           </div>
         </section>
       ))}

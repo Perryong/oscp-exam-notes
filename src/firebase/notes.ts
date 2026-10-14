@@ -2,7 +2,7 @@ import {
   doc,
   collection,
   getDoc,
-  getDocs,
+  getDocsFromServer,
   runTransaction,
   serverTimestamp,
   deleteDoc,
@@ -125,7 +125,7 @@ export async function listHistory(
 ): Promise<Saved<NoteContent>[]> {
   requireOwner(uid);
   return (
-    await getDocs(
+    await getDocsFromServer(
       collection(
         getClient().db,
         "users",

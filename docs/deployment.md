@@ -36,7 +36,7 @@ See the official [Vite deployment guide](https://vercel.com/docs/frameworks/fron
 5. Export legacy browser sources on the old origin and keep a private backup. Deploy tested rules and indexes to the separate test project first: `npx firebase deploy --only firestore:rules,firestore:indexes --project YOUR_TEST_PROJECT`.
 6. After a preview smoke test, deploy rules/indexes to production **before** publishing the frontend. Keep legacy collections and rules during migration. Check sign-in, creation, reload, screenshots and export on a disposable note after publishing.
 
-No live deployment, live account provisioning or production smoke test has been performed by this implementation task. The local validation record will be updated after final review.
+No live deployment, live account provisioning or production smoke test has been performed by this implementation task. The final local validation record is below.
 
 ## Operational limits and recovery
 
@@ -44,7 +44,7 @@ Notes have a 600 KiB combined UTF-8 editor/text/source payload limit. Screenshot
 
 Offline downloads describe a captured revision snapshot, not perpetual freshness. Service workers cache the static shell only. Browser cache eviction may remove downloaded data; missing notes/images are explicitly reported. An initial visit with no connection cannot install the app.
 
-Conflict decisions and competing local drafts remain recoverable in Settings. Clearing device data requires no unexported pending/recovery drafts and no other open notebook tabs. Screenshot deletion is deliberately deferred; the explicit storage-total action reads all image payloads and may incur Firestore read charges.
+Conflict decisions and competing local drafts remain recoverable in Settings. Full backups include structured recovery copies and their screenshots; restoring a backup remaps and restores those copies. Completed exports require a confirmed server snapshot; offline fallback exports are explicitly partial. Clearing device data requires no unexported pending/recovery drafts and no other open notebook tabs. Screenshot deletion is deliberately deferred; the explicit storage-total action reads all image payloads and may incur Firestore read charges.
 
 ## Rollback
 
@@ -52,6 +52,6 @@ Before rolling back the frontend, export new-format notes with a full JSON backu
 
 ## Local validation record (2026-10-15)
 
-Before independent review: unit tests 45/45, rules tests 11/11, emulator integration tests 14/14, development browser tests 8/8, production-preview tests 4/4. Typecheck, production build, formatting and diff whitespace checks passed. The built directory contains only static assets; no private-key PEM, service-account configuration or legacy fixture was found. Runtime dependency audit: zero reported vulnerabilities after pinning the patched transitive gRPC package. The remaining large-bundle warning reflects the embedded reference material plus editor/Firebase dependencies.
+After independent review and one regression-tested fix pass: unit tests 56/56, rules tests 11/11, emulator integration tests 14/14, development browser tests 8/8, production-preview tests 4/4 (93 total). See [the review record](implementation-review.md) for fixes, decisions and deferred minors. Typecheck, production build, formatting and diff whitespace checks passed. The built directory contains only static assets; no private-key PEM, service-account configuration or legacy fixture was found. Runtime dependency audit: zero reported vulnerabilities after pinning the patched transitive gRPC package. The remaining large-bundle warning reflects the embedded reference material plus editor/Firebase dependencies.
 
 Live project preflight still returned “Failed to authenticate”; no production resources were changed.

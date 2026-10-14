@@ -338,3 +338,17 @@ export async function removeRecovery(uid: string, mutationId: string) {
   }
   announce();
 }
+
+export async function storeRecovery(draft: Draft<unknown>) {
+  const d = await db();
+  try {
+    await d.put(
+      "conflicts",
+      { uid: draft.uid, draft, pending: true },
+      key(draft.uid, "import", draft.mutationId),
+    );
+  } finally {
+    d.close();
+  }
+  announce();
+}

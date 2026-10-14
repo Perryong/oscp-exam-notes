@@ -27,18 +27,22 @@ export const Screenshot = Node.create({
     ];
   },
 });
+export const safeLink = (href: string) =>
+  /^https?:\/\/[^\s]+$/i.test(href) ||
+  /^\/notes\/[A-Za-z0-9_-]{1,128}$/.test(href);
 export const extensions = [
   StarterKit.configure({
-    link: { openOnClick: false, protocols: ["http", "https"] },
+    link: {
+      openOnClick: false,
+      protocols: ["http", "https"],
+      isAllowedUri: (url) => safeLink(url),
+    },
   }),
   TaskList,
   TaskItem.configure({ nested: true }),
   Screenshot,
 ];
 const schema = getSchema(extensions);
-export const safeLink = (href: string) =>
-  /^https?:\/\/[^\s]+$/i.test(href) ||
-  /^\/notes\/[A-Za-z0-9_-]{1,128}$/.test(href);
 export function decodeEditor(json: string): JSONContent {
   const parsed = JSON.parse(json);
   let count = 0;

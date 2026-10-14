@@ -46,7 +46,8 @@ export default function NoteEditor({
     [tags, setTags] = useState(draft.content.tags.join(", ")),
     [status, setStatus] = useState("Saved locally"),
     [error, setError] = useState(""),
-    [busy, setBusy] = useState(false);
+    [busy, setBusy] = useState(false),
+    [recoveryOnly, setRecoveryOnly] = useState(false);
   const guard = useRef({ work: Promise.resolve(), unsafe: false });
   const persist = useCallback(
     (value: NoteContent) => {
@@ -66,10 +67,18 @@ export default function NoteEditor({
             },
             current.current.localRevision,
           );
-          if (result.kind === "conflict")
-            throw Error(
-              "Another tab changed this note. Your version was saved as a conflict draft.",
-            );
+          if (result.kind === "conflict") {
+            if (content.current === value) guard.current.unsafe = false;
+            if (alive.current) {
+              setRecoveryOnly(true);
+              setBusy(false);
+              setStatus("Saved as recovery copy");
+              setError(
+                "Another tab changed this note. Your edit is saved in Settings recovery copies. Reload the latest note before editing again.",
+              );
+            }
+            return;
+          }
           current.current = result.draft;
           if (alive.current) {
             onDraft?.(result.draft);
@@ -107,10 +116,19 @@ export default function NoteEditor({
       content: decodeEditor(draft.content.contentJson),
       immediatelyRender: false,
       onUpdate: ({ editor }) => {
+        const live = editor.getJSON();
+        content.current = {
+          ...content.current,
+          contentJson: JSON.stringify(live),
+          text: editor.getText(),
+        };
+        guard.current.unsafe = true;
+        guards.set(key, guard.current);
         try {
-          persist({ ...content.current, ...encodeEditor(editor.getJSON()) });
+          persist({ ...content.current, ...encodeEditor(live) });
         } catch (e) {
           setError(String(e));
+          setStatus("Save failed");
           guard.current.unsafe = true;
         }
       },
@@ -140,6 +158,9 @@ export default function NoteEditor({
     },
     [draft.id, uid],
   );
+  useEffect(() => {
+    editor?.setEditable(!recoveryOnly, false);
+  }, [editor, recoveryOnly]);
   async function addImages(files: File[]) {
     for (const file of files) {
       try {
@@ -194,6 +215,7 @@ export default function NoteEditor({
   }, [blocker]);
   useEffect(() => {
     alive.current = true;
+    guards.set(key, guard.current);
     const unload = (event: BeforeUnloadEvent) => {
       if (guard.current.unsafe) {
         event.preventDefault();
@@ -212,6 +234,7 @@ export default function NoteEditor({
       <input
         className="note-title"
         aria-label="Note title"
+        disabled={recoveryOnly}
         value={title}
         onChange={(e) => {
           setTitle(e.target.value);
@@ -220,6 +243,7 @@ export default function NoteEditor({
       />
       <input
         aria-label="Tags"
+        disabled={recoveryOnly}
         placeholder="Tags, separated by commas"
         value={tags}
         onChange={(e) => {
@@ -242,6 +266,7 @@ export default function NoteEditor({
           Machine
           <select
             aria-label="Linked machine"
+            disabled={recoveryOnly}
             defaultValue={draft.content.machineId || ""}
             onChange={(e) =>
               persist({ ...content.current, machineId: e.target.value || null })
@@ -259,6 +284,7 @@ export default function NoteEditor({
           Week
           <input
             aria-label="Study week"
+            disabled={recoveryOnly}
             type="number"
             min="1"
             max="500"
@@ -311,6 +337,7 @@ export default function NoteEditor({
         ].map(([label, action]) => (
           <button
             type="button"
+            disabled={recoveryOnly}
             key={String(label)}
             onClick={action as () => void}
           >
@@ -321,6 +348,7 @@ export default function NoteEditor({
           Screenshot
           <input
             aria-label="Add screenshot"
+            disabled={recoveryOnly}
             type="file"
             accept="image/png,image/jpeg,image/webp,image/gif"
             multiple
@@ -349,9 +377,15 @@ export default function NoteEditor({
         <div role="alert" className="error">
           {error}
           <div className="row">
-            <button onClick={() => persist(content.current)}>
-              Retry local save
-            </button>
+            {recoveryOnly ? (
+              <button onClick={() => location.reload()}>
+                Reload latest saved note
+              </button>
+            ) : (
+              <button onClick={() => persist(content.current)}>
+                Retry local save
+              </button>
+            )}
             <button
               onClick={() => {
                 const a = document.createElement("a");

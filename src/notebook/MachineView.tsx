@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { validateMachine } from "./validation";
+import ladder from "../reference/ladder.json";
 import { seedMachines } from "./seeds";
 import { useNotebook } from "./NotebookContext";
 import { combined, editDraft, createNote } from "./repository";
@@ -17,10 +19,14 @@ export async function changeMachine(
     seedMachines.find((m) => m.id === id);
   if (!value) throw Error("Machine unavailable");
   const draft = await editDraft(uid, "machine", value);
+  const content = { ...draft.content, ...change };
+  validateMachine(content);
+  if (content.week !== null && !ladder.some((w) => w.week === content.week))
+    throw Error("Choose an existing study week");
   const result = await saveDraft(
     {
       ...draft,
-      content: { ...draft.content, ...change },
+      content,
       mutationId: crypto.randomUUID(),
     },
     draft.localRevision,
@@ -63,6 +69,15 @@ export default function MachineView({ uid }: { uid: string }) {
   async function add() {
     const name = prompt("Machine name");
     if (!name) return;
+    validateMachine({
+      name,
+      platform: "Custom",
+      os: "",
+      tags: [],
+      legacyKey: null,
+      week: null,
+      progress: "not-started",
+    });
     const id = crypto.randomUUID();
     await saveDraft(
       {
@@ -114,12 +129,12 @@ export default function MachineView({ uid }: { uid: string }) {
       </div>
       {all
         .filter((m) =>
-          `${m.content.name} ${m.content.platform} ${m.content.os}`
+          `${m.content.name} ${m.content.platform} ${m.content.os} ${m.content.tags.join(" ")} ${m.content.week || ""}`
             .toLowerCase()
             .includes(query.toLowerCase()),
         )
         .map((m) => (
-          <article className="week-card" key={m.id}>
+          <article className="week-card" key={m.id} id={m.id}>
             <div>
               <h2>{m.content.name}</h2>
               <label>
@@ -150,6 +165,48 @@ export default function MachineView({ uid }: { uid: string }) {
                     />
                   </label>
                 ))}
+                <label>
+                  Week
+                  <input
+                    type="number"
+                    min="1"
+                    max={ladder.length}
+                    aria-label={"Week for " + m.content.name}
+                    defaultValue={m.content.week || ""}
+                    onBlur={(e) => {
+                      const week = e.target.value
+                        ? Number(e.target.value)
+                        : null;
+                      if (week !== m.content.week)
+                        void changeMachine(uid, m.id, { week }).catch((e) =>
+                          setError(String(e)),
+                        );
+                    }}
+                  />
+                </label>
+                <label>
+                  Tags
+                  <input
+                    aria-label={"Tags for " + m.content.name}
+                    defaultValue={m.content.tags.join(", ")}
+                    onBlur={(e) => {
+                      const tags = [
+                        ...new Set(
+                          e.target.value
+                            .split(",")
+                            .map((t) => t.trim())
+                            .filter(Boolean),
+                        ),
+                      ];
+                      if (
+                        JSON.stringify(tags) !== JSON.stringify(m.content.tags)
+                      )
+                        void changeMachine(uid, m.id, { tags }).catch((e) =>
+                          setError(String(e)),
+                        );
+                    }}
+                  />
+                </label>
                 <select
                   aria-label={"Progress for " + m.content.name}
                   value={m.content.progress}

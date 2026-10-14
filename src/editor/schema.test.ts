@@ -57,3 +57,15 @@ test("machine template has five clear sections", () => {
     "Lessons learned",
   ]);
 });
+
+test("pasted unsupported URI protocols remain readable text that can be saved", async () => {
+  const { generateJSON } = await import("@tiptap/core");
+  const { extensions } = await import("./schema");
+  for (const href of ["mailto:student@example.com", "ftp://lab.example.com"]) {
+    const parsed = generateJSON(
+      `<p><a href="${href}">Keep my text</a></p>`,
+      extensions,
+    );
+    expect(encodeEditor(parsed).text).toBe("Keep my text");
+  }
+});
