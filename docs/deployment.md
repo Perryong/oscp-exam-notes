@@ -36,7 +36,7 @@ See the official [Vite deployment guide](https://vercel.com/docs/frameworks/fron
 5. Export legacy browser sources on the old origin and keep a private backup. Deploy tested rules and indexes to the separate test project first: `npx firebase deploy --only firestore:rules,firestore:indexes --project YOUR_TEST_PROJECT`.
 6. After a preview smoke test, deploy rules/indexes to production **before** publishing the frontend. Keep legacy collections and rules during migration. Check sign-in, creation, reload, screenshots and export on a disposable note after publishing.
 
-No live deployment, live account provisioning or production smoke test has been performed by this implementation task. The final local validation record is below.
+The frontend and Firestore rules are deployed; see the live deployment record below. Live account provisioning and an authenticated production notebook smoke test remain unperformed.
 
 ## Operational limits and recovery
 
@@ -54,7 +54,7 @@ Before rolling back the frontend, export new-format notes with a full JSON backu
 
 After independent review and one regression-tested fix pass: unit tests 56/56, rules tests 11/11, emulator integration tests 14/14, development browser tests 8/8, production-preview tests 4/4 (93 total). See [the review record](implementation-review.md) for fixes, decisions and deferred minors. Typecheck, production build, formatting and diff whitespace checks passed. The built directory contains only static assets; no private-key PEM, service-account configuration or legacy fixture was found. Runtime dependency audit: zero reported vulnerabilities after pinning the patched transitive gRPC package. The remaining large-bundle warning reflects the embedded reference material plus editor/Firebase dependencies.
 
-Live project preflight still returned “Failed to authenticate”; no production resources were changed.
+At the time of this local validation, live authentication was unavailable. The later deployment record below supersedes that preflight status.
 
 
 ## Live deployment progress (2026-10-15)
@@ -63,4 +63,12 @@ Firebase authentication completed. The existing `(default)` database in `oscp-no
 
 The latest emulator checks passed: 11 rules tests, 14 integration tests, and 10 browser tests. `firebase deploy --only firestore:rules,firestore:indexes --project oscp-notes --non-interactive` succeeded. No note documents were modified by deployment.
 
-Vercel frontend publication is still pending CLI authentication. After publication, append the final hostname to Firebase authorized domains, verify public reference routes and perform an authenticated notebook smoke test. No production frontend URL has been issued yet.
+Production frontend: https://oscp-exam-notes.vercel.app
+
+Vercel deployment `dpl_FsD68X8a6aGu7TP45GfidjBcPnVP` completed with status READY. The existing `perrymikes-projects/oscp-exam-notes` project uses the six production Firebase environment variables listed above. The build ran `npm ci`, TypeScript checking, Vite, and PWA generation successfully. Firebase authorized domains now include `oscp-exam-notes.vercel.app`, preserving the previous entries.
+
+Live Chrome verification: study plan, walkthrough library, and sign-in page returned HTTP 200 and rendered their expected headings. Bashed loaded 11 code blocks and 11 image elements; the first remote screenshot loaded successfully. Article JSON returned HTTP 200, the reader fit a 390px mobile viewport, and no browser runtime errors were observed. Authenticated note creation/sync/export still needs a check using the owner's notebook account; deployment does not provision or change account passwords.
+
+The first repository upload was blocked by Vercel's commit-author membership check. The successful deployment used a clean source package of the tracked worktree files through the authenticated Vercel account, without changing Git authorship. Future Git-triggered deployments require an authorized Git author. The source remains on local branch `codex/oscp-notebook`; this deployment did not push or merge it.
+
+Vercel CLI and the Codex Vercel plugin are installed. The Vercel MCP entry exists, but its separate OAuth connection has not been verified; CLI deployment does not depend on it.
