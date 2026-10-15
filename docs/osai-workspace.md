@@ -41,3 +41,21 @@ A fresh independent reviewer found one Important issue: restoring curriculum tar
 All five distinct reference URLs were checked. Four returned HTTP 200 directly. The OffSec exam guide blocked direct automated fetch with HTTP 403, but its current content was successfully retrieved through the web research tool and its timing verified. Live account provisioning and production note writes were not performed.
 
 Rulings: seed IDs are the exception to private-ID remapping because they represent shared curriculum identity, not private entities. Existing curriculum progress wins over imported progress when already present; a fresh account receives the imported value. The UI/reference tasks were committed together because they share routes and cannot be released independently. No new dependencies, separate database, or deployment was needed.
+
+## OSAI Vault import — 2026-10-15
+
+Added `/osai/library/osai-vault` using the user-supplied `index.html`, retained at
+`scripts/sources/osai-vault.html`. All 23 modules and 70 preformatted code/text
+blocks are preserved without summarization. The existing reader provides module
+navigation, bookmarking, and lab-note creation. Source attribution remains visible.
+
+`npm run import:osai-vault` regenerates the sanitized article and catalog entry.
+Executable scripts and event handlers are excluded; escaped code remains text.
+The original source's claims (including exam details) are preserved, not verified.
+The original hero says “22 Modules”; the imported reference includes modules 00–22
+and the app correctly labels the collection as 23 modules.
+
+Validation: 71 unit tests and 3 import integrity/security tests pass, typecheck and
+production build pass, and formatting passes. Browser inspection confirmed all 23
+modules, 70 code blocks, working contents links, and no horizontal page overflow at
+the inspected viewport. No Firestore schema or rules changes.

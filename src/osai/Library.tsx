@@ -13,8 +13,8 @@ export default function Library() {
       <p className="eyebrow">OSAI / REFERENCE LIBRARY</p>
       <h1>Learn the system. Test the boundary.</h1>
       <p>
-        Original study guides, practical checklists, and attributed resources. A
-        starting point for your AI security notebook.
+        OSAI Vault, original study guides, practical checklists, and attributed
+        resources for your AI security notebook.
       </p>
       <input
         aria-label="Search OSAI library"

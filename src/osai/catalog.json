@@ -1,5 +1,115 @@
 [
   {
+    "slug": "osai-vault",
+    "title": "OSAI Vault",
+    "group": "OSAI Vault",
+    "summary": "Full reference text · 23 modules · Imported from your supplied HTML without summarization.",
+    "attribution": "Source: Kongsec · User-supplied HTML · Imported 2026-10-15. Source claims are preserved as written, not independently verified.",
+    "checkedAt": "2026-10-15",
+    "owasp": [],
+    "contents": [
+      {
+        "id": "vault-m0",
+        "title": "Overview & Adversary Mindset"
+      },
+      {
+        "id": "vault-m1",
+        "title": "AI/ML Fundamentals for Attackers"
+      },
+      {
+        "id": "vault-m2",
+        "title": "LLM Architecture Deep Dive"
+      },
+      {
+        "id": "vault-m3",
+        "title": "AI Attack Surface Map"
+      },
+      {
+        "id": "vault-m4",
+        "title": "Prompt Injection"
+      },
+      {
+        "id": "vault-m5",
+        "title": "Jailbreaking Techniques"
+      },
+      {
+        "id": "vault-m6",
+        "title": "Data Exfiltration via LLM"
+      },
+      {
+        "id": "vault-m7",
+        "title": "Insecure Output Handling"
+      },
+      {
+        "id": "vault-m8",
+        "title": "RAG Pipeline Attacks"
+      },
+      {
+        "id": "vault-m9",
+        "title": "Agent & Tool Hijacking"
+      },
+      {
+        "id": "vault-m10",
+        "title": "Multi-Agent Exploitation"
+      },
+      {
+        "id": "vault-m11",
+        "title": "Model Extraction"
+      },
+      {
+        "id": "vault-m12",
+        "title": "Data Poisoning"
+      },
+      {
+        "id": "vault-m13",
+        "title": "AI Supply Chain Attacks"
+      },
+      {
+        "id": "vault-m14",
+        "title": "AI Infra Recon"
+      },
+      {
+        "id": "vault-m15",
+        "title": "API & Endpoint Attacks"
+      },
+      {
+        "id": "vault-m16",
+        "title": "Model Serving Exploits"
+      },
+      {
+        "id": "vault-m17",
+        "title": "Case Studies & CVEs"
+      },
+      {
+        "id": "vault-m18",
+        "title": "Red Team Scenarios"
+      },
+      {
+        "id": "vault-m19",
+        "title": "OWASP LLM Top 10"
+      },
+      {
+        "id": "vault-m20",
+        "title": "Tools Arsenal"
+      },
+      {
+        "id": "vault-m21",
+        "title": "Labs & Practice"
+      },
+      {
+        "id": "vault-m22",
+        "title": "Exam Prep"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Kongsec — original source",
+        "url": "https://kongsec.github.io/OSAINotesResearch/",
+        "kind": "community"
+      }
+    ]
+  },
+  {
     "slug": "foundations",
     "title": "AI foundations",
     "group": "Learning path",

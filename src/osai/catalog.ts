@@ -6,6 +6,8 @@ export type OsaiArticle = {
   summary: string;
   sources: { title: string; url: string; kind: "official" | "community" }[];
   checkedAt: string;
+  attribution?: string;
+  contents?: { id: string; title: string }[];
   owasp: string[];
   html: string;
 };

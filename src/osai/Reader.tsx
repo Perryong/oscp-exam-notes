@@ -58,9 +58,10 @@ export default function Reader({ uid }: { uid?: string }) {
     }
   }
   const headings = article
-    ? [...article.html.matchAll(/<h2 id="([^"]+)">([^<]+)<\/h2>/g)].map(
+    ? (article.contents ??
+      [...article.html.matchAll(/<h2 id="([^"]+)">([^<]+)<\/h2>/g)].map(
         (m) => ({ id: m[1], title: m[2] }),
-      )
+      ))
     : [];
   return (
     <section className="page osai-reader">
@@ -73,7 +74,8 @@ export default function Reader({ uid }: { uid?: string }) {
           <h1>{article.title}</h1>
           <p className="lead">{article.summary}</p>
           <p className="quiet">
-            Original Fieldnotes guide · Sources checked {article.checkedAt}
+            {article.attribution ??
+              `Original Fieldnotes guide · Sources checked ${article.checkedAt}`}
           </p>
           <nav aria-label="Lesson contents" className="lesson-toc">
             {headings.map((h) => (
