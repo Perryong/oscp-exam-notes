@@ -1,3 +1,6 @@
+import { sameWorkspace, workspaceOf } from "../workspaces/model";
+import { seedMachines } from "../notebook/seeds";
+import { osaiSeedMachines } from "../osai/seeds";
 import {
   doc,
   collection,
@@ -83,6 +86,31 @@ export async function commitEntity<T extends NoteContent | MachineContent>(
           };
       }
       return { kind: "conflict" as const, remote: old };
+    }
+    if (old && !sameWorkspace(old.content, draft.content))
+      throw Error("Cannot change workspace");
+    const reserved = [...seedMachines, ...osaiSeedMachines].find(
+      (m) => m.id === draft.id,
+    );
+    if (
+      kind === "machine" &&
+      reserved &&
+      !sameWorkspace(reserved.content, draft.content)
+    )
+      throw Error("Invalid seed workspace");
+    if (kind === "note") {
+      const id = (draft.content as NoteContent).machineId;
+      if (id) {
+        const target = await tx.get(doc(db, "users", uid, "machines", id));
+        const content = target.exists()
+          ? target.data()
+          : [...seedMachines, ...osaiSeedMachines].find((m) => m.id === id)
+              ?.content;
+        if (!content || workspaceOf(content) !== workspaceOf(draft.content))
+          throw Error(
+            "Linked target is unavailable or belongs to another workspace",
+          );
+      }
     }
     if (kind === "note" && old) tx.set(history(old.revision), snap.data()!);
     const revision = (old?.revision || 0) + 1;
