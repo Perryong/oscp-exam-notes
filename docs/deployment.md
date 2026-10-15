@@ -75,6 +75,17 @@ Vercel CLI and the Codex Vercel plugin are installed. The Vercel MCP entry exist
 
 ## OSAI release preparation
 
-The local branch now includes the OSAI workspace described in [the workspace guide](osai-workspace.md). It has not been deployed. The prior production URL still serves the OSCP release.
+The local branch now includes the OSAI workspace described in [the workspace guide](osai-workspace.md). It was deployed on 2026-10-15 following explicit user authorization; both workspaces now use the existing production URL.
 
 For this release, publish the new backward-compatible Firestore rules before the frontend. Preserve current owner collections and all old OSCP records. New OSAI records require the new client; an older client cannot safely display the two workspaces and must not be used as a normal rollback target. Full-account backup format is now version 2; version 1 imports remain OSCP-only. The existing Firebase project, authorized production domain, and Vercel production environment settings remain applicable.
+
+
+## OSAI production deployment (2026-10-15)
+
+Source commit: `6237615`. Vercel deployment: `dpl_9tCUg7pFM2b8jUe17teeiWZJUJEc`, status READY, aliased to https://oscp-exam-notes.vercel.app. OSAI entry: https://oscp-exam-notes.vercel.app/osai/study-plan.
+
+Firestore rules and indexes were deployed first. Active ruleset `projects/oscp-notes/rulesets/4bce7113-02ea-42bd-ad42-791fa0d90099` was retrieved and confirmed byte-for-byte equal to the local rules. The production domain remains authorized in Firebase Auth. Deployment did not write or migrate note documents.
+
+Vercel rebuilt the tracked source with the existing production Firebase settings. TypeScript and Vite production compilation passed. The upload used a clean source package through the authenticated Vercel account, as with the prior release, preserving Git authorship. No branch was pushed or merged by this deployment.
+
+Live Chrome smoke checks passed: OSCP and OSAI study pages, library, sign-in screen (HTTP 200); switching between workspaces; all eleven OSAI article bodies; lesson SVG loading; 390px mobile width; and the existing Bashed walkthrough. No browser runtime errors occurred. Authenticated private note creation, backup, and device sync were verified in emulators before deployment, but not repeated against the owner's live account.

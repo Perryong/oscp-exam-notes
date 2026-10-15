@@ -30,7 +30,7 @@ During implementation, observed failing assertions were followed by passing regr
 
 Deploy compatible Firestore rules before the frontend. Do not remove workspace metadata, rewrite existing notes in bulk, or revert to the old unfiltered frontend after OSAI records exist. A rollback requires a compatibility build that understands or hides OSAI records, plus a version 2 backup. Prefer a corrective forward release.
 
-This implementation does not publish to Vercel or change live Firestore rules. Existing production remains the prior OSCP release until a separate deployment is requested.
+The user subsequently authorized production deployment on 2026-10-15. The OSAI workspace is now published at https://oscp-exam-notes.vercel.app/osai/study-plan; see the deployment record for verification.
 
 ## Final checks and review (2026-10-15)
 
