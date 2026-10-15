@@ -33,6 +33,13 @@ export default function Reader({ uid }: { uid?: string }) {
       alive = false;
     };
   }, [slug]);
+  useEffect(() => {
+    if (!article || !location.hash) return;
+    const target = [...(body.current?.querySelectorAll("[id]") ?? [])].find(
+      (element) => element.id === location.hash.slice(1),
+    );
+    target?.scrollIntoView();
+  }, [article]);
   async function makeNote(bookmark = false) {
     if (!uid) {
       navigate("/settings");

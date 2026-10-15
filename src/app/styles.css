@@ -880,3 +880,20 @@ pre {
   padding-block: 2rem;
   color: #48675f;
 }
+.vault-checklist {
+  display: grid;
+  gap: 0.5rem;
+  margin-block: 1rem;
+  padding: 0.8rem;
+  border: 1px solid #d8e2dc;
+  border-radius: 0.5rem;
+}
+.vault-checklist label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.vault-checklist input {
+  width: auto;
+  margin: 0;
+}

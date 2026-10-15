@@ -36,3 +36,15 @@ test('workspace target links reject cross-workspace and missing targets',async()
  await assertFails(setDoc(doc(d,'users/alice/notebookNotes/e'),data({workspace:'oscp',machineId:'osai-module-foundations'})));
  await assertFails(setDoc(doc(d,'users/alice/machines/osai-module-foundations'),{...target,workspace:'oscp'}));
 });
+
+test('vault modules permit OSAI progress and note links while rejecting OSCP membership', async()=>{
+ const d=db();
+ const target={name:'Vault module',platform:'OSAI Vault',os:'',tags:['curriculum'],legacyKey:null,week:null,progress:'completed',workspace:'osai',revision:1,lastMutationId:'m',createdAt:serverTimestamp(),updatedAt:serverTimestamp()};
+ for (let i=0;i<23;i++) {
+  const id='osai-vault-m'+i;
+  await assertSucceeds(setDoc(doc(d,'users/alice/notebookNotes/v'+i),data({workspace:'osai',machineId:id})));
+  await assertFails(setDoc(doc(d,'users/alice/machines/'+id),{...target,workspace:'oscp'}));
+  await assertSucceeds(setDoc(doc(d,'users/alice/machines/'+id),target));
+ }
+ await assertFails(setDoc(doc(d,'users/alice/notebookNotes/outside'),data({workspace:'osai',machineId:'osai-vault-m23'})));
+});

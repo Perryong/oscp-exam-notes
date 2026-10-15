@@ -25,7 +25,7 @@ test("OSAI creation links only its own targets and preserves metadata locally", 
 test("both seed catalogs coexist without colliding and persisted progress wins", () => {
   const seeds = withSeedMachines([]);
   expect(seeds.filter((m) => workspaceOf(m.content) === "osai")).toHaveLength(
-    7,
+    30,
   );
   expect(
     seeds.filter((m) => workspaceOf(m.content) === "oscp").length,

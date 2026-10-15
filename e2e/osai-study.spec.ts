@@ -16,13 +16,25 @@ test("OSAI progress and lesson notes survive reload without mixing OSCP", async 
   await expect(page.getByText(`Signed in as ${email}`)).toBeVisible();
   await page.goto("/osai/study-plan");
   await page
-    .getByLabel("Progress for AI foundations")
+    .getByLabel("Progress for Overview & Adversary Mindset")
     .selectOption("completed");
-  await expect(page.getByText("1 / 7 completed")).toBeVisible();
+  await expect(page.getByText("1 / 23 completed")).toBeVisible();
+  await page
+    .getByLabel("Read: Overview & Adversary Mindset", { exact: true })
+    .click();
+  await expect(
+    page.getByLabel("Read: Overview & Adversary Mindset", { exact: true }),
+  ).toBeChecked();
   await page.reload();
-  await expect(page.getByLabel("Progress for AI foundations")).toHaveValue(
-    "completed",
-  );
+  await expect(
+    page.getByLabel("Progress for Overview & Adversary Mindset"),
+  ).toHaveValue("completed");
+  await expect(
+    page.getByLabel("Read: Overview & Adversary Mindset", { exact: true }),
+  ).toBeChecked();
+  await page.getByRole("link", { name: "Exam Prep", exact: true }).click();
+  await expect(page).toHaveURL(/osai-vault#vault-m22$/);
+  await expect(page.locator("#vault-m22")).toBeInViewport();
   await page.goto("/osai/library/foundations");
   await page.getByRole("button", { name: "Create lab note" }).click();
   await expect(page.getByLabel("Note title")).toHaveValue(

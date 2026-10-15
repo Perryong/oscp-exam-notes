@@ -59,3 +59,18 @@ Validation: 71 unit tests and 3 import integrity/security tests pass, typecheck 
 production build pass, and formatting passes. Browser inspection confirmed all 23
 modules, 70 code blocks, working contents links, and no horizontal page overflow at
 the inspected viewport. No Firestore schema or rules changes.
+
+## Vault study plan — 2026-10-16
+
+The OSAI study plan now uses the 23 vault sections (00–22), grouped into six
+self-paced phases. Each has persisted Read, Practise, Document findings, and Review
+checklists and separate manual progress. Checklist state uses existing machine
+tags, so sync and backups retain it without a schema change. New reserved IDs are
+`osai-vault-m0` through `osai-vault-m22`; all seven old curriculum IDs remain intact.
+The reader scrolls to the requested section after lazy-loaded content renders.
+
+Validated: 72 unit tests, 3 full-content import tests, 14 Firestore rules tests,
+and the authenticated study-plan browser test (progress/checklist reload,
+section navigation, legacy lesson notes and workspace separation). Typecheck,
+build, formatting, and diff checks passed. Rules allow the new targets only in
+OSAI and retain ownership, revision, and workspace immutability checks.
