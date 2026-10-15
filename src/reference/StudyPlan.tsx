@@ -1,3 +1,4 @@
+import { machineWalkthrough } from "../walkthroughs/catalog";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNotebook } from "../notebook/NotebookContext";
@@ -161,6 +162,18 @@ export default function StudyPlan({ uid }: { uid?: string }) {
             </button>
             <div className="eyebrow">WALKTHROUGH</div>
             <h2>{box.name}</h2>
+            {machineWalkthrough(box.name, box.platform) && (
+              <p>
+                <Link
+                  to={
+                    "/walkthroughs/" +
+                    machineWalkthrough(box.name, box.platform)!.id
+                  }
+                >
+                  Read written walkthrough
+                </Link>
+              </p>
+            )}
             {box.links.map((l, i) => (
               <p key={i}>
                 <a href={l.url} target="_blank" rel="noopener noreferrer">

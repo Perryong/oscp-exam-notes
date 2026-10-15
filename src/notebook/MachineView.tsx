@@ -1,3 +1,4 @@
+import { machineWalkthrough } from "../walkthroughs/catalog";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { validateMachine } from "./validation";
@@ -137,6 +138,18 @@ export default function MachineView({ uid }: { uid: string }) {
           <article className="week-card" key={m.id} id={m.id}>
             <div>
               <h2>{m.content.name}</h2>
+              {machineWalkthrough(m.content.name, m.content.platform) && (
+                <p>
+                  <Link
+                    to={
+                      "/walkthroughs/" +
+                      machineWalkthrough(m.content.name, m.content.platform)!.id
+                    }
+                  >
+                    Read written walkthrough
+                  </Link>
+                </p>
+              )}
               <label>
                 Name
                 <input

@@ -1,0 +1,1464 @@
+{
+  "revision": "dd03effbc624dbb8789fbd7775369769cec81a36",
+  "repository": "https://github.com/Perryong/Writeups-and-Walkthroughs",
+  "articles": [
+    {
+      "id": "dockerlabs--readme",
+      "path": "dockerlabs/README.md",
+      "title": "DockerLabs",
+      "category": "dockerlabs",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/dockerlabs/README.md",
+      "excerpt": "DockerLabs DockerLabs.es https://dockerlabs.es/ Trust Upload Vacaciones ",
+      "searchText": "DockerLabs.es"
+    },
+    {
+      "id": "dockerlabs--trust",
+      "path": "dockerlabs/trust.md",
+      "title": "Trust",
+      "category": "dockerlabs",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/dockerlabs/trust.md",
+      "excerpt": "Trust External resource 🔗 DockerLabs.es 🔗 How to setup a Docker Image CTF BootToRoot A CTF (Capture The Flag) Boot To Root (B2R) is a type of cybersecurity challenge where participants are tasked with gaining unauthori",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance and Exploitation 2.1 Ports in listening and relative services 2.2 Brute force hidden web directory 2.3 Brute force ssh credentials Task 3 - Privilege Escalation"
+    },
+    {
+      "id": "dockerlabs--upload",
+      "path": "dockerlabs/upload.md",
+      "title": "Upload",
+      "category": "dockerlabs",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/dockerlabs/upload.md",
+      "excerpt": "Upload External resource 🔗 DockerLabs.es 🔗 How to setup a Docker Image CTF BootToRoot A CTF (Capture The Flag) Boot To Root (B2R) is a type of cybersecurity challenge where participants are tasked with gaining unauthor",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance and Exploitation 2.1 Ports in listening and relative services 2.2 Brute force hidden web directory 2.3 Upload shell Task 3 - Privilege Escalation"
+    },
+    {
+      "id": "dockerlabs--vacaciones",
+      "path": "dockerlabs/vacaciones.md",
+      "title": "Vacaciones",
+      "category": "dockerlabs",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/dockerlabs/vacaciones.md",
+      "excerpt": "Vacaciones 🔗 DockerLabs.es 🔗 How to setup a Docker Image CTF BootToRoot A CTF (Capture The Flag) Boot To Root (B2R) is a type of cybersecurity challenge where participants are tasked with gaining unauthorized access to",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance and Exploitation 2.1 Ports in listening and relative services 2.2 Brute force hidden web directory 2.3 Brute force ssh credentials Task 3 - Privilege Escalation"
+    },
+    {
+      "id": "dvwa--command-injection",
+      "path": "dvwa/command-injection.md",
+      "title": "Command Injection",
+      "category": "dvwa",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/dvwa/command-injection.md",
+      "excerpt": "Command Injection What is a command injection? Command injection is a type of security vulnerability that occurs when an attacker is able to inject and execute arbitrary commands or code into a software application. This",
+      "searchText": "Low Payload Medium Payload High Impossible References"
+    },
+    {
+      "id": "dvwa--csrf",
+      "path": "dvwa/csrf.md",
+      "title": "CSRF",
+      "category": "dvwa",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/dvwa/csrf.md",
+      "excerpt": "CSRF What is a Cross-Site Request Forgery (CSRF)? CSRF stands for Cross-Site Request Forgery. It is a type of security vulnerability that occurs when an attacker tricks a user's browser into making an unintended and pote",
+      "searchText": "Low Payload Medium Payload High Payload Impossible References"
+    },
+    {
+      "id": "dvwa--readme",
+      "path": "dvwa/README.md",
+      "title": "DVWA",
+      "category": "dvwa",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/dvwa/README.md",
+      "excerpt": "DVWA https://github.com/digininja/DVWA Install and configure DVWA Command Injection Cross Site Request Forgery (CSRF) File Inclusion (LFI + RFI) SQL Injection (SQLi) SQL Injection Blind ",
+      "searchText": ""
+    },
+    {
+      "id": "dvwa--file-inclusion",
+      "path": "dvwa/file-inclusion.md",
+      "title": "File Inclusion",
+      "category": "dvwa",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/dvwa/file-inclusion.md",
+      "excerpt": "File Inclusion What is a File Inclusion? A file inclusion attack is a type of security exploit that takes advantage of improper or unchecked input handling in web applications. The goal of such an attack is to include fi",
+      "searchText": "Low 1st Payload 2nd Payload Medium 1st Payload High 1st Payload 2nd Payload Impossible References"
+    },
+    {
+      "id": "dvwa--install-and-configure-dvwa",
+      "path": "dvwa/install-and-configure-dvwa.md",
+      "title": "Install and configure DVWA",
+      "category": "dvwa",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/dvwa/install-and-configure-dvwa.md",
+      "excerpt": "Install and configure DVWA DAMN VULNERABLE WEB APPLICATION Damn Vulnerable Web Application (DVWA) is a PHP/MySQL web application that is damn vulnerable. Its main goal is to be an aid for security professionals to test t",
+      "searchText": "DAMN VULNERABLE WEB APPLICATION Download Installation and configuration Installation Videos How to set difficulty References"
+    },
+    {
+      "id": "dvwa--sql-injection",
+      "path": "dvwa/sql-injection.md",
+      "title": "SQL Injection",
+      "category": "dvwa",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/dvwa/sql-injection.md",
+      "excerpt": "SQL Injection What is a SQL Injection? SQL injection is a type of security vulnerability that occurs when an attacker is able to manipulate a SQL query by injecting malicious SQL code into user-input fields or other para",
+      "searchText": "Low 1st Payload 2nd Payload Medium 1st Payload 2nd Payload High 1st Payload 2nd Payload Impossible References"
+    },
+    {
+      "id": "dvwa--sqli-blind",
+      "path": "dvwa/sqli-blind.md",
+      "title": "SQLi Blind",
+      "category": "dvwa",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/dvwa/sqli-blind.md",
+      "excerpt": "SQLi Blind What is a SQL Injection Blind? Blind SQL injection occurs when an application is vulnerable to SQL injection, but its HTTP responses do not contain the results of the relevant SQL query or the details of any d",
+      "searchText": "Low 1st Payload (length) 2nd Payload (value) Medium 1st Payload 2nd Payload High 1st Payload 2nd Payload Impossible References"
+    },
+    {
+      "id": "hackthebox--active",
+      "path": "hackthebox/active.md",
+      "title": "Active",
+      "category": "hackthebox",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/hackthebox/active.md",
+      "excerpt": "Active hackthebox.com - © HACKTHEBOX 🔗 Active Task 1 - Deploy the machine 🎯 Target IP: 10.10.10.5 Create a directory for machine on the Desktop and a directory containing the scans with nmap. Task 2 - Reconnaissance Co",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance 2.1 - What is the name of the service is running on TCP port 21 on the target machine? 2.2 - Which basic FTP command can be used to upload a single file onto the server? 2.3 - Are files put into the FTP root available via the webserver? 2.4 - What file extension is executed as a script on this webserver? Don't include the .. 2.5 - Which metasploit reconnaissance module can be used to list possible privilege escalation paths on a compromised system? Task 3 - Find user flag 3.1 - Submit the flag located on the babis user's desktop. Task 4 - Find root flag"
+    },
+    {
+      "id": "hackthebox--analytics",
+      "path": "hackthebox/analytics.md",
+      "title": "Analytics",
+      "category": "hackthebox",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/hackthebox/analytics.md",
+      "excerpt": "Analytics hackthebox.com - © HACKTHEBOX 🔗 Analytics Task 1 - Deploy the machine 🎯 Target IP: 10.129.229.224 Create a directory on the Desktop with the machine's name, and inside this directory, create another directory",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance 2.1 - How many open TCP ports are listening on Analytics? 2.2 - What subdomain is configured to provide a different application on the target web server? Port 80 2.3 - What application is running on data.analytical.htb? 2.4 -  What version of Metabase is the target running? 2.5 - What is the 2023 CVE ID assigned to the pre-authentication, remote code execution vulnerability in this version of Metabase? 2.6 - What is the value of the setup-token used by this Metabase instance? 2.7 - Which Metabase API endpoint is used to execute arbitrary commands using the token? 2.8 -  Which user is the Metabase application running as? 2.9 -  Which environment variable contains the password for the metalytics user? Task 3 - Find user flag 3.1 - Submit the flag located in the metalytics user's home directory. 3.2 - What kernel version is installed on the host system? 3.3 - What Ubuntu release is the system running? 3.4 - What component used by the Ubuntu operating system on the target system is vulnerable to a privileges escalation vulnerability assigned two 2023 CVEs? Task 4 - Find root flag 4.1 - Submit the flag located in the root user's home directory."
+    },
+    {
+      "id": "hackthebox--bashed",
+      "path": "hackthebox/bashed.md",
+      "title": "Bashed",
+      "category": "hackthebox",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/hackthebox/bashed.md",
+      "excerpt": "Bashed hackthebox.com - © HACKTHEBOX 🔗 Bashed Task 1 - Deploy the machine 🎯 Target IP: 10.129.236.215 Create a directory on the Desktop with the machine's name, and inside this directory, create another directory to st",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance 2.1 - How many open TCP ports are listening on Bashed?? 2.2 - What is the relative path on the webserver to a folder that contains phpbash.php?? Port 80 2.3 - What user is the webserver running as on Bashed? Task 3 - Find user flag 3.1 - Submit the flag located in the arrexel user's home directory. 3.2 - www-data can run any command as a user without a password. What is that user's username? 3.3 - What folder in the system root can scriptmanager access that www-data could not? 3.4 - What is filename of the file that is being run by root every couple minutes? Task 4 - Find root flag 4.1 - Submit the flag located in root's home directory."
+    },
+    {
+      "id": "hackthebox--bizness",
+      "path": "hackthebox/bizness.md",
+      "title": "Bizness",
+      "category": "hackthebox",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/hackthebox/bizness.md",
+      "excerpt": "Bizness 🔗 Bizness About Machine Description Bizness is an easy Linux machine showcasing an Apache OFBiz pre-authentication, remote code execution (RCE) foothold, classified as [CVE-2023-49070](https://nvd.nist.gov/vuln/",
+      "searchText": "Machine Description Area of Interest Technology Vulnerabilities Security Tools Languages Techniques CVE Task 0 - Deploy machine Task 1 - Reconnaissance 1.1 - How many TCP ports are listening on Bizness? 1.2 - What Enterprise Resource Planning (ERP) backend is in use? 1.3 - What version of OFBiz is running on the target system? Task 2 - Exploitation & User Flag 2.1 - What is the 2023 CVE ID for a pre-authentication, remote code execution vulnerability on this version of OFBiz? 2.2 - What user is the OFBiz service running as? 2.3 - Submit the flag located in the ofbiz user's home directory. Task 3 - Privilege Escalation & Root Flag 3.1 - What is the full path of the directory that OFBiz is installed in? 3.2 - What hashing algorithm is the OFBiz installation configured to use for passwords? 3.3 - What database is used by Apache OFBiz, by default? 3.4 - In which directory are the Derby-related files stored on Bizness? 3.5 - Using derby-tools and the ij command-line utility, what is the command within ij to connect to a database stored in ./ofbiz? 3.6 - Which table contains the SHA-1 hash of the admin user? 3.7 - What is the hex version of the discovered hash? 3.7 - What is the root user's password? 3.8 - Submit the flag located in the root user's home directory."
+    },
+    {
+      "id": "hackthebox--cap",
+      "path": "hackthebox/cap.md",
+      "title": "Cap",
+      "category": "hackthebox",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/hackthebox/cap.md",
+      "excerpt": "Cap @hackthebox.com 🔗 Cap About Machine Description Cap is an easy difficulty Linux machine running an HTTP server that performs administrative functions including performing network captures. Improper controls result i",
+      "searchText": "Machine Description Area of Interest Vulnerabilities Security Tools Languages Techniques Task 0 - Deploy machine Task 1 - Reconnaissance 1.1 - How many TCP ports are open? 1.2 - After running a \"Security Snapshot\", the browser is redirected to a path of the format /[something]/[id], where [id] represents the id number of the scan. What is the [something]? Task 2 - Exploitation & User Flag 2.1 - Are you able to get to other users' scans? 2.2 - What is the ID of the PCAP file that contains sensative data? 2.3 - Which application layer protocol in the pcap file can the sensitive data be found in? 2.4 - We've managed to collect nathan's FTP password. On what other service does this password work? FTP/21 SSH/22 Task 3 - Privilege Escalation & Root Flag 3.1 - What is the full path to the binary on this machine has special capabilities that can be abused to obtain root privileges? 3.2 - Submit the flag located in root's home directory."
+    },
+    {
+      "id": "hackthebox--chemistry",
+      "path": "hackthebox/chemistry.md",
+      "title": "Chemistry %",
+      "category": "hackthebox",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/hackthebox/chemistry.md",
+      "excerpt": "Chemistry % @hackthebox.com 🔗 Cap About Task 0 - Deploy machine 🎯 Target IP: 10.10.10.245 Create a directory on the Desktop with the machine's name, and inside this directory, create another directory to store the mate",
+      "searchText": "Task 0 - Deploy machine Task 1 - Reconnaissance 1.1 - How many TCP ports are open? 1.2 - After running a \"Security Snapshot\", the browser is redirected to a path of the format /[something]/[id], where [id] represents the id number of the scan. What is the [something]? Task 2 - Exploitation & User Flag 2.1 - Are you able to get to other users' scans? 2.2 - What is the ID of the PCAP file that contains sensative data? 2.3 - Which application layer protocol in the pcap file can the sensitive data be found in? 2.4 - We've managed to collect nathan's FTP password. On what other service does this password work? FTP/21 SSH/22 Task 3 - Privilege Escalation & Root Flag 3.1 - What is the full path to the binary on this machine has special capabilities that can be abused to obtain root privileges? 3.2 - Submit the flag located in root's home directory."
+    },
+    {
+      "id": "hackthebox--delivery",
+      "path": "hackthebox/delivery.md",
+      "title": "Delivery",
+      "category": "hackthebox",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/hackthebox/delivery.md",
+      "excerpt": "Delivery hackthebox.com - © HACKTHEBOX 🔗 Delivery Task 1 - Deploy the machine 🎯 Target IP: 10.10.10.222 Create a directory for machine on the Desktop and a directories containing: nmap, content, exploits, scripts mater",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance 2.1 - How many TCP ports are open on the target? 2.2 - What is the FQDN for the Help Desk? 2.3 -  2.4 -  2.5 -  Task 3 -  3.1 -  Task 4 - Find root flag"
+    },
+    {
+      "id": "hackthebox--devel",
+      "path": "hackthebox/devel.md",
+      "title": "Devel",
+      "category": "hackthebox",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/hackthebox/devel.md",
+      "excerpt": "Devel hackthebox.com - © HACKTHEBOX 🔗 Devel Task 1 - Deploy the machine 🎯 Target IP: 10.10.10.5 Create a directory for machine on the Desktop and a directory containing the scans with nmap. Task 2 - Reconnaissance Copy",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance 2.1 - What is the name of the service is running on TCP port 21 on the target machine? 2.2 - Which basic FTP command can be used to upload a single file onto the server? 2.3 - Are files put into the FTP root available via the webserver? 2.4 - What file extension is executed as a script on this webserver? Don't include the .. 2.5 - Which metasploit reconnaissance module can be used to list possible privilege escalation paths on a compromised system? Task 3 - Find user flag 3.1 - Submit the flag located on the babis user's desktop. Task 4 - Find root flag"
+    },
+    {
+      "id": "hackthebox--readme",
+      "path": "hackthebox/README.md",
+      "title": "HackTheBox",
+      "category": "hackthebox",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/hackthebox/README.md",
+      "excerpt": "HackTheBox hackthebox.com - © HACKTHEBOX Devel Delivery Active Analytics Bashed Valentine Sau Sunday Cap Bizness Chemistry - OnGoing Celestial - OnGoing Poison - OnGoing ",
+      "searchText": ""
+    },
+    {
+      "id": "hackthebox--sau",
+      "path": "hackthebox/sau.md",
+      "title": "Sau",
+      "category": "hackthebox",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/hackthebox/sau.md",
+      "excerpt": "Sau 🔗 Sau @hackthebox.com About Machine Description Sau is an Easy Difficulty Linux machine that features a Request Baskets instance that is vulnerable to Server-Side Request Forgery (SSRF) via [CVE-2023-27163](https://",
+      "searchText": "Machine Description Area of Interest Technology Vulnerabilities Security Tools Languages Techniques CVE Task 0 - Deploy machine Task 1 - Reconnaissance 1.1 - Which is the highest open TCP port on the target machine? 1.2 - What is the name of the open source software that the application on 55555 is \"powered by\"? 1.3 - What is the version of request-baskets running on Sau? Task 2 - Find user flag 2.1 -  What is the 2023 CVE ID for a Server-Side Request Forgery (SSRF) in this version of request-baskets? 2.2 -  There is an unauthenticated command injection vulnerability in MailTrail v0.53. What is the relative path targeted by this exploit? 2.3 -  What user is the Mailtrack application running as on Sau? 2.4 - Submit the flag located in the puma user's home directory. Task 3 - Find root flag 3.1 - What is the full path to the application the user puma can run as root on Sau? 3.2 - What is the full version string for the instance of systemd installed on Sau? 3.3 - What is the CVE ID for a local privilege escalation vulnerability that affects that particular systemd version? 3.4 - Submit the flag located in the root user's home directory."
+    },
+    {
+      "id": "hackthebox--sunday",
+      "path": "hackthebox/sunday.md",
+      "title": "Sunday",
+      "category": "hackthebox",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/hackthebox/sunday.md",
+      "excerpt": "Sunday 🔗 Sunday @hackthebox.com About Machine Description Sunday is a fairly simple machine, however it uses fairly old software and can be a bit unpredictable at times. It mainly focuses on exploiting the Finger servic",
+      "searchText": "Machine Description Area of Interest Technology Vulnerabilities Security Tools Techniques Task 0 - Deploy machine Task 1 - Reconnaissance 1.1 - Which open TCP port is running the finger service? 1.2 - How many users can be found by enumerating the finger service? Consider only users who shows a pts? How finger service works? Task 2 - Find User Flag 2.1 - What is the password for the sunny user on Sunday? 2.2 - What is the password for user sammy on the box? 2.3 -  Submit the flag located in the sammy user's home directory. Task 3 - Find root flag 3.1 - What is the full path of the binary that user sunny can run with sudo privileges? 3.2 - What is the complete path of the binary that user sammy can run with sudo privileges? 3.3 - Submit the flag located in root's home directory. sammy sunny"
+    },
+    {
+      "id": "hackthebox--valentine",
+      "path": "hackthebox/valentine.md",
+      "title": "Valentine",
+      "category": "hackthebox",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/hackthebox/valentine.md",
+      "excerpt": "Valentine 🔗 Valentine Task 1 - Deploy the machine 🎯 Target IP: 10.129.236.216 Create a directory on the Desktop with the machine's name, and inside this directory, create another directory to store the materials and ou",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance 2.1 - How many TCP ports are open on the remote host? 2.2 - Which flag is used with nmap to execute its vulnerability discovery scripts (with the category \"vuln\") on the target?? Port 80 and 443 2.3 - What is the 2014 CVE ID for an information disclosure vulnerability that the service on port 443 is vulnerable to? 2.4 -  What password can be leaked using (CVE-2014-0160)? 2.5 - What is the relative path of a folder on the website that contains two interesting files, including note.txt? 2.6 -  What is the filename of the RSA key found on the website? Task 3 - Find user flag 3.1 - Submit the flag located in the hype user's home directory. 3.2 - What is the name of the terminal multiplexing software that the hype user has run previously? 3.3 - What is the full path to the socket file used by the tmux session? 3.4 - What user is that tmux session running as? Task 4 - Find root flag 4.1 - Submit the flag located in root's home directory."
+    },
+    {
+      "id": "homemade-labs--active-directory--readme",
+      "path": "homemade-labs/active-directory/README.md",
+      "title": "Active Directory",
+      "category": "homemade-labs",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/homemade-labs/active-directory/README.md",
+      "excerpt": "Active Directory Sections AD Lab Setup AD Enumeration SMB Common Attacks ",
+      "searchText": "Sections"
+    },
+    {
+      "id": "homemade-labs--active-directory--ad-enumeration",
+      "path": "homemade-labs/active-directory/ad-enumeration.md",
+      "title": "AD Enumeration",
+      "category": "homemade-labs",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/homemade-labs/active-directory/ad-enumeration.md",
+      "excerpt": "AD Enumeration To practice I created a local lab thanks to the following guide, then I run the enumeration of a Domain Controller (an unrealistic hypothesis because it is rarely directly exposed to the network). In addit",
+      "searchText": "Host Identification Open Ports Discovery 80 - HTTP 139 - NetBios 389 - LDAP LdapSearch LdapWhoami LdapDomainDump 445 - SMB   "
+    },
+    {
+      "id": "homemade-labs--buffer-overflow-bof--brainpain-bof-lab",
+      "path": "homemade-labs/buffer-overflow-bof/brainpain-bof-lab.md",
+      "title": "Brainpain (BoF Lab)",
+      "category": "homemade-labs",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/homemade-labs/buffer-overflow-bof/brainpain-bof-lab.md",
+      "excerpt": "Brainpain (BoF Lab) https://www.vulnhub.com/entry/brainpan-1,51/ 🔗 Brainpain 1 readme.txt (Disclaimer and Setup) Description Copy command _ _ | |__ _ __ __ _(_)_ __ _ __ __ _ _ __ | '_ \\| '__/ _` | | '_ \\| '_ \\ / _` | '",
+      "searchText": "Description Task 1 - Deploy the machine Task 2 - Reconnaissance 2.1 Ports in listening and relative services Task 3 - BoF Exploitation 3.1 Fuzzing 3.2 Control EIP 3.3 Shellcode generation Task 4 - Privilege Escalation"
+    },
+    {
+      "id": "homemade-labs--buffer-overflow-bof--readme",
+      "path": "homemade-labs/buffer-overflow-bof/README.md",
+      "title": "Buffer Overflow (BoF)",
+      "category": "homemade-labs",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/homemade-labs/buffer-overflow-bof/README.md",
+      "excerpt": "Buffer Overflow (BoF) Sections BoF Theory Brainpain (BoF Lab) ",
+      "searchText": "Sections"
+    },
+    {
+      "id": "homemade-labs--readme",
+      "path": "homemade-labs/README.md",
+      "title": "HomeMade Labs",
+      "category": "homemade-labs",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/homemade-labs/README.md",
+      "excerpt": "HomeMade Labs Labs Active Directory Pivoting Buffer Overflow (BoF) Tutorials and Guidelines Create VM with QuickEmu Burp Suite First Configuration ",
+      "searchText": "Labs Tutorials and Guidelines"
+    },
+    {
+      "id": "homemade-labs--pivoting--readme",
+      "path": "homemade-labs/pivoting/README.md",
+      "title": "Pivoting",
+      "category": "homemade-labs",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/homemade-labs/pivoting/README.md",
+      "excerpt": "Pivoting Sections Pivoting Theory Pivoting Guidelines Lab (3 Targets) ",
+      "searchText": "Sections"
+    },
+    {
+      "id": "homemade-labs--active-directory--smb-common-attacks",
+      "path": "homemade-labs/active-directory/smb-common-attacks.md",
+      "title": "SMB Common Attacks",
+      "category": "homemade-labs",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/homemade-labs/active-directory/smb-common-attacks.md",
+      "excerpt": "SMB Common Attacks Sections SMB Intro Making the Lab vulnerable SMB Tools & Guest or Anonymous access to Shares RCE Via access to Administrative Shares SMB Brute Forcing SMB Password Spraying SMBv1 EternalBlue (CVE-2017-",
+      "searchText": "Sections SMB Intro Making the Lab vulnerable Create a Share Disable SMB Signing Enable Guest & Anonymous Access Allow Anonymous Access to a Specific SMB Share SMB Tools & Guest or Anonymous access to Shares SMBMap SMB Client Netexec RCE Via access to Administrative Shares SMB Brute Forcing SMB Password Spraying SMBv1 EternalBlue (CVE-2017-0144) Nmap Other Lab Net-NTLM Capture Attack Pass the Hash Attack (PTH) Net-NTLM Relay Attack Check SMB signing status: Obtain a list of vulnerable SMB servers: Start server to replay Net-NTLM Hash Other Resources"
+    },
+    {
+      "id": "mutillidae-ii--command-injection--readme",
+      "path": "mutillidae-ii/command-injection/README.md",
+      "title": "Command Injection",
+      "category": "mutillidae-ii",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/mutillidae-ii/command-injection/README.md",
+      "excerpt": "Command Injection Topics Extracting User Accounts with Command Injection (lab 12) Web Shell with Command injection (lab 16) ",
+      "searchText": "Topics"
+    },
+    {
+      "id": "mutillidae-ii--idor-and-file-inclusion--edit-another-users-profile",
+      "path": "mutillidae-ii/idor-and-file-inclusion/edit-another-users-profile.md",
+      "title": "Edit Another User's Profile",
+      "category": "mutillidae-ii",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/mutillidae-ii/idor-and-file-inclusion/edit-another-users-profile.md",
+      "excerpt": "Edit Another User's Profile Lab 18: Insecure Direct Object References - Edit Another User's Profile Go to user profile page: https://127.0.0.1/index.php?page=view-account-profile.php&uid=1 Only changing the uid value par",
+      "searchText": "Lab 18: Insecure Direct Object References - Edit Another User's Profile"
+    },
+    {
+      "id": "mutillidae-ii--sqli--extracting-data",
+      "path": "mutillidae-ii/sqli/extracting-data.md",
+      "title": "Extracting Data",
+      "category": "mutillidae-ii",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/mutillidae-ii/sqli/extracting-data.md",
+      "excerpt": "Extracting Data Lab 8: SQL Injection - Extracting data with SQL injection Go to User Lookup page http://127.0.0.1/index.php?page=user-info.php Injection this payload into username field: admin' OR 1=1 — we can dump all D",
+      "searchText": "Lab 8: SQL Injection - Extracting data with SQL injection"
+    },
+    {
+      "id": "mutillidae-ii--command-injection--extracting-user-accounts",
+      "path": "mutillidae-ii/command-injection/extracting-user-accounts.md",
+      "title": "Extracting User Accounts",
+      "category": "mutillidae-ii",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/mutillidae-ii/command-injection/extracting-user-accounts.md",
+      "excerpt": "Extracting User Accounts Lab 12: Command injection - Extracting User Accounts with Command Injection Go to DNS Lookup page: https://127.0.0.1/index.php?popUpNotificationCode=AU1&page=dns-lookup.php We can use a valid val",
+      "searchText": "Lab 12: Command injection - Extracting User Accounts with Command Injection"
+    },
+    {
+      "id": "mutillidae-ii--idor-and-file-inclusion--extracting-user-accounts",
+      "path": "mutillidae-ii/idor-and-file-inclusion/extracting-user-accounts.md",
+      "title": "Extracting User Accounts",
+      "category": "mutillidae-ii",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/mutillidae-ii/idor-and-file-inclusion/extracting-user-accounts.md",
+      "excerpt": "Extracting User Accounts Lab 19: Insecure Direct Object References - Extracting User Accounts Go to directory browsing page: https://127.0.0.1/index.php?page=directory-browsing.php and change the reference value of attri",
+      "searchText": "Lab 19: Insecure Direct Object References - Extracting User Accounts"
+    },
+    {
+      "id": "mutillidae-ii--idor-and-file-inclusion--extracting-user-accounts-with-local-file-inclusion",
+      "path": "mutillidae-ii/idor-and-file-inclusion/extracting-user-accounts-with-local-file-inclusion.md",
+      "title": "Extracting User Accounts with Local File Inclusion",
+      "category": "mutillidae-ii",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/mutillidae-ii/idor-and-file-inclusion/extracting-user-accounts-with-local-file-inclusion.md",
+      "excerpt": "Extracting User Accounts with Local File Inclusion Lab 20: Insecure Direct Object References - Extracting User Accounts with Local File Inclusion Go to directory browsing page: https://127.0.0.1/index.php?page=directory-",
+      "searchText": "Lab 20: Insecure Direct Object References - Extracting User Accounts with Local File Inclusion"
+    },
+    {
+      "id": "mutillidae-ii--sqli--finding-number-of-columns",
+      "path": "mutillidae-ii/sqli/finding-number-of-columns.md",
+      "title": "Finding Number of Columns",
+      "category": "mutillidae-ii",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/mutillidae-ii/sqli/finding-number-of-columns.md",
+      "excerpt": "Finding Number of Columns Lab 9: SQL Injection - Finding Number of Columns Go to User Lookup page http://127.0.0.1/index.php?page=user-info.php in this case we need to find the number of columns, the idea is to user the ",
+      "searchText": "Lab 9: SQL Injection - Finding Number of Columns"
+    },
+    {
+      "id": "mutillidae-ii--idor-and-file-inclusion--readme",
+      "path": "mutillidae-ii/idor-and-file-inclusion/README.md",
+      "title": "IDOR & File Inclusion",
+      "category": "mutillidae-ii",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/mutillidae-ii/idor-and-file-inclusion/README.md",
+      "excerpt": "IDOR & File Inclusion Topics Edit Another User's Profile (lab 18) Extracting User Accounts (lab 19) Extracting User Accounts with Local File Inclusion (lab 20) Web Shell with Remote File Inclusion (lab 22) ",
+      "searchText": "Topics"
+    },
+    {
+      "id": "mutillidae-ii--install-and-configure-owasp-mutillidae-ii",
+      "path": "mutillidae-ii/install-and-configure-owasp-mutillidae-ii.md",
+      "title": "Install & configure OWASP Mutillidae II",
+      "category": "mutillidae-ii",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/mutillidae-ii/install-and-configure-owasp-mutillidae-ii.md",
+      "excerpt": "Install & configure OWASP Mutillidae II External resource External resource Installation Guides Standard Installation - DockerHub How to Run Mutillidae from DockerHub Images Alternative Installation - Docker How to Insta",
+      "searchText": "Installation Guides Standard Installation - DockerHub Alternative Installation - Docker Alternative Installation - Google Cloud Legacy Installation - LAMP Stack Installation via Docker - My case Install Docker Install Docker Image Website URL Build/Reset DB Populating the LDAP database Using a script to test the web interface TMI Running Services"
+    },
+    {
+      "id": "mutillidae-ii--readme",
+      "path": "mutillidae-ii/README.md",
+      "title": "Mutillidae II",
+      "category": "mutillidae-ii",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/mutillidae-ii/README.md",
+      "excerpt": "Mutillidae II https://owasp.org/www-project-mutillidae-ii/ External resource OWASP Mutillidae II is a free, open-source, deliberately vulnerable web application designed for web-security enthusiasts. It serves as a targe",
+      "searchText": ""
+    },
+    {
+      "id": "mutillidae-ii--sqli--pivoting-with-sql-injection",
+      "path": "mutillidae-ii/sqli/pivoting-with-sql-injection.md",
+      "title": "Pivoting with SQL injection",
+      "category": "mutillidae-ii",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/mutillidae-ii/sqli/pivoting-with-sql-injection.md",
+      "excerpt": "Pivoting with SQL injection Lab 10: SQL Injection - Pivoting with SQL injection Go to User Lookup page http://127.0.0.1/index.php?page=user-info.php We just know that there're 10 columns, than we can utilize UNION operat",
+      "searchText": "Lab 10: SQL Injection - Pivoting with SQL injection"
+    },
+    {
+      "id": "mutillidae-ii--sqli--readme",
+      "path": "mutillidae-ii/sqli/README.md",
+      "title": "SQLi",
+      "category": "mutillidae-ii",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/mutillidae-ii/sqli/README.md",
+      "excerpt": "SQLi Topics SQLi Login Bypass (lab 7) Extracting Data (lab 8) Finding Number of Columns (lab 9) Pivoting with SQL injection (lab 10) ",
+      "searchText": "Topics"
+    },
+    {
+      "id": "mutillidae-ii--sqli--sqli-login-bypass",
+      "path": "mutillidae-ii/sqli/sqli-login-bypass.md",
+      "title": "SQLi Login Bypass",
+      "category": "mutillidae-ii",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/mutillidae-ii/sqli/sqli-login-bypass.md",
+      "excerpt": "SQLi Login Bypass Lab 7: SQL Injection - Using SQLi to Bypass Authentication Go to login page form https://127.0.0.1/index.php?page=login.php and check if the form is vulnerable to SQL injection vulnerability inserting a",
+      "searchText": "Lab 7: SQL Injection - Using SQLi to Bypass Authentication"
+    },
+    {
+      "id": "mutillidae-ii--command-injection--web-shell",
+      "path": "mutillidae-ii/command-injection/web-shell.md",
+      "title": "Web Shell",
+      "category": "mutillidae-ii",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/mutillidae-ii/command-injection/web-shell.md",
+      "excerpt": "Web Shell Lab 16: Command injection - Web Shell with Command injection Go to upload file page form https://127.0.0.1/index.php?page=upload-file.php Here we can upload a php reverse shell and custom one of the shells alre",
+      "searchText": "Lab 16: Command injection - Web Shell with Command injection"
+    },
+    {
+      "id": "mutillidae-ii--idor-and-file-inclusion--web-shell-with-remote-file-inclusion-rfi",
+      "path": "mutillidae-ii/idor-and-file-inclusion/web-shell-with-remote-file-inclusion-rfi.md",
+      "title": "Web Shell with Remote File Inclusion (RFI)",
+      "category": "mutillidae-ii",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/mutillidae-ii/idor-and-file-inclusion/web-shell-with-remote-file-inclusion-rfi.md",
+      "excerpt": "Web Shell with Remote File Inclusion (RFI) Lab 22: Insecure Direct Object Reference - Web Shell with Remote File Inclusion (RFI) Go to lab page: https://127.0.0.1/index.php?page=labs/lab-22.php The idea is to upload via ",
+      "searchText": "Lab 22: Insecure Direct Object Reference - Web Shell with Remote File Inclusion (RFI)"
+    },
+    {
+      "id": "mutillidae-ii--xss--readme",
+      "path": "mutillidae-ii/xss/README.md",
+      "title": "XSS",
+      "category": "mutillidae-ii",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/mutillidae-ii/xss/README.md",
+      "excerpt": "XSS Topics xxx xxx xxx xxx ",
+      "searchText": "Topics"
+    },
+    {
+      "id": "mutillidae-ii--xss--xss-dom-based",
+      "path": "mutillidae-ii/xss/xss-dom-based.md",
+      "title": "XSS DOM-Based",
+      "category": "mutillidae-ii",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/mutillidae-ii/xss/xss-dom-based.md",
+      "excerpt": "XSS DOM-Based XSS - DOM-Based Go to login page form https://127.0.0.1/index.php?page=login.php and log in using login bypass or inserting password. Go to a page vulnerable to XSS stored like as: https://127.0.0.1/index.p",
+      "searchText": "XSS - DOM-Based"
+    },
+    {
+      "id": "mutillidae-ii--xss--xss-reflected",
+      "path": "mutillidae-ii/xss/xss-reflected.md",
+      "title": "XSS Reflected",
+      "category": "mutillidae-ii",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/mutillidae-ii/xss/xss-reflected.md",
+      "excerpt": "XSS Reflected XSS - Reflected - First Order Go to login page form https://127.0.0.1/index.php?page=login.php and log in using login bypass or inserting password. Go to a page vulnerable to XSS reflected like as: https://",
+      "searchText": "XSS - Reflected - First Order"
+    },
+    {
+      "id": "mutillidae-ii--xss--xss-stored",
+      "path": "mutillidae-ii/xss/xss-stored.md",
+      "title": "XSS Stored",
+      "category": "mutillidae-ii",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/mutillidae-ii/xss/xss-stored.md",
+      "excerpt": "XSS Stored XSS - Stored - Second Order Go to login page form https://127.0.0.1/index.php?page=login.php and log in using login bypass or inserting password. Go to a page vulnerable to XSS stored like as: https://127.0.0.",
+      "searchText": "XSS - Stored - Second Order"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--authentication--2fa-simple-bypass",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/authentication/2fa-simple-bypass.md",
+      "title": "2FA simple bypass",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/authentication/2fa-simple-bypass.md",
+      "excerpt": "2FA simple bypass Description This lab's two-factor authentication can be bypassed. You have already obtained a valid username and password, but do not have access to the user's 2FA verification code. To solve the lab, a",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--access-control--readme",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/access-control/README.md",
+      "title": "Access control",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/access-control/README.md",
+      "excerpt": "Access control What is access control? Access control is the application of constraints on who or what is authorized to perform actions or access resources. In the context of web applications, access control is dependent",
+      "searchText": "What is access control? Labs 🔬"
+    },
+    {
+      "id": "portswigger-web-security-academy--api-testing--readme",
+      "path": "portswigger-web-security-academy/api-testing/README.md",
+      "title": "API Testing",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/api-testing/README.md",
+      "excerpt": "API Testing APIs (Application Programming Interfaces) enable software systems and applications to communicate and share data. API testing is important as vulnerabilities in APIs may undermine core aspects of a website's ",
+      "searchText": "Topics"
+    },
+    {
+      "id": "portswigger-web-security-academy--api-testing--api-testing--readme",
+      "path": "portswigger-web-security-academy/api-testing/api-testing/README.md",
+      "title": "API Testing",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/api-testing/api-testing/README.md",
+      "excerpt": "API Testing API Overview APIs (Application Programming Interfaces) enable software systems and applications to communicate and share data. API testing is important as vulnerabilities in APIs may undermine core aspects of",
+      "searchText": "API Overview  API recon  API documentation  Discovering API documentation Using machine-readable documentation  Identifying API endpoints Identifying supported HTTP methods Identifying supported content types Using Intruder to find hidden endpoints Finding hidden parameters  Identifying hidden parameters Preventing vulnerabilities in APIs  Labs 🔬"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--authentication--readme",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/authentication/README.md",
+      "title": "Authentication",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/authentication/README.md",
+      "excerpt": "Authentication Authentication vulnerabilities Conceptually, authentication vulnerabilities are easy to understand. However, they are usually critical because of the clear relationship between authentication and security.",
+      "searchText": "Authentication vulnerabilities What is the difference between authentication and authorization? Brute-force attacks Username enumeration Bypassing two-factor authentication Labs 🔬"
+    },
+    {
+      "id": "portswigger-web-security-academy--information-disclosure--common-sources-of-information-disclosure--authentication-bypass-via-information-disclosure",
+      "path": "portswigger-web-security-academy/information-disclosure/common-sources-of-information-disclosure/authentication-bypass-via-information-disclosure.md",
+      "title": "Authentication bypass via information disclosure",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/information-disclosure/common-sources-of-information-disclosure/authentication-bypass-via-information-disclosure.md",
+      "excerpt": "Authentication bypass via information disclosure Description This lab's administration interface has an authentication bypass vulnerability, but it is impractical to exploit without knowledge of a custom HTTP header used",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--server-side-request-forgery-ssrf--basic-ssrf-against-another-back-end-system",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/server-side-request-forgery-ssrf/basic-ssrf-against-another-back-end-system.md",
+      "title": "Basic SSRF against another back-end system",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/server-side-request-forgery-ssrf/basic-ssrf-against-another-back-end-system.md",
+      "excerpt": "Basic SSRF against another back-end system Description This lab has a stock check feature which fetches data from an internal system. To solve the lab, use the stock check functionality to scan the internal 192.168.0.X r",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--server-side-request-forgery-ssrf--basic-ssrf-against-the-local-server",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/server-side-request-forgery-ssrf/basic-ssrf-against-the-local-server.md",
+      "title": "Basic SSRF against the local server",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/server-side-request-forgery-ssrf/basic-ssrf-against-the-local-server.md",
+      "excerpt": "Basic SSRF against the local server Description This lab has a stock check feature which fetches data from an internal system. To solve the lab, change the stock check URL to access the admin interface at http://localhos",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--information-disclosure--common-sources-of-information-disclosure--readme",
+      "path": "portswigger-web-security-academy/information-disclosure/common-sources-of-information-disclosure/README.md",
+      "title": "Common sources of information disclosure",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/information-disclosure/common-sources-of-information-disclosure/README.md",
+      "excerpt": "Common sources of information disclosure Common sources of information disclosure Information disclosure can occur in a wide variety of contexts within a website. The following are some common examples of places where yo",
+      "searchText": "Common sources of information disclosure  Files for web crawlers  Directory listings Developer comments Error messages Debugging data User account pages Backup files Insecure configuration Version control history How to prevent information disclosure vulnerabilities  Labs 🔬"
+    },
+    {
+      "id": "portswigger-web-security-academy--deserialization-insecure--readme",
+      "path": "portswigger-web-security-academy/deserialization-insecure/README.md",
+      "title": "Deserialization Insecure",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/deserialization-insecure/README.md",
+      "excerpt": "Deserialization Insecure Topics aaa bbb ",
+      "searchText": "Topics"
+    },
+    {
+      "id": "portswigger-web-security-academy--essential-skills--readme",
+      "path": "portswigger-web-security-academy/essential-skills/README.md",
+      "title": "Essential skills",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/essential-skills/README.md",
+      "excerpt": "Essential skills In this section, you'll learn some broadly applicable skills that will help you to apply what you've learned from our labs to other live targets. We cover a range of general tips and tricks, as well as h",
+      "searchText": "Topics"
+    },
+    {
+      "id": "portswigger-web-security-academy--api-testing--api-testing--exploiting-a-mass-assignment-vulnerability",
+      "path": "portswigger-web-security-academy/api-testing/api-testing/exploiting-a-mass-assignment-vulnerability.md",
+      "title": "Exploiting a mass assignment vulnerability",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/api-testing/api-testing/exploiting-a-mass-assignment-vulnerability.md",
+      "excerpt": "Exploiting a mass assignment vulnerability Description To solve the lab, find and exploit a mass assignment vulnerability to buy a Lightweight l33t Leather Jacket. You can log in to your own account using the following c",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--api-testing--api-testing--exploiting-an-api-endpoint-using-documentation",
+      "path": "portswigger-web-security-academy/api-testing/api-testing/exploiting-an-api-endpoint-using-documentation.md",
+      "title": "Exploiting an API endpoint using documentation",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/api-testing/api-testing/exploiting-an-api-endpoint-using-documentation.md",
+      "excerpt": "Exploiting an API endpoint using documentation Description To solve the lab, find the exposed API documentation and delete carlos. You can log in to your own account using the following credentials: wiener:peter. Solutio",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--jwt-attacks--exploiting-jwt--readme",
+      "path": "portswigger-web-security-academy/jwt-attacks/exploiting-jwt/README.md",
+      "title": "Exploiting JWT",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/jwt-attacks/exploiting-jwt/README.md",
+      "excerpt": "Exploiting JWT JWT Attacks JWT attacks involve a user sending modified JWTs to the server in order to achieve a malicious goal, usually bypassing authentication and access controls by impersonating another user already a",
+      "searchText": "JWT Attacks  Working with JWTs in Burp Suite Editing JWTs Adding a JWT signing key  Exploiting flawed JWT signature verification  Accepting arbitrary signatures  Accepting tokens with no signature  Brute-forcing secret keys  JWT header parameter injections  Injecting self-signed JWTs via the jwk parameter  Injecting self-signed JWTs via the jku parameter Injecting self-signed JWTs via the kid parameter  Other interesting JWT header parameters  JWT algorithm confusion  How to prevent JWT attacks  Additional best practice for JWT handling Labs 🔬"
+    },
+    {
+      "id": "portswigger-web-security-academy--api-testing--server-side-parameter-pollution--exploiting-server-side-parameter-pollution-in-a-query-string",
+      "path": "portswigger-web-security-academy/api-testing/server-side-parameter-pollution/exploiting-server-side-parameter-pollution-in-a-query-string.md",
+      "title": "Exploiting server-side parameter pollution in a query string",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/api-testing/server-side-parameter-pollution/exploiting-server-side-parameter-pollution-in-a-query-string.md",
+      "excerpt": "Exploiting server-side parameter pollution in a query string Description To solve the lab, log in as the administrator and delete carlos. Solution In this case we don't know any credential account, so we can try to login",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--path-traversal--file-path-traversal-simple-case",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/path-traversal/file-path-traversal-simple-case.md",
+      "title": "File path traversal, simple case",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/path-traversal/file-path-traversal-simple-case.md",
+      "excerpt": "File path traversal, simple case Description This lab contains a path traversal vulnerability in the display of product images. To solve the lab, retrieve the contents of the /etc/passwd file. Solution Click to one of pr",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--file-upload-vulnerabilities--readme",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/file-upload-vulnerabilities/README.md",
+      "title": "File upload vulnerabilities",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/file-upload-vulnerabilities/README.md",
+      "excerpt": "File upload vulnerabilities What are file upload vulnerabilities? File upload vulnerabilities are when a web server allows users to upload files to its filesystem without sufficiently validating things like their name, t",
+      "searchText": "What are file upload vulnerabilities? Exploiting unrestricted file uploads to deploy a web shell Web shell Exploiting flawed validation of file uploads Flawed file type validation Flawed file type validation Labs 🔬"
+    },
+    {
+      "id": "portswigger-web-security-academy--api-testing--api-testing--finding-and-exploiting-an-unused-api-endpoint",
+      "path": "portswigger-web-security-academy/api-testing/api-testing/finding-and-exploiting-an-unused-api-endpoint.md",
+      "title": "Finding and exploiting an unused API endpoint",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/api-testing/api-testing/finding-and-exploiting-an-unused-api-endpoint.md",
+      "excerpt": "Finding and exploiting an unused API endpoint Description To solve the lab, exploit a hidden API endpoint to buy a Lightweight l33t Leather Jacket. You can log in to your own account using the following credentials: wien",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--essential-skills--identifying-unknown-vulnerabilities",
+      "path": "portswigger-web-security-academy/essential-skills/identifying-unknown-vulnerabilities.md",
+      "title": "Identifying unknown vulnerabilities",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/essential-skills/identifying-unknown-vulnerabilities.md",
+      "excerpt": "Identifying unknown vulnerabilities Identifying unknown vulnerabilities When attempting one of our labs, you usually know the exact vulnerability you need to look for. This is obviously not the case when testing genuine ",
+      "searchText": "Identifying unknown vulnerabilities  Labs 🔬"
+    },
+    {
+      "id": "portswigger-web-security-academy--information-disclosure--readme",
+      "path": "portswigger-web-security-academy/information-disclosure/README.md",
+      "title": "Information Disclosure",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/information-disclosure/README.md",
+      "excerpt": "Information Disclosure In this section, we'll explain the basics of information disclosure vulnerabilities and describe how you can find and exploit them. We'll also offer some guidance on how you can prevent information",
+      "searchText": "Topics"
+    },
+    {
+      "id": "portswigger-web-security-academy--information-disclosure--common-sources-of-information-disclosure--information-disclosure-in-error-messages",
+      "path": "portswigger-web-security-academy/information-disclosure/common-sources-of-information-disclosure/information-disclosure-in-error-messages.md",
+      "title": "Information disclosure in error messages",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/information-disclosure/common-sources-of-information-disclosure/information-disclosure-in-error-messages.md",
+      "excerpt": "Information disclosure in error messages Description This lab's verbose error messages reveal that it is using a vulnerable version of a third-party framework. To solve the lab, obtain and submit the version number of th",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--information-disclosure--common-sources-of-information-disclosure--information-disclosure-in-version-control-history",
+      "path": "portswigger-web-security-academy/information-disclosure/common-sources-of-information-disclosure/information-disclosure-in-version-control-history.md",
+      "title": "Information disclosure in version control history",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/information-disclosure/common-sources-of-information-disclosure/information-disclosure-in-version-control-history.md",
+      "excerpt": "Information disclosure in version control history Description This lab discloses sensitive information via its version control history. To solve the lab, obtain the password for the administrator user then log in and del",
+      "searchText": "Description Solution HEAD CONFIG COMMIT_EDITMSG /refs/heads/master /logs/HEAD index"
+    },
+    {
+      "id": "portswigger-web-security-academy--information-disclosure--common-sources-of-information-disclosure--information-disclosure-on-debug-page",
+      "path": "portswigger-web-security-academy/information-disclosure/common-sources-of-information-disclosure/information-disclosure-on-debug-page.md",
+      "title": "Information disclosure on debug page",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/information-disclosure/common-sources-of-information-disclosure/information-disclosure-on-debug-page.md",
+      "excerpt": "Information disclosure on debug page Description This lab contains a debug page that discloses sensitive information about the application. To solve the lab, obtain and submit the SECRET_KEY environment variable. Solutio",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--information-disclosure--information-disclosure-vulnerabilities",
+      "path": "portswigger-web-security-academy/information-disclosure/information-disclosure-vulnerabilities.md",
+      "title": "Information disclosure vulnerabilities",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/information-disclosure/information-disclosure-vulnerabilities.md",
+      "excerpt": "Information disclosure vulnerabilities What is information disclosure? Information disclosure, also known as information leakage, is when a website unintentionally reveals sensitive information to its users, such as: dat",
+      "searchText": "What is information disclosure?  Examples of information disclosure  Testing for information disclosure Fuzzing  Burp Scanner  Burp's engagement tools  Engineering informative responses "
+    },
+    {
+      "id": "portswigger-web-security-academy--deserialization-insecure--java-insecure-deserialization--readme",
+      "path": "portswigger-web-security-academy/deserialization-insecure/java-insecure-deserialization/README.md",
+      "title": "Java Insecure Deserialization",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/deserialization-insecure/java-insecure-deserialization/README.md",
+      "excerpt": "Java Insecure Deserialization Java Insecure Deserialization Insecure deserialization in Java occurs when an application deserializes untrusted data without proper validation, allowing an attacker to manipulate the serial",
+      "searchText": "Java Insecure Deserialization Key Concepts Exploitation and Attack Vectors Exploit Example Mitigation Strategies Labs 🔬"
+    },
+    {
+      "id": "portswigger-web-security-academy--jwt-attacks--json-web-tokens-jwt",
+      "path": "portswigger-web-security-academy/jwt-attacks/json-web-tokens-jwt.md",
+      "title": "Json Web Tokens (JWT)",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/jwt-attacks/json-web-tokens-jwt.md",
+      "excerpt": "Json Web Tokens (JWT) What are JWTs? JSON web tokens (JWTs) are a standardized format for sending cryptographically signed JSON data between systems. They can contain any kind of data, but are most commonly used to claim",
+      "searchText": "What are JWTs?  JWT format JWT vs JWS vs JWE "
+    },
+    {
+      "id": "portswigger-web-security-academy--jwt-attacks--readme",
+      "path": "portswigger-web-security-academy/jwt-attacks/README.md",
+      "title": "JWT Attacks",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/jwt-attacks/README.md",
+      "excerpt": "JWT Attacks In this section, we'll look at how design issues and flawed handling of JSON web tokens (JWTs) can leave websites vulnerable to a variety of high-severity attacks. As JWTs are most commonly used in authentica",
+      "searchText": "Topics"
+    },
+    {
+      "id": "portswigger-web-security-academy--jwt-attacks--exploiting-jwt--jwt-authentication-bypass-via-flawed-signature-verification",
+      "path": "portswigger-web-security-academy/jwt-attacks/exploiting-jwt/jwt-authentication-bypass-via-flawed-signature-verification.md",
+      "title": "JWT authentication bypass via flawed signature verification",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/jwt-attacks/exploiting-jwt/jwt-authentication-bypass-via-flawed-signature-verification.md",
+      "excerpt": "JWT authentication bypass via flawed signature verification Description This lab uses a JWT-based mechanism for handling sessions. The server is insecurely configured to accept unsigned JWTs. To solve the lab, modify you",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--jwt-attacks--exploiting-jwt--to-do--jwt-authentication-bypass-via-jku-header-injection",
+      "path": "portswigger-web-security-academy/jwt-attacks/exploiting-jwt/to-do/jwt-authentication-bypass-via-jku-header-injection.md",
+      "title": "JWT authentication bypass via jku header injection - %",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/jwt-attacks/exploiting-jwt/to-do/jwt-authentication-bypass-via-jku-header-injection.md",
+      "excerpt": "JWT authentication bypass via jku header injection - % Description Solution Go to login page and access as wiener user. JWT extension reveal that there's a JWT token, obviously related to wiener user account Copy command",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--jwt-attacks--exploiting-jwt--to-do--jwt-authentication-bypass-via-jwk-header-injection",
+      "path": "portswigger-web-security-academy/jwt-attacks/exploiting-jwt/to-do/jwt-authentication-bypass-via-jwk-header-injection.md",
+      "title": "JWT authentication bypass via jwk header injection - %",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/jwt-attacks/exploiting-jwt/to-do/jwt-authentication-bypass-via-jwk-header-injection.md",
+      "excerpt": "JWT authentication bypass via jwk header injection - % Description Solution Go to login page and access as wiener user. JWT extension reveal that there's a JWT token, obviously related to wiener user account Copy command",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--jwt-attacks--exploiting-jwt--to-do--jwt-authentication-bypass-via-kid-header-path-traversal",
+      "path": "portswigger-web-security-academy/jwt-attacks/exploiting-jwt/to-do/jwt-authentication-bypass-via-kid-header-path-traversal.md",
+      "title": "JWT authentication bypass via kid header path traversal - %",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/jwt-attacks/exploiting-jwt/to-do/jwt-authentication-bypass-via-kid-header-path-traversal.md",
+      "excerpt": "JWT authentication bypass via kid header path traversal - % Description Solution Go to login page and access as wiener user. JWT extension reveal that there's a JWT token, obviously related to wiener user account Copy co",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--jwt-attacks--exploiting-jwt--jwt-authentication-bypass-via-unverified-signature",
+      "path": "portswigger-web-security-academy/jwt-attacks/exploiting-jwt/jwt-authentication-bypass-via-unverified-signature.md",
+      "title": "JWT authentication bypass via unverified signature",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/jwt-attacks/exploiting-jwt/jwt-authentication-bypass-via-unverified-signature.md",
+      "excerpt": "JWT authentication bypass via unverified signature Description This lab uses a JWT-based mechanism for handling sessions. Due to implementation flaws, the server doesn't verify the signature of any JWTs that it receives.",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--jwt-attacks--exploiting-jwt--jwt-authentication-bypass-via-weak-signing-key",
+      "path": "portswigger-web-security-academy/jwt-attacks/exploiting-jwt/jwt-authentication-bypass-via-weak-signing-key.md",
+      "title": "JWT authentication bypass via weak signing key",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/jwt-attacks/exploiting-jwt/jwt-authentication-bypass-via-weak-signing-key.md",
+      "excerpt": "JWT authentication bypass via weak signing key Description This lab uses a JWT-based mechanism for handling sessions. It uses an extremely weak secret key to both sign and verify tokens. This can be easily brute-forced u",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--deserialization-insecure--java-insecure-deserialization--lab-1",
+      "path": "portswigger-web-security-academy/deserialization-insecure/java-insecure-deserialization/lab-1.md",
+      "title": "Lab",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/deserialization-insecure/java-insecure-deserialization/lab-1.md",
+      "excerpt": "Lab Description Solution Go to login page and access as wiener user. JWT extension reveal that there's a JWT token, obviously related to wiener user account Copy command{\"iss\":\"portswigger\",\"exp\":1742668339,\"sub\":\"wiener",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--deserialization-insecure--java-insecure-deserialization--lab",
+      "path": "portswigger-web-security-academy/deserialization-insecure/java-insecure-deserialization/lab.md",
+      "title": "Lab",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/deserialization-insecure/java-insecure-deserialization/lab.md",
+      "excerpt": "Lab Description Solution Go to login page and access as wiener user. JWT extension reveal that there's a JWT token, obviously related to wiener user account Copy command{\"iss\":\"portswigger\",\"exp\":1742668339,\"sub\":\"wiener",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--deserialization-insecure--php-insecure-deserialization--lab",
+      "path": "portswigger-web-security-academy/deserialization-insecure/php-insecure-deserialization/lab.md",
+      "title": "Lab",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/deserialization-insecure/php-insecure-deserialization/lab.md",
+      "excerpt": "Lab Description Solution Go to login page and access as wiener user. JWT extension reveal that there's a JWT token, obviously related to wiener user account Copy command{\"iss\":\"portswigger\",\"exp\":1742668339,\"sub\":\"wiener",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--deserialization-insecure--php-insecure-deserialization--lab-1",
+      "path": "portswigger-web-security-academy/deserialization-insecure/php-insecure-deserialization/lab-1.md",
+      "title": "Lab",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/deserialization-insecure/php-insecure-deserialization/lab-1.md",
+      "excerpt": "Lab Description Solution Go to login page and access as wiener user. JWT extension reveal that there's a JWT token, obviously related to wiener user account Copy command{\"iss\":\"portswigger\",\"exp\":1742668339,\"sub\":\"wiener",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--deserialization-insecure--serialization-vs-deserialization--lab",
+      "path": "portswigger-web-security-academy/deserialization-insecure/serialization-vs-deserialization/lab.md",
+      "title": "Lab",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/deserialization-insecure/serialization-vs-deserialization/lab.md",
+      "excerpt": "Lab Description Solution Go to login page and access as wiener user. JWT extension reveal that there's a JWT token, obviously related to wiener user account Copy command{\"iss\":\"portswigger\",\"exp\":1742668339,\"sub\":\"wiener",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--deserialization-insecure--serialization-vs-deserialization--lab-1",
+      "path": "portswigger-web-security-academy/deserialization-insecure/serialization-vs-deserialization/lab-1.md",
+      "title": "Lab",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/deserialization-insecure/serialization-vs-deserialization/lab-1.md",
+      "excerpt": "Lab Description Solution Go to login page and access as wiener user. JWT extension reveal that there's a JWT token, obviously related to wiener user account Copy command{\"iss\":\"portswigger\",\"exp\":1742668339,\"sub\":\"wiener",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--essential-skills--obfuscating-attacks-using-encodings--readme",
+      "path": "portswigger-web-security-academy/essential-skills/obfuscating-attacks-using-encodings/README.md",
+      "title": "Obfuscating attacks using encodings",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/essential-skills/obfuscating-attacks-using-encodings/README.md",
+      "excerpt": "Obfuscating attacks using encodings Context-specific decoding For encoding we means the convert data into another format (eg. base64) for various reason, like as: hiding, trasmit better, rapresent into a readeable format",
+      "searchText": "Context-specific decoding  Decoding discrepancies Obfuscation via URL encoding  Obfuscation via double URL encoding  Obfuscation via HTML encoding  Leading zeros Obfuscation via XML encoding  Obfuscation via unicode escaping  Obfuscation via hex escaping Obfuscation via octal escaping Obfuscation via multiple encodings Obfuscation via the SQL CHAR() function Labs 🔬"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--os-command-injection--readme",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/os-command-injection/README.md",
+      "title": "OS Command Injection",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/os-command-injection/README.md",
+      "excerpt": "OS Command Injection What is OS command injection? OS command injection is also known as shell injection. It allows an attacker to execute operating system (OS) commands on the server that is running an application, and ",
+      "searchText": "What is OS command injection? Useful commands Injecting OS commands Labs 🔬"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--os-command-injection--os-command-injection-simple-case",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/os-command-injection/os-command-injection-simple-case.md",
+      "title": "OS command injection, simple case",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/os-command-injection/os-command-injection-simple-case.md",
+      "excerpt": "OS command injection, simple case Description This lab contains an OS command injection vulnerability in the product stock checker. The application executes a shell command containing user-supplied product and store IDs,",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--path-traversal--readme",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/path-traversal/README.md",
+      "title": "Path traversal",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/path-traversal/README.md",
+      "excerpt": "Path traversal What is path traversal? Path traversal is also known as directory traversal. These vulnerabilities enable an attacker to read arbitrary files on the server that is running an application. This might includ",
+      "searchText": "What is path traversal? Labs 🔬"
+    },
+    {
+      "id": "portswigger-web-security-academy--deserialization-insecure--php-insecure-deserialization--readme",
+      "path": "portswigger-web-security-academy/deserialization-insecure/php-insecure-deserialization/README.md",
+      "title": "PHP Insecure Deserialization",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/deserialization-insecure/php-insecure-deserialization/README.md",
+      "excerpt": "PHP Insecure Deserialization PHP Insecure Deserialization PHP serialization allows objects, arrays, and values to be converted into a storable string format using serialize(). However, when unserialize() is used on untru",
+      "searchText": "PHP Insecure Deserialization How PHP Serialization Works Magic Methods & Exploitation Example of PHP Object Injection Attack Mitigation Strategies Labs 🔬"
+    },
+    {
+      "id": "portswigger-web-security-academy--readme",
+      "path": "portswigger-web-security-academy/README.md",
+      "title": "PortSwigger - Web Security Academy",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/README.md",
+      "excerpt": "PortSwigger - Web Security Academy @PortSwigger Ltd Web Security Academy The Web Security Academy is a free online training center for web application security. It includes content from PortSwigger's in-house research te",
+      "searchText": "Web Security Academy Install & Configure Burp Suite Quick Method Learning Paths"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--file-upload-vulnerabilities--remote-code-execution-via-web-shell-upload",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/file-upload-vulnerabilities/remote-code-execution-via-web-shell-upload.md",
+      "title": "Remote code execution via web shell upload",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/file-upload-vulnerabilities/remote-code-execution-via-web-shell-upload.md",
+      "excerpt": "Remote code execution via web shell upload Description This lab contains a vulnerable image upload function. It attempts to prevent users from uploading unexpected file types, but relies on checking user-controllable inp",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--deserialization-insecure--serialization-vs-deserialization--readme",
+      "path": "portswigger-web-security-academy/deserialization-insecure/serialization-vs-deserialization/README.md",
+      "title": "Serialization vs Deserialization",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/deserialization-insecure/serialization-vs-deserialization/README.md",
+      "excerpt": "Serialization vs Deserialization Labs 🔬 aaa ",
+      "searchText": "Labs 🔬"
+    },
+    {
+      "id": "portswigger-web-security-academy--api-testing--server-side-parameter-pollution--readme",
+      "path": "portswigger-web-security-academy/api-testing/server-side-parameter-pollution/README.md",
+      "title": "Server-side parameter pollution",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/api-testing/server-side-parameter-pollution/README.md",
+      "excerpt": "Server-side parameter pollution Server-side parameter pollution Some systems contain internal APIs that aren't directly accessible from the internet. Server-side parameter pollution occurs when a website embeds user inpu",
+      "searchText": "Server-side parameter pollution  Testing for server-side parameter pollution in the query string Truncating query strings Injecting invalid parameters Overriding existing parameters Labs 🔬"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--server-side-request-forgery-ssrf--readme",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/server-side-request-forgery-ssrf/README.md",
+      "title": "Server-side request forgery (SSRF)",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/server-side-request-forgery-ssrf/README.md",
+      "excerpt": "Server-side request forgery (SSRF) What is SSRF? Server-side request forgery is a web security vulnerability that allows an attacker to cause the server-side application to make requests to an unintended location. In a t",
+      "searchText": "What is SSRF? SSRF attacks against the server SSRF attacks against other back-end systems Labs 🔬"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--readme",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/README.md",
+      "title": "Server-side vulnerabilities",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/README.md",
+      "excerpt": "Server-side vulnerabilities This learning path introduces you to a range of common server-side vulnerabilities. This is perfect if you're new to web security and want to get an overview of the kinds of vulnerabilities th",
+      "searchText": "Topics"
+    },
+    {
+      "id": "portswigger-web-security-academy--information-disclosure--common-sources-of-information-disclosure--source-code-disclosure-via-backup-files",
+      "path": "portswigger-web-security-academy/information-disclosure/common-sources-of-information-disclosure/source-code-disclosure-via-backup-files.md",
+      "title": "Source code disclosure via backup files",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/information-disclosure/common-sources-of-information-disclosure/source-code-disclosure-via-backup-files.md",
+      "excerpt": "Source code disclosure via backup files Description This lab leaks its source code via backup files in a hidden directory. To solve the lab, identify and submit the database password, which is hard-coded in the leaked so",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--sql-injection--readme",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/sql-injection/README.md",
+      "title": "SQL injection",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/sql-injection/README.md",
+      "excerpt": "SQL injection What is SQL injection (SQLi)? SQL injection (SQLi) is a web security vulnerability that allows an attacker to interfere with the queries that an application makes to its database. This can allow an attacker",
+      "searchText": "What is SQL injection (SQLi)? How to detect SQL injection vulnerabilities Retrieving hidden data Subverting application logic Labs 🔬"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--sql-injection--sql-injection-vulnerability-allowing-login-bypass",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/sql-injection/sql-injection-vulnerability-allowing-login-bypass.md",
+      "title": "SQL injection vulnerability allowing login bypass",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/sql-injection/sql-injection-vulnerability-allowing-login-bypass.md",
+      "excerpt": "SQL injection vulnerability allowing login bypass Description This lab contains a SQL injection vulnerability in the login function. To solve the lab, perform a SQL injection attack that logs in to the application as the",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--sql-injection--sql-injection-vulnerability-in-where-clause-allowing-retrieval-of-hidden-data",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/sql-injection/sql-injection-vulnerability-in-where-clause-allowing-retrieval-of-hidden-data.md",
+      "title": "SQL injection vulnerability in WHERE clause allowing retrieval of hidden data",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/sql-injection/sql-injection-vulnerability-in-where-clause-allowing-retrieval-of-hidden-data.md",
+      "excerpt": "SQL injection vulnerability in WHERE clause allowing retrieval of hidden data Description This lab contains a SQL injection vulnerability in the product category filter. When the user selects a category, the application ",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--essential-skills--obfuscating-attacks-using-encodings--sql-injection-with-filter-bypass-via-xml-encoding",
+      "path": "portswigger-web-security-academy/essential-skills/obfuscating-attacks-using-encodings/sql-injection-with-filter-bypass-via-xml-encoding.md",
+      "title": "SQL injection with filter bypass via XML encoding",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/essential-skills/obfuscating-attacks-using-encodings/sql-injection-with-filter-bypass-via-xml-encoding.md",
+      "excerpt": "SQL injection with filter bypass via XML encoding Description This lab contains a SQL injection vulnerability in its stock check feature. The results from the query are returned in the application's response, so you can ",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--jwt-attacks--exploiting-jwt--to-do--readme",
+      "path": "portswigger-web-security-academy/jwt-attacks/exploiting-jwt/to-do/README.md",
+      "title": "To-Do",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/jwt-attacks/exploiting-jwt/to-do/README.md",
+      "excerpt": "To-Do ",
+      "searchText": ""
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--access-control--unprotected-admin-functionality",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/access-control/unprotected-admin-functionality.md",
+      "title": "Unprotected admin functionality",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/access-control/unprotected-admin-functionality.md",
+      "excerpt": "Unprotected admin functionality Unprotected functionality Description This lab has an unprotected admin panel. Solve the lab by deleting the user carlos. Solution The idea is access to the admin panel, trying some path t",
+      "searchText": "Unprotected functionality Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--access-control--unprotected-admin-functionality-with-unpredictable-url",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/access-control/unprotected-admin-functionality-with-unpredictable-url.md",
+      "title": "Unprotected admin functionality with unpredictable URL",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/access-control/unprotected-admin-functionality-with-unpredictable-url.md",
+      "excerpt": "Unprotected admin functionality with unpredictable URL Unprotected functionality Description This lab has an unprotected admin panel. It's located at an unpredictable location, but the location is disclosed somewhere in ",
+      "searchText": "Unprotected functionality Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--access-control--user-id-controlled-by-request-parameter-with-password-disclosure",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/access-control/user-id-controlled-by-request-parameter-with-password-disclosure.md",
+      "title": "User ID controlled by request parameter with password disclosure",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/access-control/user-id-controlled-by-request-parameter-with-password-disclosure.md",
+      "excerpt": "User ID controlled by request parameter with password disclosure Horizontal to vertical privilege escalation Description This lab has user account page that contains the current user's existing password, prefilled in a m",
+      "searchText": "Horizontal to vertical privilege escalation Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--access-control--user-id-controlled-by-request-parameter-with-unpredictable-user-ids",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/access-control/user-id-controlled-by-request-parameter-with-unpredictable-user-ids.md",
+      "title": "User ID controlled by request parameter, with unpredictable user IDs",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/access-control/user-id-controlled-by-request-parameter-with-unpredictable-user-ids.md",
+      "excerpt": "User ID controlled by request parameter, with unpredictable user IDs Horizontal privilege escalation Description This lab has a horizontal privilege escalation vulnerability on the user account page, but identifies users",
+      "searchText": "Horizontal privilege escalation Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--access-control--user-role-controlled-by-request-parameter",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/access-control/user-role-controlled-by-request-parameter.md",
+      "title": "User role controlled by request parameter",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/access-control/user-role-controlled-by-request-parameter.md",
+      "excerpt": "User role controlled by request parameter Parameter-based access control methods Description This lab has an admin panel at /admin, which identifies administrators using a forgeable cookie. Solve the lab by accessing the",
+      "searchText": "Parameter-based access control methods Description Solution"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--authentication--username-enumeration-via-different-responses",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/authentication/username-enumeration-via-different-responses.md",
+      "title": "Username enumeration via different responses",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/authentication/username-enumeration-via-different-responses.md",
+      "excerpt": "Username enumeration via different responses Description This lab is vulnerable to username enumeration and password brute-force attacks. It has an account with a predictable username and password, which can be found in ",
+      "searchText": "Description Solution User Enumeration Password Brute-Force"
+    },
+    {
+      "id": "portswigger-web-security-academy--essential-skills--using-burp-scanner",
+      "path": "portswigger-web-security-academy/essential-skills/using-burp-scanner.md",
+      "title": "Using Burp Scanner",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/essential-skills/using-burp-scanner.md",
+      "excerpt": "Using Burp Scanner Scanning a specific request When you come across an interesting function or behavior, your first instinct may be to send the relevant requests to Repeater or Intruder and investigate further. In the Pr",
+      "searchText": "Scanning a specific request  Scanning custom insertion points Scanning non-standard data structures Labs 🔬"
+    },
+    {
+      "id": "portswigger-web-security-academy--server-side-vulnerabilities--file-upload-vulnerabilities--web-shell-upload-via-content-type-restriction-bypass",
+      "path": "portswigger-web-security-academy/server-side-vulnerabilities/file-upload-vulnerabilities/web-shell-upload-via-content-type-restriction-bypass.md",
+      "title": "Web shell upload via Content-Type restriction bypass",
+      "category": "portswigger-web-security-academy",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/portswigger-web-security-academy/server-side-vulnerabilities/file-upload-vulnerabilities/web-shell-upload-via-content-type-restriction-bypass.md",
+      "excerpt": "Web shell upload via Content-Type restriction bypass Description This lab contains a vulnerable image upload function. It attempts to prevent users from uploading unexpected file types, but relies on checking user-contro",
+      "searchText": "Description Solution"
+    },
+    {
+      "id": "readme",
+      "path": "README.md",
+      "title": "✍️ Writeups and Walkthroughs",
+      "category": "README.md",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/README.md",
+      "excerpt": "✍️ Writeups and Walkthroughs Try Hack Me (THM) tryhackme.com - © TryHackMe Rooms OWASP Active Directory Active Directory Basics (This room will introduce the basic concepts and functionality provided by Active Directory)",
+      "searchText": "Try Hack Me (THM) Rooms Active Directory CTFs Hack The Box (HTB) VulnHub Vulnix DockerLabs HomeMade Labs 🏠🔬 WAPT Portswigger Web Security Academy DVWA  OWASP - Mutillidae II OWASP - SecureBank"
+    },
+    {
+      "id": "secure-bank--undefined-1--readme",
+      "path": "secure-bank/undefined-1/README.md",
+      "title": "-----",
+      "category": "secure-bank",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/secure-bank/undefined-1/README.md",
+      "excerpt": "----- Topics Extracting User Accounts with Command Injection (lab 12) Web Shell with Command injection (lab 16) ",
+      "searchText": "Topics"
+    },
+    {
+      "id": "secure-bank--undefined--readme",
+      "path": "secure-bank/undefined/README.md",
+      "title": "-----",
+      "category": "secure-bank",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/secure-bank/undefined/README.md",
+      "excerpt": "----- Topics SQLi Login Bypass (lab 7) Extracting Data (lab 8) Finding Number of Columns (lab 9) Pivoting with SQL injection (lab 10) ",
+      "searchText": "Topics"
+    },
+    {
+      "id": "secure-bank--undefined--extracting-data",
+      "path": "secure-bank/undefined/extracting-data.md",
+      "title": "Extracting Data",
+      "category": "secure-bank",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/secure-bank/undefined/extracting-data.md",
+      "excerpt": "Extracting Data Lab 8: SQL Injection - Extracting data with SQL injection Go to User Lookup page http://127.0.0.1/index.php?page=user-info.php Injection this payload into username field: admin' OR 1=1 — we can dump all D",
+      "searchText": "Lab 8: SQL Injection - Extracting data with SQL injection"
+    },
+    {
+      "id": "secure-bank--undefined-1--extracting-user-accounts",
+      "path": "secure-bank/undefined-1/extracting-user-accounts.md",
+      "title": "Extracting User Accounts",
+      "category": "secure-bank",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/secure-bank/undefined-1/extracting-user-accounts.md",
+      "excerpt": "Extracting User Accounts Lab 12: Command injection - Extracting User Accounts with Command Injection Go to DNS Lookup page: https://127.0.0.1/index.php?popUpNotificationCode=AU1&page=dns-lookup.php We can use a valid val",
+      "searchText": "Lab 12: Command injection - Extracting User Accounts with Command Injection"
+    },
+    {
+      "id": "secure-bank--undefined--finding-number-of-columns",
+      "path": "secure-bank/undefined/finding-number-of-columns.md",
+      "title": "Finding Number of Columns",
+      "category": "secure-bank",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/secure-bank/undefined/finding-number-of-columns.md",
+      "excerpt": "Finding Number of Columns Lab 9: SQL Injection - Finding Number of Columns Go to User Lookup page http://127.0.0.1/index.php?page=user-info.php in this case we need to find the number of columns, the idea is to user the ",
+      "searchText": "Lab 9: SQL Injection - Finding Number of Columns"
+    },
+    {
+      "id": "secure-bank--install-and-configure-secure-bank",
+      "path": "secure-bank/install-and-configure-secure-bank.md",
+      "title": "Install & configure Secure Bank",
+      "category": "secure-bank",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/secure-bank/install-and-configure-secure-bank.md",
+      "excerpt": "Install & configure Secure Bank External resource External resource Setup You can setup SecureBank application from source code, or simply pull it from Docker Hub. From source Make sure that you have Microsoft SQL Server",
+      "searchText": "Setup From source From Docker Docker with multiple containers Docker with single container Default users: Ports CTF-Mode"
+    },
+    {
+      "id": "secure-bank--undefined--pivoting-with-sql-injection",
+      "path": "secure-bank/undefined/pivoting-with-sql-injection.md",
+      "title": "Pivoting with SQL injection",
+      "category": "secure-bank",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/secure-bank/undefined/pivoting-with-sql-injection.md",
+      "excerpt": "Pivoting with SQL injection Lab 10: SQL Injection - Pivoting with SQL injection Go to User Lookup page http://127.0.0.1/index.php?page=user-info.php We just know that there're 10 columns, than we can utilize UNION operat",
+      "searchText": "Lab 10: SQL Injection - Pivoting with SQL injection"
+    },
+    {
+      "id": "secure-bank--readme",
+      "path": "secure-bank/README.md",
+      "title": "Secure Bank",
+      "category": "secure-bank",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/secure-bank/README.md",
+      "excerpt": "Secure Bank https://owasp.org/www-project-securebank/ SecureBank is a FinTech application which contains all OWASP TOP 10 security vulnerabilities along with some other security flaws found in real-world applications. Yo",
+      "searchText": "Install & configure Infrastructure Default users: Ports CTF-Mode"
+    },
+    {
+      "id": "secure-bank--undefined--sqli-login-bypass",
+      "path": "secure-bank/undefined/sqli-login-bypass.md",
+      "title": "SQLi Login Bypass",
+      "category": "secure-bank",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/secure-bank/undefined/sqli-login-bypass.md",
+      "excerpt": "SQLi Login Bypass Lab 7: SQL Injection - Using SQLi to Bypass Authentication Go to login page form https://127.0.0.1/index.php?page=login.php and check if the form is vulnerable to SQL injection vulnerability inserting a",
+      "searchText": "Lab 7: SQL Injection - Using SQLi to Bypass Authentication"
+    },
+    {
+      "id": "secure-bank--undefined-1--web-shell",
+      "path": "secure-bank/undefined-1/web-shell.md",
+      "title": "Web Shell",
+      "category": "secure-bank",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/secure-bank/undefined-1/web-shell.md",
+      "excerpt": "Web Shell Lab 16: Command injection - Web Shell with Command injection Go to upload file page form https://127.0.0.1/index.php?page=upload-file.php Here we can upload a php reverse shell and custom one of the shells alre",
+      "searchText": "Lab 16: Command injection - Web Shell with Command injection"
+    },
+    {
+      "id": "thm--owasp--readme",
+      "path": "thm/owasp/README.md",
+      "title": "🔟 OWASP",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/owasp/README.md",
+      "excerpt": "🔟 OWASP tryhackme.com - © TryHackMe OWASP The Open Worldwide Application Security Project (OWASP) is an online community that produces freely-available articles, methodologies, documentation, tools, and technologies in ",
+      "searchText": "Methodology "
+    },
+    {
+      "id": "thm--owasp--injection",
+      "path": "thm/owasp/injection.md",
+      "title": "1⃣ Injection",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/owasp/injection.md",
+      "excerpt": "1⃣ Injection Injection flaws are very common in applications today. These flaws occur because user controlled input is interpreted as actual commands or parameters by the application. Injection attacks depend on what tec",
+      "searchText": ""
+    },
+    {
+      "id": "thm--active-directory-basics",
+      "path": "thm/active-directory-basics.md",
+      "title": "Active Directory Basics",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/active-directory-basics.md",
+      "excerpt": "Active Directory Basics tryhackme.com - © TryHackMe 🔗 Active Directory Basics Task 1 - Introduction and deploy 🎯 Target IP: 10.10.97.33 We start lab and spawn Windows Server machine. After we'll spawn an attacker box m",
+      "searchText": "Task 1 - Introduction and deploy Task 2 - Windows Domains 2.1 - In a Windows domain, credentials are stored in a centralised repository called... 2.2 - The server in charge of running the Active Directory services is called... Task 3  - Active Directory 3.1 - Which group normally administrates all computers and resources in a domain? 3.2 - What would be the name of the machine account associated with a machine named TOM-PC? 3.3 - Suppose our company creates a new department for Quality Assurance. What type of containers should we use to group all Quality Assurance users so that policies can be applied consistently to them? Task 4  - Managing Users in AD 4.1 - What was the flag found on Sophie's desktop? 4.2 - The process of granting privileges to a user over some OU or other AD Object is called... Task 5  - Managing Computers in AD 5.1 - After organising the available computers, how many ended up in the Workstations OU? 5.2 - Is it recommendable to create separate OUs for Servers and Workstations? (yay/nay) Task 6  - Group Policies GPO distribution Creating some GPOs for THM Inc. 6.1 -  What is the name of the network share used to distribute GPOs to domain machines? 6.2 - Can a GPO be used to apply settings to users and computers? (yay/nay) Task 7 - Authentication Methods 7.1 - Will a current version of Windows use NetNTLM as the preferred authentication protocol by default? (yay/nay) 7.2 - When referring to Kerberos, what type of ticket allows us to request further tickets known as TGS? 7.3 - When using NetNTLM, is a user's password transmitted over the network at any point? (yay/nay) Task 8 - Trees, Forests and Trusts Trees Forests Trust Relationships 8.1 -  What is a group of Windows domains that share the same namespace called? 8.2 - What should be configured between two domains for a user in Domain A to access a resource in Domain B?"
+    },
+    {
+      "id": "thm--ad-basic-enumeration",
+      "path": "thm/ad-basic-enumeration.md",
+      "title": "AD: Basic Enumeration",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/ad-basic-enumeration.md",
+      "excerpt": "AD: Basic Enumeration @TryHackMe 🔗 AD: Basic Enumeration Task 1 - Deploy machine Attacker Machine: 10.250.11.15 🎯 Target IP: 10.211.11.20 | 10.211.11.10 Download VPN Go here to download correct network VPN (select netw",
+      "searchText": "Task 1 - Deploy machine  Download VPN Task 2 - Mapping Out the Network 2.1 - What is the domain name of our target? 2.2 - What version of Windows Server is running on the DC? Task 3 - Network Enumeration With SMB Listing SMB Shares Accessing SMB Shares 3.1 - What is the flag hidden in one of the shares? Task 4 - Domain Enumeration LDAP Enumeration (Anonymous Bind) RPC Enumeration (Null Sessions) Task 5 - Password Spraying Password Policy 5.1 - What is the minimum password length? 5.2 - What is the locked account duration? Performing Password Spraying Attacks 5.3 - Perform password spraying using CrackMapExec. What valid credentials did you find? (format: username:password) Task 6 - Conclusion"
+    },
+    {
+      "id": "thm--agent-sudo",
+      "path": "thm/agent-sudo.md",
+      "title": "Agent Sudo",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/agent-sudo.md",
+      "excerpt": "Agent Sudo tryhackme.com - © TryHackMe 🔗 Agent Sudo Task 1 - Deploy the machine 🎯 Target IP: 10.10.62.30 Create a directory for machine on the Desktop and a directory containing the scans with nmap. Task 2 - Reconnaiss",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance Task 3 - Enumerate 3.1 - How many open ports? 3.2 - How you redirect yourself to a secret page? 3.3 - What is the agent name? Task 4 - Hash cracking and brute-force 4.1 - FTP password 4.2 - Zip file password 4.3 - Steg password 4.4 - Who is the other agent (in full name)? 4.5 - SSH password Task 5 - Capture the user flag 5.1 - What is the user flag? 5.2 - What is the incident of the photo called? Task 6 - Privilege escalation 6.1 - CVE number for the escalation  6.2 - What is the root flag? 6.3 - (Bonus) Who is Agent R?"
+    },
+    {
+      "id": "thm--anonymous",
+      "path": "thm/anonymous.md",
+      "title": "Anonymous",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/anonymous.md",
+      "excerpt": "Anonymous tryhackme.com - © TryHackMe 🔗 Anonymous Task 1 - Deploy the machine 🎯 Target IP: 10.10.32.229 Create a directory for machine on the Desktop and a directory containing the scans with nmap. Task 2 - Reconnaissa",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance 2.1 - Enumerate the machine.  How many ports are open? 2.2 - What service is running on port 21? 2.3 - What service is running on ports 139 and 445? 2.4 - There's a share on the user's computer.  What's it called? 2.5 - Find user flag 2.6 - Find root flag"
+    },
+    {
+      "id": "thm--attacking-kerberos",
+      "path": "thm/attacking-kerberos.md",
+      "title": "Attacking Kerberos",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/attacking-kerberos.md",
+      "excerpt": "Attacking Kerberos 🔗 Attacking Kerberos Task 1 - Intro & Deploy machine Attacker Machine: 10.8.161.114 🎯 Target IP: 10.10.68.235 Create a directory on the Desktop with the machine's name, and inside this directory, cre",
+      "searchText": "Task 1 - Intro & Deploy machine  What is Kerberos? Common Terminology  Kerberos Authentication Overview Kerberos Tickets Overview Task 2 - Enumeration w/ Kerbrute 2.1 - What is the domain name of our target? 2.2 - What is the SQL service account name? 2.3 - What is the second \"machine\" account name? 2.4 - What is the third \"user\" account name? Task 3 - Harvesting & Brute-Forcing Tickets w/ Rubeus Harvesting Tickets w/ Rubeus Brute-Forcing / Password-Spraying w/ Rubeus 3.1 - Which domain admin do we get a ticket for when harvesting tickets? 3.2 - Which domain controller do we get a ticket for when harvesting tickets? Task 4 - Kerberoasting w/ Rubeus & Impacket 4.2 - What is the SQLService Password? Rubeus (Method 1) 4.1 - What is the HTTPService Password? Impacket (Method 2) Kerberoasting Mitigation Task 5 - AS-REP Roasting w/ Rubeus Dumping KRBASREP5 Hashes w/ Rubeus 5.1 - What hash type does AS-REP Roasting use? 5.2 - Which User is vulnerable to AS-REP Roasting?  5.3 - What is the User's Password? 5.4 - Which Admin is vulnerable to AS-REP Roasting? 5.5 - What is the Admin's Password?  Task 6 - Pass the Ticket w/ mimikatz Pass the Ticket Overview Prepare Mimikatz & Dump Tickets Pass the Ticket w/ Mimikatz Task 7 - Golden/Silver Ticket Attacks w/ mimikatz KRBTGT Overview  Golden/Silver Ticket Attack Overview -  Dump the krbtgt hash Create a Golden/Silver Ticket 7.1 - What is the SQLService NTLM Hash? 7.2 - What is the Administrator NTLM Hash? Task 8 - Kerberos Backdoors w/ mimikatz Skeleton Key Overview Installing the Skeleton Key w/ mimikatz Task 9- Conclusion Resources"
+    },
+    {
+      "id": "thm--attacktive-directory",
+      "path": "thm/attacktive-directory.md",
+      "title": "Attacktive Directory",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/attacktive-directory.md",
+      "excerpt": "Attacktive Directory @TryHackMe Task 1 - Deploy machine 🎯 Target IP: 10.10.202.146 Create a directory on the Desktop with the machine's name, and inside this directory, create another directory to store the materials an",
+      "searchText": "Task 1 - Deploy machine  Task 2 - Setup  Task 3 - Enumeration ~ Welcome to Attacktive Directory  3.1 What tool will allow us to enumerate port 139/445? 3.2 What is the NetBIOS-Domain Name of the machine? 3.3 What invalid TLD do people commonly use for their Active Directory Domain? Task 4 - Enumeration ~ Enumerating Users via Kerberos  4.1 - What command within Kerbrute will allow us to enumerate valid usernames? 4.2 - What notable account is discovered? (These should jump out at you) 4.3 - What is the other notable account is discovered? (These should jump out at you) Task 5 - Exploitation ~ Abusing Kerberos  Retrieving Kerberos Tickets 5.1 - We have two user accounts that we could potentially query a ticket from. Which user account can you query a ticket from with no password? 5.2 - Looking at the Hashcat Examples Wiki page, what type of Kerberos hash did we retrieve from the KDC? (Specify the full name) 5.3 - What mode is the hash? 5.4 - Now crack the hash with the modified password list provided, what is the user accounts password? Task 6 - Enumeration ~ Back to the Basics  6.1 - What utility can we use to map remote SMB shares? 6.2 - Which option will list shares? 6.3 - How many remote shares is the server listing? 6.4 - There is one particular share that we have access to that contains a text file. Which share is it? 6.5 - What is the content of the file? 6.6 - Decoding the contents of the file, what is the full contents? Task 7 - Domain Privilege Escalation ~ Elevating Privileges within the Domain  7.1 - What method allowed us to dump NTDS.DIT? 7.2 - What is the Administrators NTLM hash? 7.3 - What method of attack could allow us to authenticate as the user without the password? 7.4 - Using a tool called Evil-WinRM what option will allow us to use a hash? Task 8 - Flag Submission  8.1 - svc-admin 8.2 - backup 8.3 - Administrator"
+    },
+    {
+      "id": "thm--blaster",
+      "path": "thm/blaster.md",
+      "title": "Blaster",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/blaster.md",
+      "excerpt": "Blaster https://tryhackme.com/room/blaster 🔗 Blaster Task 1 - Deploy the machine 🎯 Target IP: 10.10.53.21 Create a directory for machine on the Desktop and a directory containing the scans with nmap. Task 2 - Reconnais",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance Task 3 - Activate Forward Scanners and Launch Proton Torpedoes 3.1 How many ports are open on our target system? 3.2 - Looks like there's a web server running, what is the title of the page we discover when browsing to it? 3.3 - Interesting, let's see if there's anything else on this web server by fuzzing it. What hidden directory do we discover? 3.4 - Navigate to our discovered hidden directory, what potential username do we discover? 3.5 - Crawling through the posts, it seems like our user has had some difficulties logging in recently. What possible password do we discover? 3.6 - Log into the machine via Microsoft Remote Desktop (MSRDP) and read user.txt. What are it's contents?    Task 4 - Breaching the Control Room 4.1 - When enumerating a machine, it's often useful to look at what the user was last doing. Look around the machine and see if you can find the CVE which was researched on this server. What CVE was it? 4.2 - Looks like an executable file is necessary for exploitation of this vulnerability and the user didn't really clean up very well after testing it. What is the name of this executable? 4.3 - Now that we've spawned a terminal, let's go ahead and run the command 'whoami'. What is the output of running this? 4.4- Now that we've confirmed that we have an elevated prompt, read the contents of root.txt on the Administrator's desktop. What are the contents? Keep your terminal up after exploitation so we can use it in next task! Task 5 - Adoption into the Collective 5.1 - First, let's set the target to PSH (PowerShell). Which target number is PSH? 5.2 - Last but certainly not least, let's look at persistence mechanisms via Metasploit. What command can we run in our meterpreter console to setup persistence which automatically starts when the system boots? Don't include anything beyond the base command and the option for boot startup."
+    },
+    {
+      "id": "thm--blog",
+      "path": "thm/blog.md",
+      "title": "Blog",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/blog.md",
+      "excerpt": "Blog https://tryhackme.com/room/blog 🔗 Blog Billy Joel made a blog on his home computer and has started working on it. It's going to be so awesome! Enumerate this box and find the 2 flags that are hiding on it! Billy ha",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance Task 3 - Root.txt? Task 4 - user.txt? 4.1 Where was user.txt found? 4.2 What CMS was Billy using? 4.3 What version of the above CMS was being used?"
+    },
+    {
+      "id": "thm--bolt",
+      "path": "thm/bolt.md",
+      "title": "Bolt",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/bolt.md",
+      "excerpt": "Bolt tryhackme.com - © TryHackMe 🔗 Bolt Task 1 - Deploy the machine 🎯 Target IP: 10.10.10.179 Create a directory for machine on the Desktop and a directory containing the scans with nmap. Task 2 - Reconnaissance Copy c",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance Task 3 - Hack your way into the machine! 3.1 - Find open ports on the machine 3.2 - What port number has a web server with a CMS running? 3.3 - What is the username we can find in the CMS? 3.4 - What is the password we can find for the username? 3.5 - What version of the CMS is installed on the server? (Ex: Name 1.1.1) 3.6 - There's an exploit for a previous version of this CMS, which allows authenticated RCE. Find it on Exploit DB. What's its EDB-ID? 3.7 - Metasploit recently added an exploit module for this vulnerability. What's the full path for this exploit? (Ex: exploit/....) 3.8 - Set the LHOST, LPORT, RHOST, USERNAME, PASSWORD in msfconsole before running the exploit 3.9 - Look for flag.txt inside the machine."
+    },
+    {
+      "id": "thm--bounty-hacker",
+      "path": "thm/bounty-hacker.md",
+      "title": "Bounty Hacker",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/bounty-hacker.md",
+      "excerpt": "Bounty Hacker tryhackme.com - © TryHackMe 🔗 Bounty Hacker Task 1 - Deploy the machine 🎯 Target IP: 10.10.218.233 Create a directory for machine on the Desktop and a directory containing the scans with nmap. Task 2 - Re",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance 2.1 - Find open ports on the machine 2.2 - Who wrote the task list? 2.2 - What service can you bruteforce with the text file found? 2.3 - What is the users flag?  2.4 - What is the root flag?"
+    },
+    {
+      "id": "thm--breaching-active-directory",
+      "path": "thm/breaching-active-directory.md",
+      "title": "Breaching Active Directory",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/breaching-active-directory.md",
+      "excerpt": "Breaching Active Directory @TryHackMe 🔗 Breaching Active Directory Task 1 - Deploy machine Attacker Machine: 10.50.94.22 🎯 Target IP: 10.200.97.201 | 10.200.97.101 Download VPN Go here to download correct network VPN (",
+      "searchText": "Task 1 - Deploy machine  Download VPN DNS Config Task 2 - OSINT and Phishing Task 3 - NTLM Authenticated Services Task 4 - LDAP Bind Credentials LDAP Pass-back Attacks Performing an LDAP Pass-back Hosting a Rogue LDAP Server Capturing LDAP Credentials Task 5 - Authentication Relays Intercepting NetNTLM Challenge Task 6 - Microsoft Deployment Toolkit PXE Boot Image Retrieval Recovering Credentials from a PXE Boot Image Task 7 - Configuration Files Task 8 - Conclusion"
+    },
+    {
+      "id": "thm--brooklyn-nine-nine",
+      "path": "thm/brooklyn-nine-nine.md",
+      "title": "Brooklyn Nine Nine",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/brooklyn-nine-nine.md",
+      "excerpt": "Brooklyn Nine Nine tryhackme.com - © TryHackMe 🔗 Brooklyn Nine Nine Task 1 - Deploy the machine 🎯 Target IP: 10.10.218.233 Create a directory for machine on the Desktop and a directory containing the scans with nmap. T",
+      "searchText": "🔗 Brooklyn Nine Nine Task 1 - Deploy the machine Task 2 - Reconnaissance Task 2 - Find the User flag Task 3 - Find the Root flag"
+    },
+    {
+      "id": "thm--coldbox",
+      "path": "thm/coldbox.md",
+      "title": "ColdBox",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/coldbox.md",
+      "excerpt": "ColdBox https://tryhackme.com/room/colddboxeasy 🔗 ColdBox Task 1 - Deploy the machine 🎯 Target IP: 10.10.100.105 Create a directory for machine on the Desktop and a directory containing the scans with nmap. Task 2 - Re",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance Task 3 - User flag? Task 4 - Root flag?"
+    },
+    {
+      "id": "thm--enumerating-active-directory",
+      "path": "thm/enumerating-active-directory.md",
+      "title": "Enumerating Active Directory",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/enumerating-active-directory.md",
+      "excerpt": "Enumerating Active Directory 🔗 Enumerating Active Directory Task 1 - Intro & Deploy machine Attacker Machine: 10.50.6.7 Create a directory on the Desktop with the machine's name, and inside this directory, create anothe",
+      "searchText": "Task 1 - Intro & Deploy machine  Kali Requesting Your Credentials Task 2 - Credential Injection Runas Explained 2.1 - What native Windows binary allows us to inject credentials legitimately into memory? 2.2 - What parameter option of the runas binary will ensure that the injected credentials are used for all network connections? 2.3 -What network folder on a domain controller is accessible by any authenticated AD account and stores GPO information? 2.4 - When performing dir \\\\za.tryhackme.com\\SYSVOL, what type of authentication is performed by default? Task 3 - Enumeration through Microsoft Management Console Microsoft Management Console Users and Computers 3.1 - How many Computer objects are part of the Servers OU? 3.2 - How many Computer objects are part of the Workstations OU? 3.3 - How many departments (Organisational Units) does this organisation consist of? 3.4 - How many Admin tiers does this organisation have? 3.5 - What is the value of the flag stored in the description attribute of the t0_tinus.green account? Task 4 - Enumeration through Command Prompt Users Groups Password Policy 4.1 - Apart from the Domain Users group, what other group is the aaron.harris account a member of?  4.2 - Is the Guest account active? (Yay,Nay) 4.3 - How many accounts are a member of the Tier 1 Admins group? 4.4 - What is the account lockout duration of the current password policy in minutes? Task 5 - Enumeration through PowerShell Users Groups AD Objects 5.1 - What is the value of the Title attribute of Beth Nolan (beth.nolan)? 5.2 - What is the value of the DistinguishedName attribute of Annette Manning (annette.manning)? 5.3 - When was the Tier 2 Admins group created? 5.4 - What is the value of the SID attribute of the Enterprise Admins group? 5.5 - Which container is used to store deleted AD objects? Task 6 - Enumeration through Bloodhound Bloodhound History Sharphound Bloodhound Attack Paths 6.1 - What command can be used to execute Sharphound.exe and request that it recovers Session information only from the za.tryhackme.com domain without touching domain controllers? 6.2 - Apart from the krbtgt account, how many other accounts are potentially kerberoastable? 6.3 - How many machines do members of the Tier 1 Admins group have administrative access to? 6.4 - How many users are members of the Tier 2 Admins group? Task 7 - Conclusion Mitigations"
+    },
+    {
+      "id": "thm--eternal-blue",
+      "path": "thm/eternal-blue.md",
+      "title": "Eternal Blue",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/eternal-blue.md",
+      "excerpt": "Eternal Blue tryhackme.com - © TryHackMe 🔗 Blue Task 1 Reconnaissance - Deploy the machine 1.1 - Deploy the machine 🎯 Target IP: 10.10.33.26 Create a directory for machine on the Desktop and a directory containing the ",
+      "searchText": "Task 1 Reconnaissance - Deploy the machine 1.1 - Deploy the machine 1.2 - How many services are running under port 1000? 1.3 - What is this machine vulnerable to? (Answer in the form of: ms??-???, ex: ms08-067) Task 2 - Gain Access 2.1 - Find the exploitation code we will run against the machine. What is the full path of the code? (Ex: exploit/........) Task 3 - Escalate 3.1 - Convert a shell to meterpreter shell in metasploit. What is the name of the post module we will use? (Exact path, similar to the exploit we previously selected) 3.2 - Select this (use MODULE_PATH). Show options, what option are we required to change? 3.3 - Verify that we have escalated to NT AUTHORITY\\SYSTEM. Run getsystem to confirm this. Feel free to open a dos shell via the command 'shell' and run 'whoami'. This should return that we are indeed system. Background this shell afterwards and select our meterpreter session for usage again. Task 4 - Cracking 4.1 - Within our elevated meterpreter shell, run the command 'hashdump'. This will dump all of the passwords on the machine as long as we have the correct privileges to do so. What is the name of the non-default user?  4.2 - Copy this password hash to a file and research how to crack it. What is the cracked password? Task 5 - Find flags! 5.1 - Flag1? This flag can be found at the system root.  5.2 - Flag2? This flag can be found at the location where passwords are stored within Windows. 5.3 - This flag can be found in an excellent location to loot. After all, Administrators usually have pretty interesting things saved. "
+    },
+    {
+      "id": "thm--exploiting-active-directory",
+      "path": "thm/exploiting-active-directory.md",
+      "title": "Exploiting Active Directory",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/exploiting-active-directory.md",
+      "excerpt": "Exploiting Active Directory 🔗 Exploiting Active Directory Task 1 - Deploy machine Attacker Machine: 10.250.11.15 🎯 Target IP: 10.211.11.20 | 10.211.11.10 Download VPN Go here to download correct network VPN (select net",
+      "searchText": "Task 1 - Deploy machine  Download VPN Task 2 -  2.1 -  2.2 -  Task 3 -  Task 4 -  Task 5 -  5.2 -  5.3 - "
+    },
+    {
+      "id": "thm--h4cked",
+      "path": "thm/h4cked.md",
+      "title": "H4cked",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/h4cked.md",
+      "excerpt": "H4cked https://tryhackme.com/room/h4cked 🔗 H4cked Task 1 - Starting Description/Note: Find out what happened by analysing a .pcap file and hack your way back into the machine Task 2 - Reconnaissance Create a directory f",
+      "searchText": "Task 1 - Starting Task 2 - Reconnaissance 2.1 - The attacker is trying to log into a specific service. What service is this? 2.2 - There is a very popular tool by Van Hauser which can be used to brute force a series of services. What is the name of this tool? 2.3 - The attacker is trying to log on with a specific username. What is the username? 2.4 - What is the user's password? 2.5 - What is the current FTP working directory after the attacker logged in? 2.6 - The attacker uploaded a backdoor. What is the backdoor's filename? 2.7 - The backdoor can be downloaded from a specific URL, as it is located inside the uploaded file. What is the full URL?  2.8 - Which command did the attacker manually execute after getting a reverse shell? 2.9 - What is the computer's hostname? 2.10 - Which command did the attacker execute to spawn a new TTY shell? 2.11 - Which command was executed to gain a root shell? 2.12 - The attacker downloaded something from GitHub. What is the name of the GitHub project? 2.13 - The project can be used to install a stealthy backdoor on the system. It can be very hard to detect. What is this type of backdoor called? Task 3 - Hack your way back into the machine 3.1 - Run Hydra (or any similar tool) on the FTP service. The attacker might not have chosen a complex password. You might get lucky if you use a common word list. 3.2 - Change the necessary values inside the web shell and upload it to the webserver 3.3 - Create a listener on the designated port on your attacker machine. Execute the web shell by visiting the .php file on the targeted web server. 3.4 - Become root! 3.5 - Read the flag.txt file inside the Reptile directory"
+    },
+    {
+      "id": "thm--ice",
+      "path": "thm/ice.md",
+      "title": "Ice",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/ice.md",
+      "excerpt": "Ice tryhackme.com - © TryHackMe 🔗 Ice Task 1 - Deploy the machine 🎯 Target IP: 10.10.139.241 Create a directory for machine on the Desktop and a directory containing the scans with nmap. Task 2 - Recon Copy commandsu e",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Recon 2.1 - Launch a scan against our target machine, I recommend using a SYN scan set to scan all ports on the machine.  2.2 - Once the scan completes, we'll see a number of interesting ports open on this machine. As you might have guessed, the firewall has been disabled (with the service completely shutdown), leaving very little to protect this machine. One of the more interesting ports that is open is Microsoft Remote Desktop (MSRDP). What port is this open on? 2.3 - What service did nmap identify as running on port 8000? (First word of this service) 2.4 - What does Nmap identify as the hostname of the machine? (All caps for the answer) Task 3 - Gain Access 3.1 - Now that we've identified some interesting services running on our target machine, let's do a little bit of research into one of the weirder services identified: Icecast. Icecast, or well at least this version running on our target, is heavily flawed and has a high level vulnerability with a score of 7.5 (7.4 depending on where you view it). What type of vulnerability is it? Use https://www.cvedetails.com for this question and the next. 3.2 - What is the CVE number for this vulnerability? This will be in the format: CVE-0000-0000 3.3 - After Metasploit has started, let's search for our target exploit using the command 'search icecast'. What is the full path (starting with exploit) for the exploitation module? This module is also referenced in 'RP: Metasploit' which is recommended to be completed prior to this room, although not entirely necessary.  3.4 - Following selecting our module, we now have to check what options we have to set. Run the command show options. What is the only required setting which currently is blank? Task 4 - Escalate 4.1 - Woohoo! We've gained a foothold into our victim machine! What's the name of the shell we have now? 4.2 - What user was running that Icecast process? The commands used in this question and the next few are taken directly from the 'RP: Metasploit' room. 4.3 - What build of Windows is the system? 4.4 - Now that we know some of the finer details of the system we are working with, let's start escalating our privileges. First, what is the architecture of the process we're running? 4.5 - Running the local exploit suggester will return quite a few results for potential escalation exploits. What is the full path (starting with exploit/) for the first returned exploit? 4.6. - Now that we've set our session number, further options will be revealed in the options menu. We'll have to set one more as our listener IP isn't correct. What is the name of this option? Task 5 - Looting 5.1 - Mentioned within this question is the term 'living in' a process. Often when we take over a running program we ultimately load another shared library into the program (a dll) which includes our malicious code. From this, we can spawn a new thread that hosts our shell. 5.2 - Let's check what user we are now with the command `getuid`. What user is listed? 5.3 - Which command allows up to retrieve all credentials? 5.4 - Run this command now. What is Dark's password? Mimikatz allows us to steal this password out of memory even without the user 'Dark' logged in as there is a scheduled task that runs the Icecast as the user 'Dark'. It also helps that Windows Defender isn't running on the box ;) (Take a look again at the ps list, this box isn't in the best shape with both the firewall and defender disabled) Task 6 - Post-Exploitation 6.1 - What command allows us to dump all of the password hashes stored on the system? We won't crack the Administrative password in this case as it's pretty strong (this is intentional to avoid password spraying attempts) 6.2 - While more useful when interacting with a machine being used, what command allows us to watch the remote user's desktop in real time? 6.3 - How about if we wanted to record from a microphone attached to the system? 6.4 - To complicate forensics efforts we can modify timestamps of files on the system. What command allows us to do this? Don't ever do this on a pentest unless you're explicitly allowed to do so! This is not beneficial to the defending team as they try to breakdown the events of the pentest after the fact. 6.5 - Golden ticket attacks are a function within Mimikatz which abuses a component to Kerberos (the authentication system in Windows domains), the ticket-granting ticket. In short, golden ticket attacks allow us to maintain persistence and authenticate as any user on the domain."
+    },
+    {
+      "id": "thm--ignite",
+      "path": "thm/ignite.md",
+      "title": "Ignite",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/ignite.md",
+      "excerpt": "Ignite tryhackme.com - © TryHackMe 🔗 Ignite Task 1 - Deploy the machine 🎯 Target IP: 10.10.166.221 Create a directory for machine on the Desktop and a directory containing the scans with nmap. Task 2 - Reconnaissance C",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance 2.1 - Find open ports on the machine Task 3 - What is the user flag? Task 4 - What is the root flag?"
+    },
+    {
+      "id": "thm--kenobi",
+      "path": "thm/kenobi.md",
+      "title": "Kenobi",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/kenobi.md",
+      "excerpt": "Kenobi tryhackme.com - © TryHackMe 🔗 Kenobi Task 1 - Deploy the machine 🎯 Target IP: 10.10.51.196 Create a directory for machine on the Desktop and a directory containing the scans with nmap. Task 2 - Reconnaissance Co",
+      "searchText": "🔗 Kenobi Task 1 - Deploy the machine Task 2 - Reconnaissance Task 3 - Enumerating Samba for shares 3.1 - How many shares have been found? 3.2 - Once you're connected, list the files on the share. What is the file can you see? 3.3 - What port is FTP running on? 3.4 - What mount can we see? Task 4 - Gain initial access with ProFtpd 4.1 - Lets get the version of ProFtpd. 4.2 - How many exploits are there for the ProFTPd running? Task 3 - Find the Root flag"
+    },
+    {
+      "id": "thm--lateral-movement-and-pivoting",
+      "path": "thm/lateral-movement-and-pivoting.md",
+      "title": "Lateral Movement and Pivoting",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/lateral-movement-and-pivoting.md",
+      "excerpt": "Lateral Movement and Pivoting @TryHackMe 🔗 Lateral Movement and Pivoting Task 1 - Deploy machine 🎯 Target IP: 10.200.19.101 Download VPN Go here to download correct network VPN (select networks and room name) server an",
+      "searchText": "Task 1 - Deploy machine  Download VPN Kali Requesting Your Credentials A Note on Reverse Shells Task 2 - Moving Through the Network What is Lateral Movement? A Quick Example Administrators and UAC Task 3 - Spawning Processes Remotely Psexec Remote Process Creation Using WinRM Remotely Creating Services Using sc Creating Scheduled Tasks Remotely 3.1 - After running the \"flag.exe\" file on t1_leonard.summers desktop on THMIIS, what is the flag? Task 4 -  4.1 -  Task 5 -  5.2 -  5.3 - "
+    },
+    {
+      "id": "thm--lazyadmin",
+      "path": "thm/lazyadmin.md",
+      "title": "LazyAdmin",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/lazyadmin.md",
+      "excerpt": "LazyAdmin tryhackme.com - © TryHackMe 🔗 LazyAdmin Task 1 - Deploy the machine 🎯 Target IP: 10.10.129.248 Create a directory for machine on the Desktop and a directory containing the scans with nmap. Task 2 - Reconnaiss",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance 2.1 - Find open ports on the machine Task 3 - What is the user flag? We can strat to explore http://lazyadmin.thm (port 80) Task 4 - What is the root flag?"
+    },
+    {
+      "id": "thm--lian_yu",
+      "path": "thm/lian_yu.md",
+      "title": "Lian_Yu",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/lian_yu.md",
+      "excerpt": "Lian_Yu https://tryhackme.com/room/lianyu 🔗 Lian_Yu Task 1 - Deploy the machine 🎯 Target IP: 10.10.95.230 Create a directory for machine on the Desktop and a directory containing the scans with nmap. Task 2 - Reconnais",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance Task 3 - Find the flags 3.1 What is the Web Directory you found? 3.2 What is the file name you found? 3.3 - What is the FTP Password? 3.4 - What is the file name with SSH password? 3.5 - Find user.txt flag 3.5 - Find root.txt flag"
+    },
+    {
+      "id": "thm--overpass",
+      "path": "thm/overpass.md",
+      "title": "Overpass",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/overpass.md",
+      "excerpt": "Overpass tryhackme.com - © TryHackMe 🔗 Overpass Task 1 - Deploy the machine 🎯 Target IP: 10.10.164.129 Create a directory for machine on the Desktop and a directory containing the scans with nmap. Task 2 - Reconnaissan",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance 2.1 - Find open ports on the machine Task 3 - Hack the machine and get the flag in user.txt Task 3 - Escalate your privileges and get the flag in root.txt"
+    },
+    {
+      "id": "thm--pickle-rick",
+      "path": "thm/pickle-rick.md",
+      "title": "Pickle Rick",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/pickle-rick.md",
+      "excerpt": "Pickle Rick tryhackme.com - © TryHackMe 🔗 Pickle Rick Task 1 - Deploy the machine 🎯 Target IP: 10.10.150.53 Create a directory for machine on the Desktop and a directory containing the scans with nmap. This Rick and Mo",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance 2.1 - What is the first ingredient that Rick needs? 2.2 - What is the second ingredient in Rick’s potion? 2.3 - What is the last and final ingredient?"
+    },
+    {
+      "id": "thm--post-exploitation-basics",
+      "path": "thm/post-exploitation-basics.md",
+      "title": "Post-Exploitation Basics",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/post-exploitation-basics.md",
+      "excerpt": "Post-Exploitation Basics This room will cover all of the basics of post-exploitation; we'll talk everything from post-exploitation enumeration with powerview and bloodhound, dumping hashes and golden ticket attacks with ",
+      "searchText": "Task 1 - Deploy machine  SSH/22 RDP/3389 Task 2 - Enumeration w/ Powerview 2.1 - What is the shared folder that is not set by default? 2.2 - What operating system is running inside of the network besides Windows Server 2019? 2.3 - I've hidden a flag inside of the users find it Task 3 - Enumeration w/ Bloodhound BloodHound Installation Getting loot w/ SharpHound Mapping the network w/ BloodHound - 3.1 - What service is also a domain admin? 3.2 - What two users are Kerberoastable? Task 4 - Dumping hashes w/ mimikatz Dump Hashes w/ mimikatz - Crack those hashes w/ hashcat 4.1 - What is the Machine1 Password? 4.2 - What is the Machine2 Hash? Task 5 - Golden Ticket Attacks w/ mimikatz Dump the krbtgt Hash Create a Golden Ticket Use the Golden Ticket to access other machine Task 6 - Enumeration w/ Server Manager Enumeration w/ Server Manager 6.1 - What tool allows to view the event logs? 6.2 - What is the SQL Service password? Task 7 - Maintaining Access Generating a Payload w/ msfvenom Run the Persistence Module Resources Tools Used"
+    },
+    {
+      "id": "thm--rootme",
+      "path": "thm/rootme.md",
+      "title": "RootMe",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/rootme.md",
+      "excerpt": "RootMe tryhackme.com - © TryHackMe 🔗 RootMe Task 1 - Deploy the machine 🎯 Target IP: 10.10.55.36 Create a directory for machine on the Desktop and a directory containing the scans with nmap. Task 2 - Reconnaissance Cop",
+      "searchText": "🔗 RootMe Task 1 - Deploy the machine Task 2 - Reconnaissance 2.1 - Scan the machine, how many ports are open?  2.2  - What version of Apache is running? 2.3 - What service is running on port 22? 2.4 - Find directories on the web server using the GoBuster tool. 2.5 - What is the hidden directory? Task 3 - Getting a shell 3.1 - Find a form to upload and get a reverse shell, and find the flag (user.txt). Task 4 - Privilege escalation 4.1 - Search for files with SUID permission, which file is weird? 4.2 - Find a form to escalate your privileges. 4.3 - root.txt [flag]"
+    },
+    {
+      "id": "thm--simple-ctf",
+      "path": "thm/simple-ctf.md",
+      "title": "Simple CTF",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/simple-ctf.md",
+      "excerpt": "Simple CTF tryhackme.com - © TryHackMe 🔗 Simple CTF Task 1 - Deploy the machine 🎯 Target IP: 10.10.86.206 Create a directory for machine on the Desktop and a directory containing the scans with nmap. Task 2 - Reconnais",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance 2.1 - How many services are running under port 1000? 2.2 - What is running on the higher port? 2.3 - What's the CVE you're using against the application? 2.4 - To what kind of vulnerability is the application vulnerable? 2.5 - What's the password? 2.6 - Where can you login with the details obtained? 2.7 - What's the user flag? 2.8 - Is there any other user in the home directory? What's its name? 2.9 - What can you leverage to spawn a privileged shell?"
+    },
+    {
+      "id": "thm--smag-grotto",
+      "path": "thm/smag-grotto.md",
+      "title": "Smag Grotto",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/smag-grotto.md",
+      "excerpt": "Smag Grotto tryhackme.com - © TryHackMe 🔗 Smag Grotto Task 1 - Deploy the machine 🎯 Target IP: 10.10.137.60 Create a directory for machine on the Desktop and a directory containing the scans with nmap. Task 2 - Reconna",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance 2.1 - What is the secret spicy soup recipe? Task 3 - What is the user flag? Task 4 - What is the root flag?"
+    },
+    {
+      "id": "thm--startup",
+      "path": "thm/startup.md",
+      "title": "Startup",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/startup.md",
+      "excerpt": "Startup tryhackme.com - © TryHackMe 🔗 Startup Task 1 - Deploy the machine 🎯 Target IP: 10.10.196.181 Create a directory for machine on the Desktop and a directory containing the scans with nmap. Task 2 - Reconnaissance",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance 2.1 - What is the secret spicy soup recipe? Task 3 - What are the contents of user.txt? Task 4 - What are the contents of root.txt?"
+    },
+    {
+      "id": "thm--the-sticker-shop",
+      "path": "thm/the-sticker-shop.md",
+      "title": "The Sticker Shop",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/the-sticker-shop.md",
+      "excerpt": "The Sticker Shop https://tryhackme.com/room/thestickershop 🔗 The Sticker Shop​ Task 1 - Deploy the machine 🎯 Target IP: 10.10.73.89 Create a directory for machine on the Desktop and a directory containing the scans wit",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance Task 3 - Find the flag.txt"
+    },
+    {
+      "id": "thm--readme",
+      "path": "thm/README.md",
+      "title": "THM",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/README.md",
+      "excerpt": "THM tryhackme.com - © TryHackMe Rooms OWASP Active Directory Active Directory Basics (This room will introduce the basic concepts and functionality provided by Active Directory) AD: Basic Enumeration (This room covers va",
+      "searchText": "Rooms Active Directory CTFs"
+    },
+    {
+      "id": "thm--vulnversity",
+      "path": "thm/vulnversity.md",
+      "title": "Vulnversity",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/vulnversity.md",
+      "excerpt": "Vulnversity tryhackme.com - © TryHackMe 🔗 Vulnversity Task 1 - Deploy the machine 🎯 Target IP: 10.10.39.96 Create a directory for machine on the Desktop and a directory containing the scans with nmap. Task 2 - Reconnai",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance 2.1 - Scan the box; how many ports are open? 2.2 - What version of the squid proxy is running on the machine? 2.3 - How many ports will Nmap scan if the flag -p-400 was used? 2.4 - What is the most likely operating system this machine is running? 2.5 - What port is the web server running on? Task 3 - Locating directories using Gobuster 3.1 - What is the directory that has an upload form page? Task 4 - Compromise the Webserver 4.1 - What common file type you'd want to upload to exploit the server is blocked? Try a couple to find out. 4.2 - What is the name of the user who manages the webserver? 4.3 - What is the user flag? Task 5 - Privilege Escalation 5.1 - On the system, search for all SUID files. Which file stands out? 5.2 - Become root and get the last flag (/root/root.txt)"
+    },
+    {
+      "id": "thm--wgel",
+      "path": "thm/wgel.md",
+      "title": "Wgel",
+      "category": "thm",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/thm/wgel.md",
+      "excerpt": "Wgel 🔗 Wgel Task 1 - Deploy the machine 🎯 Target IP: 10.10.22.231 Create a directory for machine on the Desktop and a directory containing the scans with nmap. Task 2 - Reconnaissance Copy commandsu echo \"10.10.22.231 ",
+      "searchText": "Task 1 - Deploy the machine Task 2 - Reconnaissance Task 3 - What are the contents of user.txt? Task 4 - What are the contents of root.txt?"
+    },
+    {
+      "id": "vulnhub--brainpain-bof",
+      "path": "vulnhub/brainpain-bof.md",
+      "title": "Brainpain (BoF)",
+      "category": "vulnhub",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/vulnhub/brainpain-bof.md",
+      "excerpt": "Brainpain (BoF) https://www.vulnhub.com/entry/brainpan-1,51/ 🔗 Brainpain 1 readme.txt (Disclaimer and Setup) Description Copy command _ _ | |__ _ __ __ _(_)_ __ _ __ __ _ _ __ | '_ \\| '__/ _` | | '_ \\| '_ \\ / _` | '_ \\ ",
+      "searchText": "Description Task 1 - Deploy the machine Task 2 - Reconnaissance 2.1 Ports in listening and relative services Task 3 - BoF Exploitation 3.1 Fuzzing 3.2 Control EIP 3.3 Shellcode generation Task 4 - Privilege Escalation"
+    },
+    {
+      "id": "vulnhub--readme",
+      "path": "vulnhub/README.md",
+      "title": "Vulnhub",
+      "category": "vulnhub",
+      "source": "https://github.com/Perryong/Writeups-and-Walkthroughs/blob/dd03effbc624dbb8789fbd7775369769cec81a36/vulnhub/README.md",
+      "excerpt": "Vulnhub https://www.vulnhub.com/ Brainpain (BoF) ",
+      "searchText": ""
+    }
+  ]
+}

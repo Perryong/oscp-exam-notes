@@ -15,6 +15,8 @@ import UpdateNotice from "./UpdateNotice";
 import DemoEditor from "../editor/DemoEditor";
 import StudyPlan from "../reference/StudyPlan";
 import CheatSheet from "../reference/CheatSheet";
+import WalkthroughLibrary from "../walkthroughs/WalkthroughLibrary";
+import WalkthroughReader from "../walkthroughs/WalkthroughReader";
 export default function App() {
   const account = useAccount(),
     location = useLocation();
@@ -37,6 +39,7 @@ export default function App() {
               ["/topics", "Topics"],
               ["/notes", "All notes"],
               ["/cheat-sheet", "Cheat sheet"],
+              ["/walkthroughs", "Walkthroughs"],
               ["/settings", "Settings"],
             ].map(([to, label]) => (
               <NavLink key={to} to={to}>
@@ -103,6 +106,11 @@ export default function App() {
               element={
                 uid ? <TrashView uid={uid} /> : <AccountPanel user={null} />
               }
+            />
+            <Route path="/walkthroughs" element={<WalkthroughLibrary />} />
+            <Route
+              path="/walkthroughs/:id"
+              element={<WalkthroughReader key={location.pathname} />}
             />
             <Route path="/demo" element={<DemoEditor />} />
             <Route path="/study-plan" element={<StudyPlan uid={uid} />} />
