@@ -1,5 +1,7 @@
+import type { WorkspaceId } from "../workspaces/model";
 export type EntityKind = "note" | "machine";
 export type NoteContent = {
+  workspace?: WorkspaceId;
   title: string;
   contentJson: string;
   text: string;
@@ -12,6 +14,7 @@ export type NoteContent = {
   sourceHtml: string | null;
 };
 export type MachineContent = {
+  workspace?: WorkspaceId;
   name: string;
   platform: string;
   os: string;
@@ -71,7 +74,8 @@ export type MigrationItem = {
   destinationId: string;
   payload: NoteContent | MachineContent;
 };
-export const emptyNote = (): NoteContent => ({
+export const emptyNote = (workspace: WorkspaceId = "oscp"): NoteContent => ({
+  workspace,
   title: "Untitled note",
   contentJson: '{"type":"doc","content":[{"type":"paragraph"}]}',
   text: "",

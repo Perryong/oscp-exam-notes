@@ -25,10 +25,17 @@ function fields(x: unknown, keys: string[]): Record<string, unknown> {
     !x ||
     typeof x !== "object" ||
     Array.isArray(x) ||
-    Object.keys(x).length !== keys.length ||
+    Object.keys(x).some((k) => ![...keys, "workspace"].includes(k)) ||
     keys.some((k) => !Object.hasOwn(x, k))
   )
     throw Error("Invalid fields");
+  if (
+    Object.hasOwn(x, "workspace") &&
+    !["oscp", "osai"].includes(
+      (x as Record<string, unknown>).workspace as string,
+    )
+  )
+    throw Error("Invalid workspace");
   return x as Record<string, unknown>;
 }
 export function validateNote(input: unknown): NoteContent {
