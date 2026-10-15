@@ -55,3 +55,12 @@ Before rolling back the frontend, export new-format notes with a full JSON backu
 After independent review and one regression-tested fix pass: unit tests 56/56, rules tests 11/11, emulator integration tests 14/14, development browser tests 8/8, production-preview tests 4/4 (93 total). See [the review record](implementation-review.md) for fixes, decisions and deferred minors. Typecheck, production build, formatting and diff whitespace checks passed. The built directory contains only static assets; no private-key PEM, service-account configuration or legacy fixture was found. Runtime dependency audit: zero reported vulnerabilities after pinning the patched transitive gRPC package. The remaining large-bundle warning reflects the embedded reference material plus editor/Firebase dependencies.
 
 Live project preflight still returned “Failed to authenticate”; no production resources were changed.
+
+
+## Live deployment progress (2026-10-15)
+
+Firebase authentication completed. The existing `(default)` database in `oscp-notes` is Standard edition in `asia-southeast1`. Email/password authentication is enabled. The old deployed rules matched the legacy rules in behavior; rollback ruleset: `projects/oscp-notes/rulesets/02a9cd6e-067c-4878-8700-e90278b71965`.
+
+The latest emulator checks passed: 11 rules tests, 14 integration tests, and 10 browser tests. `firebase deploy --only firestore:rules,firestore:indexes --project oscp-notes --non-interactive` succeeded. No note documents were modified by deployment.
+
+Vercel frontend publication is still pending CLI authentication. After publication, append the final hostname to Firebase authorized domains, verify public reference routes and perform an authenticated notebook smoke test. No production frontend URL has been issued yet.
