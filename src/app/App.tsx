@@ -46,6 +46,7 @@ export default function App() {
             {(workspace === "osai"
               ? [
                   ["/osai/study-plan", "Study plan"],
+                  ["/osai/library/osai-vault", "OSAI Vault"],
                   ["/osai/labs", "Labs"],
                   ["/osai/topics", "Topics"],
                   ["/osai/notes", "All notes"],
@@ -62,7 +63,7 @@ export default function App() {
                   ["/settings", "Settings"],
                 ]
             ).map(([to, label]) => (
-              <NavLink key={to} to={to}>
+              <NavLink key={to} to={to} end={to === "/osai/library"}>
                 {label}
               </NavLink>
             ))}
