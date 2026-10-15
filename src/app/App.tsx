@@ -1,3 +1,8 @@
+import OsaiStudyPlan from "../osai/StudyPlan";
+import OsaiLibrary from "../osai/Library";
+import OsaiReader from "../osai/Reader";
+import WorkspaceSwitcher from "../workspaces/WorkspaceSwitcher";
+import { workspaceFromPath, workspacePath } from "../workspaces/routes";
 import {
   NavLink,
   Routes,
@@ -20,28 +25,43 @@ import WalkthroughReader from "../walkthroughs/WalkthroughReader";
 export default function App() {
   const account = useAccount(),
     location = useLocation();
-  const uid = account.user?.uid;
+  const uid = account.user?.uid,
+    workspace = workspaceFromPath(location.pathname);
   return (
     <NotebookProvider key={uid || "public"} uid={uid || null}>
       <div className="app">
         <aside className="sidebar">
-          <a className="brand" href="/study-plan">
+          <NavLink
+            className="brand"
+            to={workspacePath(workspace, "study-plan")}
+          >
             <span className="brand-icon">⌘</span>
             <span>
-              FIELDNOTES<small>OSCP STUDY WORKSPACE</small>
+              FIELDNOTES<small>{workspace.toUpperCase()} STUDY WORKSPACE</small>
             </span>
-          </a>
+          </NavLink>
+          <WorkspaceSwitcher workspace={workspace} />
           <p className="nav-label">YOUR WORKSPACE</p>
           <nav>
-            {[
-              ["/study-plan", "Study plan"],
-              ["/machines", "Machines"],
-              ["/topics", "Topics"],
-              ["/notes", "All notes"],
-              ["/cheat-sheet", "Cheat sheet"],
-              ["/walkthroughs", "Walkthroughs"],
-              ["/settings", "Settings"],
-            ].map(([to, label]) => (
+            {(workspace === "osai"
+              ? [
+                  ["/osai/study-plan", "Study plan"],
+                  ["/osai/labs", "Labs"],
+                  ["/osai/topics", "Topics"],
+                  ["/osai/notes", "All notes"],
+                  ["/osai/library", "Learning library"],
+                  ["/settings", "Settings"],
+                ]
+              : [
+                  ["/study-plan", "Study plan"],
+                  ["/machines", "Machines"],
+                  ["/topics", "Topics"],
+                  ["/notes", "All notes"],
+                  ["/cheat-sheet", "Cheat sheet"],
+                  ["/walkthroughs", "Walkthroughs"],
+                  ["/settings", "Settings"],
+                ]
+            ).map(([to, label]) => (
               <NavLink key={to} to={to}>
                 {label}
               </NavLink>
@@ -55,7 +75,7 @@ export default function App() {
         <main>
           <UpdateNotice />
           <header className="topbar">
-            <span>OSCP / Personal workspace</span>
+            <span>{workspace.toUpperCase()} / Personal workspace</span>
             <span className="badge">Study edition</span>
           </header>
           {account.error && (
@@ -65,6 +85,73 @@ export default function App() {
             </p>
           )}
           <Routes>
+            <Route path="/osai/library" element={<OsaiLibrary />} />
+            <Route
+              path="/osai/library/:slug"
+              element={<OsaiReader key={location.pathname} uid={uid} />}
+            />
+            <Route
+              path="/osai"
+              element={<Navigate replace to="/osai/study-plan" />}
+            />
+            <Route
+              path="/osai/study-plan"
+              element={<OsaiStudyPlan uid={uid} />}
+            />
+            <Route
+              path="/osai/notes"
+              element={
+                uid ? (
+                  <NotebookView uid={uid} workspace="osai" />
+                ) : (
+                  <AccountPanel user={null} />
+                )
+              }
+            />
+            <Route
+              path="/osai/topics"
+              element={
+                uid ? (
+                  <NotebookView uid={uid} workspace="osai" topics />
+                ) : (
+                  <AccountPanel user={null} />
+                )
+              }
+            />
+            <Route
+              path="/osai/notes/:id"
+              element={
+                uid ? (
+                  <NotePage
+                    key={location.pathname}
+                    uid={uid}
+                    workspace="osai"
+                  />
+                ) : (
+                  <AccountPanel user={null} />
+                )
+              }
+            />
+            <Route
+              path="/osai/labs"
+              element={
+                uid ? (
+                  <MachineView uid={uid} workspace="osai" />
+                ) : (
+                  <AccountPanel user={null} />
+                )
+              }
+            />
+            <Route
+              path="/osai/trash"
+              element={
+                uid ? (
+                  <TrashView uid={uid} workspace="osai" />
+                ) : (
+                  <AccountPanel user={null} />
+                )
+              }
+            />
             <Route
               path="/settings"
               element={<AccountPanel user={account.user} />}

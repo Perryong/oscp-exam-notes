@@ -1,3 +1,4 @@
+import { createOsaiLabTemplate } from "../osai/templates";
 import { workspaceOf, type WorkspaceId } from "../workspaces/model";
 import { withSeedMachines } from "./seeds";
 import {
@@ -153,7 +154,13 @@ export async function createNote(
     id,
     content: {
       ...emptyNote(workspace),
-      ...(machineId ? encodeEditor(createMachineTemplate()) : {}),
+      ...(machineId
+        ? encodeEditor(
+            workspace === "osai"
+              ? createOsaiLabTemplate()
+              : createMachineTemplate(),
+          )
+        : {}),
       ...initial,
       machineId,
     },

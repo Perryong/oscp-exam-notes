@@ -1,3 +1,4 @@
+import { workspaceOf } from "../workspaces/model";
 import { machineWalkthrough } from "../walkthroughs/catalog";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -15,7 +16,10 @@ const phases = [
 ];
 type Box = (typeof ladder)[number]["boxes"][number];
 export default function StudyPlan({ uid }: { uid?: string }) {
-  const { machines } = useNotebook();
+  const all = useNotebook();
+  const machines = all.machines.filter(
+    (m) => workspaceOf(m.content) === "oscp",
+  );
   const [error, setError] = useState("");
   const [phase, setPhase] = useState(0),
     [box, setBox] = useState<Box | null>(null);

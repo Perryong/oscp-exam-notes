@@ -1,5 +1,7 @@
+import { workspaceOf, type WorkspaceId } from "../workspaces/model";
+import { workspacePath } from "../workspaces/routes";
 import { useEffect, useState, useRef } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams, Navigate } from "react-router-dom";
 import { useNotebook } from "./NotebookContext";
 import { createNote, editDraft, trashNote } from "./repository";
 import { searchNotes } from "./search";
@@ -13,11 +15,15 @@ import RecoveryPanel from "../persistence/RecoveryPanel";
 export default function NotebookView({
   uid,
   topics = false,
+  workspace = "oscp",
 }: {
   uid: string;
   topics?: boolean;
+  workspace?: WorkspaceId;
 }) {
-  const { notes, machines } = useNotebook(),
+  const all = useNotebook(),
+    notes = all.notes.filter((n) => workspaceOf(n.content) === workspace),
+    machines = all.machines.filter((m) => workspaceOf(m.content) === workspace),
     [query, setQuery] = useState(""),
     [error, setError] = useState(""),
     navigate = useNavigate();
@@ -34,14 +40,14 @@ export default function NotebookView({
         />
         <button
           onClick={() =>
-            void createNote(uid)
-              .then((id) => navigate("/notes/" + id))
+            void createNote(uid, null, workspace)
+              .then((id) => navigate(workspacePath(workspace, "notes", id)))
               .catch((e) => setError(String(e)))
           }
         >
           New note
         </button>
-        <Link to="/trash">Trash</Link>
+        <Link to={workspacePath(workspace, "trash")}>Trash</Link>
       </div>
       {topics && (
         <div className="tags">
@@ -59,7 +65,7 @@ export default function NotebookView({
       {searchNotes(notes, machines, query).map((n) => (
         <article className="week-card" key={n.id}>
           <div>
-            <Link to={"/notes/" + n.id}>
+            <Link to={workspacePath(workspace, "notes", n.id)}>
               <h2>{n.content.title || "Untitled note"}</h2>
             </Link>
             <p>{n.content.text.slice(0, 180)}</p>
@@ -75,7 +81,13 @@ export default function NotebookView({
     </section>
   );
 }
-export function NotePage({ uid }: { uid: string }) {
+export function NotePage({
+  uid,
+  workspace = "oscp",
+}: {
+  uid: string;
+  workspace?: WorkspaceId;
+}) {
   const { id = "" } = useParams(),
     { notes, machines } = useNotebook(),
     [draft, setDraft] = useState<Draft<NoteContent> | null>(null),
@@ -129,8 +141,15 @@ export function NotePage({ uid }: { uid: string }) {
       <section className="page">
         <h1>Note unavailable</h1>
         <p>This note may be in Trash, deleted, or not downloaded yet.</p>
-        <Link to="/notes">Back to notes</Link>
+        <Link to={workspacePath(workspace, "notes")}>Back to notes</Link>
       </section>
+    );
+  if (workspaceOf(value.content) !== workspace)
+    return (
+      <Navigate
+        replace
+        to={workspacePath(workspaceOf(value.content), "notes", id)}
+      />
     );
   return (
     <section
@@ -139,12 +158,14 @@ export function NotePage({ uid }: { uid: string }) {
         edited.current = true;
       }}
     >
-      <Link to="/notes">← All notes</Link>
+      <Link to={workspacePath(workspace, "notes")}>← All notes</Link>
       <div className="row">
         <button
           onClick={() =>
             void navigator.clipboard
-              .writeText(location.origin + "/notes/" + id)
+              .writeText(
+                location.origin + workspacePath(workspace, "notes", id),
+              )
               .catch(() => setError("Copy the URL from your address bar."))
           }
         >
@@ -156,7 +177,7 @@ export function NotePage({ uid }: { uid: string }) {
               .then(async (ok) => {
                 if (ok) {
                   await trashNote(uid, id);
-                  navigate("/notes");
+                  navigate(workspacePath(workspace, "notes"));
                 }
               })
               .catch((e) => setError(String(e)))
@@ -185,7 +206,9 @@ export function NotePage({ uid }: { uid: string }) {
           key={id + ":" + reload + ":" + draft.baseRevision}
           uid={uid}
           draft={draft}
-          machines={machines}
+          machines={machines.filter(
+            (m) => workspaceOf(m.content) === workspace,
+          )}
           onDraft={() => setStatus("Saved locally")}
           loadImage={(image) => loadImage(uid, image)}
         />

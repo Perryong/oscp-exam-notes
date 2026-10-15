@@ -759,3 +759,84 @@ pre {
   background: transparent;
   text-decoration: underline;
 }
+
+.workspace-switcher {
+  margin: 1.4rem 0;
+}
+.workspace-switcher label {
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+.workspace-switcher select {
+  width: 100%;
+  color: #183d39;
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 0.6rem;
+}
+.osai-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+  gap: 1rem;
+}
+.osai-grid .week-card {
+  height: 100%;
+  margin: 0;
+}
+.osai-reader {
+  max-width: 1050px;
+}
+.lesson-toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  padding: 1rem 0;
+  border-block: 1px solid #d8e2dc;
+  margin: 1.5rem 0;
+}
+.lesson-toc a {
+  color: #183d39;
+  background: none;
+  padding: 0.25rem;
+}
+.osai-body {
+  line-height: 1.75;
+}
+.osai-body h2 {
+  scroll-margin-top: 2rem;
+  margin-top: 2rem;
+}
+.osai-body img {
+  width: 100%;
+  height: auto;
+  border: 0;
+}
+.osai-body li {
+  margin-bottom: 0.7rem;
+}
+.osai-body table {
+  display: block;
+  overflow-x: auto;
+}
+.osai-body th,
+.osai-body td {
+  padding: 0.7rem;
+  text-align: left;
+}
+.osai-body pre {
+  overflow-x: auto;
+}
+.osai-study-hero {
+  padding: 2rem;
+  border-radius: 1rem;
+  background: #183d39;
+  color: #f1f7f2;
+  margin-bottom: 2rem;
+}
+.osai-study-hero h1 {
+  color: inherit;
+}
+.osai-study-hero a {
+  color: #cff3c9;
+}

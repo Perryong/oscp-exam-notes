@@ -37,7 +37,7 @@ function object(value: unknown): value is Record<string, unknown> {
 export function validateBundle(input: unknown): NotebookBundle {
   if (
     !object(input) ||
-    ![1, 2].includes(Number(input.version)) ||
+    (input.version !== 1 && input.version !== 2) ||
     !Array.isArray(input.notes) ||
     !Array.isArray(input.machines) ||
     !Array.isArray(input.images) ||

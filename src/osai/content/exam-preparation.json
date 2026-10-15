@@ -1,0 +1,21 @@
+{
+  "slug": "exam-preparation",
+  "title": "OSAI exam preparation",
+  "group": "Resources",
+  "summary": "Verified timing, evidence preparation, and a personal readiness checklist.",
+  "sources": [
+    {
+      "title": "Official OSAI exam guide",
+      "url": "https://help.offsec.com/hc/en-us/articles/46593096734612-OSAI-Exam-Guide",
+      "kind": "official"
+    },
+    {
+      "title": "Kongsec community training vault",
+      "url": "https://kongsec.github.io/OSAINotesResearch/",
+      "kind": "community"
+    }
+  ],
+  "checkedAt": "2026-10-15",
+  "owasp": [],
+  "html": "<h2>Verified timing</h2><p>Checked 15 October 2026: OffSec’s guide specifies 24 hours for the practical exam, followed by 24 hours to submit documentation. Recheck the official guide before scheduling or sitting the exam.</p><h2>Documentation practice</h2><p>Practice recording each step, command, relevant output, and screenshot so another technically competent reader can reproduce the work. Cite existing scripts and document changes. Keep setup details and failed attempts alongside successful evidence.</p><h2>Readiness checklist</h2><ol><li>Read the current official guide, including restrictions, connection instructions, and submission requirements.</li><li>Test your local environment and connectivity using the provider’s supported setup.</li><li>Practice note-taking and report export in a disposable lab.</li><li>Check exported screenshots, commands, links, and completeness before relying on a backup.</li><li>Build your own time allocation from practice results; do not assume community topic predictions or point estimates are official.</li></ol><h2>Source correction</h2><p>Kongsec’s community vault describes a 48-hour practical engagement. That conflicts with the official guide checked above. Its numbered sections 00–22 total 23 entries despite a 22-module label. This library uses it as further reading rather than an authoritative syllabus.</p>"
+}

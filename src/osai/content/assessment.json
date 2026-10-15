@@ -1,0 +1,26 @@
+{
+  "slug": "assessment",
+  "title": "Assessment and reporting",
+  "group": "Learning path",
+  "summary": "Turn experiments into evidence another reader can reproduce.",
+  "sources": [
+    {
+      "title": "OffSec AI-300 overview",
+      "url": "https://www.offsec.com/courses/ai-300/",
+      "kind": "official"
+    },
+    {
+      "title": "OWASP LLM Top 10 (2025)",
+      "url": "https://genai.owasp.org/llm-top-10/",
+      "kind": "official"
+    },
+    {
+      "title": "Kongsec community training vault",
+      "url": "https://kongsec.github.io/OSAINotesResearch/",
+      "kind": "community"
+    }
+  ],
+  "checkedAt": "2026-10-15",
+  "owasp": ["LLM01:2025", "LLM06:2025"],
+  "html": "<h2 id=\"objectives\">Objectives</h2><ul><li>Define evidence and a repeatable success condition.</li><li>Capture prompts, commands, outputs, and screenshots in order.</li><li>Explain impact and test mitigations against the same hypothesis.</li></ul><h2 id=\"concepts\">Concepts and boundaries</h2><p>An AI assessment should begin with a testable hypothesis and a defined authorized scope. Record the application version, model identifier, available parameters, retrieval state, tool permissions, and account role. Do not substitute a model’s explanation of its behavior for observable evidence.</p><p>Because outputs may vary, record unsuccessful attempts as well as successes. State the trial count and success criterion before interpreting a result. Ten successful trials in a local configuration are useful evidence, but do not guarantee the same result across versions or deployments. Separate the technical finding, demonstrated impact, and untested assumptions.</p><img src=\"/osai/diagrams/assessment.svg\" alt=\"Assessment and reporting: Hypothesis → Bounded experiment → Evidence + trials → Report + retest\"/><h2 id=\"practice\">Practice checklist</h2><p>Use an isolated lab or an explicitly authorized environment. Record prerequisites and configuration before changing inputs.</p><ol><li>Create a lab note with objective, authorized target, account role, environment version, and a precise success condition.</li><li>Capture a baseline, then change one input or control at a time. Number every step.</li><li>Record the exact prompt or command, observed output, screenshot, timestamp, and trial outcome.</li><li>Repeat the experiment within a small defined budget, recording failures without discarding them.</li><li>Apply or simulate a mitigation and rerun the same test. Export the note and check that a separate reader can follow its links and evidence.</li></ol><h2 id=\"observations\">Expected observations</h2><p>A useful report connects each claim to an observation and explains what was not tested. A reproducible result includes the necessary setup and failure conditions, not only a successful screenshot. A mitigation is supported by retesting, not by its name.</p><h2 id=\"mitigations\">Mitigations and retesting</h2><p>Use synthetic data when possible, keep evidence organized and access-controlled, preserve original observations, and distinguish lab results from predictions about the exam. Verify official exam guidance near the exam date.</p><h2 id=\"evidence\">Evidence worksheet</h2><pre><code>Objective:\nEnvironment and version:\nInput / command:\nExpected result:\nObserved result:\nSuccessful trials / total trials:\nScreenshot reference:\nMitigation and retest:</code></pre>"
+}

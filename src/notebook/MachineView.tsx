@@ -1,3 +1,10 @@
+import {
+  workspaceOf,
+  sameWorkspace,
+  type WorkspaceId,
+} from "../workspaces/model";
+import { workspacePath } from "../workspaces/routes";
+import { osaiSeedMachines } from "../osai/seeds";
 import { machineWalkthrough } from "../walkthroughs/catalog";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -17,10 +24,16 @@ export async function changeMachine(
 ) {
   const value =
     (await combined<MachineContent>(uid, "machine")).find((m) => m.id === id) ||
-    seedMachines.find((m) => m.id === id);
+    [...seedMachines, ...osaiSeedMachines].find((m) => m.id === id);
   if (!value) throw Error("Machine unavailable");
   const draft = await editDraft(uid, "machine", value);
-  const content = { ...draft.content, ...change };
+  const content = {
+    ...draft.content,
+    workspace: workspaceOf(draft.content),
+    ...change,
+  };
+  if (!sameWorkspace(content, draft.content))
+    throw Error("Cannot change workspace");
   validateMachine(content);
   if (content.week !== null && !ladder.some((w) => w.week === content.week))
     throw Error("Choose an existing study week");
@@ -37,7 +50,13 @@ export async function changeMachine(
       "Another tab changed this machine. Your edit is retained for recovery.",
     );
 }
-export default function MachineView({ uid }: { uid: string }) {
+export default function MachineView({
+  uid,
+  workspace = "oscp",
+}: {
+  uid: string;
+  workspace?: WorkspaceId;
+}) {
   const { machines, notes } = useNotebook(),
     [query, setQuery] = useState(""),
     [error, setError] = useState(""),
@@ -65,10 +84,12 @@ export default function MachineView({ uid }: { uid: string }) {
     };
   }, [uid]);
   const all = [
-    ...new Map([...seedMachines, ...machines].map((m) => [m.id, m])).values(),
+    ...new Map(
+      [...seedMachines, ...osaiSeedMachines, ...machines].map((m) => [m.id, m]),
+    ).values(),
   ];
   async function add() {
-    const name = prompt("Machine name");
+    const name = prompt(workspace === "osai" ? "Lab name" : "Machine name");
     if (!name) return;
     validateMachine({
       name,
@@ -86,6 +107,7 @@ export default function MachineView({ uid }: { uid: string }) {
         kind: "machine",
         id,
         content: {
+          workspace,
           name,
           platform: "Custom",
           os: "",
@@ -104,19 +126,23 @@ export default function MachineView({ uid }: { uid: string }) {
   }
   return (
     <section className="page">
-      <h1>Machines</h1>
-      {conflicts.map((c) => (
-        <ConflictPanel
-          key={c.draft.id}
-          uid={uid}
-          kind="machine"
-          id={c.draft.id}
-          conflict={c}
-          onResolved={() =>
-            setConflicts((all) => all.filter((x) => x.draft.id !== c.draft.id))
-          }
-        />
-      ))}
+      <h1>{workspace === "osai" ? "Labs & learning progress" : "Machines"}</h1>
+      {conflicts
+        .filter((c) => workspaceOf(c.draft.content) === workspace)
+        .map((c) => (
+          <ConflictPanel
+            key={c.draft.id}
+            uid={uid}
+            kind="machine"
+            id={c.draft.id}
+            conflict={c}
+            onResolved={() =>
+              setConflicts((all) =>
+                all.filter((x) => x.draft.id !== c.draft.id),
+              )
+            }
+          />
+        ))}
       <div className="row">
         <input
           aria-label="Search machines"
@@ -125,10 +151,11 @@ export default function MachineView({ uid }: { uid: string }) {
           onChange={(e) => setQuery(e.target.value)}
         />
         <button onClick={() => void add().catch((e) => setError(String(e)))}>
-          Add machine
+          {workspace === "osai" ? "Add lab" : "Add machine"}
         </button>
       </div>
       {all
+        .filter((m) => workspaceOf(m.content) === workspace)
         .filter((m) =>
           `${m.content.name} ${m.content.platform} ${m.content.os} ${m.content.tags.join(" ")} ${m.content.week || ""}`
             .toLowerCase()
@@ -236,8 +263,10 @@ export default function MachineView({ uid }: { uid: string }) {
               </div>
               <button
                 onClick={() =>
-                  void createNote(uid, m.id)
-                    .then((id) => navigate("/notes/" + id))
+                  void createNote(uid, m.id, workspace)
+                    .then((id) =>
+                      navigate(workspacePath(workspace, "notes", id)),
+                    )
                     .catch((e) => setError(String(e)))
                 }
               >
@@ -246,12 +275,15 @@ export default function MachineView({ uid }: { uid: string }) {
               {notes
                 .filter(
                   (n) =>
+                    workspaceOf(n.content) === workspace &&
                     n.content.machineId === m.id &&
                     n.content.deletedAt === null,
                 )
                 .map((n) => (
                   <p key={n.id}>
-                    <Link to={"/notes/" + n.id}>{n.content.title}</Link>
+                    <Link to={workspacePath(workspace, "notes", n.id)}>
+                      {n.content.title}
+                    </Link>
                   </p>
                 ))}
             </div>

@@ -1,0 +1,26 @@
+{
+  "slug": "agents",
+  "title": "Agents and tool boundaries",
+  "group": "Learning path",
+  "summary": "Assess the point where generated decisions become real actions.",
+  "sources": [
+    {
+      "title": "OffSec AI-300 overview",
+      "url": "https://www.offsec.com/courses/ai-300/",
+      "kind": "official"
+    },
+    {
+      "title": "OWASP LLM Top 10 (2025)",
+      "url": "https://genai.owasp.org/llm-top-10/",
+      "kind": "official"
+    },
+    {
+      "title": "Kongsec community training vault",
+      "url": "https://kongsec.github.io/OSAINotesResearch/",
+      "kind": "community"
+    }
+  ],
+  "checkedAt": "2026-10-15",
+  "owasp": ["LLM01:2025", "LLM06:2025"],
+  "html": "<h2 id=\"objectives\">Objectives</h2><ul><li>Map tool capabilities and their execution identities.</li><li>Distinguish syntax validation from authorization.</li><li>Trace delegated instructions and untrusted tool results.</li></ul><h2 id=\"concepts\">Concepts and boundaries</h2><p>An agent can request tool calls and use their results to decide what happens next. The important security boundary is the tool executor: it must determine what the authenticated user is allowed to do. A valid JSON tool call is not necessarily an authorized operation.</p><p>Multi-agent systems add messages, delegated roles, memory, and shared tools. A worker’s output should not inherit administrative authority merely because it appears to come from another agent. Identify the origin of every message and the capabilities available at each hop. Boundaries can fail even when no model is directly persuaded to ignore its instructions.</p><img src=\"/osai/diagrams/agents.svg\" alt=\"Agents and tool boundaries: Agent proposal → Policy decision → Scoped tool → Untrusted result\"/><h2 id=\"practice\">Practice checklist</h2><p>Use an isolated lab or an explicitly authorized environment. Record prerequisites and configuration before changing inputs.</p><ol><li>Use a sandbox agent with a read-only mock tool and a separate simulated write tool. Do not connect production accounts.</li><li>Record the tool schema, permitted inputs, executor identity, and approval requirements.</li><li>Feed the agent a synthetic tool result that asks for an unrelated harmless action. Record whether another call is proposed and whether the executor authorizes it.</li><li>Attempt a disallowed resource ID through the normal lab interface and inspect the policy decision at the executor.</li><li>For two agents, trace one delegated task end to end and record which principal authorizes the final action.</li></ol><h2 id=\"observations\">Expected observations</h2><p>A proposed tool call may be denied safely. Record the proposal and execution separately. A meaningful finding requires an unauthorized effect or a demonstrated missing control, not simply unusual model text.</p><h2 id=\"mitigations\">Mitigations and retesting</h2><p>Use least-privilege credentials, per-action authorization, constrained tool schemas, explicit approval for consequential actions, and bounded execution budgets. Treat agent messages and tool returns as data whose provenance must be checked.</p><h2 id=\"evidence\">Evidence worksheet</h2><pre><code>Objective:\nEnvironment and version:\nInput / command:\nExpected result:\nObserved result:\nSuccessful trials / total trials:\nScreenshot reference:\nMitigation and retest:</code></pre>"
+}

@@ -1,0 +1,26 @@
+{
+  "slug": "glossary",
+  "title": "AI security glossary",
+  "group": "Resources",
+  "summary": "Definitions for reading and documenting AI security experiments.",
+  "sources": [
+    {
+      "title": "OffSec AI-300 overview",
+      "url": "https://www.offsec.com/courses/ai-300/",
+      "kind": "official"
+    },
+    {
+      "title": "OWASP LLM Top 10 (2025)",
+      "url": "https://genai.owasp.org/llm-top-10/",
+      "kind": "official"
+    },
+    {
+      "title": "Kongsec community training vault",
+      "url": "https://kongsec.github.io/OSAINotesResearch/",
+      "kind": "community"
+    }
+  ],
+  "checkedAt": "2026-10-15",
+  "owasp": [],
+  "html": "<h2>Token</h2><p>A unit produced by a tokenizer; token counts vary by model and input.</p><h2>Context window</h2><p>The input and generated sequence available within a model interaction, subject to model limits.</p><h2>Embedding</h2><p>A numeric representation used for tasks such as similarity search. Similarity does not imply authorization.</p><h2>RAG</h2><p>Retrieval-augmented generation: selected external material is supplied to a model as context.</p><h2>Agent</h2><p>Application behavior that uses model outputs to select or request actions, often through tools.</p><h2>Tool executor</h2><p>The code that validates and performs a proposed action. It should enforce identity and permissions.</p><h2>Prompt injection</h2><p>Untrusted input influences instructions or behavior in an LLM application.</p><h2>Jailbreak</h2><p>An attempt to circumvent a model’s behavioral constraints; application impact needs separate analysis.</p><h2>Provenance</h2><p>Evidence of where data or an artifact originated and how it changed.</p><h2>Canary</h2><p>Synthetic identifiable data used to observe information flow without exposing real secrets.</p><h2>Trust boundary</h2><p>A transition where inputs from one level of authority enter a component with different privileges.</p><h2>Repeatability</h2><p>The extent to which a documented procedure yields the stated result under specified conditions.</p>"
+}

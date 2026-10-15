@@ -21,7 +21,21 @@ const custom = {
   updatedAt: 1,
 };
 vi.mock("./NotebookContext", () => ({
-  useNotebook: () => ({ machines: [custom], notes: [] }),
+  useNotebook: () => ({
+    machines: [
+      custom,
+      {
+        ...custom,
+        id: "osai-custom",
+        content: {
+          ...custom.content,
+          name: "Private AI Lab",
+          workspace: "osai",
+        },
+      },
+    ],
+    notes: [],
+  }),
 }));
 test("custom week and tags save through machine drafts and appear in the week", async () => {
   await cacheSaved("alice", "machine", custom);
@@ -58,5 +72,6 @@ test("custom week and tags save through machine drafts and appear in the week", 
   expect(
     screen.getByRole("link", { name: "Custom Lab" }).getAttribute("href"),
   ).toBe("/machines#custom");
+  expect(screen.queryByRole("link", { name: "Private AI Lab" })).toBeNull();
   cleanup();
 });

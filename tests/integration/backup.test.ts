@@ -10,3 +10,17 @@ let uid:string;beforeAll(async()=>{uid=(await signInAnonymously(getClient().auth
 test('backup replay restores history and a retry creates no duplicates',async()=>{const n={id:'source',content:noteContent({title:'current'}),revision:5,lastMutationId:'old',createdAt:10,updatedAt:20};const input=bundle({notes:[n],history:{source:[{...n,revision:4,content:noteContent({title:'previous'})}]}});const first=await importBackup(uid,input);expect(first.failed).toHaveLength(0);const second=await importBackup(uid,input);expect(second.completed).toHaveLength(0);const notes=await getDocs(collection(getClient().db,'users',uid,'notebookNotes'));expect(notes.size).toBe(1);expect(notes.docs[0].id).not.toBe('source');expect(notes.docs[0].data().title).toBe('current');expect((await listHistory(uid,notes.docs[0].id))[0].content.title).toBe('previous')});
 test('missing screenshot bytes make an export explicitly incomplete',async()=>{const {commitNote}=await import('../../src/firebase/notes');const {exportBackup}=await import('../../src/transfer/backup');const id=crypto.randomUUID();await commitNote(uid,{uid,kind:'note',id,content:noteContent({attachmentIds:['missing-image']}),baseRevision:0,localRevision:0,mutationId:crypto.randomUUID(),modifiedAt:Date.now()});const result=await exportBackup(uid);expect(result.report.failed.some(f=>f.id==='missing-image')).toBe(true)});
 test('storage-full failure before saving an import map makes no cloud writes',async()=>{const {vi}=await import('vitest');const before=(await getDocs(collection(getClient().db,'users',uid,'notebookNotes'))).size;const spy=vi.spyOn(IDBObjectStore.prototype,'put').mockImplementationOnce(()=>{throw new DOMException('Full','QuotaExceededError')});await expect(importBackup(uid,bundle({notes:[{id:'quota-note',content:noteContent(),revision:1,lastMutationId:'m',createdAt:1,updatedAt:1}]}))).rejects.toThrow('Full');spy.mockRestore();expect((await getDocs(collection(getClient().db,'users',uid,'notebookNotes'))).size).toBe(before)});
+test('v2 restore preserves workspace history and links and rejects cross-workspace before writes',async()=>{
+ const {machineContent}=await import('../fixtures/builders');
+ const save=(id:string,content:any)=>({id,content,revision:1,lastMutationId:'source',createdAt:1,updatedAt:1});
+ const input={...bundle(),version:2,notes:[save('ai-note',noteContent({workspace:'osai',machineId:'ai-lab',title:'AI restored'})),save('cp-note',noteContent({workspace:'oscp',title:'CP restored'}))],machines:[save('ai-lab',machineContent({workspace:'osai'}))],history:{'ai-note':[{...save('ai-note',noteContent({workspace:'osai',machineId:'ai-lab',title:'AI earlier'})),revision:0}]}};
+ const before=(await getDocs(collection(getClient().db,'users',uid,'notebookNotes'))).size;
+ await expect(importBackup(uid,{...input,machines:[save('ai-lab',machineContent({workspace:'oscp'}))]})).rejects.toThrow('workspace');
+ expect((await getDocs(collection(getClient().db,'users',uid,'notebookNotes'))).size).toBe(before);
+ const result=await importBackup(uid,input);expect(result.failed).toHaveLength(0);
+ const notes=await getDocs(collection(getClient().db,'users',uid,'notebookNotes'));
+ const ai=notes.docs.find(d=>d.data().title==='AI restored')!;
+ expect(ai.data().workspace).toBe('osai');expect(ai.data().machineId).not.toBe('ai-lab');expect((await listHistory(uid,ai.id))[0].content.workspace).toBe('osai');
+ expect(notes.docs.find(d=>d.data().title==='CP restored')!.data().workspace).toBe('oscp');
+ expect((await importBackup(uid,input)).completed).toHaveLength(0);
+});

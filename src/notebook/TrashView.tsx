@@ -1,14 +1,25 @@
+import { workspaceOf, type WorkspaceId } from "../workspaces/model";
 import { useState } from "react";
 import { useNotebook } from "./NotebookContext";
 import { restoreNote, purgeNote } from "./repository";
-export default function TrashView({ uid }: { uid: string }) {
+export default function TrashView({
+  uid,
+  workspace = "oscp",
+}: {
+  uid: string;
+  workspace?: WorkspaceId;
+}) {
   const { notes } = useNotebook(),
     [error, setError] = useState("");
   return (
     <section className="page">
       <h1>Trash</h1>
       {notes
-        .filter((n) => n.content.deletedAt !== null)
+        .filter(
+          (n) =>
+            workspaceOf(n.content) === workspace &&
+            n.content.deletedAt !== null,
+        )
         .map((n) => (
           <article className="week-card" key={n.id}>
             <h2>{n.content.title}</h2>
