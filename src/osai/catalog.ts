@@ -12,6 +12,7 @@ export type OsaiArticle = {
   html: string;
 };
 export const osaiCatalog = catalog as Omit<OsaiArticle, "html">[];
+// Keep reference chapters lazy-loaded, including the OWASP resource directory.
 const articles = import.meta.glob<{ default: OsaiArticle }>("./content/*.json");
 export async function loadOsaiArticle(
   slug: string,

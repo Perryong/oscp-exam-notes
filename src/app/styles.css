@@ -897,3 +897,39 @@ pre {
   width: auto;
   margin: 0;
 }
+
+.knowledge-layout {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+.knowledge-layout > .lesson-toc {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  position: sticky;
+  top: 1rem;
+  max-height: 85vh;
+  overflow: auto;
+}
+.knowledge-layout [aria-current="page"] {
+  font-weight: 700;
+  text-decoration: underline;
+}
+.vault-body {
+  margin: 2rem 0;
+}
+.vault-body img {
+  max-width: 100%;
+  height: auto;
+}
+@media (max-width: 800px) {
+  .knowledge-layout {
+    grid-template-columns: 1fr;
+  }
+  .knowledge-layout > .lesson-toc {
+    position: static;
+    max-height: 16rem;
+  }
+}

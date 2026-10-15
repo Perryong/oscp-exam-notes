@@ -1,3 +1,4 @@
+import KnowledgeVault from "../notebook/KnowledgeVault";
 import OsaiStudyPlan from "../osai/StudyPlan";
 import OsaiLibrary from "../osai/Library";
 import OsaiReader from "../osai/Reader";
@@ -47,6 +48,7 @@ export default function App() {
               ? [
                   ["/osai/study-plan", "Study plan"],
                   ["/osai/library/osai-vault", "OSAI Vault"],
+                  ["/osai/library/owasp-resources", "OWASP Resources"],
                   ["/osai/labs", "Labs"],
                   ["/osai/topics", "Topics"],
                   ["/osai/notes", "All notes"],
@@ -55,6 +57,7 @@ export default function App() {
                 ]
               : [
                   ["/study-plan", "Study plan"],
+                  ["/knowledge-vault", "Knowledge Vault"],
                   ["/machines", "Machines"],
                   ["/topics", "Topics"],
                   ["/notes", "All notes"],
@@ -86,6 +89,16 @@ export default function App() {
             </p>
           )}
           <Routes>
+            <Route
+              path="/knowledge-vault/:id?"
+              element={
+                uid ? (
+                  <KnowledgeVault key={uid} uid={uid} />
+                ) : (
+                  <AccountPanel user={null} />
+                )
+              }
+            />
             <Route path="/osai/library" element={<OsaiLibrary />} />
             <Route
               path="/osai/library/:slug"

@@ -3,8 +3,8 @@
     "slug": "osai-vault",
     "title": "OSAI Vault",
     "group": "OSAI Vault",
-    "summary": "Full reference text · 23 modules · Imported from your supplied HTML without summarization.",
-    "attribution": "Source: Kongsec · User-supplied HTML · Imported 2026-10-15. Source claims are preserved as written, not independently verified.",
+    "summary": "Full reference text \u00b7 23 modules \u00b7 Imported from your supplied HTML without summarization.",
+    "attribution": "Source: Kongsec \u00b7 User-supplied HTML \u00b7 Imported 2026-10-15. Source claims are preserved as written, not independently verified.",
     "checkedAt": "2026-10-15",
     "owasp": [],
     "contents": [
@@ -103,7 +103,7 @@
     ],
     "sources": [
       {
-        "title": "Kongsec — original source",
+        "title": "Kongsec \u2014 original source",
         "url": "https://kongsec.github.io/OSAINotesResearch/",
         "kind": "community"
       }
@@ -311,7 +311,7 @@
   },
   {
     "slug": "owasp-2025",
-    "title": "OWASP LLM Top 10 · 2025",
+    "title": "OWASP LLM Top 10 \u00b7 2025",
     "group": "Resources",
     "summary": "Map findings to the correct edition of the OWASP risks.",
     "sources": [
@@ -383,5 +383,47 @@
     ],
     "checkedAt": "2026-10-15",
     "owasp": []
+  },
+  {
+    "slug": "owasp-resources",
+    "title": "OWASP educational resources",
+    "group": "Resources",
+    "summary": "93 additional references organised by AI security topic, with practice labs, research, videos and tools.",
+    "checkedAt": "2026-10-16",
+    "attribution": "Directory: OWASP community educational resources. Categorisation and module mapping: Fieldnotes.",
+    "owasp": [],
+    "contents": [
+      {
+        "id": "resources-0",
+        "title": "Prompt injection and jailbreaking"
+      },
+      {
+        "id": "resources-1",
+        "title": "Agent security and defenses"
+      },
+      {
+        "id": "resources-2",
+        "title": "Data and model security"
+      },
+      {
+        "id": "resources-3",
+        "title": "Threat modelling and guidance"
+      },
+      {
+        "id": "resources-4",
+        "title": "Research papers and videos"
+      },
+      {
+        "id": "resources-5",
+        "title": "Practice labs and tools"
+      }
+    ],
+    "sources": [
+      {
+        "title": "OWASP educational directory",
+        "url": "https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki/Educational-Resources",
+        "kind": "community"
+      }
+    ]
   }
 ]
