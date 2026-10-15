@@ -29,7 +29,7 @@ export const Screenshot = Node.create({
 });
 export const safeLink = (href: string) =>
   /^https?:\/\/[^\s]+$/i.test(href) ||
-  /^\/notes\/[A-Za-z0-9_-]{1,128}$/.test(href);
+  /^\/(osai\/)?notes\/[A-Za-z0-9_-]{1,128}$/.test(href);
 export const extensions = [
   StarterKit.configure({
     link: {

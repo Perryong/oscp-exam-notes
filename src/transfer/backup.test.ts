@@ -15,7 +15,7 @@ const saved = <T>(id: string, content: T) => ({
   updatedAt: 1,
 });
 test("rejects invalid versions, duplicate IDs and missing screenshot bytes", () => {
-  expect(() => validateBundle({ ...bundle(), version: 2 })).toThrow();
+  expect(() => validateBundle({ ...bundle(), version: 99 })).toThrow();
   const n = saved("n", noteContent());
   expect(() => validateBundle(bundle({ notes: [n, n] }))).toThrow();
   expect(() =>
@@ -77,4 +77,66 @@ test("rejects IDs reused across entity kinds before allocating a restore map", (
       }),
     ),
   ).toThrow();
+});
+test("workspace backup v2 preserves membership and rejects mixed references", () => {
+  const n = saved("n", noteContent({ workspace: "osai", machineId: "m" }));
+  const m = saved("m", machineContent({ workspace: "osai" }));
+  const b = { ...bundle({ notes: [n], machines: [m] }), version: 2 };
+  expect(validateBundle(b).notes[0].content.workspace).toBe("osai");
+  expect(() => validateBundle({ ...b, version: 1 })).toThrow();
+  expect(() =>
+    validateBundle({
+      ...b,
+      machines: [saved("m", machineContent({ workspace: "oscp" }))],
+    }),
+  ).toThrow();
+  expect(() =>
+    validateBundle({
+      ...b,
+      history: { n: [saved("n", noteContent({ workspace: "oscp" }))] },
+    }),
+  ).toThrow();
+  expect(() =>
+    validateBundle({
+      ...b,
+      notes: [
+        saved(
+          "n",
+          Object.fromEntries(
+            Object.entries(noteContent()).filter(
+              ([key]) => key !== "workspace",
+            ),
+          ),
+        ),
+      ],
+    }),
+  ).toThrow();
+  expect(
+    validateBundle(bundle({ notes: [saved("old", noteContent())] })).notes[0]
+      .content.workspace,
+  ).toBe("oscp");
+  const link = JSON.stringify({
+    type: "doc",
+    content: [
+      {
+        type: "paragraph",
+        content: [
+          {
+            type: "text",
+            text: "note",
+            marks: [{ type: "link", attrs: { href: "/osai/notes/n" } }],
+          },
+        ],
+      },
+    ],
+  });
+  const mapped = remapBundle(
+    validateBundle({
+      ...b,
+      notes: [{ ...n, content: { ...n.content, contentJson: link } }],
+    }),
+  );
+  expect(mapped.bundle.notes[0].content.contentJson).toContain(
+    "/osai/notes/" + mapped.bundle.notes[0].id,
+  );
 });

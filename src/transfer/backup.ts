@@ -1,3 +1,5 @@
+import { workspaceOf, sameWorkspace } from "../workspaces/model";
+import { osaiSeedMachines } from "../osai/seeds";
 import { collection, getDocsFromServer } from "firebase/firestore";
 import type {
   NotebookBundle,
@@ -35,7 +37,7 @@ function object(value: unknown): value is Record<string, unknown> {
 export function validateBundle(input: unknown): NotebookBundle {
   if (
     !object(input) ||
-    input.version !== 1 ||
+    ![1, 2].includes(Number(input.version)) ||
     !Array.isArray(input.notes) ||
     !Array.isArray(input.machines) ||
     !Array.isArray(input.images) ||
@@ -139,7 +141,62 @@ export function validateBundle(input: unknown): NotebookBundle {
   }
   for (const source of Object.values(b.legacySources))
     if (typeof source !== "string") throw Error("Invalid legacy source");
-  return b;
+  const entities = [
+    ...b.notes,
+    ...b.machines,
+    ...Object.values(b.history).flat(),
+    ...recovery,
+  ];
+  for (const item of entities) {
+    if (b.version === 1 && workspaceOf(item.content) !== "oscp")
+      throw Error("Version 1 backups are OSCP only");
+    if (b.version === 2 && !Object.hasOwn(item.content, "workspace"))
+      throw Error("Version 2 requires workspace metadata");
+  }
+  for (const [id, versions] of Object.entries(b.history)) {
+    const note = b.notes.find((n) => n.id === id)!;
+    if (versions.some((v) => !sameWorkspace(v.content, note.content)))
+      throw Error("History workspace mismatch");
+  }
+  for (const d of recovery) {
+    const parent = (d.kind === "note" ? b.notes : b.machines).find(
+      (n) => n.id === d.id,
+    );
+    if (parent && !sameWorkspace(d.content, parent.content))
+      throw Error("Recovery workspace mismatch");
+  }
+  for (const n of [
+    ...b.notes,
+    ...Object.values(b.history).flat(),
+    ...recovery.filter((d) => d.kind === "note"),
+  ]) {
+    const content = n.content as NoteContent;
+    const target = b.machines.find((m) => m.id === content.machineId);
+    if (target && !sameWorkspace(content, target.content))
+      throw Error("Linked target workspace mismatch");
+  }
+  return normalizeBundle(b);
+}
+export function normalizeBundle(b: NotebookBundle): NotebookBundle {
+  const normalize = <T extends NoteContent | MachineContent>(
+    n: Saved<T>,
+  ): Saved<T> => ({
+    ...n,
+    content: { ...n.content, workspace: workspaceOf(n.content) },
+  });
+  return {
+    ...b,
+    version: 2,
+    notes: b.notes.map(normalize),
+    machines: b.machines.map(normalize),
+    history: Object.fromEntries(
+      Object.entries(b.history).map(([id, rows]) => [id, rows.map(normalize)]),
+    ),
+    recovery: b.recovery?.map((d) => ({
+      ...d,
+      content: { ...d.content, workspace: workspaceOf(d.content) },
+    })),
+  };
 }
 export function remapBundle(
   input: NotebookBundle,
@@ -164,9 +221,16 @@ export function remapBundle(
       if (node.type === "screenshot")
         node.attrs = { ...node.attrs, imageId: map[node.attrs!.imageId] };
       for (const mark of node.marks || [])
-        if (mark.type === "link" && mark.attrs?.href?.startsWith("/notes/")) {
-          const id = mark.attrs.href.slice(7);
-          if (map[id]) mark.attrs.href = "/notes/" + map[id];
+        if (
+          mark.type === "link" &&
+          /^\/(osai\/)?notes\//.test(mark.attrs?.href || "")
+        ) {
+          const href = mark.attrs!.href as string;
+          const id = href.split("/").pop()!;
+          if (map[id])
+            mark.attrs!.href =
+              (href.startsWith("/osai/") ? "/osai/notes/" : "/notes/") +
+              map[id];
         }
       for (const child of node.content || []) walk(child);
     }
@@ -286,7 +350,9 @@ export async function collectBackup(uid: string) {
       .filter(Boolean),
   )) {
     if (!machines.some((m) => m.id === id)) {
-      const seed = seedMachines.find((m) => m.id === id);
+      const seed = [...seedMachines, ...osaiSeedMachines].find(
+        (m) => m.id === id,
+      );
       if (seed) machines.push(seed);
       else
         report.failed.push({
@@ -322,8 +388,8 @@ export async function collectBackup(uid: string) {
 
   const sources =
     (await getMeta<Record<string, string>>(uid, "portableSources")) || {};
-  const bundle: NotebookBundle = {
-    version: 1,
+  const bundle: NotebookBundle = normalizeBundle({
+    version: 2,
     recovery: conflicts,
     notes,
     machines,
@@ -331,7 +397,7 @@ export async function collectBackup(uid: string) {
     images,
     legacySources: { ...legacySources, ...sources },
     unmatchedProgress: (await getMeta(uid, "unmatchedProgress")) || {},
-  };
+  });
   requireOwner(uid);
   if (!report.failed.length) {
     try {

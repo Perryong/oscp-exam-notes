@@ -61,6 +61,7 @@ export async function applyMigration(
         if (done.exists() || existing.exists()) return "skipped";
         tx.set(destination, {
           ...item.payload,
+          workspace: "oscp",
           revision: 1,
           lastMutationId: item.id,
           createdAt: serverTimestamp(),

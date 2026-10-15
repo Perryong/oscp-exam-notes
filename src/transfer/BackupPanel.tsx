@@ -34,6 +34,9 @@ export default function BackupPanel({ uid }: { uid: string }) {
   }
   return (
     <section>
+      <p className="quiet">
+        Account-wide: backups include both OSCP and OSAI workspaces.
+      </p>
       <h2>Backups & exports</h2>
       <p>
         JSON includes current notes, trash, retained history, screenshots and

@@ -48,7 +48,7 @@ export type LocalWriteResult<T> =
   { kind: "saved"; draft: Draft<T> } | { kind: "conflict"; draft: Draft<T> };
 export type ImageRecord = { id: string; data: string };
 export type NotebookBundle = {
-  version: 1;
+  version: 1 | 2;
   recovery?: Draft<NoteContent | MachineContent>[];
   notes: Saved<NoteContent>[];
   machines: Saved<MachineContent>[];
