@@ -13,7 +13,7 @@ vi.mock("../firebase/notes", () => ({
       updatedAt: 1,
     },
   ],
-  readEntity: async () => ({ revision: 2 }),
+  readEntity: async () => ({ revision: 2, content: noteContent() }),
 }));
 vi.mock("../editor/NoteEditor", () => ({
   beforeLeaveEditor: async () => true,

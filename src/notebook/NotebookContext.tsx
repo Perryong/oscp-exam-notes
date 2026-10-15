@@ -1,3 +1,4 @@
+import { workspaceOf, type WorkspaceId } from "../workspaces/model";
 import {
   createContext,
   useContext,
@@ -33,3 +34,11 @@ export function NotebookProvider({
   return <Context.Provider value={data}>{children}</Context.Provider>;
 }
 export const useNotebook = () => useContext(Context);
+
+export function useWorkspaceNotebook(workspace: WorkspaceId) {
+  const data = useNotebook();
+  return {
+    notes: data.notes.filter((n) => workspaceOf(n.content) === workspace),
+    machines: data.machines.filter((m) => workspaceOf(m.content) === workspace),
+  };
+}

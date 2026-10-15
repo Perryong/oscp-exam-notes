@@ -1,3 +1,4 @@
+import { osaiSeedMachines } from "../osai/seeds";
 import ladder from "../reference/ladder.json";
 import ids from "../reference/machine-ids.json";
 import type { Saved, MachineContent } from "./model";
@@ -12,6 +13,7 @@ export const seedMachines: Saved<MachineContent>[] = Array.from(
           {
             id,
             content: {
+              workspace: "oscp",
               name: b.name,
               platform: b.platform,
               os: b.os,
@@ -33,6 +35,8 @@ export const seedMachines: Saved<MachineContent>[] = Array.from(
 
 export function withSeedMachines(machines: Saved<MachineContent>[]) {
   return [
-    ...new Map([...seedMachines, ...machines].map((m) => [m.id, m])).values(),
+    ...new Map(
+      [...seedMachines, ...osaiSeedMachines, ...machines].map((m) => [m.id, m]),
+    ).values(),
   ];
 }

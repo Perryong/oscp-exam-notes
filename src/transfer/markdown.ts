@@ -102,7 +102,10 @@ export async function exportMarkdown(uid: string) {
     files: Record<string, Uint8Array> = {},
     images: Record<string, string> = {},
     links = Object.fromEntries(
-      bundle.notes.map((n) => ["/notes/" + n.id, "note-" + n.id + ".md"]),
+      bundle.notes.map((n) => [
+        (n.content.workspace === "osai" ? "/osai/notes/" : "/notes/") + n.id,
+        "note-" + n.id + ".md",
+      ]),
     );
   for (const image of bundle.images) {
     const match = /^data:image\/(png|jpeg|webp|gif);base64,(.*)$/.exec(

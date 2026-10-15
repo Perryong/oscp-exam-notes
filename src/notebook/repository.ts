@@ -1,3 +1,5 @@
+import { workspaceOf, type WorkspaceId } from "../workspaces/model";
+import { withSeedMachines } from "./seeds";
 import {
   collection,
   onSnapshot,
@@ -122,15 +124,37 @@ export async function editDraft<T>(
     }
   );
 }
-export async function createNote(uid: string, machineId: string | null = null) {
+export async function validateTargetWorkspace(
+  uid: string,
+  workspace: WorkspaceId,
+  machineId: string | null,
+): Promise<void> {
+  if (!machineId) return;
+  const target = withSeedMachines(
+    await combined<MachineContent>(uid, "machine"),
+  ).find((m) => m.id === machineId);
+  if (!target || workspaceOf(target.content) !== workspace)
+    throw Error("Linked target is unavailable or belongs to another workspace");
+}
+export async function createNote(
+  uid: string,
+  machineId: string | null = null,
+  workspace: WorkspaceId = "oscp",
+  initial?: Pick<
+    NoteContent,
+    "title" | "contentJson" | "text" | "tags" | "attachmentIds"
+  >,
+) {
+  await validateTargetWorkspace(uid, workspace, machineId);
   const id = crypto.randomUUID();
   const d: Draft<NoteContent> = {
     uid,
     kind: "note",
     id,
     content: {
-      ...emptyNote(),
+      ...emptyNote(workspace),
       ...(machineId ? encodeEditor(createMachineTemplate()) : {}),
+      ...initial,
       machineId,
     },
     baseRevision: 0,

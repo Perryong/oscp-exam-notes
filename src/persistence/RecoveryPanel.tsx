@@ -1,3 +1,4 @@
+import { sameWorkspace, workspaceOf } from "../workspaces/model";
 import { useEffect, useState } from "react";
 import type { NoteContent, Saved } from "../notebook/model";
 import { listHistory, readEntity } from "../firebase/notes";
@@ -30,11 +31,17 @@ export default function RecoveryPanel({
       const local = await getDraft<NoteContent>(uid, "note", id),
         remote = await readEntity<NoteContent>(uid, "note", id);
       if (!remote) throw Error("Note unavailable");
+      if (!sameWorkspace(remote.content, v.content))
+        throw Error("History workspace mismatch");
       const replacement = {
         uid,
         kind: "note" as const,
         id,
-        content: { ...v.content, deletedAt: null },
+        content: {
+          ...v.content,
+          workspace: workspaceOf(remote.content),
+          deletedAt: null,
+        },
         baseRevision: remote.revision,
         localRevision: local?.localRevision || 0,
         mutationId: crypto.randomUUID(),
