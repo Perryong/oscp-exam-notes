@@ -70,6 +70,13 @@ export function validateBundle(input: unknown): NotebookBundle {
     else if (d.kind === "machine") validateMachine(d.content);
     else throw Error("Invalid recovery kind");
   }
+  for (const m of b.machines) {
+    const seed = [...seedMachines, ...osaiSeedMachines].find(
+      (s) => s.id === m.id,
+    );
+    if (seed && !sameWorkspace(seed.content, m.content))
+      throw Error("Seed workspace mismatch");
+  }
   const allIds = [...b.notes, ...b.machines, ...b.images].map(
     (item) => item?.id,
   );
@@ -202,6 +209,13 @@ export function remapBundle(
   input: NotebookBundle,
   mapping?: Record<string, string>,
 ) {
+  const seedIds = new Set(
+    input.machines
+      .filter((m) =>
+        [...seedMachines, ...osaiSeedMachines].some((s) => s.id === m.id),
+      )
+      .map((m) => m.id),
+  );
   const map =
     mapping ||
     Object.fromEntries(
@@ -213,7 +227,10 @@ export function remapBundle(
         ...(input.recovery || []).map((d) => ({
           id: "recovery:" + d.mutationId,
         })),
-      ].map((item) => [item.id, crypto.randomUUID()]),
+      ].map((item) => [
+        item.id,
+        seedIds.has(item.id) ? item.id : crypto.randomUUID(),
+      ]),
     );
   const content = (n: NoteContent): NoteContent => {
     const doc = decodeEditor(n.contentJson);
@@ -463,6 +480,15 @@ export async function importBackup(
     await record(image.id, () => ensureImage(uid, image));
   for (const m of bundle.machines)
     await record(m.id, async () => {
+      // Reuse existing curriculum state without overwriting the owner's progress.
+      if ([...seedMachines, ...osaiSeedMachines].some((s) => s.id === m.id)) {
+        const existing = await readEntity<MachineContent>(uid, "machine", m.id);
+        if (existing) {
+          if (!sameWorkspace(existing.content, m.content))
+            throw Error("Seed workspace mismatch");
+          return;
+        }
+      }
       const result = await commitMachine(uid, {
         uid,
         kind: "machine",

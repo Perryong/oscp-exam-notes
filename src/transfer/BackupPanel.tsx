@@ -24,7 +24,7 @@ export default function BackupPanel({ uid }: { uid: string }) {
       const result = await (markdown ? exportMarkdown(uid) : exportBackup(uid));
       setPrepared({
         ...result,
-        name: markdown ? "oscp-notes.zip" : "oscp-backup.json",
+        name: markdown ? "fieldnotes.zip" : "fieldnotes-backup-v2.json",
       });
     } catch (e) {
       setError(String(e));

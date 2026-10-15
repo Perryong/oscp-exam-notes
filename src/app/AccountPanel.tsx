@@ -32,6 +32,12 @@ export default function AccountPanel({ user }: { user: User | null }) {
     <section className="page">
       <p className="eyebrow">PRIVATE WORKSPACE</p>
       <h1>{user ? "Account & device" : "Sign in to your notebook"}</h1>
+      {user && (
+        <p className="quiet">
+          Account-wide settings, offline downloads, recovery, and device data
+          cover both OSCP and OSAI.
+        </p>
+      )}
       {user ? (
         <>
           <p>Signed in as {user.email}</p>

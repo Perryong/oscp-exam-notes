@@ -22,7 +22,7 @@ vi.mock("./TransferPanel", () => ({ downloadBlob: () => {} }));
 test("downloading an older tab acknowledges only that file, not newer shared metadata", async () => {
   render(<BackupPanel uid="alice" />);
   fireEvent.click(screen.getByText("Prepare full JSON backup"));
-  const button = await screen.findByText("Download oscp-backup.json");
+  const button = await screen.findByText("Download fieldnotes-backup-v2.json");
   await setMeta("alice", "prepared-export", {
     draftRevisions: [{ id: "n", localRevision: 2, mutationId: "two" }],
   });

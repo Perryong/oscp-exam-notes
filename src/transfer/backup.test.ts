@@ -140,3 +140,26 @@ test("workspace backup v2 preserves membership and rejects mixed references", ()
     "/osai/notes/" + mapped.bundle.notes[0].id,
   );
 });
+test("curriculum restore keeps seed identity, progress and note associations", () => {
+  const id = "osai-module-foundations";
+  const input = validateBundle({
+    ...bundle({
+      machines: [
+        saved(id, machineContent({ workspace: "osai", progress: "completed" })),
+      ],
+      notes: [saved("n", noteContent({ workspace: "osai", machineId: id }))],
+    }),
+    version: 2,
+  });
+  const restored = remapBundle(input).bundle;
+  expect(restored.machines[0].id).toBe(id);
+  expect(restored.machines[0].content.progress).toBe("completed");
+  expect(restored.notes[0].content.machineId).toBe(id);
+  expect(() =>
+    validateBundle({
+      ...input,
+      machines: [saved(id, machineContent({ workspace: "oscp" }))],
+      notes: [],
+    }),
+  ).toThrow("workspace");
+});

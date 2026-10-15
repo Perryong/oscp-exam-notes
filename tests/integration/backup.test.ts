@@ -24,3 +24,12 @@ test('v2 restore preserves workspace history and links and rejects cross-workspa
  expect(notes.docs.find(d=>d.data().title==='CP restored')!.data().workspace).toBe('oscp');
  expect((await importBackup(uid,input)).completed).toHaveLength(0);
 });
+test('curriculum progress restores under its canonical ID and preserves existing progress on later imports',async()=>{
+ const {machineContent}=await import('../fixtures/builders');
+ const {readEntity}=await import('../../src/firebase/notes');
+ const input={...bundle(),version:2,machines:[{id:'osai-module-foundations',content:machineContent({workspace:'osai',progress:'completed'}),revision:1,lastMutationId:'seed-restore',createdAt:1,updatedAt:1}]};
+ expect((await importBackup(uid,input)).failed).toHaveLength(0);
+ expect((await readEntity<any>(uid,'machine','osai-module-foundations'))!.content.progress).toBe('completed');
+ expect((await importBackup(uid,{...input,machines:[{...input.machines[0],content:{...input.machines[0].content,progress:'not-started'}}]})).failed).toHaveLength(0);
+ expect((await readEntity<any>(uid,'machine','osai-module-foundations'))!.content.progress).toBe('completed');
+});

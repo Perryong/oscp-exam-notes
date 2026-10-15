@@ -159,8 +159,12 @@
 
 The plan ends with a verified, reviewable implementation. Production publication is a separate step after implementation review; earlier deployment authorization concerned the OSCP release. When publication is requested, deploy compatible Firestore rules first, then rebuild/deploy production with existing public Firebase configuration. Preserve both workspaces and do not perform bulk data migration. Verify both public study areas, source assets, and sign-in domain; perform authenticated notebook checks only with an appropriate owner session.
 
+## Execution record
+
+Implemented and verified on 2026-10-15. See `docs/osai-workspace.md` for actual test counts, review findings, and execution rulings. Targeted tests were grouped where tasks share interfaces; UI/content tasks were committed together. The final implementation is local and not deployed.
+
 ## Self-review and handoff
 
 Coverage: navigation and separation (1,4,5); immutable metadata/security (1,2); backup/history/recovery/migration (2,3,4,8); OSAI lessons and source policy (6); templates/bookmarks/progress (7); offline/account isolation (4,5,8); rollout/rollback (8 and release boundary). All five Review Focus risks have specific test owners. Shared interfaces are named once and consumed consistently. No product changes have been made by this planning task.
 
-Next: user reviews this plan. Preserve Native execution unless the user changes that preference; after approval invoke superpowers:executing-plans and implement in task order.
+Execution approved by the user and completed using Native execution. Preserve the worktree and branch for deployment/integration.

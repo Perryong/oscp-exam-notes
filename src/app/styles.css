@@ -840,3 +840,9 @@ pre {
 .osai-study-hero a {
   color: #cff3c9;
 }
+.osai-grid .week-card {
+  padding: 1.3rem;
+}
+.osai-study-hero .eyebrow {
+  color: #b9ddcd;
+}

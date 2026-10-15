@@ -72,3 +72,9 @@ Live Chrome verification: study plan, walkthrough library, and sign-in page retu
 The first repository upload was blocked by Vercel's commit-author membership check. The successful deployment used a clean source package of the tracked worktree files through the authenticated Vercel account, without changing Git authorship. Future Git-triggered deployments require an authorized Git author. The source remains on local branch `codex/oscp-notebook`; this deployment did not push or merge it.
 
 Vercel CLI and the Codex Vercel plugin are installed. The Vercel MCP entry exists, but its separate OAuth connection has not been verified; CLI deployment does not depend on it.
+
+## OSAI release preparation
+
+The local branch now includes the OSAI workspace described in [the workspace guide](osai-workspace.md). It has not been deployed. The prior production URL still serves the OSCP release.
+
+For this release, publish the new backward-compatible Firestore rules before the frontend. Preserve current owner collections and all old OSCP records. New OSAI records require the new client; an older client cannot safely display the two workspaces and must not be used as a normal rollback target. Full-account backup format is now version 2; version 1 imports remain OSCP-only. The existing Firebase project, authorized production domain, and Vercel production environment settings remain applicable.

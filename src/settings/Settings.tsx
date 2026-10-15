@@ -1,3 +1,4 @@
+import { workspaceOf } from "../workspaces/model";
 import { useEffect, useState } from "react";
 import {
   downloadOffline,
@@ -53,6 +54,7 @@ export default function Settings({ uid }: { uid: string }) {
   return (
     <section>
       <h2>Offline availability</h2>
+      <p>Downloads include both OSCP and OSAI workspaces for this account.</p>
       <p>
         {offline?.complete
           ? "Downloaded snapshot verified on this device."
@@ -102,7 +104,10 @@ export default function Settings({ uid }: { uid: string }) {
       </p>
       {recovery.map((d) => (
         <article key={d.mutationId}>
-          <p>{"title" in d.content ? d.content.title : d.content.name}</p>
+          <p>
+            <strong>{workspaceOf(d.content).toUpperCase()}</strong> ·{" "}
+            {"title" in d.content ? d.content.title : d.content.name}
+          </p>
           <button
             disabled={busy}
             onClick={() =>
