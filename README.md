@@ -7,6 +7,7 @@ A week-by-week OSCP practice ladder built from the LainKusanagi OSCP-like list, 
 - Each week has a notes editor with headings, lists, code blocks for commands, and screenshots (paste, drag or the Image button).
 - **All notes** lists every week you've written up, searches across notes, commands and box names, and exports everything as one Markdown file.
 - **Cheat sheet** opens a searchable reference built from the [oscp_cheat_sheet_2025](https://github.com/Perryong/oscp_cheat_sheet_2025) repo: 19 sections (enumeration, reverse shells, privesc, Active Directory, tunnelling, and more), with collapsible sections and copy buttons on code blocks.
+- **Calendar** lays the plan out on real dates in a month or week view. Pick the day week 1 starts, and each week's boxes spread across that week. Move a box to another day by dragging it (on a computer) or with its date field (on a phone). Tick boxes, open walkthroughs and open notes right from the calendar.
 
 It's a static site: `index.html` plus `firebase-config.js`. Nothing needs building.
 
@@ -25,6 +26,7 @@ Data layout:
 
 - `users/{uid}/notes/week-{n}`: `html`, `text` (for search), `week`, `updatedAt`
 - `users/{uid}/images/{id}`: `data` (the screenshot as a base64 data URL, under 1 MiB), `createdAt`
+- `users/{uid}/meta/calendar`: `start` (the day week 1 starts, `YYYY-MM-DD`), `moves` (boxes moved off their planned day: box → `YYYY-MM-DD`), `updatedAt`
 
 Screenshots are Firestore documents, so the project doesn't need Cloud Storage or a paid plan. The rules in [`firestore.rules`](firestore.rules) only let a signed-in user read and write their own `users/<uid>/` data, and they check every field.
 
@@ -46,6 +48,14 @@ It does four things:
 Then open the site, enter your email and a password, and press **Create account**.
 
 **Recommended:** once your account exists, stop anyone else from signing up. In the Firebase console, go to **Authentication → Settings → User actions** and untick **Enable create (sign-up)**.
+
+After pulling a change to `firestore.rules` (the calendar added one), deploy the rules again:
+
+```bash
+npx -y firebase-tools@latest deploy --only firestore:rules --project oscp-notes
+```
+
+Until you do, the calendar still works but saves in that browser only.
 
 To rerun only the rules tests:
 
