@@ -43,7 +43,7 @@ Interfaces: `/topics/:topicId?`; preserve `/study-plan` and weekly content; `/no
 - [x] Verify previous routes/content/progress and OSAI remain functional; commit.
 
 ## Task 4: Release verification
-- [ ] Run npm test, npm run build, generated-index integrity checks.
-- [ ] Fresh reviewer checks whole change; fix actionable issues with regression tests.
-- [ ] Push approved working branch and deploy production Vercel.
-- [ ] Verify Chrome guided map, topic selection, exact source link, private isolation and mobile layout; save screenshot.
+- [x] Run npm test, npm run build, generated-index integrity checks.
+- [x] Fresh reviewer checks whole change; fix actionable issues with regression tests.
+- [x] Push approved working branch and deploy production Vercel.
+- [x] Verify Chrome guided map, topic selection, exact source link, private isolation and mobile layout; save screenshot.
