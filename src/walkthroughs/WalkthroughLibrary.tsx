@@ -9,7 +9,7 @@ export default function WalkthroughLibrary() {
     (a) =>
       (!category || a.category === category) &&
       (!track || a.tracks?.includes(track)) &&
-      `${a.title} ${categoryName(a.category)} ${a.searchText} ${a.excerpt}`
+      `${a.title} ${categoryName(a.category)} ${a.searchText} ${a.excerpt} ${a.format ?? ""}`
         .toLowerCase()
         .includes(query.toLowerCase()),
   );
@@ -20,6 +20,26 @@ export default function WalkthroughLibrary() {
       <p className="subtitle">
         Written walkthroughs and illustrated study guides, with screenshots,
         reading steps and credited sources.
+      </p>
+      <p>
+        <button
+          type="button"
+          onClick={() => {
+            setQuery("Conceptual walkthrough");
+            setCategory("");
+            setTrack("");
+          }}
+        >
+          Show{" "}
+          {
+            catalog.articles.filter(
+              (a) => a.format === "Conceptual walkthrough",
+            ).length
+          }{" "}
+          updated guides
+        </button>{" "}
+        Concept explanations, diagrams, expected observations and
+        troubleshooting.
       </p>
       <div className="walkthrough-filters">
         <label>
@@ -82,8 +102,9 @@ export default function WalkthroughLibrary() {
         Reference material is separate from your private notes. Screenshots
         require an internet connection. Source steps may reflect older lab
         versions. Study-track labels follow the supplied LainKusanagi lists; Red
-        Teaming extends beyond OSCP. New guides contain original study outlines
-        and selected source images, with full details at the original.
+        Teaming extends beyond OSCP. New conceptual guides include explanations,
+        learning maps, expected observations, troubleshooting and credited
+        source images. They do not contain exploitation commands.
       </p>
       <div className="walkthrough-grid">
         {articles.map((a) => (

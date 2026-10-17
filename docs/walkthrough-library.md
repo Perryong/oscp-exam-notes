@@ -39,3 +39,9 @@ The library also includes 119 original study outlines accompanying credited 0xdf
 These additions contain original reading guidance, short source section labels and selected remote images. They do not reproduce the full source articles; full commands and explanations remain linked to the author. Images require the source host to remain available. Existing repository walkthroughs remain unchanged.
 
 Regenerate with `node scripts/import-study-guides.mjs`. Sources and spreadsheet cells are recorded in `scripts/study-guide-sources.json`; fetched articles are cached under `/tmp/oscp-study-guide-cache`. Review source changes and output before deploying. The generated index is `src/walkthroughs/study-guides.json`, with sanitized bodies in `public/walkthroughs`.
+
+## Conceptual expansion (2026-10-17)
+
+All 119 additions now include original conceptual lessons, expected observations, troubleshooting, an evidence checklist and a locally hosted SVG reading map. The map shows source section order and is not a verified attack chain. Original source screenshots remain credited and remotely hosted. These pages contain no exploitation commands or payloads and are not independently lab-tested.
+
+The teaching taxonomy is `scripts/study-guide-concepts.mjs`. Selection uses explicit source tags, with a small reviewed mapping for sparse older metadata. Topic lessons are general educational material applied to a machine, not claims that each topic appears in its main solution. Regeneration fails on missing topics, stages or source images. `src/walkthroughs/concepts.test.ts` validates every generated entry and diagram. Diagram text has an HTML equivalent for accessibility.

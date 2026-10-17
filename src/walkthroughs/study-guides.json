@@ -5,10 +5,10 @@
     "title": "Access",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2019/03/02/htb-access.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as security Privesc To Administrator",
+    "excerpt": "OSCP. Secrets, storage and account context · File sharing and access scope · Keys, encryption and identity. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as security Privesc To Administrator Secrets, storage and account context File sharing and access scope Keys, encryption and identity",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -20,10 +20,10 @@
     "title": "Acute",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2022/07/16/htb-acute.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as edavies on Acute-PC01 Execution as imonk on ATSSERVER Shell as jmorgan on Acute-PC01 Shell as Site Admin",
+    "excerpt": "Red Teaming. Secrets, storage and account context · Windows privileges and token context · Documents and automatic processing · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as edavies on Acute-PC01 Execution as imonk on ATSSERVER Shell as jmorgan on Acute-PC01 Shell as Site Admin Secrets, storage and account context Windows privileges and token context Documents and automatic processing Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -35,10 +35,10 @@
     "title": "Administrator",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/04/19/htb-administrator.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as michael Auth as benjamin Shell as emily Auth as ethan",
+    "excerpt": "OSCP · Red Teaming. Kerberos identity and tickets · Directory replication and sensitive records · Delegated permissions and effective access · Secrets, storage and account context · Passwords, verifiers and evidence. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as michael Auth as benjamin Shell as emily Auth as ethan Kerberos identity and tickets Directory replication and sensitive records Delegated permissions and effective access Secrets, storage and account context Passwords, verifiers and evidence",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -51,10 +51,10 @@
     "title": "Aero",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2023/09/28/htb-aero.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as sam.emerson Shell as root",
+    "excerpt": "Red Teaming. Build pipelines and artifact trust · Documents and automatic processing · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as sam.emerson Shell as root Build pipelines and artifact trust Documents and automatic processing Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -66,10 +66,10 @@
     "title": "Alert",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/03/22/htb-alert.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as albert Shell as root",
+    "excerpt": "Red Teaming. Paths, inclusion and file access · Browser origin and user context · Source history and configuration evidence · Names, listeners and network context · Documents and automatic processing. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as albert Shell as root Paths, inclusion and file access Browser origin and user context Source history and configuration evidence Names, listeners and network context Documents and automatic processing",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -81,10 +81,10 @@
     "title": "Anubis",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2022/01/29/htb-anubis.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as SYSTEM in webserver 01 Auth as localadmin Shell as diegocruz Shell as administrator",
+    "excerpt": "Red Teaming. Kerberos identity and tickets · Certificate trust and enrollment · Evaluation and sandbox boundaries · Browser origin and user context · Names, listeners and network context. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as SYSTEM in webserver 01 Auth as localadmin Shell as diegocruz Shell as administrator Kerberos identity and tickets Certificate trust and enrollment Evaluation and sandbox boundaries Browser origin and user context Names, listeners and network context",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -96,10 +96,10 @@
     "title": "Arctic",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/05/19/htb-arctic.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as tolis Priv: tolis –> system",
+    "excerpt": "OSCP. Paths, inclusion and file access · Uploaded content and interpretation · Memory safety and platform versions · Protocol parsing and server configuration · Passwords, verifiers and evidence. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as tolis Priv: tolis –> system Paths, inclusion and file access Uploaded content and interpretation Memory safety and platform versions Protocol parsing and server configuration Passwords, verifiers and evidence",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -111,10 +111,10 @@
     "title": "Atom",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2021/07/10/htb-atom.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as jason Shell as administrator",
+    "excerpt": "Red Teaming. File sharing and access scope · Protocol parsing and server configuration · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as jason Shell as administrator File sharing and access scope Protocol parsing and server configuration Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -126,10 +126,10 @@
     "title": "Authority",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2023/12/09/htb-authority.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as svc_ldap Shell as administrator",
+    "excerpt": "Red Teaming. Kerberos identity and tickets · Certificate trust and enrollment · Names, listeners and network context · File sharing and access scope · Passwords, verifiers and evidence. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as svc_ldap Shell as administrator Kerberos identity and tickets Certificate trust and enrollment Names, listeners and network context File sharing and access scope Passwords, verifiers and evidence",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -141,10 +141,10 @@
     "title": "Axlle",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2024/11/16/htb-axlle.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as gideon.hamill Shell as dallon.matrix Shell as baz.humphries / jacob.greeny Shell as administrator",
+    "excerpt": "Red Teaming. Delegated permissions and effective access · Build pipelines and artifact trust · Names, listeners and network context · Documents and automatic processing · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as gideon.hamill Shell as dallon.matrix Shell as baz.humphries / jacob.greeny Shell as administrator Delegated permissions and effective access Build pipelines and artifact trust Names, listeners and network context Documents and automatic processing Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -156,10 +156,10 @@
     "title": "Backfire",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/06/07/htb-backfire.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as ilya Shell as sergej Shell as root",
+    "excerpt": "Red Teaming. Server-side requests and network trust · Authentication versus authorization · Containers and host boundaries · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as ilya Shell as sergej Shell as root Server-side requests and network trust Authentication versus authorization Containers and host boundaries Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -171,10 +171,10 @@
     "title": "Blackfield",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/10/03/htb-blackfield.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 2 source visuals.",
-    "searchText": "Recon Access as support Access as audit2020 Shell as svc_backup Priv: svc_backup –> administrator",
+    "excerpt": "OSCP · Red Teaming. Kerberos identity and tickets · Directory replication and sensitive records · Delegated permissions and effective access · Authentication versus authorization · Windows privileges and token context. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Access as support Access as audit2020 Shell as svc_backup Priv: svc_backup –> administrator Kerberos identity and tickets Directory replication and sensitive records Delegated permissions and effective access Authentication versus authorization Windows privileges and token context",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -187,10 +187,10 @@
     "title": "Blazorized",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2024/11/09/htb-blazorized.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as nu_1055 Shell as rsa_4810 Shell as SSA_6010 Shell as administrator",
+    "excerpt": "Red Teaming. Kerberos identity and tickets · Directory replication and sensitive records · Delegated permissions and effective access · Queries and data boundaries · Authentication versus authorization. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as nu_1055 Shell as rsa_4810 Shell as SSA_6010 Shell as administrator Kerberos identity and tickets Directory replication and sensitive records Delegated permissions and effective access Queries and data boundaries Authentication versus authorization",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -202,10 +202,10 @@
     "title": "Blunder",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/10/17/htb-blunder.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as www-data Priv: www-data –> huge Priv: hugo –> root",
+    "excerpt": "Red Teaming. Secrets, storage and account context · Uploaded content and interpretation · Application administration and extensions · Source history and configuration evidence · Privileged execution policy. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as www-data Priv: www-data –> huge Priv: hugo –> root Secrets, storage and account context Uploaded content and interpretation Application administration and extensions Source history and configuration evidence Privileged execution policy",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -217,10 +217,10 @@
     "title": "BoardLight",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2024/09/28/htb-boardlight.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as www-data Shell as laraissa Shell as root",
+    "excerpt": "OSCP. Application administration and extensions · Privileged execution policy · Names, listeners and network context · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as www-data Shell as laraissa Shell as root Application administration and extensions Privileged execution policy Names, listeners and network context Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -232,10 +232,10 @@
     "title": "Bounty",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2018/10/27/htb-bounty.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "nmap Port 80 - Web Shell as merlin Privesc: merlin –> SYSTEM",
+    "excerpt": "OSCP. Uploaded content and interpretation · Memory safety and platform versions. Diagram, observations and troubleshooting.",
+    "searchText": "nmap Port 80 - Web Shell as merlin Privesc: merlin –> SYSTEM Uploaded content and interpretation Memory safety and platform versions",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -247,10 +247,10 @@
     "title": "Broker",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2023/11/09/htb-broker.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as activemq Shell as root",
+    "excerpt": "OSCP. Privileged execution policy · Structured data and object reconstruction · Protocol parsing and server configuration · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as activemq Shell as root Privileged execution policy Structured data and object reconstruction Protocol parsing and server configuration Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -262,10 +262,10 @@
     "title": "Bucket",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2021/04/24/htb-bucket.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as www-data Shell as roy Shell as root",
+    "excerpt": "OSCP · Red Teaming. Secrets, storage and account context · Uploaded content and interpretation · Cloud services and policy scope · Names, listeners and network context · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as www-data Shell as roy Shell as root Secrets, storage and account context Uploaded content and interpretation Cloud services and policy scope Names, listeners and network context Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -278,10 +278,10 @@
     "title": "Buff",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/11/21/htb-buff.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as shaun Priv: shaun –> administrator",
+    "excerpt": "OSCP. Uploaded content and interpretation · Names, listeners and network context · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as shaun Priv: shaun –> administrator Uploaded content and interpretation Names, listeners and network context Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -293,10 +293,10 @@
     "title": "Builder",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2024/02/12/htb-builder.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Authenticate Jenkins Access Shell as root",
+    "excerpt": "OSCP. Secrets, storage and account context · Paths, inclusion and file access · Build pipelines and artifact trust · Passwords, verifiers and evidence. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Authenticate Jenkins Access Shell as root Secrets, storage and account context Paths, inclusion and file access Build pipelines and artifact trust Passwords, verifiers and evidence",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -308,10 +308,10 @@
     "title": "Busqueda",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2023/08/12/htb-busqueda.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as svc Shell as root",
+    "excerpt": "OSCP. Secrets, storage and account context · Data interpreted as commands · Source history and configuration evidence · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as svc Shell as root Secrets, storage and account context Data interpreted as commands Source history and configuration evidence Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -323,10 +323,10 @@
     "title": "Cascade",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/07/25/htb-cascade.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as s.smith Privesc: s.smith –> arksvc Privesc: arksvc –> administrator",
+    "excerpt": "Red Teaming. Queries and data boundaries · Names, listeners and network context · File sharing and access scope · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as s.smith Privesc: s.smith –> arksvc Privesc: arksvc –> administrator Queries and data boundaries Names, listeners and network context File sharing and access scope Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -338,10 +338,10 @@
     "title": "Cat",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/07/05/htb-cat.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as www-data Shell as rosa Shell as axel Shell as root",
+    "excerpt": "Red Teaming. Queries and data boundaries · Uploaded content and interpretation · Browser origin and user context · Source history and configuration evidence · Passwords, verifiers and evidence. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as www-data Shell as rosa Shell as axel Shell as root Queries and data boundaries Uploaded content and interpretation Browser origin and user context Source history and configuration evidence Passwords, verifiers and evidence",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -353,10 +353,10 @@
     "title": "CCTV",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2026/07/11/htb-cctv.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as mark Shell as sa_mark Shell as root",
+    "excerpt": "OSCP. Secrets, storage and account context · Queries and data boundaries · Data interpreted as commands · Source history and configuration evidence · Privileged execution policy. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as mark Shell as sa_mark Shell as root Secrets, storage and account context Queries and data boundaries Data interpreted as commands Source history and configuration evidence Privileged execution policy",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -368,10 +368,10 @@
     "title": "Certificate",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/10/04/htb-certificate.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as xamppuser Shell as Sara.B Shell as Lion.SK Shell as ryan.k",
+    "excerpt": "Red Teaming. Kerberos identity and tickets · Certificate trust and enrollment · Delegated permissions and effective access · Uploaded content and interpretation · Windows privileges and token context. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as xamppuser Shell as Sara.B Shell as Lion.SK Shell as ryan.k Kerberos identity and tickets Certificate trust and enrollment Delegated permissions and effective access Uploaded content and interpretation Windows privileges and token context",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -383,10 +383,10 @@
     "title": "Certified",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/03/15/htb-certified.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as Management_SVC Auth as CA_Operator Shell as administrator",
+    "excerpt": "OSCP · Red Teaming. Certificate trust and enrollment · Delegated permissions and effective access · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as Management_SVC Auth as CA_Operator Shell as administrator Certificate trust and enrollment Delegated permissions and effective access Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -399,10 +399,10 @@
     "title": "Chatterbox",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2018/06/18/htb-chatterbox.html",
-    "excerpt": "OSCP. Illustrated study outline with 2 source visuals.",
-    "searchText": "Recon AChat Reading root.txt",
+    "excerpt": "OSCP. Windows privileges and token context · Memory safety and platform versions. Diagram, observations and troubleshooting.",
+    "searchText": "Recon AChat Reading root.txt Windows privileges and token context Memory safety and platform versions",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -414,10 +414,10 @@
     "title": "Cicada",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/02/15/htb-cicada.html",
-    "excerpt": "OSCP. Illustrated study outline with 1 source visuals.",
-    "searchText": "Recon Auth as michael.wrightson Auth as david.orelious Shell as emily.oscars Shell as system",
+    "excerpt": "OSCP. Directory replication and sensitive records · Windows privileges and token context · Passwords, verifiers and evidence · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Auth as michael.wrightson Auth as david.orelious Shell as emily.oscars Shell as system Directory replication and sensitive records Windows privileges and token context Passwords, verifiers and evidence Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -429,10 +429,10 @@
     "title": "Codify",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2024/04/06/htb-codify.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as svc Shell as joshua Shell as root",
+    "excerpt": "OSCP. Queries and data boundaries · Evaluation and sandbox boundaries · Data interpreted as commands · Passwords, verifiers and evidence · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as svc Shell as joshua Shell as root Queries and data boundaries Evaluation and sandbox boundaries Data interpreted as commands Passwords, verifiers and evidence Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -444,10 +444,10 @@
     "title": "Compiled",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2024/12/14/htb-compiled.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as Richard Shell as emily Shell as system",
+    "excerpt": "Red Teaming. Build pipelines and artifact trust · Source history and configuration evidence · Passwords, verifiers and evidence · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as Richard Shell as emily Shell as system Build pipelines and artifact trust Source history and configuration evidence Passwords, verifiers and evidence Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -459,10 +459,10 @@
     "title": "Control",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/04/25/htb-control.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as iusr Priv: manager –> hector Priv: hector –> SYSTEM",
+    "excerpt": "Red Teaming. Queries and data boundaries · Services, scheduled work and writable inputs · Passwords, verifiers and evidence · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as iusr Priv: manager –> hector Priv: hector –> SYSTEM Queries and data boundaries Services, scheduled work and writable inputs Passwords, verifiers and evidence Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -474,10 +474,10 @@
     "title": "CozyHosting",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2024/03/02/htb-cozyhosting.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as app Shell as josh Shell as root",
+    "excerpt": "OSCP. Data interpreted as commands · Privileged execution policy · Passwords, verifiers and evidence · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as app Shell as josh Shell as root Data interpreted as commands Privileged execution policy Passwords, verifiers and evidence Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -489,10 +489,10 @@
     "title": "Cypher",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/07/26/htb-cypher.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as neo4j Shell as graphasm Shell as root",
+    "excerpt": "Red Teaming. Queries and data boundaries · Data interpreted as commands · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as neo4j Shell as graphasm Shell as root Queries and data boundaries Data interpreted as commands Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -504,10 +504,10 @@
     "title": "DevVortex",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2024/04/27/htb-devvortex.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as www-data Shell as logan Shell as root",
+    "excerpt": "OSCP. Uploaded content and interpretation · Authentication versus authorization · Application administration and extensions · Names, listeners and network context · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as www-data Shell as logan Shell as root Uploaded content and interpretation Authentication versus authorization Application administration and extensions Names, listeners and network context Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -519,10 +519,10 @@
     "title": "Dog",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/07/12/htb-dog.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as www-data Shell as johnsusack Shell as root",
+    "excerpt": "OSCP. Application administration and extensions · Source history and configuration evidence · Privileged execution policy · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as www-data Shell as johnsusack Shell as root Application administration and extensions Source history and configuration evidence Privileged execution policy Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -534,10 +534,10 @@
     "title": "Editor",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/12/06/htb-editor.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as xwiki Shell as oliver on Editor Shell as root",
+    "excerpt": "OSCP. Secrets, storage and account context · Evaluation and sandbox boundaries · Data interpreted as commands · Application administration and extensions · Privileged execution policy. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as xwiki Shell as oliver on Editor Shell as root Secrets, storage and account context Evaluation and sandbox boundaries Data interpreted as commands Application administration and extensions Privileged execution policy",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -549,10 +549,10 @@
     "title": "Editorial",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2024/10/19/htb-editorial.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as dev Shell as prod Shell as root",
+    "excerpt": "OSCP. Server-side requests and network trust · Source history and configuration evidence · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as dev Shell as prod Shell as root Server-side requests and network trust Source history and configuration evidence Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -564,10 +564,10 @@
     "title": "Epsilon",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2022/03/10/htb-epsilon.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as tom Shell as root",
+    "excerpt": "OSCP · Red Teaming. Evaluation and sandbox boundaries · Authentication versus authorization · Source history and configuration evidence · Cloud services and policy scope · Services, scheduled work and writable inputs. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as tom Shell as root Evaluation and sandbox boundaries Authentication versus authorization Source history and configuration evidence Cloud services and policy scope Services, scheduled work and writable inputs",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -580,10 +580,10 @@
     "title": "Escape",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2023/06/17/htb-escape.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 1 source visuals.",
-    "searchText": "Recon Shell as sql_svc Shell as Ryan.Cooper Shell as administrator",
+    "excerpt": "OSCP · Red Teaming. Kerberos identity and tickets · Certificate trust and enrollment · Database roles and service context · File sharing and access scope · Keys, encryption and identity. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as sql_svc Shell as Ryan.Cooper Shell as administrator Kerberos identity and tickets Certificate trust and enrollment Database roles and service context File sharing and access scope Keys, encryption and identity",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -596,10 +596,10 @@
     "title": "EscapeTwo",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/05/24/htb-escapetwo.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as sql_svc Shell as ryan Auth as ca_svc Shell as Administrator",
+    "excerpt": "OSCP · Red Teaming. Certificate trust and enrollment · Delegated permissions and effective access · Secrets, storage and account context · Database roles and service context · File sharing and access scope. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as sql_svc Shell as ryan Auth as ca_svc Shell as Administrator Certificate trust and enrollment Delegated permissions and effective access Secrets, storage and account context Database roles and service context File sharing and access scope",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -612,10 +612,10 @@
     "title": "Facts",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2026/06/06/htb-facts.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as trivia Shell as root",
+    "excerpt": "OSCP · Red Teaming. Paths, inclusion and file access · Authentication versus authorization · Application administration and extensions · Cloud services and policy scope · Containers and host boundaries. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as trivia Shell as root Paths, inclusion and file access Authentication versus authorization Application administration and extensions Cloud services and policy scope Containers and host boundaries",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -628,10 +628,10 @@
     "title": "Flight",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2023/05/06/htb-flight.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Auth as svc_apache Auth as S.Moon Auth as C.Bum Shell as svc_apache",
+    "excerpt": "OSCP · Red Teaming. Directory replication and sensitive records · Paths, inclusion and file access · Uploaded content and interpretation · Names, listeners and network context · Passwords, verifiers and evidence. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Auth as svc_apache Auth as S.Moon Auth as C.Bum Shell as svc_apache Directory replication and sensitive records Paths, inclusion and file access Uploaded content and interpretation Names, listeners and network context Passwords, verifiers and evidence",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -644,10 +644,10 @@
     "title": "Forest",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/03/21/htb-forest.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as svc-alfresco Privesc to Administrator",
+    "excerpt": "OSCP · Red Teaming. Kerberos identity and tickets · Directory replication and sensitive records · Delegated permissions and effective access · Services, scheduled work and writable inputs · Names, listeners and network context. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as svc-alfresco Privesc to Administrator Kerberos identity and tickets Directory replication and sensitive records Delegated permissions and effective access Services, scheduled work and writable inputs Names, listeners and network context",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -660,10 +660,10 @@
     "title": "Freelancer",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2024/10/05/htb-freelancer.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as sql_svc Shell as mikasaAckerman Shell as lorra199 Shell as Administrator",
+    "excerpt": "Red Teaming. Directory replication and sensitive records · Delegated permissions and effective access · Service identities and delegation · Secrets, storage and account context · Database roles and service context. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as sql_svc Shell as mikasaAckerman Shell as lorra199 Shell as Administrator Directory replication and sensitive records Delegated permissions and effective access Service identities and delegation Secrets, storage and account context Database roles and service context",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -675,10 +675,10 @@
     "title": "Fuse",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/10/31/htb-fuse.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as svc-print Priv: svc-print –> SYSTEM",
+    "excerpt": "Red Teaming. Build pipelines and artifact trust · Services, scheduled work and writable inputs · Windows privileges and token context · File sharing and access scope · Memory safety and platform versions. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as svc-print Priv: svc-print –> SYSTEM Build pipelines and artifact trust Services, scheduled work and writable inputs Windows privileges and token context File sharing and access scope Memory safety and platform versions",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -690,10 +690,10 @@
     "title": "Giddy",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2019/02/16/htb-giddy.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell As Stacy WinRM - Shell as Stacy Privesc to System",
+    "excerpt": "OSCP · Red Teaming. Queries and data boundaries · File sharing and access scope · Passwords, verifiers and evidence. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell As Stacy WinRM - Shell as Stacy Privesc to System Queries and data boundaries File sharing and access scope Passwords, verifiers and evidence",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -706,10 +706,10 @@
     "title": "Gobox",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2021/08/30/htb-gobox.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon RCE as root in aws Container Shell as www-data Shell as root",
+    "excerpt": "OSCP · Red Teaming. Uploaded content and interpretation · Evaluation and sandbox boundaries · Cloud services and policy scope · Containers and host boundaries · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon RCE as root in aws Container Shell as www-data Shell as root Uploaded content and interpretation Evaluation and sandbox boundaries Cloud services and policy scope Containers and host boundaries Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -722,10 +722,10 @@
     "title": "Gofer",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2023/10/28/htb-gofer.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as jhudson Shell as tbuckley Shell as root",
+    "excerpt": "Red Teaming. Server-side requests and network trust · Data interpreted as commands · Names, listeners and network context · File sharing and access scope · Documents and automatic processing. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as jhudson Shell as tbuckley Shell as root Server-side requests and network trust Data interpreted as commands Names, listeners and network context File sharing and access scope Documents and automatic processing",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -737,10 +737,10 @@
     "title": "Haze",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/06/28/htb-haze.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Auth as paul.taylor Shell as mark.adams Auth as Haze-IT-Backup Shell as edward.martin",
+    "excerpt": "Red Teaming. Kerberos identity and tickets · Certificate trust and enrollment · Delegated permissions and effective access · Service identities and delegation · Paths, inclusion and file access. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Auth as paul.taylor Shell as mark.adams Auth as Haze-IT-Backup Shell as edward.martin Kerberos identity and tickets Certificate trust and enrollment Delegated permissions and effective access Service identities and delegation Paths, inclusion and file access",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -752,10 +752,10 @@
     "title": "Heist",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2019/11/30/htb-heist.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 2 source visuals.",
-    "searchText": "Recon Shell as chase Priv to administrator",
+    "excerpt": "OSCP · Red Teaming. Secrets, storage and account context · Containers and host boundaries · File sharing and access scope · Passwords, verifiers and evidence · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as chase Priv to administrator Secrets, storage and account context Containers and host boundaries File sharing and access scope Passwords, verifiers and evidence Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -768,10 +768,10 @@
     "title": "Help",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2019/06/08/htb-help.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as help Shell as help - Alternative Priv: help –> root",
+    "excerpt": "OSCP. Secrets, storage and account context · Queries and data boundaries · Uploaded content and interpretation · Passwords, verifiers and evidence · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as help Shell as help - Alternative Priv: help –> root Secrets, storage and account context Queries and data boundaries Uploaded content and interpretation Passwords, verifiers and evidence Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -783,10 +783,10 @@
     "title": "Hospital",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2024/04/13/htb-hospital.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as www-data on webserver Shell as root on webserver Shell as drbrown Shell as administrator",
+    "excerpt": "Red Teaming. Uploaded content and interpretation · Application administration and extensions · Documents and automatic processing · Memory safety and platform versions · Passwords, verifiers and evidence. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as www-data on webserver Shell as root on webserver Shell as drbrown Shell as administrator Uploaded content and interpretation Application administration and extensions Documents and automatic processing Memory safety and platform versions Passwords, verifiers and evidence",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -798,10 +798,10 @@
     "title": "Infiltrator",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/06/14/htb-infiltrator.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as M.Harris Shell as winrm_svc Shell as O.Martinez Auth as lan_mangment",
+    "excerpt": "Red Teaming. Kerberos identity and tickets · Directory replication and sensitive records · Certificate trust and enrollment · Delegated permissions and effective access · Service identities and delegation. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as M.Harris Shell as winrm_svc Shell as O.Martinez Auth as lan_mangment Kerberos identity and tickets Directory replication and sensitive records Certificate trust and enrollment Delegated permissions and effective access Service identities and delegation",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -813,10 +813,10 @@
     "title": "Intelligence",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2021/11/27/htb-intelligence.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon SMB Access as Tiffany.Molina SMB as Ted.Graves Shell as Administrator",
+    "excerpt": "Red Teaming. Kerberos identity and tickets · Delegated permissions and effective access · Service identities and delegation · Names, listeners and network context · File sharing and access scope. Diagram, observations and troubleshooting.",
+    "searchText": "Recon SMB Access as Tiffany.Molina SMB as Ted.Graves Shell as Administrator Kerberos identity and tickets Delegated permissions and effective access Service identities and delegation Names, listeners and network context File sharing and access scope",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -828,10 +828,10 @@
     "title": "Irked",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2019/04/27/htb-irked.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as ircd Privesc: ircd –> djmardov Privesc: djmardov –> root",
+    "excerpt": "OSCP. Secrets, storage and account context · Privileged execution policy · Protocol parsing and server configuration · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as ircd Privesc: ircd –> djmardov Privesc: djmardov –> root Secrets, storage and account context Privileged execution policy Protocol parsing and server configuration Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -843,10 +843,10 @@
     "title": "Jarvis",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2019/11/09/htb-jarvis.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as www-data Priv: www-data –> pepper Priv: pepper –> root",
+    "excerpt": "OSCP. Queries and data boundaries · Data interpreted as commands · Privileged execution policy · Services, scheduled work and writable inputs · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as www-data Priv: www-data –> pepper Priv: pepper –> root Queries and data boundaries Data interpreted as commands Privileged execution policy Services, scheduled work and writable inputs Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -858,10 +858,10 @@
     "title": "Jeeves",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2022/04/14/htb-jeeves.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as kohsuke Shell as Administrator",
+    "excerpt": "OSCP. Secrets, storage and account context · Build pipelines and artifact trust · Protocol parsing and server configuration · Passwords, verifiers and evidence · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as kohsuke Shell as Administrator Secrets, storage and account context Build pipelines and artifact trust Protocol parsing and server configuration Passwords, verifiers and evidence Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -873,10 +873,10 @@
     "title": "Jerry",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2018/11/17/htb-jerry.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Exploiting Tomcat Flags",
+    "excerpt": "OSCP. Protocol parsing and server configuration · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Exploiting Tomcat Flags Protocol parsing and server configuration Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -888,10 +888,10 @@
     "title": "Keeper",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2024/02/10/htb-keeper.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as lnorgaard Shell as root",
+    "excerpt": "OSCP. Secrets, storage and account context · Authentication versus authorization · Build pipelines and artifact trust · Containers and host boundaries · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as lnorgaard Shell as root Secrets, storage and account context Authentication versus authorization Build pipelines and artifact trust Containers and host boundaries Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -903,10 +903,10 @@
     "title": "LinkVortex",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/04/12/htb-linkvortex.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as bob Shell as root",
+    "excerpt": "OSCP. Paths, inclusion and file access · Application administration and extensions · Source history and configuration evidence · Names, listeners and network context · Timing and filesystem state. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as bob Shell as root Paths, inclusion and file access Application administration and extensions Source history and configuration evidence Names, listeners and network context Timing and filesystem state",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -918,10 +918,10 @@
     "title": "Love",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2021/08/07/htb-love.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as phoebe Shell as SYSTEM",
+    "excerpt": "OSCP. Server-side requests and network trust · Uploaded content and interpretation · Windows privileges and token context · Names, listeners and network context · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as phoebe Shell as SYSTEM Server-side requests and network trust Uploaded content and interpretation Windows privileges and token context Names, listeners and network context Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -933,10 +933,10 @@
     "title": "Luke",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2019/09/14/htb-luke.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as root",
+    "excerpt": "Red Teaming. Secrets, storage and account context · Authentication versus authorization · Passwords, verifiers and evidence · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as root Secrets, storage and account context Authentication versus authorization Passwords, verifiers and evidence Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -948,10 +948,10 @@
     "title": "Magic",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/08/22/htb-magic.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as www-data Priv: www-data –> theseus Priv: theseus –> root",
+    "excerpt": "OSCP. Queries and data boundaries · Uploaded content and interpretation · Data interpreted as commands · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as www-data Priv: www-data –> theseus Priv: theseus –> root Queries and data boundaries Uploaded content and interpretation Data interpreted as commands Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -963,10 +963,10 @@
     "title": "Mailing",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2024/09/07/htb-mailing.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as maya Shell as localadmin",
+    "excerpt": "OSCP · Red Teaming. Paths, inclusion and file access · Windows privileges and token context · Documents and automatic processing · Passwords, verifiers and evidence · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as maya Shell as localadmin Paths, inclusion and file access Windows privileges and token context Documents and automatic processing Passwords, verifiers and evidence Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -979,10 +979,10 @@
     "title": "Mailroom",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2023/08/19/htb-mailroom.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as tristan Shell as www-data in Container Shell as matthew Shell as root",
+    "excerpt": "Red Teaming. Secrets, storage and account context · Queries and data boundaries · Data interpreted as commands · Browser origin and user context · Source history and configuration evidence. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as tristan Shell as www-data in Container Shell as matthew Shell as root Secrets, storage and account context Queries and data boundaries Data interpreted as commands Browser origin and user context Source history and configuration evidence",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -994,10 +994,10 @@
     "title": "Manager",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2024/03/16/htb-manager.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as raven Shell as administrator",
+    "excerpt": "Red Teaming. Certificate trust and enrollment · Database roles and service context · Passwords, verifiers and evidence · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as raven Shell as administrator Certificate trust and enrollment Database roles and service context Passwords, verifiers and evidence Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1009,10 +1009,10 @@
     "title": "Mantis",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/09/03/htb-mantis.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Recon as James Shell as System",
+    "excerpt": "Red Teaming. Kerberos identity and tickets · Database roles and service context · Application administration and extensions · File sharing and access scope · Memory safety and platform versions. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Recon as James Shell as System Kerberos identity and tickets Database roles and service context Application administration and extensions File sharing and access scope Memory safety and platform versions",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1024,10 +1024,10 @@
     "title": "Mentor",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2023/03/11/htb-mentor.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as root in container Shell as svc Shell as root",
+    "excerpt": "OSCP. Secrets, storage and account context · Data interpreted as commands · Names, listeners and network context · Monitoring interfaces and collected data · Passwords, verifiers and evidence. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as root in container Shell as svc Shell as root Secrets, storage and account context Data interpreted as commands Names, listeners and network context Monitoring interfaces and collected data Passwords, verifiers and evidence",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1039,10 +1039,10 @@
     "title": "Mirage",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/11/22/htb-mirage.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Auth as david.jjackson Shell as nathan.aadam Auth as mark.bbond Auth as javier.mmarshall",
+    "excerpt": "Red Teaming. Kerberos identity and tickets · Directory replication and sensitive records · Certificate trust and enrollment · Delegated permissions and effective access · Service identities and delegation. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Auth as david.jjackson Shell as nathan.aadam Auth as mark.bbond Auth as javier.mmarshall Kerberos identity and tickets Directory replication and sensitive records Certificate trust and enrollment Delegated permissions and effective access Service identities and delegation",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1054,10 +1054,10 @@
     "title": "Monitored",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2024/05/11/htb-monitored.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as nagios Shell as root",
+    "excerpt": "OSCP. Queries and data boundaries · Monitoring interfaces and collected data · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as nagios Shell as root Queries and data boundaries Monitoring interfaces and collected data Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1069,10 +1069,10 @@
     "title": "Monteverde",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/06/13/htb-monteverde.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 1 source visuals.",
-    "searchText": "Recon Shell as mhope Priv: mhope –> administrator",
+    "excerpt": "OSCP · Red Teaming. Secrets, storage and account context · Database roles and service context · Cloud services and policy scope · File sharing and access scope · Passwords, verifiers and evidence. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as mhope Priv: mhope –> administrator Secrets, storage and account context Database roles and service context Cloud services and policy scope File sharing and access scope Passwords, verifiers and evidence",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -1085,10 +1085,10 @@
     "title": "NanoCorp",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2026/06/20/htb-nanocorp.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Auth as web_svc Shell as monitoring_svc Shell as Administrator",
+    "excerpt": "Red Teaming. Delegated permissions and effective access · Uploaded content and interpretation · Authentication versus authorization · Services, scheduled work and writable inputs · Monitoring interfaces and collected data. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Auth as web_svc Shell as monitoring_svc Shell as Administrator Delegated permissions and effective access Uploaded content and interpretation Authentication versus authorization Services, scheduled work and writable inputs Monitoring interfaces and collected data",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1100,10 +1100,10 @@
     "title": "Netmon",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2019/06/29/htb-netmon.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as SYSTEM",
+    "excerpt": "OSCP. Secrets, storage and account context · Data interpreted as commands · File sharing and access scope · Monitoring interfaces and collected data · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as SYSTEM Secrets, storage and account context Data interpreted as commands File sharing and access scope Monitoring interfaces and collected data Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1115,10 +1115,10 @@
     "title": "Networked",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2019/11/16/htb-networked.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as apache Privesc to guly Privesc to root",
+    "excerpt": "OSCP. Uploaded content and interpretation · Data interpreted as commands · Privileged execution policy · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as apache Privesc to guly Privesc to root Uploaded content and interpretation Data interpreted as commands Privileged execution policy Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1130,10 +1130,10 @@
     "title": "Nibbles",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2018/06/30/htb-nibbles.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "nmap Site - port 80 recon Remote Code Execution (via file upload) Privesc",
+    "excerpt": "OSCP. Uploaded content and interpretation · Application administration and extensions · Privileged execution policy. Diagram, observations and troubleshooting.",
+    "searchText": "nmap Site - port 80 recon Remote Code Execution (via file upload) Privesc Uploaded content and interpretation Application administration and extensions Privileged execution policy",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1145,10 +1145,10 @@
     "title": "Nineveh",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/04/22/htb-nineveh.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "nmap Shell as www-data (via phpLiteAdmin) Shell as www-data (via phpinfo.php) Priv: www-data –> amrois Priv: amrois –> root",
+    "excerpt": "OSCP. Queries and data boundaries · Paths, inclusion and file access · Uploaded content and interpretation · Names, listeners and network context · Passwords, verifiers and evidence. Diagram, observations and troubleshooting.",
+    "searchText": "nmap Shell as www-data (via phpLiteAdmin) Shell as www-data (via phpinfo.php) Priv: www-data –> amrois Priv: amrois –> root Queries and data boundaries Paths, inclusion and file access Uploaded content and interpretation Names, listeners and network context Passwords, verifiers and evidence",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1160,10 +1160,10 @@
     "title": "Office",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2024/06/22/htb-office.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Auth as dwolfe RCE as web_account Shell as TStark Shell as PPotts",
+    "excerpt": "Red Teaming. Delegated permissions and effective access · Secrets, storage and account context · Uploaded content and interpretation · Application administration and extensions · Names, listeners and network context. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Auth as dwolfe RCE as web_account Shell as TStark Shell as PPotts Delegated permissions and effective access Secrets, storage and account context Uploaded content and interpretation Application administration and extensions Names, listeners and network context",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1175,10 +1175,10 @@
     "title": "OpenAdmin",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/05/02/htb-openadmin.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as www-data Priv: www-data –> jimmy Priv: jimmy –> joanna Priv: joanna –> root",
+    "excerpt": "OSCP. Secrets, storage and account context · Uploaded content and interpretation · Privileged execution policy · Passwords, verifiers and evidence · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as www-data Priv: www-data –> jimmy Priv: jimmy –> joanna Priv: joanna –> root Secrets, storage and account context Uploaded content and interpretation Privileged execution policy Passwords, verifiers and evidence Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1190,10 +1190,10 @@
     "title": "Outdated",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2022/12/10/htb-outdated.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as btables on client Shell as sflowers on DC Shell as system on DC",
+    "excerpt": "Red Teaming. Kerberos identity and tickets · Directory replication and sensitive records · Certificate trust and enrollment · Delegated permissions and effective access · Build pipelines and artifact trust. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as btables on client Shell as sflowers on DC Shell as system on DC Kerberos identity and tickets Directory replication and sensitive records Certificate trust and enrollment Delegated permissions and effective access Build pipelines and artifact trust",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1205,10 +1205,10 @@
     "title": "Overwatch",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2026/05/09/htb-overwatch.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 1 source visuals.",
-    "searchText": "Recon Shell as sqlmgmt Shell as Administrator",
+    "excerpt": "Red Teaming. Directory replication and sensitive records · Queries and data boundaries · Database roles and service context · Data interpreted as commands · Build pipelines and artifact trust. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as sqlmgmt Shell as Administrator Directory replication and sensitive records Queries and data boundaries Database roles and service context Data interpreted as commands Build pipelines and artifact trust",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1220,10 +1220,10 @@
     "title": "Pandora",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2022/05/21/htb-pandora.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as daniel Shell as matt Shell as root",
+    "excerpt": "OSCP. Queries and data boundaries · Uploaded content and interpretation · Data interpreted as commands · Authentication versus authorization · Names, listeners and network context. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as daniel Shell as matt Shell as root Queries and data boundaries Uploaded content and interpretation Data interpreted as commands Authentication versus authorization Names, listeners and network context",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1235,10 +1235,10 @@
     "title": "Perfection",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2024/07/06/htb-perfection.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as susan Shell as root",
+    "excerpt": "Red Teaming. Evaluation and sandbox boundaries · Passwords, verifiers and evidence · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as susan Shell as root Evaluation and sandbox boundaries Passwords, verifiers and evidence Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1250,10 +1250,10 @@
     "title": "Pilgrimage",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2023/11/25/htb-pilgrimage.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as emily Shell as root",
+    "excerpt": "OSCP. Queries and data boundaries · Paths, inclusion and file access · Source history and configuration evidence · Timing and filesystem state · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as emily Shell as root Queries and data boundaries Paths, inclusion and file access Source history and configuration evidence Timing and filesystem state Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1265,10 +1265,10 @@
     "title": "Poison",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2018/09/08/htb-poison.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "nmap Website - port 80 Reverse Shell SSH as Charix Privesc: charix –> root",
+    "excerpt": "OSCP. Secrets, storage and account context · Paths, inclusion and file access · Uploaded content and interpretation · Names, listeners and network context. Diagram, observations and troubleshooting.",
+    "searchText": "nmap Website - port 80 Reverse Shell SSH as Charix Privesc: charix –> root Secrets, storage and account context Paths, inclusion and file access Uploaded content and interpretation Names, listeners and network context",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1280,10 +1280,10 @@
     "title": "Popcorn",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/06/23/htb-popcorn.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as www-data Priv: www-data –> root",
+    "excerpt": "OSCP. Uploaded content and interpretation · Memory safety and platform versions · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as www-data Priv: www-data –> root Uploaded content and interpretation Memory safety and platform versions Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1295,10 +1295,10 @@
     "title": "Precious",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2023/05/20/htb-precious.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as ruby Shell as henry Shell as root",
+    "excerpt": "OSCP. Data interpreted as commands · Names, listeners and network context · Structured data and object reconstruction · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as ruby Shell as henry Shell as root Data interpreted as commands Names, listeners and network context Structured data and object reconstruction Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1310,10 +1310,10 @@
     "title": "Puppy",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/09/27/htb-puppy.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Auth as Ant.Edwards Shell as Adam.Silver Shell as Steph.Cooper Shell as steph.cooper_adm",
+    "excerpt": "OSCP · Red Teaming. Delegated permissions and effective access · Secrets, storage and account context · Passwords, verifiers and evidence · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Auth as Ant.Edwards Shell as Adam.Silver Shell as Steph.Cooper Shell as steph.cooper_adm Delegated permissions and effective access Secrets, storage and account context Passwords, verifiers and evidence Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -1326,10 +1326,10 @@
     "title": "Querier",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2019/06/22/htb-querier.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 1 source visuals.",
-    "searchText": "Recon Database Privesc: reporter –> mssql-svc Shell as mssql-svc Privesc: mssql-svc –> Administrator",
+    "excerpt": "OSCP · Red Teaming. Database roles and service context · Services, scheduled work and writable inputs · File sharing and access scope · Documents and automatic processing · Passwords, verifiers and evidence. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Database Privesc: reporter –> mssql-svc Shell as mssql-svc Privesc: mssql-svc –> Administrator Database roles and service context Services, scheduled work and writable inputs File sharing and access scope Documents and automatic processing Passwords, verifiers and evidence",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -1342,10 +1342,10 @@
     "title": "Reel",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2018/11/10/htb-reel.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Phishing with RTF Dynamite Privesc: nico -> tom Privesc via AD - Overview Privesc: tom -> claire",
+    "excerpt": "Red Teaming. Delegated permissions and effective access · File sharing and access scope · Documents and automatic processing. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Phishing with RTF Dynamite Privesc: nico -> tom Privesc via AD - Overview Privesc: tom -> claire Delegated permissions and effective access File sharing and access scope Documents and automatic processing",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1357,10 +1357,10 @@
     "title": "Remote",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/09/05/htb-remote.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as IIS Priv: IIS –> administrator",
+    "excerpt": "OSCP. Secrets, storage and account context · Application administration and extensions · File sharing and access scope · Passwords, verifiers and evidence · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as IIS Priv: IIS –> administrator Secrets, storage and account context Application administration and extensions File sharing and access scope Passwords, verifiers and evidence Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1372,10 +1372,10 @@
     "title": "Resolute",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/05/30/htb-resolute.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 1 source visuals.",
-    "searchText": "Recon Shell as melanie Priv: melanie –> ryan Priv: ryan –> SYSTEM",
+    "excerpt": "Red Teaming. Secrets, storage and account context · Names, listeners and network context · File sharing and access scope · Passwords, verifiers and evidence · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as melanie Priv: melanie –> ryan Priv: ryan –> SYSTEM Secrets, storage and account context Names, listeners and network context File sharing and access scope Passwords, verifiers and evidence Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1387,10 +1387,10 @@
     "title": "Return",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2022/05/05/htb-return.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as svc-printer Shell as SYSTEM",
+    "excerpt": "OSCP · Red Teaming. Services, scheduled work and writable inputs · Windows privileges and token context · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as svc-printer Shell as SYSTEM Services, scheduled work and writable inputs Windows privileges and token context Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -1403,10 +1403,10 @@
     "title": "RustyKey",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/11/08/htb-rustykey.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Auth as IT-COMPUTER3 Shell as bb.morgan Shell as ee.reed Shell as mm.turner",
+    "excerpt": "Red Teaming. Kerberos identity and tickets · Directory replication and sensitive records · Delegated permissions and effective access · Service identities and delegation · Passwords, verifiers and evidence. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Auth as IT-COMPUTER3 Shell as bb.morgan Shell as ee.reed Shell as mm.turner Kerberos identity and tickets Directory replication and sensitive records Delegated permissions and effective access Service identities and delegation Passwords, verifiers and evidence",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1418,10 +1418,10 @@
     "title": "Sauna",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/07/18/htb-sauna.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as fsmith Priv: fsmith –> svc_loanmgr Priv: svc_loanmgr –> root",
+    "excerpt": "OSCP · Red Teaming. Kerberos identity and tickets · Directory replication and sensitive records · Delegated permissions and effective access · Secrets, storage and account context · File sharing and access scope. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as fsmith Priv: fsmith –> svc_loanmgr Priv: svc_loanmgr –> root Kerberos identity and tickets Directory replication and sensitive records Delegated permissions and effective access Secrets, storage and account context File sharing and access scope",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -1434,10 +1434,10 @@
     "title": "Scepter",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/07/19/htb-scepter.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Auth as d.baker Auth as a.carter Shell as h.brown Auth as p.adams",
+    "excerpt": "Red Teaming. Kerberos identity and tickets · Directory replication and sensitive records · Certificate trust and enrollment · Delegated permissions and effective access · File sharing and access scope. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Auth as d.baker Auth as a.carter Shell as h.brown Auth as p.adams Kerberos identity and tickets Directory replication and sensitive records Certificate trust and enrollment Delegated permissions and effective access File sharing and access scope",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1449,10 +1449,10 @@
     "title": "Scrambled",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2022/10/01/htb-scrambled.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 1 source visuals.",
-    "searchText": "Fork",
+    "excerpt": "Red Teaming. Kerberos identity and tickets · Database roles and service context · Structured data and object reconstruction. Diagram, observations and troubleshooting.",
+    "searchText": "Fork Kerberos identity and tickets Database roles and service context Structured data and object reconstruction",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1464,10 +1464,10 @@
     "title": "ScriptKiddie",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2021/06/05/htb-scriptkiddie.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as kid Shell as pwn Shell as root",
+    "excerpt": "Red Teaming. Data interpreted as commands · Services, scheduled work and writable inputs · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as kid Shell as pwn Shell as root Data interpreted as commands Services, scheduled work and writable inputs Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1479,10 +1479,10 @@
     "title": "Search",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2022/04/30/htb-search.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Auth as Edgar.Jacobs Shell as Siearra.Frye Shell as Tristan.Davies",
+    "excerpt": "Red Teaming. Kerberos identity and tickets · Delegated permissions and effective access · Service identities and delegation · Secrets, storage and account context · Names, listeners and network context. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Auth as Edgar.Jacobs Shell as Siearra.Frye Shell as Tristan.Davies Kerberos identity and tickets Delegated permissions and effective access Service identities and delegation Secrets, storage and account context Names, listeners and network context",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1494,10 +1494,10 @@
     "title": "SecNotes",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2019/01/19/htb-secnotes.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Get Tyler’s Credentials SMB access as tyler Shell as tyler Privesc",
+    "excerpt": "OSCP. Queries and data boundaries · Uploaded content and interpretation · Browser origin and user context · File sharing and access scope. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Get Tyler’s Credentials SMB access as tyler Shell as tyler Privesc Queries and data boundaries Uploaded content and interpretation Browser origin and user context File sharing and access scope",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1509,10 +1509,10 @@
     "title": "ServMon",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/06/20/htb-servmon.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as nadine Priv: nadine –> SYSTEM",
+    "excerpt": "OSCP. Paths, inclusion and file access · Names, listeners and network context · File sharing and access scope · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as nadine Priv: nadine –> SYSTEM Paths, inclusion and file access Names, listeners and network context File sharing and access scope Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1524,10 +1524,10 @@
     "title": "Signed",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2026/02/07/htb-signed.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 2 source visuals.",
-    "searchText": "Recon Auth as mssqlsvc Shell as MSSQL Many Escalations",
+    "excerpt": "OSCP · Red Teaming. Kerberos identity and tickets · Database roles and service context · Paths, inclusion and file access · Services, scheduled work and writable inputs · Windows privileges and token context. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Auth as mssqlsvc Shell as MSSQL Many Escalations Kerberos identity and tickets Database roles and service context Paths, inclusion and file access Services, scheduled work and writable inputs Windows privileges and token context",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -1540,10 +1540,10 @@
     "title": "Silentium",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2026/09/12/htb-silentium.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as root in Flowise Container Shell as ben Shell as root",
+    "excerpt": "OSCP. Secrets, storage and account context · Evaluation and sandbox boundaries · Data interpreted as commands · Authentication versus authorization · Source history and configuration evidence. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as root in Flowise Container Shell as ben Shell as root Secrets, storage and account context Evaluation and sandbox boundaries Data interpreted as commands Authentication versus authorization Source history and configuration evidence",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1555,10 +1555,10 @@
     "title": "Sink",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2021/09/18/htb-sink.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as marcus Shell as david Shell as root",
+    "excerpt": "Red Teaming. Source history and configuration evidence · Cloud services and policy scope · Protocol parsing and server configuration · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as marcus Shell as david Shell as root Source history and configuration evidence Cloud services and policy scope Protocol parsing and server configuration Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1570,10 +1570,10 @@
     "title": "Sniper",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/03/28/htb-sniper.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as iusr Priv: iusr –> Chris Priv: Chris –> Administrator",
+    "excerpt": "OSCP · Red Teaming. Paths, inclusion and file access · Uploaded content and interpretation · Documents and automatic processing · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as iusr Priv: iusr –> Chris Priv: Chris –> Administrator Paths, inclusion and file access Uploaded content and interpretation Documents and automatic processing Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -1586,10 +1586,10 @@
     "title": "SolidState",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/04/30/htb-solidstate.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as mindy rbash Escape Priv: mindy –> root",
+    "excerpt": "OSCP · Red Teaming. Secrets, storage and account context · Paths, inclusion and file access · Services, scheduled work and writable inputs · Protocol parsing and server configuration · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as mindy rbash Escape Priv: mindy –> root Secrets, storage and account context Paths, inclusion and file access Services, scheduled work and writable inputs Protocol parsing and server configuration Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -1602,10 +1602,10 @@
     "title": "Stacked",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2022/03/19/htb-stacked.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Identify LocalStack VHost Shell as localstack on localstack Shell as root on localstack Shell as root on Stacked",
+    "excerpt": "Red Teaming. Data interpreted as commands · Browser origin and user context · Cloud services and policy scope · Containers and host boundaries · Names, listeners and network context. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Identify LocalStack VHost Shell as localstack on localstack Shell as root on localstack Shell as root on Stacked Data interpreted as commands Browser origin and user context Cloud services and policy scope Containers and host boundaries Names, listeners and network context",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1617,10 +1617,10 @@
     "title": "StreamIO",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2022/09/17/htb-streamio.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as yoshihide Shell as nikk37 Auth as JDgodd Shell as administrator",
+    "excerpt": "Red Teaming. Delegated permissions and effective access · Queries and data boundaries · Database roles and service context · Paths, inclusion and file access · Names, listeners and network context. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as yoshihide Shell as nikk37 Auth as JDgodd Shell as administrator Delegated permissions and effective access Queries and data boundaries Database roles and service context Paths, inclusion and file access Names, listeners and network context",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1632,10 +1632,10 @@
     "title": "SwagShop",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2019/09/28/htb-swagshop.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as www-data Privesc to root",
+    "excerpt": "OSCP. Uploaded content and interpretation · Authentication versus authorization · Application administration and extensions · Privileged execution policy · Structured data and object reconstruction. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as www-data Privesc to root Uploaded content and interpretation Authentication versus authorization Application administration and extensions Privileged execution policy Structured data and object reconstruction",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1647,10 +1647,10 @@
     "title": "Tabby",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2020/11/07/htb-tabby.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as tomcat Priv: tomcat –> ash Priv: ash –> root",
+    "excerpt": "OSCP. Secrets, storage and account context · Paths, inclusion and file access · Containers and host boundaries · Protocol parsing and server configuration · Passwords, verifiers and evidence. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as tomcat Priv: tomcat –> ash Priv: ash –> root Secrets, storage and account context Paths, inclusion and file access Containers and host boundaries Protocol parsing and server configuration Passwords, verifiers and evidence",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1662,10 +1662,10 @@
     "title": "TartarSauce",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2018/10/20/htb-tartarsauce.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "nmap Website - Port 80 Shell as www-data Shell as onuma File Read as root",
+    "excerpt": "OSCP. Paths, inclusion and file access · Uploaded content and interpretation · Application administration and extensions · Privileged execution policy · Services, scheduled work and writable inputs. Diagram, observations and troubleshooting.",
+    "searchText": "nmap Website - Port 80 Shell as www-data Shell as onuma File Read as root Paths, inclusion and file access Uploaded content and interpretation Application administration and extensions Privileged execution policy Services, scheduled work and writable inputs",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1677,10 +1677,10 @@
     "title": "TheFrizz",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/08/23/htb-thefrizz.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as w.webservice Shell as f.frizzle Shell as m.schoolbus Shell as nt authority\\system",
+    "excerpt": "OSCP · Red Teaming. Kerberos identity and tickets · Delegated permissions and effective access · Uploaded content and interpretation · Application administration and extensions · Passwords, verifiers and evidence. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as w.webservice Shell as f.frizzle Shell as m.schoolbus Shell as nt authority\\system Kerberos identity and tickets Delegated permissions and effective access Uploaded content and interpretation Application administration and extensions Passwords, verifiers and evidence",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -1693,10 +1693,10 @@
     "title": "Timelapse",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2022/08/20/htb-timelapse.html",
-    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 1 source visuals.",
-    "searchText": "Recon Shell as legacyy Shell as svc_deploy Shell as root",
+    "excerpt": "OSCP · Red Teaming. File sharing and access scope · Keys, encryption and identity · Passwords, verifiers and evidence · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as legacyy Shell as svc_deploy Shell as root File sharing and access scope Keys, encryption and identity Passwords, verifiers and evidence Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP",
       "Red Teaming"
@@ -1709,10 +1709,10 @@
     "title": "TombWatcher",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/10/11/htb-tombwatcher.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Auth as Alfred Auth as ANSIBLE_DEV$ Auth as Sam Shell as John",
+    "excerpt": "Red Teaming. Kerberos identity and tickets · Certificate trust and enrollment · Delegated permissions and effective access · Service identities and delegation · Containers and host boundaries. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Auth as Alfred Auth as ANSIBLE_DEV$ Auth as Sam Shell as John Kerberos identity and tickets Certificate trust and enrollment Delegated permissions and effective access Service identities and delegation Containers and host boundaries",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1724,10 +1724,10 @@
     "title": "Trickster",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/02/01/htb-trickster.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as www-data Shell as james Shell as root in Container Shell as admin_admin992",
+    "excerpt": "Red Teaming. Evaluation and sandbox boundaries · Browser origin and user context · Application administration and extensions · Source history and configuration evidence · Names, listeners and network context. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as www-data Shell as james Shell as root in Container Shell as admin_admin992 Evaluation and sandbox boundaries Browser origin and user context Application administration and extensions Source history and configuration evidence Names, listeners and network context",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1739,10 +1739,10 @@
     "title": "UnderPass",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/05/10/htb-underpass.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as svcMosh Shell as root",
+    "excerpt": "OSCP. Authentication versus authorization · Application administration and extensions · Privileged execution policy · Monitoring interfaces and collected data · Service discovery and evidence quality. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as svcMosh Shell as root Authentication versus authorization Application administration and extensions Privileged execution policy Monitoring interfaces and collected data Service discovery and evidence quality",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1754,10 +1754,10 @@
     "title": "UpDown",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2023/01/21/htb-updown.html",
-    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as www-data Shell as developer Shell as root",
+    "excerpt": "OSCP. Server-side requests and network trust · Uploaded content and interpretation · Source history and configuration evidence · Privileged execution policy · Names, listeners and network context. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as www-data Shell as developer Shell as root Server-side requests and network trust Uploaded content and interpretation Source history and configuration evidence Privileged execution policy Names, listeners and network context",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "OSCP"
     ],
@@ -1769,10 +1769,10 @@
     "title": "Vintage",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2025/04/26/htb-vintage.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as C.Neri Auth as C.Neri_adm Shell as L.Bianchi_adm",
+    "excerpt": "Red Teaming. Kerberos identity and tickets · Directory replication and sensitive records · Delegated permissions and effective access · Service identities and delegation · Secrets, storage and account context. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as C.Neri Auth as C.Neri_adm Shell as L.Bianchi_adm Kerberos identity and tickets Directory replication and sensitive records Delegated permissions and effective access Service identities and delegation Secrets, storage and account context",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1784,10 +1784,10 @@
     "title": "Visual",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2024/02/24/htb-visual.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as enox Shell as local service Shell as system",
+    "excerpt": "Red Teaming. Uploaded content and interpretation · Build pipelines and artifact trust · Source history and configuration evidence · Containers and host boundaries · Windows privileges and token context. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as enox Shell as local service Shell as system Uploaded content and interpretation Build pipelines and artifact trust Source history and configuration evidence Containers and host boundaries Windows privileges and token context",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],
@@ -1799,10 +1799,10 @@
     "title": "Worker",
     "category": "hackthebox",
     "source": "https://0xdf.gitlab.io/2021/01/30/htb-worker.html",
-    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
-    "searchText": "Recon Shell as iis Priv: iis –> robisl Priv: robisl –> system",
+    "excerpt": "Red Teaming. Secrets, storage and account context · Uploaded content and interpretation · Build pipelines and artifact trust · Source history and configuration evidence · Names, listeners and network context. Diagram, observations and troubleshooting.",
+    "searchText": "Recon Shell as iis Priv: iis –> robisl Priv: robisl –> system Secrets, storage and account context Uploaded content and interpretation Build pipelines and artifact trust Source history and configuration evidence Names, listeners and network context",
     "author": "0xdf",
-    "format": "Illustrated study guide",
+    "format": "Conceptual walkthrough",
     "tracks": [
       "Red Teaming"
     ],

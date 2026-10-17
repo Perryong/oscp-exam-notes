@@ -63,9 +63,9 @@ test("new study guides contain original text, source screenshots and safe anchor
       tracks: ["OSCP", "Red Teaming"],
       cells: ["C13", "C8"],
     },
-    '<article><h1>HTB: Forest</h1><h2 id="recon">Recon</h2><h2 id="shell">Shell as user</h2><img src="https://example.com/evidence.png"><script>bad()</script><p>Do not copy this source paragraph.</p></article>',
+    '<article><a class="post-tag">kerberos</a><h1>HTB: Forest</h1><h2 id="recon">Recon</h2><h2 id="shell">Shell as user</h2><img src="https://example.com/evidence.png"><script>bad()</script><p>Do not copy this source paragraph.</p></article>',
   );
-  expect(result.html).toContain("Study outline");
+  expect(result.html).toContain("Reading stages");
   expect(result.html).toContain("https://example.com/evidence.png");
   expect(result.html).toContain("#shell");
   expect(result.html).not.toContain("Do not copy this source paragraph");

@@ -34,3 +34,17 @@ test("new guides match only the correct platform and keep existing guide destina
     "hackthebox--bashed",
   );
 });
+
+test("updated-guides shortcut makes all 119 conceptual guides discoverable", async () => {
+  render(
+    <MemoryRouter>
+      <WalkthroughLibrary />
+    </MemoryRouter>,
+  );
+  await userEvent.click(
+    screen.getByRole("button", { name: "Show 119 updated guides" }),
+  );
+  expect(screen.getAllByRole("article")).toHaveLength(119);
+  expect(screen.getByRole("link", { name: "Forest" })).toBeTruthy();
+  expect(screen.queryByRole("link", { name: "Bashed" })).toBeNull();
+});

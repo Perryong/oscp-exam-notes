@@ -1,6 +1,7 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
 import { JSDOM } from "jsdom";
+import { selectConcepts, conceptDiagram } from "./study-guide-concepts.mjs";
 import { convertArticle } from "./import-walkthroughs.mjs";
 const escape = (s) =>
   s.replace(
@@ -27,6 +28,24 @@ export function buildStudyGuide(row, sourceHtml) {
       return true;
     })
     .slice(0, 5);
+  const tags = [...root.querySelectorAll(".post-tag")].map((e) =>
+    e.textContent.trim(),
+  );
+  const selected = selectConcepts(tags, row.name);
+  if (!selected.length) throw Error("No reviewed concepts: " + row.name);
+  if (!stages.length) throw Error("No reading stages: " + row.name);
+  const id = "hackthebox--" + row.name.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const diagramPath = "/walkthrough-diagrams/" + id + ".svg";
+  const diagram = conceptDiagram(
+    row.name,
+    stages.map((h) => h.textContent.trim()),
+  );
+  const lessons = selected
+    .map(
+      (c, i) =>
+        `### ${i + 1}. ${c.title}\n\n${c.explanation}\n\n**Expected observations:** ${c.observation}\n\n**Troubleshooting:** ${c.troubleshooting}\n\n**Apply it to ${row.name}:** In the reference, identify the evidence for this boundary. Mark each finding as observed, inferred or still unknown.\n`,
+    )
+    .join("\n");
   const allImages = [...root.querySelectorAll("img[src]")]
     .map((e) => new URL(e.getAttribute("src"), row.url).href)
     .filter((u) => u.startsWith("https:"));
@@ -58,7 +77,60 @@ export function buildStudyGuide(row, sourceHtml) {
       return `<li><strong>${escape(title)}</strong><p>${guidance} <a href="${escape(row.url + "#" + encodeURIComponent(h.id))}">Detailed source step ${i + 1}</a></p></li>`;
     })
     .join("");
-  const markdown = `# ${row.name}\n\nIllustrated study guide · Hack The Box · ${row.tracks.join(" / ")}\n\nThis original study outline accompanies 0xdf’s walkthrough. Selected source images are shown below; the complete commands and explanations remain in the credited original.\n\n## Study outline\n\n<ol>${route}</ol>\n\n## Visual references\n\n${pictures.map((url, i) => `<figure><img src="${escape(url)}" alt="${escape(row.name)} source visual ${i + 1}"><figcaption>Source visual ${i + 1} · 0xdf. See the original walkthrough for its full context.</figcaption></figure>`).join("\n\n")}\n\n## Record your result\n\nFor each stage, save the prerequisite, your observation, the evidence and the reason for the next action. Distinguish a failed hypothesis from a confirmed result. Recheck commands against the installed tool version.\n\n## Sources and scope\n\n<a href="${escape(row.url)}">Full walkthrough by 0xdf</a> · ${refs}\n\nList membership reflects LainKusanagi’s recommendations, not an official exam syllabus. Red Teaming includes topics beyond OSCP. Check the linked spreadsheet’s caveats, including AWS and out-of-scope privilege-escalation labels.\n\nSource links and article titles checked 17 October 2026. Lab steps have not been independently reproduced.\n`;
+  const markdown = `# ${row.name}
+
+Conceptual walkthrough · Hack The Box · ${row.tracks.join(" / ")}
+
+Study ${row.name} through ${selected.map((c) => c.title.toLowerCase()).join("; ")}. These original lessons explain the concepts associated with the source's topics. They are learning lenses, not a reproduced exploit procedure or a claim that every concept is part of the main solution.
+
+## Learning map
+
+![${row.name}: source reading stages](https://study-diagram.invalid${diagramPath})
+
+**Text equivalent:** ${stages.map((h, i) => `${i + 1}. ${h.textContent.trim()}`).join(" → ")}
+
+The arrows show source section order, not verified dependencies or a tested attack chain. For each transition, ask what changed: the identity, permission, execution environment or available evidence?
+
+## Reading stages
+
+<ol>${route}</ol>
+
+## Concepts and observations
+
+${lessons}
+
+## Evidence checklist
+
+| Record | What makes it useful |
+| --- | --- |
+| Starting context | Machine version, environment, account role and time of observation. |
+| Observation | The visible behavior, artifact or permission, without assuming its cause. |
+| Interpretation | The concept that explains the observation and the alternatives still possible. |
+| Boundary | Which identity controls the resource, and which identity consumes it. |
+| Confidence | Separate source-reported behavior from your own verified observations. |
+
+## Troubleshooting workflow
+
+1. Compare the environment with the reference: product version, account role and network context.
+2. Find the earliest observation that differs. Later differences may be consequences of that first mismatch.
+3. Separate connectivity, authentication, authorization and application behavior; each needs different evidence.
+4. Use timestamps and logs to distinguish stale evidence from current behavior. Redact secrets before saving screenshots.
+5. Record unresolved differences explicitly. A missing expected result is not a reason to assume success.
+
+## Visual references
+
+${pictures.map((url, i) => `<figure><img src="${escape(url)}" alt="${escape(row.name)} source visual ${i + 1}"><figcaption>Source visual ${i + 1} · 0xdf. Historical reference image; not evidence of a test performed by this app.</figcaption></figure>`).join("\n\n")}
+
+When reading each image, identify the visible application or identity, the observation it supports and what it does not establish. Cover art, where used, identifies the machine and is not technical evidence.
+
+## Sources and scope
+
+<a href="${escape(row.url)}">Original machine reference by 0xdf</a> · ${refs}
+
+List membership reflects community recommendations, not an official exam syllabus. Red Teaming includes topics beyond OSCP. Check the spreadsheet caveats. Machine section labels and images are credited to the source; explanations, troubleshooting and the learning map are original educational material. General concepts are selected from source metadata and reviewed topic mappings, not from an independent run of the lab.
+
+Source links and titles checked 17 October 2026. These guides do not include exploitation commands or payloads. Lab behavior has not been independently reproduced.
+`;
   const result = convertArticle(
     markdown,
     "hackthebox/" + row.name.toLowerCase().replace(/[^a-z0-9]/g, "") + ".md",
@@ -66,13 +138,21 @@ export function buildStudyGuide(row, sourceHtml) {
   );
   return {
     ...result,
+    html: result.html.replaceAll(
+      "https://study-diagram.invalid" + diagramPath,
+      diagramPath,
+    ),
+    diagram,
     source: row.url,
     author: "0xdf",
-    format: "Illustrated study guide",
+    format: "Conceptual walkthrough",
     tracks: row.tracks,
     checkedAt: "2026-10-17",
-    excerpt: `${row.tracks.join(" · ")}. Illustrated study outline with ${pictures.length} source visuals.`,
-    searchText: stages.map((h) => h.textContent.trim()).join(" "),
+    excerpt: `${row.tracks.join(" · ")}. ${selected.map((c) => c.title).join(" · ")}. Diagram, observations and troubleshooting.`,
+    searchText: [
+      ...stages.map((h) => h.textContent.trim()),
+      ...selected.map((c) => c.title),
+    ].join(" "),
   };
 }
 async function main() {
@@ -108,15 +188,21 @@ async function main() {
     }),
   );
   results.sort((a, b) => a.title.localeCompare(b.title));
-  for (const result of results)
+  await mkdir("public/walkthrough-diagrams", { recursive: true });
+  for (const result of results) {
+    await writeFile(
+      "public/walkthrough-diagrams/" + result.id + ".svg",
+      result.diagram,
+    );
     await writeFile(
       "public/walkthroughs/" + result.id + ".json",
       JSON.stringify({ html: result.html, toc: result.toc }, null, 2) + "\n",
     );
+  }
   await writeFile(
     "src/walkthroughs/study-guides.json",
     JSON.stringify(
-      results.map(({ html, toc, ...entry }) => entry),
+      results.map(({ html, toc, diagram, ...entry }) => entry),
       null,
       2,
     ) + "\n",
