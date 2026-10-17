@@ -1,0 +1,25 @@
+{
+  "html": "<h1 id=\"devvortex\">DevVortex</h1>\n<p>Illustrated study guide · Hack The Box · OSCP</p>\n<p>This original study outline accompanies 0xdf’s walkthrough. Selected source images are shown below; the complete commands and explanations remain in the credited original.</p>\n<h2 id=\"study-outline\">Study outline</h2>\n<ol><li><strong>Recon</strong><p>Inventory the exposed services and compare the results with the reference. Record which observation justifies the next test. <a href=\"https://0xdf.gitlab.io/2024/04/27/htb-devvortex.html#recon\" target=\"_blank\" rel=\"noopener noreferrer\">Detailed source step 1</a></p></li><li><strong>Shell as www-data</strong><p>Trace the prerequisite for this stage and how access changes. Keep the successful request, command output and account context together in your own notes. <a href=\"https://0xdf.gitlab.io/2024/04/27/htb-devvortex.html#shell-as-www-data\" target=\"_blank\" rel=\"noopener noreferrer\">Detailed source step 2</a></p></li><li><strong>Shell as logan</strong><p>Trace the prerequisite for this stage and how access changes. Keep the successful request, command output and account context together in your own notes. <a href=\"https://0xdf.gitlab.io/2024/04/27/htb-devvortex.html#shell-as-logan\" target=\"_blank\" rel=\"noopener noreferrer\">Detailed source step 3</a></p></li><li><strong>Shell as root</strong><p>Identify the privilege boundary and the permission, service or configuration that crosses it. Record the starting identity and verify the resulting access. <a href=\"https://0xdf.gitlab.io/2024/04/27/htb-devvortex.html#shell-as-root\" target=\"_blank\" rel=\"noopener noreferrer\">Detailed source step 4</a></p></li></ol>\n\n<h2 id=\"visual-references\">Visual references</h2>\n<figure><button type=\"button\" class=\"image-expand\" aria-label=\"Expand DevVortex source visual 1\"><img src=\"https://pub-4caceed5c57c4466b559b0834d2806c9.r2.dev/img/image-20240422182959553.png\" alt=\"DevVortex source visual 1\"></button><figcaption>Source visual 1 · 0xdf. See the original walkthrough for its full context.</figcaption></figure>\n\n<figure><button type=\"button\" class=\"image-expand\" aria-label=\"Expand DevVortex source visual 2\"><img src=\"https://pub-4caceed5c57c4466b559b0834d2806c9.r2.dev/img/image-20240422183808342.png\" alt=\"DevVortex source visual 2\"></button><figcaption>Source visual 2 · 0xdf. See the original walkthrough for its full context.</figcaption></figure>\n\n<figure><button type=\"button\" class=\"image-expand\" aria-label=\"Expand DevVortex source visual 3\"><img src=\"https://pub-4caceed5c57c4466b559b0834d2806c9.r2.dev/img/image-20240422184549565.png\" alt=\"DevVortex source visual 3\"></button><figcaption>Source visual 3 · 0xdf. See the original walkthrough for its full context.</figcaption></figure>\n\n<h2 id=\"record-your-result\">Record your result</h2>\n<p>For each stage, save the prerequisite, your observation, the evidence and the reason for the next action. Distinguish a failed hypothesis from a confirmed result. Recheck commands against the installed tool version.</p>\n<h2 id=\"sources-and-scope\">Sources and scope</h2>\n<p><a href=\"https://0xdf.gitlab.io/2024/04/27/htb-devvortex.html\" target=\"_blank\" rel=\"noopener noreferrer\">Full walkthrough by 0xdf</a> · <a href=\"https://docs.google.com/spreadsheets/d/18weuz_Eeynr6sXFQ87Cd5F0slOj9Z6rt/edit?gid=487240997&amp;range=A27\" target=\"_blank\" rel=\"noopener noreferrer\">OSCP list · A27</a></p>\n<p>List membership reflects LainKusanagi’s recommendations, not an official exam syllabus. Red Teaming includes topics beyond OSCP. Check the linked spreadsheet’s caveats, including AWS and out-of-scope privilege-escalation labels.</p>\n<p>Source links and article titles checked 17 October 2026. Lab steps have not been independently reproduced.</p>\n",
+  "toc": [
+    {
+      "id": "study-outline",
+      "title": "Study outline",
+      "level": 2
+    },
+    {
+      "id": "visual-references",
+      "title": "Visual references",
+      "level": 2
+    },
+    {
+      "id": "record-your-result",
+      "title": "Record your result",
+      "level": 2
+    },
+    {
+      "id": "sources-and-scope",
+      "title": "Sources and scope",
+      "level": 2
+    }
+  ]
+}

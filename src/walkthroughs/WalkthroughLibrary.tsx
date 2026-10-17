@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { catalog, categoryName } from "./catalog";
 export default function WalkthroughLibrary() {
   const [query, setQuery] = useState(""),
-    [category, setCategory] = useState("");
+    [category, setCategory] = useState(""),
+    [track, setTrack] = useState("");
   const articles = catalog.articles.filter(
     (a) =>
       (!category || a.category === category) &&
+      (!track || a.tracks?.includes(track)) &&
       `${a.title} ${categoryName(a.category)} ${a.searchText} ${a.excerpt}`
         .toLowerCase()
         .includes(query.toLowerCase()),
@@ -16,8 +18,8 @@ export default function WalkthroughLibrary() {
       <div className="eyebrow">READ. PRACTISE. TAKE NOTES.</div>
       <h1>Written walkthroughs</h1>
       <p className="subtitle">
-        Step-by-step lab references with original commands, screenshots and
-        explanations.
+        Written walkthroughs and illustrated study guides, with screenshots,
+        reading steps and credited sources.
       </p>
       <div className="walkthrough-filters">
         <label>
@@ -44,6 +46,14 @@ export default function WalkthroughLibrary() {
             ))}
           </select>
         </label>
+        <label>
+          Study track
+          <select value={track} onChange={(e) => setTrack(e.target.value)}>
+            <option value="">All study tracks</option>
+            <option value="OSCP">OSCP</option>
+            <option value="Red Teaming">Red Teaming</option>
+          </select>
+        </label>
       </div>
       <p>
         {articles.length} pages · From{" "}
@@ -58,21 +68,39 @@ export default function WalkthroughLibrary() {
         >
           dev-angelist
         </a>
+        , plus illustrated study guides referencing{" "}
+        <a
+          href="https://0xdf.gitlab.io/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          0xdf
+        </a>
         .
       </p>
       <p className="muted">
         Reference material is separate from your private notes. Screenshots
         require an internet connection. Source steps may reflect older lab
-        versions.
+        versions. Study-track labels follow the supplied LainKusanagi lists; Red
+        Teaming extends beyond OSCP. New guides contain original study outlines
+        and selected source images, with full details at the original.
       </p>
       <div className="walkthrough-grid">
         {articles.map((a) => (
           <article className="walkthrough-card" key={a.id}>
-            <small>{categoryName(a.category)}</small>
+            <small>
+              {categoryName(a.category)}
+              {a.tracks?.length ? " · " + a.tracks.join(" / ") : ""}
+            </small>
             <h2>
               <Link to={"/walkthroughs/" + a.id}>{a.title}</Link>
             </h2>
             <p>{a.excerpt}</p>
+            {a.author && (
+              <small>
+                {a.format} · Source: {a.author}
+              </small>
+            )}
           </article>
         ))}
       </div>

@@ -52,3 +52,25 @@ test("GitBook attachments, reference cards and tab labels remain usable", () => 
   expect(html).toContain("demo.webm");
   expect(html).toContain("Linux");
 });
+
+test("new study guides contain original text, source screenshots and safe anchors", async () => {
+  const { buildStudyGuide } =
+    await import("../../scripts/import-study-guides.mjs");
+  const result = buildStudyGuide(
+    {
+      name: "Forest",
+      url: "https://0xdf.gitlab.io/2020/03/21/htb-forest.html",
+      tracks: ["OSCP", "Red Teaming"],
+      cells: ["C13", "C8"],
+    },
+    '<article><h1>HTB: Forest</h1><h2 id="recon">Recon</h2><h2 id="shell">Shell as user</h2><img src="https://example.com/evidence.png"><script>bad()</script><p>Do not copy this source paragraph.</p></article>',
+  );
+  expect(result.html).toContain("Study outline");
+  expect(result.html).toContain("https://example.com/evidence.png");
+  expect(result.html).toContain("#shell");
+  expect(result.html).not.toContain("Do not copy this source paragraph");
+  expect(result.html).not.toMatch(/<script|bad\(\)/);
+  expect(result.source).toBe(
+    "https://0xdf.gitlab.io/2020/03/21/htb-forest.html",
+  );
+});

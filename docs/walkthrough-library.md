@@ -31,3 +31,11 @@ The Markdown parser and sanitizer are development dependencies used only during 
 - Independent read-only review found no Critical or Important issues. Generated internal article destinations were checked. Private database code was unchanged, so the Firebase emulator suites were not rerun for this change.
 - Deferred minor: the source includes empty footnotes/anchors (22 unresolved fragment references were found). For example, RootMe retains an empty footnote marker. Generated contents links work; use the original source link for source-specific references.
 - Historical exploitation accuracy, exhaustive visual comparison of every page, legal review, and future GitHub availability were outside verification. The source revision and author links make the provenance explicit.
+
+## Illustrated study guides (2026-10-17)
+
+The library also includes 119 original study outlines accompanying credited 0xdf articles, for 281 entries total. The Study track filter selects 71 OSCP entries or 72 Red Teaming entries (24 appear in both), based on the two LainKusanagi spreadsheet tabs. These are community list memberships, not an official exam syllabus.
+
+These additions contain original reading guidance, short source section labels and selected remote images. They do not reproduce the full source articles; full commands and explanations remain linked to the author. Images require the source host to remain available. Existing repository walkthroughs remain unchanged.
+
+Regenerate with `node scripts/import-study-guides.mjs`. Sources and spreadsheet cells are recorded in `scripts/study-guide-sources.json`; fetched articles are cached under `/tmp/oscp-study-guide-cache`. Review source changes and output before deploying. The generated index is `src/walkthroughs/study-guides.json`, with sanitized bodies in `public/walkthroughs`.

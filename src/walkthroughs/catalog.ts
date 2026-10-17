@@ -1,5 +1,15 @@
-import catalog from "./catalog.json";
-export { catalog };
+import original from "./catalog.json";
+import studyGuides from "./study-guides.json";
+type Entry = (typeof original.articles)[number] & {
+  author?: string;
+  format?: string;
+  tracks?: string[];
+  checkedAt?: string;
+};
+export const catalog = {
+  ...original,
+  articles: [...original.articles, ...studyGuides] as Entry[],
+};
 export const categoryName = (category: string) =>
   ({
     hackthebox: "Hack The Box",

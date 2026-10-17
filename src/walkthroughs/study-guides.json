@@ -1,0 +1,1811 @@
+[
+  {
+    "id": "hackthebox--access",
+    "path": "hackthebox/access.md",
+    "title": "Access",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2019/03/02/htb-access.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as security Privesc To Administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--acute",
+    "path": "hackthebox/acute.md",
+    "title": "Acute",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2022/07/16/htb-acute.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as edavies on Acute-PC01 Execution as imonk on ATSSERVER Shell as jmorgan on Acute-PC01 Shell as Site Admin",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--administrator",
+    "path": "hackthebox/administrator.md",
+    "title": "Administrator",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/04/19/htb-administrator.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as michael Auth as benjamin Shell as emily Auth as ethan",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--aero",
+    "path": "hackthebox/aero.md",
+    "title": "Aero",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2023/09/28/htb-aero.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as sam.emerson Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--alert",
+    "path": "hackthebox/alert.md",
+    "title": "Alert",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/03/22/htb-alert.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as albert Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--anubis",
+    "path": "hackthebox/anubis.md",
+    "title": "Anubis",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2022/01/29/htb-anubis.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as SYSTEM in webserver 01 Auth as localadmin Shell as diegocruz Shell as administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--arctic",
+    "path": "hackthebox/arctic.md",
+    "title": "Arctic",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/05/19/htb-arctic.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as tolis Priv: tolis –> system",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--atom",
+    "path": "hackthebox/atom.md",
+    "title": "Atom",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2021/07/10/htb-atom.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as jason Shell as administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--authority",
+    "path": "hackthebox/authority.md",
+    "title": "Authority",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2023/12/09/htb-authority.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as svc_ldap Shell as administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--axlle",
+    "path": "hackthebox/axlle.md",
+    "title": "Axlle",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2024/11/16/htb-axlle.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as gideon.hamill Shell as dallon.matrix Shell as baz.humphries / jacob.greeny Shell as administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--backfire",
+    "path": "hackthebox/backfire.md",
+    "title": "Backfire",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/06/07/htb-backfire.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as ilya Shell as sergej Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--blackfield",
+    "path": "hackthebox/blackfield.md",
+    "title": "Blackfield",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/10/03/htb-blackfield.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 2 source visuals.",
+    "searchText": "Recon Access as support Access as audit2020 Shell as svc_backup Priv: svc_backup –> administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--blazorized",
+    "path": "hackthebox/blazorized.md",
+    "title": "Blazorized",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2024/11/09/htb-blazorized.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as nu_1055 Shell as rsa_4810 Shell as SSA_6010 Shell as administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--blunder",
+    "path": "hackthebox/blunder.md",
+    "title": "Blunder",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/10/17/htb-blunder.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as www-data Priv: www-data –> huge Priv: hugo –> root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--boardlight",
+    "path": "hackthebox/boardlight.md",
+    "title": "BoardLight",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2024/09/28/htb-boardlight.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as www-data Shell as laraissa Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--bounty",
+    "path": "hackthebox/bounty.md",
+    "title": "Bounty",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2018/10/27/htb-bounty.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "nmap Port 80 - Web Shell as merlin Privesc: merlin –> SYSTEM",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--broker",
+    "path": "hackthebox/broker.md",
+    "title": "Broker",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2023/11/09/htb-broker.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as activemq Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--bucket",
+    "path": "hackthebox/bucket.md",
+    "title": "Bucket",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2021/04/24/htb-bucket.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as www-data Shell as roy Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--buff",
+    "path": "hackthebox/buff.md",
+    "title": "Buff",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/11/21/htb-buff.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as shaun Priv: shaun –> administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--builder",
+    "path": "hackthebox/builder.md",
+    "title": "Builder",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2024/02/12/htb-builder.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Authenticate Jenkins Access Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--busqueda",
+    "path": "hackthebox/busqueda.md",
+    "title": "Busqueda",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2023/08/12/htb-busqueda.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as svc Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--cascade",
+    "path": "hackthebox/cascade.md",
+    "title": "Cascade",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/07/25/htb-cascade.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as s.smith Privesc: s.smith –> arksvc Privesc: arksvc –> administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--cat",
+    "path": "hackthebox/cat.md",
+    "title": "Cat",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/07/05/htb-cat.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as www-data Shell as rosa Shell as axel Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--cctv",
+    "path": "hackthebox/cctv.md",
+    "title": "CCTV",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2026/07/11/htb-cctv.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as mark Shell as sa_mark Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--certificate",
+    "path": "hackthebox/certificate.md",
+    "title": "Certificate",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/10/04/htb-certificate.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as xamppuser Shell as Sara.B Shell as Lion.SK Shell as ryan.k",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--certified",
+    "path": "hackthebox/certified.md",
+    "title": "Certified",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/03/15/htb-certified.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as Management_SVC Auth as CA_Operator Shell as administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--chatterbox",
+    "path": "hackthebox/chatterbox.md",
+    "title": "Chatterbox",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2018/06/18/htb-chatterbox.html",
+    "excerpt": "OSCP. Illustrated study outline with 2 source visuals.",
+    "searchText": "Recon AChat Reading root.txt",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--cicada",
+    "path": "hackthebox/cicada.md",
+    "title": "Cicada",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/02/15/htb-cicada.html",
+    "excerpt": "OSCP. Illustrated study outline with 1 source visuals.",
+    "searchText": "Recon Auth as michael.wrightson Auth as david.orelious Shell as emily.oscars Shell as system",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--codify",
+    "path": "hackthebox/codify.md",
+    "title": "Codify",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2024/04/06/htb-codify.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as svc Shell as joshua Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--compiled",
+    "path": "hackthebox/compiled.md",
+    "title": "Compiled",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2024/12/14/htb-compiled.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as Richard Shell as emily Shell as system",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--control",
+    "path": "hackthebox/control.md",
+    "title": "Control",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/04/25/htb-control.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as iusr Priv: manager –> hector Priv: hector –> SYSTEM",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--cozyhosting",
+    "path": "hackthebox/cozyhosting.md",
+    "title": "CozyHosting",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2024/03/02/htb-cozyhosting.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as app Shell as josh Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--cypher",
+    "path": "hackthebox/cypher.md",
+    "title": "Cypher",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/07/26/htb-cypher.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as neo4j Shell as graphasm Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--devvortex",
+    "path": "hackthebox/devvortex.md",
+    "title": "DevVortex",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2024/04/27/htb-devvortex.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as www-data Shell as logan Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--dog",
+    "path": "hackthebox/dog.md",
+    "title": "Dog",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/07/12/htb-dog.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as www-data Shell as johnsusack Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--editor",
+    "path": "hackthebox/editor.md",
+    "title": "Editor",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/12/06/htb-editor.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as xwiki Shell as oliver on Editor Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--editorial",
+    "path": "hackthebox/editorial.md",
+    "title": "Editorial",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2024/10/19/htb-editorial.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as dev Shell as prod Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--epsilon",
+    "path": "hackthebox/epsilon.md",
+    "title": "Epsilon",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2022/03/10/htb-epsilon.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as tom Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--escape",
+    "path": "hackthebox/escape.md",
+    "title": "Escape",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2023/06/17/htb-escape.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 1 source visuals.",
+    "searchText": "Recon Shell as sql_svc Shell as Ryan.Cooper Shell as administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--escapetwo",
+    "path": "hackthebox/escapetwo.md",
+    "title": "EscapeTwo",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/05/24/htb-escapetwo.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as sql_svc Shell as ryan Auth as ca_svc Shell as Administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--facts",
+    "path": "hackthebox/facts.md",
+    "title": "Facts",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2026/06/06/htb-facts.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as trivia Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--flight",
+    "path": "hackthebox/flight.md",
+    "title": "Flight",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2023/05/06/htb-flight.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Auth as svc_apache Auth as S.Moon Auth as C.Bum Shell as svc_apache",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--forest",
+    "path": "hackthebox/forest.md",
+    "title": "Forest",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/03/21/htb-forest.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as svc-alfresco Privesc to Administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--freelancer",
+    "path": "hackthebox/freelancer.md",
+    "title": "Freelancer",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2024/10/05/htb-freelancer.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as sql_svc Shell as mikasaAckerman Shell as lorra199 Shell as Administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--fuse",
+    "path": "hackthebox/fuse.md",
+    "title": "Fuse",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/10/31/htb-fuse.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as svc-print Priv: svc-print –> SYSTEM",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--giddy",
+    "path": "hackthebox/giddy.md",
+    "title": "Giddy",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2019/02/16/htb-giddy.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell As Stacy WinRM - Shell as Stacy Privesc to System",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--gobox",
+    "path": "hackthebox/gobox.md",
+    "title": "Gobox",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2021/08/30/htb-gobox.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon RCE as root in aws Container Shell as www-data Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--gofer",
+    "path": "hackthebox/gofer.md",
+    "title": "Gofer",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2023/10/28/htb-gofer.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as jhudson Shell as tbuckley Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--haze",
+    "path": "hackthebox/haze.md",
+    "title": "Haze",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/06/28/htb-haze.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Auth as paul.taylor Shell as mark.adams Auth as Haze-IT-Backup Shell as edward.martin",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--heist",
+    "path": "hackthebox/heist.md",
+    "title": "Heist",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2019/11/30/htb-heist.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 2 source visuals.",
+    "searchText": "Recon Shell as chase Priv to administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--help",
+    "path": "hackthebox/help.md",
+    "title": "Help",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2019/06/08/htb-help.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as help Shell as help - Alternative Priv: help –> root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--hospital",
+    "path": "hackthebox/hospital.md",
+    "title": "Hospital",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2024/04/13/htb-hospital.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as www-data on webserver Shell as root on webserver Shell as drbrown Shell as administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--infiltrator",
+    "path": "hackthebox/infiltrator.md",
+    "title": "Infiltrator",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/06/14/htb-infiltrator.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as M.Harris Shell as winrm_svc Shell as O.Martinez Auth as lan_mangment",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--intelligence",
+    "path": "hackthebox/intelligence.md",
+    "title": "Intelligence",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2021/11/27/htb-intelligence.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon SMB Access as Tiffany.Molina SMB as Ted.Graves Shell as Administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--irked",
+    "path": "hackthebox/irked.md",
+    "title": "Irked",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2019/04/27/htb-irked.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as ircd Privesc: ircd –> djmardov Privesc: djmardov –> root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--jarvis",
+    "path": "hackthebox/jarvis.md",
+    "title": "Jarvis",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2019/11/09/htb-jarvis.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as www-data Priv: www-data –> pepper Priv: pepper –> root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--jeeves",
+    "path": "hackthebox/jeeves.md",
+    "title": "Jeeves",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2022/04/14/htb-jeeves.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as kohsuke Shell as Administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--jerry",
+    "path": "hackthebox/jerry.md",
+    "title": "Jerry",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2018/11/17/htb-jerry.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Exploiting Tomcat Flags",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--keeper",
+    "path": "hackthebox/keeper.md",
+    "title": "Keeper",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2024/02/10/htb-keeper.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as lnorgaard Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--linkvortex",
+    "path": "hackthebox/linkvortex.md",
+    "title": "LinkVortex",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/04/12/htb-linkvortex.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as bob Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--love",
+    "path": "hackthebox/love.md",
+    "title": "Love",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2021/08/07/htb-love.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as phoebe Shell as SYSTEM",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--luke",
+    "path": "hackthebox/luke.md",
+    "title": "Luke",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2019/09/14/htb-luke.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--magic",
+    "path": "hackthebox/magic.md",
+    "title": "Magic",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/08/22/htb-magic.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as www-data Priv: www-data –> theseus Priv: theseus –> root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--mailing",
+    "path": "hackthebox/mailing.md",
+    "title": "Mailing",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2024/09/07/htb-mailing.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as maya Shell as localadmin",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--mailroom",
+    "path": "hackthebox/mailroom.md",
+    "title": "Mailroom",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2023/08/19/htb-mailroom.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as tristan Shell as www-data in Container Shell as matthew Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--manager",
+    "path": "hackthebox/manager.md",
+    "title": "Manager",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2024/03/16/htb-manager.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as raven Shell as administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--mantis",
+    "path": "hackthebox/mantis.md",
+    "title": "Mantis",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/09/03/htb-mantis.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Recon as James Shell as System",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--mentor",
+    "path": "hackthebox/mentor.md",
+    "title": "Mentor",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2023/03/11/htb-mentor.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as root in container Shell as svc Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--mirage",
+    "path": "hackthebox/mirage.md",
+    "title": "Mirage",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/11/22/htb-mirage.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Auth as david.jjackson Shell as nathan.aadam Auth as mark.bbond Auth as javier.mmarshall",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--monitored",
+    "path": "hackthebox/monitored.md",
+    "title": "Monitored",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2024/05/11/htb-monitored.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as nagios Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--monteverde",
+    "path": "hackthebox/monteverde.md",
+    "title": "Monteverde",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/06/13/htb-monteverde.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 1 source visuals.",
+    "searchText": "Recon Shell as mhope Priv: mhope –> administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--nanocorp",
+    "path": "hackthebox/nanocorp.md",
+    "title": "NanoCorp",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2026/06/20/htb-nanocorp.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Auth as web_svc Shell as monitoring_svc Shell as Administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--netmon",
+    "path": "hackthebox/netmon.md",
+    "title": "Netmon",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2019/06/29/htb-netmon.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as SYSTEM",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--networked",
+    "path": "hackthebox/networked.md",
+    "title": "Networked",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2019/11/16/htb-networked.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as apache Privesc to guly Privesc to root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--nibbles",
+    "path": "hackthebox/nibbles.md",
+    "title": "Nibbles",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2018/06/30/htb-nibbles.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "nmap Site - port 80 recon Remote Code Execution (via file upload) Privesc",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--nineveh",
+    "path": "hackthebox/nineveh.md",
+    "title": "Nineveh",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/04/22/htb-nineveh.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "nmap Shell as www-data (via phpLiteAdmin) Shell as www-data (via phpinfo.php) Priv: www-data –> amrois Priv: amrois –> root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--office",
+    "path": "hackthebox/office.md",
+    "title": "Office",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2024/06/22/htb-office.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Auth as dwolfe RCE as web_account Shell as TStark Shell as PPotts",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--openadmin",
+    "path": "hackthebox/openadmin.md",
+    "title": "OpenAdmin",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/05/02/htb-openadmin.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as www-data Priv: www-data –> jimmy Priv: jimmy –> joanna Priv: joanna –> root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--outdated",
+    "path": "hackthebox/outdated.md",
+    "title": "Outdated",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2022/12/10/htb-outdated.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as btables on client Shell as sflowers on DC Shell as system on DC",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--overwatch",
+    "path": "hackthebox/overwatch.md",
+    "title": "Overwatch",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2026/05/09/htb-overwatch.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 1 source visuals.",
+    "searchText": "Recon Shell as sqlmgmt Shell as Administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--pandora",
+    "path": "hackthebox/pandora.md",
+    "title": "Pandora",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2022/05/21/htb-pandora.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as daniel Shell as matt Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--perfection",
+    "path": "hackthebox/perfection.md",
+    "title": "Perfection",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2024/07/06/htb-perfection.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as susan Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--pilgrimage",
+    "path": "hackthebox/pilgrimage.md",
+    "title": "Pilgrimage",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2023/11/25/htb-pilgrimage.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as emily Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--poison",
+    "path": "hackthebox/poison.md",
+    "title": "Poison",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2018/09/08/htb-poison.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "nmap Website - port 80 Reverse Shell SSH as Charix Privesc: charix –> root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--popcorn",
+    "path": "hackthebox/popcorn.md",
+    "title": "Popcorn",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/06/23/htb-popcorn.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as www-data Priv: www-data –> root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--precious",
+    "path": "hackthebox/precious.md",
+    "title": "Precious",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2023/05/20/htb-precious.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as ruby Shell as henry Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--puppy",
+    "path": "hackthebox/puppy.md",
+    "title": "Puppy",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/09/27/htb-puppy.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Auth as Ant.Edwards Shell as Adam.Silver Shell as Steph.Cooper Shell as steph.cooper_adm",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--querier",
+    "path": "hackthebox/querier.md",
+    "title": "Querier",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2019/06/22/htb-querier.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 1 source visuals.",
+    "searchText": "Recon Database Privesc: reporter –> mssql-svc Shell as mssql-svc Privesc: mssql-svc –> Administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--reel",
+    "path": "hackthebox/reel.md",
+    "title": "Reel",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2018/11/10/htb-reel.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Phishing with RTF Dynamite Privesc: nico -> tom Privesc via AD - Overview Privesc: tom -> claire",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--remote",
+    "path": "hackthebox/remote.md",
+    "title": "Remote",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/09/05/htb-remote.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as IIS Priv: IIS –> administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--resolute",
+    "path": "hackthebox/resolute.md",
+    "title": "Resolute",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/05/30/htb-resolute.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 1 source visuals.",
+    "searchText": "Recon Shell as melanie Priv: melanie –> ryan Priv: ryan –> SYSTEM",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--return",
+    "path": "hackthebox/return.md",
+    "title": "Return",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2022/05/05/htb-return.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as svc-printer Shell as SYSTEM",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--rustykey",
+    "path": "hackthebox/rustykey.md",
+    "title": "RustyKey",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/11/08/htb-rustykey.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Auth as IT-COMPUTER3 Shell as bb.morgan Shell as ee.reed Shell as mm.turner",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--sauna",
+    "path": "hackthebox/sauna.md",
+    "title": "Sauna",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/07/18/htb-sauna.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as fsmith Priv: fsmith –> svc_loanmgr Priv: svc_loanmgr –> root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--scepter",
+    "path": "hackthebox/scepter.md",
+    "title": "Scepter",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/07/19/htb-scepter.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Auth as d.baker Auth as a.carter Shell as h.brown Auth as p.adams",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--scrambled",
+    "path": "hackthebox/scrambled.md",
+    "title": "Scrambled",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2022/10/01/htb-scrambled.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 1 source visuals.",
+    "searchText": "Fork",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--scriptkiddie",
+    "path": "hackthebox/scriptkiddie.md",
+    "title": "ScriptKiddie",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2021/06/05/htb-scriptkiddie.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as kid Shell as pwn Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--search",
+    "path": "hackthebox/search.md",
+    "title": "Search",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2022/04/30/htb-search.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Auth as Edgar.Jacobs Shell as Siearra.Frye Shell as Tristan.Davies",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--secnotes",
+    "path": "hackthebox/secnotes.md",
+    "title": "SecNotes",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2019/01/19/htb-secnotes.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Get Tyler’s Credentials SMB access as tyler Shell as tyler Privesc",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--servmon",
+    "path": "hackthebox/servmon.md",
+    "title": "ServMon",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/06/20/htb-servmon.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as nadine Priv: nadine –> SYSTEM",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--signed",
+    "path": "hackthebox/signed.md",
+    "title": "Signed",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2026/02/07/htb-signed.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 2 source visuals.",
+    "searchText": "Recon Auth as mssqlsvc Shell as MSSQL Many Escalations",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--silentium",
+    "path": "hackthebox/silentium.md",
+    "title": "Silentium",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2026/09/12/htb-silentium.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as root in Flowise Container Shell as ben Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--sink",
+    "path": "hackthebox/sink.md",
+    "title": "Sink",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2021/09/18/htb-sink.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as marcus Shell as david Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--sniper",
+    "path": "hackthebox/sniper.md",
+    "title": "Sniper",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/03/28/htb-sniper.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as iusr Priv: iusr –> Chris Priv: Chris –> Administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--solidstate",
+    "path": "hackthebox/solidstate.md",
+    "title": "SolidState",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/04/30/htb-solidstate.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as mindy rbash Escape Priv: mindy –> root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--stacked",
+    "path": "hackthebox/stacked.md",
+    "title": "Stacked",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2022/03/19/htb-stacked.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Identify LocalStack VHost Shell as localstack on localstack Shell as root on localstack Shell as root on Stacked",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--streamio",
+    "path": "hackthebox/streamio.md",
+    "title": "StreamIO",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2022/09/17/htb-streamio.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as yoshihide Shell as nikk37 Auth as JDgodd Shell as administrator",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--swagshop",
+    "path": "hackthebox/swagshop.md",
+    "title": "SwagShop",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2019/09/28/htb-swagshop.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as www-data Privesc to root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--tabby",
+    "path": "hackthebox/tabby.md",
+    "title": "Tabby",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2020/11/07/htb-tabby.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as tomcat Priv: tomcat –> ash Priv: ash –> root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--tartarsauce",
+    "path": "hackthebox/tartarsauce.md",
+    "title": "TartarSauce",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2018/10/20/htb-tartarsauce.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "nmap Website - Port 80 Shell as www-data Shell as onuma File Read as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--thefrizz",
+    "path": "hackthebox/thefrizz.md",
+    "title": "TheFrizz",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/08/23/htb-thefrizz.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as w.webservice Shell as f.frizzle Shell as m.schoolbus Shell as nt authority\\system",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--timelapse",
+    "path": "hackthebox/timelapse.md",
+    "title": "Timelapse",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2022/08/20/htb-timelapse.html",
+    "excerpt": "OSCP · Red Teaming. Illustrated study outline with 1 source visuals.",
+    "searchText": "Recon Shell as legacyy Shell as svc_deploy Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP",
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--tombwatcher",
+    "path": "hackthebox/tombwatcher.md",
+    "title": "TombWatcher",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/10/11/htb-tombwatcher.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Auth as Alfred Auth as ANSIBLE_DEV$ Auth as Sam Shell as John",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--trickster",
+    "path": "hackthebox/trickster.md",
+    "title": "Trickster",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/02/01/htb-trickster.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as www-data Shell as james Shell as root in Container Shell as admin_admin992",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--underpass",
+    "path": "hackthebox/underpass.md",
+    "title": "UnderPass",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/05/10/htb-underpass.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as svcMosh Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--updown",
+    "path": "hackthebox/updown.md",
+    "title": "UpDown",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2023/01/21/htb-updown.html",
+    "excerpt": "OSCP. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as www-data Shell as developer Shell as root",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "OSCP"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--vintage",
+    "path": "hackthebox/vintage.md",
+    "title": "Vintage",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2025/04/26/htb-vintage.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as C.Neri Auth as C.Neri_adm Shell as L.Bianchi_adm",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--visual",
+    "path": "hackthebox/visual.md",
+    "title": "Visual",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2024/02/24/htb-visual.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as enox Shell as local service Shell as system",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hackthebox--worker",
+    "path": "hackthebox/worker.md",
+    "title": "Worker",
+    "category": "hackthebox",
+    "source": "https://0xdf.gitlab.io/2021/01/30/htb-worker.html",
+    "excerpt": "Red Teaming. Illustrated study outline with 3 source visuals.",
+    "searchText": "Recon Shell as iis Priv: iis –> robisl Priv: robisl –> system",
+    "author": "0xdf",
+    "format": "Illustrated study guide",
+    "tracks": [
+      "Red Teaming"
+    ],
+    "checkedAt": "2026-10-17"
+  }
+]

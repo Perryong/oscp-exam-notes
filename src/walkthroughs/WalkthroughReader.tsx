@@ -66,10 +66,13 @@ export default function WalkthroughReader() {
       <div className="eyebrow">{categoryName(entry.category)}</div>
       <p className="walkthrough-source">
         <a href={entry.source} target="_blank" rel="noopener noreferrer">
-          View original on GitHub
+          {entry.author
+            ? "Full walkthrough by " + entry.author
+            : "View original on GitHub"}
         </a>{" "}
-        · Source: dev-angelist / Perryong · Snapshot{" "}
-        {catalog.revision.slice(0, 7)}
+        {entry.author
+          ? `· ${entry.format} · ${entry.tracks?.join(" / ")} · Checked ${entry.checkedAt}`
+          : `· Source: dev-angelist / Perryong · Snapshot ${catalog.revision.slice(0, 7)}`}
       </p>
       {!article && !error && <p role="status">Loading walkthrough…</p>}
       {error && (
@@ -96,7 +99,7 @@ export default function WalkthroughReader() {
           {imageError && (
             <p role="alert">
               Some screenshots could not load. Check your connection or use the
-              original GitHub link.
+              original source link.
             </p>
           )}
           <article
