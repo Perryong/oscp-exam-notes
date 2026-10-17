@@ -1,0 +1,263 @@
+[
+  {
+    "id": "discovery",
+    "title": "Host discovery and scope",
+    "group": "Network foundations",
+    "summary": "Separate reachability from service availability.",
+    "explanation": "A host can be reachable even when it ignores an echo request. Discovery asks whether a system responds to a particular probe from your current network position; it does not establish which applications it runs. Treat a timeout as an observation with several possible causes. A route, VPN, firewall or stopped lab can each explain silence. Keep the assigned target and the testing interface in your notes so results remain interpretable later.",
+    "flow": [
+      "Assigned host",
+      "Reachability probe",
+      "Response evidence",
+      "Next question"
+    ],
+    "steps": [
+      "Write down the single lab IP and confirm the VPN or local route.",
+      "Perform discovery and save the output. The example checks the local machine only; use a lab address only within your assigned scope.",
+      "Record which response supported the result, then study port and service detection separately."
+    ],
+    "example": "nmap -sn 127.0.0.1",
+    "observation": "An up result supports reachability for the tested address. It does not mean that every TCP or UDP port was checked. Packet TTL is a clue influenced by routing and configuration, not definitive identification of an operating system.",
+    "troubleshooting": "If an assigned lab appears down, verify its power state and route before changing probes. Record whether the test ran inside the VPN, a VM or the host OS. A failure from one position need not reproduce from another.",
+    "source": "content/Penetration Testing/HTB/Nmap/Host Discovery/Theory and Solutions.md",
+    "reference": "https://nmap.org/book/man-host-discovery.html"
+  },
+  {
+    "id": "services",
+    "title": "Ports, services and confidence",
+    "group": "Network foundations",
+    "summary": "Build an evidence-based service inventory.",
+    "explanation": "A port number describes a destination for transport traffic, not a guaranteed application. A service label may be a conventional port mapping or the result of active version detection. Preserve that distinction when proposing the next check. Even a precise banner can be customized or reflect a distribution with backported security fixes. A version string is a research lead, not proof of exploitability.",
+    "flow": [
+      "Port state",
+      "Protocol response",
+      "Version hypothesis",
+      "Corroboration"
+    ],
+    "steps": [
+      "Start with a small list of ports you intend to inspect.",
+      "Collect protocol or version responses and retain the exact command alongside the output.",
+      "Create one inventory row per endpoint: address, transport, port, state, claimed product and confidence."
+    ],
+    "example": "nmap -sV -p 22,80,443 127.0.0.1",
+    "observation": "Open means a listening application accepted the relevant probe; closed and filtered are different states. The example tests three local TCP ports only. Service detection may return a product, a partial identification or no match.",
+    "troubleshooting": "When results conflict, compare the target address, transport, hostname and timestamp. Proxies and different virtual hosts can expose different services. Do not silently replace an earlier observation; explain why it changed.",
+    "source": "content/Penetration Testing/HTB/Nmap/Service Enumeration/Theory and Solutions.md",
+    "reference": "https://nmap.org/book/man-version-detection.html"
+  },
+  {
+    "id": "dns",
+    "title": "DNS and virtual hosts",
+    "group": "Network foundations",
+    "summary": "Keep names, addresses and application routing distinct.",
+    "explanation": "DNS means Domain Name System. It stores typed records rather than just a flat list of web addresses. A resolver can answer from a cache or obtain records from authoritative servers. A name resolving to an address does not guarantee that the web server will return the expected application when visited by IP: HTTP host selection and TLS names operate at other layers.",
+    "flow": ["Name and type", "Resolver", "DNS answer", "Application host"],
+    "steps": [
+      "Record the exact hostname and record type you are investigating.",
+      "Query the assigned resolver or your normal resolver and retain the answer, TTL and response status.",
+      "Compare DNS resolution with the hostname used in the browser; record lab host-file overrides separately."
+    ],
+    "example": "dig example.com A\ndig example.com AAAA",
+    "observation": "A and AAAA address records answer different questions. An alias can lead to another name. An empty answer, NXDOMAIN and a timeout are not interchangeable. A TTL describes caching lifetime, not how trustworthy the content is.",
+    "troubleshooting": "Check resolver selection, VPN DNS and stale local overrides when two clients disagree. If DNS works but the wrong site appears, check the requested hostname and TLS certificate rather than repeatedly changing the address.",
+    "source": "content/Web Pentesting/HTB/Information Gathering - Web Edition/DNS/Theory and Solutions.md",
+    "reference": "https://www.rfc-editor.org/rfc/rfc1034"
+  },
+  {
+    "id": "smb",
+    "title": "SMB shares and permissions",
+    "group": "Network foundations",
+    "summary": "Understand identity, shares and effective access.",
+    "explanation": "SMB provides network access to shared files and other resources. A successful connection is separate from authorization to a particular share or file. Document the identity used, the share name and the operation attempted. In a Windows file-sharing environment, share permissions and filesystem permissions both matter. A browsable share is not automatically readable, and readable content is not automatically writable.",
+    "flow": [
+      "Client identity",
+      "Share access",
+      "File permissions",
+      "Allowed operation"
+    ],
+    "steps": [
+      "Use an assigned lab account and list the share you are allowed to review.",
+      "Inspect effective access with the lab owner or the server configuration, using a harmless test file.",
+      "Record read, list and write permissions separately and explain which setting supplies each permission."
+    ],
+    "example": "Observation worksheet:\nIdentity: <lab account>\nShare: <assigned share>\nOperation: list / read / write\nResult: allowed / denied\nEvidence: <timestamp and response>",
+    "observation": "Access denied is useful evidence about that identity and operation. SMB commonly uses TCP 445; older NetBIOS deployments involve other services. Samba is an implementation, not a synonym for every Windows SMB behavior.",
+    "troubleshooting": "Compare account context, share path and inherited permissions. A guest connection may behave differently from an authenticated connection. Do not infer write permission from a successful directory listing.",
+    "source": "content/Penetration Testing/HTB/Footprinting/SMB/Theory and Solutions.md",
+    "reference": "https://learn.microsoft.com/en-us/windows-server/storage/file-server/file-server-smb-overview"
+  },
+  {
+    "id": "http",
+    "title": "HTTP requests and responses",
+    "group": "Web foundations",
+    "summary": "Read the complete exchange before interpreting a result.",
+    "explanation": "An HTTP request combines a method, a destination, headers and sometimes a body. The response contains a status, headers and possibly content. The same URL can behave differently depending on cookies, authentication, content negotiation and method. Capture enough context to reproduce the exchange while redacting session secrets from screenshots or shared notes.",
+    "flow": [
+      "Client request",
+      "Server processing",
+      "Status and headers",
+      "Response body"
+    ],
+    "steps": [
+      "Inspect a simple public example and identify the method and destination.",
+      "Separate response headers from the body. Note redirects rather than assuming the first status represents the final page.",
+      "Repeat one controlled change and compare it against the original exchange."
+    ],
+    "example": "curl -i https://example.com",
+    "observation": "The -i option includes response headers with the body. A 200 status reports HTTP success, not that a business operation is correct. A redirect gives a new location. A HEAD response can differ from a GET response, so record the method.",
+    "troubleshooting": "If browser and command-line output differ, compare cookies, proxy use, redirects and headers. Do not turn off TLS verification as the first fix for a certificate error; inspect the hostname and trust configuration.",
+    "source": "content/Web Pentesting/HTB/Web Requests CURL/HTTP requests and responses/Theory and Solutions.md",
+    "reference": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview"
+  },
+  {
+    "id": "fingerprinting",
+    "title": "Web fingerprinting with uncertainty",
+    "group": "Web foundations",
+    "summary": "Treat technology hints as hypotheses to verify.",
+    "explanation": "A web response may expose server headers, asset paths and framework conventions. These clues can describe different layers: a reverse proxy, an application server or a frontend build. A good note separates the observed string from the inferred technology. Record competing explanations so later evidence can update the conclusion without rewriting the original observation.",
+    "flow": ["Visible clue", "Possible layer", "Second signal", "Confidence"],
+    "steps": [
+      "Save the headers and visible page metadata for the correct hostname.",
+      "Write an observation and an inference as separate sentences.",
+      "Seek an independent signal such as an application asset convention or administrator-provided version information."
+    ],
+    "example": "curl -I https://example.com",
+    "observation": "A Server header may identify the edge rather than the backend. A missing version is not proof that a product is absent. Shared asset names can be stale or misleading, so a single match should carry limited confidence.",
+    "troubleshooting": "If fingerprints disagree, inspect redirects, caching and virtual-host selection. Avoid mapping a banner straight to a vulnerability claim. Verify affected configurations and patch status against the product advisory before making that claim.",
+    "source": "content/Web Pentesting/HTB/Information Gathering - Web Edition/Fingerprinting/Theory and Solutions.md",
+    "reference": "https://curl.se/docs/manpage.html"
+  },
+  {
+    "id": "proxy",
+    "title": "Proxy capture and repeatable comparisons",
+    "group": "Web foundations",
+    "summary": "Change one input and preserve the baseline.",
+    "explanation": "An intercepting proxy makes browser traffic inspectable. A request repeater helps compare a captured request with a deliberately modified request. These are different tasks: pausing browser traffic can disrupt normal navigation, whereas replaying a saved request works from a captured exchange. Keep the original intact and annotate what changed between experiments.",
+    "flow": [
+      "Baseline request",
+      "One change",
+      "Repeat request",
+      "Compare response"
+    ],
+    "steps": [
+      "In a local training app, capture a harmless page request with the browser configured for the proxy.",
+      "Send the request to Repeater and replay it unchanged to establish a baseline.",
+      "Change one harmless value, such as a search term, then compare status, response length and visible content."
+    ],
+    "example": "Comparison worksheet:\nBaseline: search term = alpha\nVariant: search term = beta\nUnchanged: method, path, account, headers\nObserved difference: <response details>",
+    "observation": "A changed response is evidence of changed behavior, not automatically a vulnerability. Dynamic timestamps, anti-CSRF tokens and expiring sessions can make two otherwise identical requests differ.",
+    "troubleshooting": "If the page hangs, check whether interception is holding a request. If replay fails, check session expiry, one-time tokens and request encoding. Use a dedicated lab browser profile for proxy trust configuration.",
+    "source": "content/Web Pentesting/HTB/Using Web Proxies BURPSUITE/Repeating Requests/Theory and Solutions.md",
+    "reference": "https://portswigger.net/burp/documentation/desktop/tools/repeater"
+  },
+  {
+    "id": "fuzzing",
+    "title": "Fuzzing and false positives",
+    "group": "Validation",
+    "summary": "Distinguish a real resource from a generic response.",
+    "explanation": "Content discovery is useful only when its results are interpreted against a baseline. Some applications return a normal-looking page and status 200 for every unknown path; this is a soft 404. Other applications redirect every request to a login page. Counting all such responses as discovered resources produces a convincing but misleading inventory.",
+    "flow": [
+      "Unknown-path baseline",
+      "Candidate response",
+      "Manual comparison",
+      "Validated finding"
+    ],
+    "steps": [
+      "On an assigned training app, request one deliberately nonexistent path and save its response.",
+      "Compare each candidate with that baseline using status, redirect destination, length and meaning.",
+      "Recheck promising candidates individually at a modest rate and record why they differ."
+    ],
+    "example": "Validation worksheet:\nUnknown path response: <status, length, title>\nCandidate response: <status, length, title>\nRepeatable difference: <evidence>\nConclusion: real resource / generic response / uncertain",
+    "observation": "A distinct length is a clue, not proof. Compressed content, rotating banners and session tokens can change lengths. A discovered resource is also not automatically a security finding; the access policy and exposed information determine its significance.",
+    "troubleshooting": "If nearly everything matches, inspect wildcard routing or login redirects. If responses become intermittent, reduce concurrency and check rate limits before drawing conclusions. Preserve failed checks as uncertainty rather than deleting them.",
+    "source": "content/Web Pentesting/HTB/Web Fuzzing/Validating Findings/Question and Solution.md",
+    "reference": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview"
+  },
+  {
+    "id": "authentication",
+    "title": "Authentication and credential storage",
+    "group": "Identity",
+    "summary": "Separate account identity, secret verification and authorization.",
+    "explanation": "Authentication establishes an identity; authorization decides what that identity may do. Password storage typically uses a salted, deliberately expensive password hash rather than reversible encryption. A salt prevents equal passwords from automatically producing equal stored values across accounts. It does not make a weak password strong. Treat credential artifacts as sensitive evidence and keep them out of shared screenshots.",
+    "flow": [
+      "Identity claim",
+      "Secret verification",
+      "Authenticated session",
+      "Access decision"
+    ],
+    "steps": [
+      "Draw the authentication boundary for a small training app: browser, application, identity store and session.",
+      "Use synthetic examples to label passwords, hashes, salts and tokens; explain their different roles.",
+      "Review storage parameters and access controls without copying real secrets into your notebook."
+    ],
+    "example": "Concept check:\nPassword = user-supplied secret\nSalt = per-password random input\nHash = verification output\nSession token = authenticated-session credential",
+    "observation": "A hash is not an encrypted password that can simply be decrypted. Compromise of a session token can bypass the need to know a password. Adding MFA to login does not remove the need to protect sessions and recovery flows.",
+    "troubleshooting": "If a lab explanation conflates hashing with encryption, rewrite the data flow before selecting tools. For unexpected login outcomes, check account state, session expiry and authorization separately. Use current platform guidance for storage settings.",
+    "source": "content/Penetration Testing/HTB/Password Attacks/Extracting Passwords/From LINUX/LINUX Authentication Process/Theory and Solutions.md",
+    "reference": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+  },
+  {
+    "id": "sql",
+    "title": "SQL structure and injection prevention",
+    "group": "Application boundaries",
+    "summary": "Keep query structure separate from user data.",
+    "explanation": "SQL expresses operations over structured data. Injection occurs when untrusted input changes the intended query structure instead of remaining a value. Parameterized queries preserve that separation for values. Identifiers such as table names usually need a different design, such as selection from an allow-list. Database permissions limit the consequences of mistakes but do not fix unsafe query construction.",
+    "flow": ["User value", "Bound parameter", "Fixed query", "Permitted rows"],
+    "steps": [
+      "Use a disposable local database with synthetic records to inspect a SELECT query.",
+      "Identify which parts are fixed SQL and which parts are data values.",
+      "Review the application code for parameter binding and a database account with only the permissions the application needs."
+    ],
+    "example": "-- Run in a disposable SQLite database:\nCREATE TABLE lessons (id INTEGER, title TEXT);\nINSERT INTO lessons VALUES (1, 'HTTP basics');\nSELECT title FROM lessons WHERE id = 1;\n-- Application query shape: SELECT title FROM lessons WHERE id = ?",
+    "observation": "The local example returns HTTP basics. The placeholder sketch is an application API pattern; exact binding syntax depends on the driver. Quoting a string manually is not equivalent to separating query structure from values.",
+    "troubleshooting": "If a query fails, distinguish syntax, type conversion, missing tables and permissions. Avoid treating every database error as proof of injection. Keep TLS verification enabled for remote database connections and fix trust configuration deliberately.",
+    "source": "content/Web Pentesting/HTB/Server Side Attacks/SQL Injection/SQL Commands/Intro to MySQL/Theory and Solutions.md",
+    "reference": "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+  },
+  {
+    "id": "transfers",
+    "title": "File transfers and integrity",
+    "group": "Evidence handling",
+    "summary": "Know what moved, where it went and whether it changed.",
+    "explanation": "A successful transfer message is only one part of a reliable workflow. Record the source, destination, protocol and expected file identity. Integrity checking compares bytes; authentication establishes who supplied them. Matching hashes calculated from two untrusted inputs do not establish provenance. Prefer an authenticated transfer path and an independently trusted expected digest when one is available.",
+    "flow": [
+      "Known source",
+      "Transfer channel",
+      "Destination file",
+      "Integrity check"
+    ],
+    "steps": [
+      "Choose a harmless local file and record its size and checksum before transfer.",
+      "Transfer it between machines you control using an approved authenticated mechanism.",
+      "Compare the destination checksum and document the result before using the file."
+    ],
+    "example": "# Linux\nsha256sum training.txt\n# macOS\nshasum -a 256 training.txt",
+    "observation": "Identical SHA-256 digests strongly support identical file contents. A different digest means the bytes differ, even if the filenames match. A checksum alone does not show that a file is trustworthy or safe to execute.",
+    "troubleshooting": "If a digest differs, check partial downloads, newline conversion and whether the destination contains an HTML error page. Confirm the path rather than assuming the current directory is correct. Keep confidential data out of unauthenticated temporary file servers.",
+    "source": "content/Penetration Testing/HTB/File Transfers/Linux to Linux Transfer Methods.md",
+    "reference": "https://curl.se/docs/manpage.html"
+  },
+  {
+    "id": "evidence",
+    "title": "Evidence, reports and reproducibility",
+    "group": "Evidence handling",
+    "summary": "Make a finding understandable without rerunning the lab.",
+    "explanation": "A strong note connects a question, a method, an observation and a justified conclusion. Raw output preserves detail; a short interpretation explains why it matters. Screenshots supply visual context but should not replace searchable text. Save enough configuration to reproduce the observation and distinguish a completed check from a planned next step.",
+    "flow": [
+      "Question",
+      "Recorded method",
+      "Raw observation",
+      "Supported conclusion"
+    ],
+    "steps": [
+      "Before a check, write the question and expected evidence. Record the date, tool version, target and exact scope.",
+      "Save raw output under a descriptive filename. Add a screenshot when it clarifies a UI or important transition.",
+      "Write what the result proves, what remains uncertain and the next justified action."
+    ],
+    "example": "# Small local service check with three output formats:\nnmap -sV -p 80,443 -oA local-web 127.0.0.1",
+    "observation": "The output prefix produces .nmap, .xml and .gnmap files. Saving output does not expand scan coverage: this example still examines only two TCP ports. A report must state that coverage rather than calling it a full scan.",
+    "troubleshooting": "If a later reader cannot follow the result, add the missing account context, hostname, timestamp or command. Keep an original private artifact and create a redacted copy for sharing; never rely on a screenshot filename as the entire explanation.",
+    "source": "content/Penetration Testing/HTB/Nmap/Saving Results/Theory and Solutions.md",
+    "reference": "https://nmap.org/book/man-output.html"
+  }
+]

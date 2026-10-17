@@ -91,13 +91,7 @@ export default function App() {
           <Routes>
             <Route
               path="/knowledge-vault/:id?"
-              element={
-                uid ? (
-                  <KnowledgeVault key={uid} uid={uid} />
-                ) : (
-                  <AccountPanel user={null} />
-                )
-              }
+              element={<KnowledgeVault key={uid || "public"} uid={uid} />}
             />
             <Route path="/osai/library" element={<OsaiLibrary />} />
             <Route

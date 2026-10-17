@@ -13,6 +13,7 @@ import {
 import ScreenshotNode, { ImageLoader } from "../editor/ScreenshotNode";
 import { loadImage } from "../firebase/images";
 import type { NoteContent } from "./model";
+import HackerDocs from "./HackerDocs";
 function ReadingBody({ content, uid }: { content: NoteContent; uid: string }) {
   const decoded = useMemo(() => {
     try {
@@ -57,10 +58,10 @@ function ReadingBody({ content, uid }: { content: NoteContent; uid: string }) {
     </ImageLoader.Provider>
   );
 }
-export default function KnowledgeVault({ uid }: { uid: string }) {
+export default function KnowledgeVault({ uid }: { uid?: string }) {
   const { id } = useParams();
   const { notes } = useNotebook();
-  const topics = vaultNotes(notes);
+  const topics = uid ? vaultNotes(notes) : [];
   const [query, setQuery] = useState("");
   const selected = topics.find((n) => n.id === id);
   const index = topics.findIndex((n) => n.id === id);
@@ -69,11 +70,36 @@ export default function KnowledgeVault({ uid }: { uid: string }) {
       .toLowerCase()
       .includes(query.toLowerCase()),
   );
+  if (id === "hacker-docs" || id?.startsWith("hacker-docs--")) {
+    return <HackerDocs key={id} id={id} uid={uid} />;
+  }
   return (
     <section className="page">
-      <p className="eyebrow">OSCP / PRIVATE REFERENCE LIBRARY</p>
+      <p className="eyebrow">OSCP / KNOWLEDGE LIBRARY</p>
       <h1>OSCP Knowledge Vault</h1>
       <p>Your topic notes, images and sources in study order.</p>
+      <article className="week-card">
+        <div>
+          <p className="eyebrow">NEW · 12 ORDERED LESSONS</p>
+          <h2>
+            <Link to="/knowledge-vault/hacker-docs">
+              Hacker-DOCS study collection
+            </Link>
+          </h2>
+          <p>
+            Network and web foundations with explanations, diagrams, examples
+            and troubleshooting. Copy a lesson into your private notes to add
+            your own evidence.
+          </p>
+        </div>
+      </article>
+      {!uid && (
+        <p>
+          <Link to="/settings">
+            Sign in to read and edit your private notes
+          </Link>
+        </p>
+      )}
       <input
         aria-label="Search knowledge vault"
         placeholder="Search topics or commands…"
@@ -125,7 +151,7 @@ export default function KnowledgeVault({ uid }: { uid: string }) {
           {id && !selected && (
             <p>This topic is unavailable, in Trash, or has not synced yet.</p>
           )}
-          {selected && (
+          {selected && uid && (
             <>
               <h2>
                 {selected.content.title.replace(
@@ -162,7 +188,7 @@ export default function KnowledgeVault({ uid }: { uid: string }) {
             <p>
               {topics.length
                 ? "No matching topics. Try another search."
-                : "Your Discord resource notes will appear here after they sync. Find or create them in All notes with the discord-resources tag."}
+                : "Your private topic notes appear here after sign-in and sync. Copy a study lesson or tag a note knowledge-vault to include it."}
             </p>
           )}
         </div>

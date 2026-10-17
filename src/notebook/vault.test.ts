@@ -22,6 +22,13 @@ test("vault keeps private OSCP topic notes in numeric order and excludes index, 
       note("trash", "03 · Linux", { deletedAt: 1 }),
       note("ai", "04 · AI", { workspace: "osai" }),
       note("other", "05 · Other", { tags: [] }),
+      note("copy", "HTTP requests and responses", {
+        tags: ["knowledge-vault", "hacker-docs"],
+      }),
+      note("ai-copy", "OSAI reference", {
+        tags: ["knowledge-vault"],
+        workspace: "osai",
+      }),
     ]).map((n) => n.id),
-  ).toEqual(["a", "b"]);
+  ).toEqual(["a", "b", "copy"]);
 });

@@ -6,7 +6,8 @@ export function vaultNotes(notes: Saved<NoteContent>[]) {
       (n) =>
         workspaceOf(n.content) === "oscp" &&
         n.content.deletedAt === null &&
-        n.content.tags.includes("discord-resources") &&
+        (n.content.tags.includes("discord-resources") ||
+          n.content.tags.includes("knowledge-vault")) &&
         !n.content.tags.includes("index"),
     )
     .sort((a, b) =>
