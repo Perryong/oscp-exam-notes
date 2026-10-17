@@ -1,7 +1,7 @@
 import { workspaceOf } from "../workspaces/model";
 import { machineWalkthrough } from "../walkthroughs/catalog";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useNotebook } from "../notebook/NotebookContext";
 import { changeMachine } from "../notebook/MachineView";
 import ids from "./machine-ids.json";
@@ -17,12 +17,29 @@ const phases = [
 type Box = (typeof ladder)[number]["boxes"][number];
 export default function StudyPlan({ uid }: { uid?: string }) {
   const all = useNotebook();
+  const [params] = useSearchParams();
+  const requestedWeek = Number(params.get("week"));
   const machines = all.machines.filter(
     (m) => workspaceOf(m.content) === "oscp",
   );
   const [error, setError] = useState("");
   const [phase, setPhase] = useState(0),
     [box, setBox] = useState<Box | null>(null);
+  useEffect(() => {
+    const week = ladder.find((w) => w.week === requestedWeek);
+    if (week)
+      setPhase(
+        phases.findIndex((p) =>
+          p.tiers.includes(Math.max(...week.boxes.map((b) => b.tier))),
+        ),
+      );
+  }, [requestedWeek]);
+  useEffect(() => {
+    if (requestedWeek)
+      document
+        .getElementById("week-" + requestedWeek)
+        ?.scrollIntoView?.({ block: "start" });
+  }, [requestedWeek, phase]);
   const weeks = ladder.filter((w) =>
     phases[phase].tiers.includes(Math.max(...w.boxes.map((b) => b.tier))),
   );
@@ -64,7 +81,7 @@ export default function StudyPlan({ uid }: { uid?: string }) {
         <span>{weeks.length} weeks</span>
       </div>
       {weeks.map((w) => (
-        <section className="week-card" key={w.week}>
+        <section className="week-card" key={w.week} id={"week-" + w.week}>
           <div className="week-label">
             <small>WEEK</small>
             <strong>{String(w.week).padStart(2, "0")}</strong>

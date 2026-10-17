@@ -23,24 +23,24 @@
 ## Task 1: Shared content index and learning topics
 Files: scripts/build-oscp-index.mjs; src/oscp/topics.ts, resources.json, graph.ts, graph.test.ts.
 Interfaces: Topic definitions with id/title/summary/prerequisites/explanation/observations/exercise/misconceptions; Resource with id/title/kind/href/collection/topicIds; buildGraph(resources, notes, machines, signedIn) -> nodes/edges.
-- [ ] Write failing coverage/privacy/backlink tests, run and inspect failure.
-- [ ] Generate metadata for every reference, guide, practice week and machine. Add curated topic learning content and provenance-labelled graph edges.
-- [ ] Add runtime private notes and machine connections without altering persisted content.
-- [ ] Run targeted tests and commit.
+- [x] Write failing coverage/privacy/backlink tests, run and inspect failure.
+- [x] Generate metadata for every reference, guide, practice week and machine. Add curated topic learning content and provenance-labelled graph edges.
+- [x] Add runtime private notes and machine connections without altering persisted content.
+- [x] Run targeted tests and commit.
 
 ## Task 2: Mindmap
 Files: src/oscp/Mindmap.tsx, GraphCanvas.tsx, useGraph.ts, Mindmap.test.tsx, oscp.css.
 Interfaces: `/mindmap?node=<graph-id>` deep link; shared Graph model from task 1.
-- [ ] Write failing tests for root view, selection, search and full graph.
-- [ ] Build guided/full graph with pan, zoom, keyboard node selection, legend and reset. Add resource search/filter and detail panel with direct links/backlinks; collection nodes expose unclassified resources.
-- [ ] Test results and responsive layout; commit.
+- [x] Write failing tests for root view, selection, search and full graph.
+- [x] Build guided/full graph with pan, zoom, keyboard node selection, legend and reset. Add resource search/filter and detail panel with direct links/backlinks; collection nodes expose unclassified resources.
+- [x] Test results and responsive layout; commit.
 
 ## Task 3: Easier OSCP learning flow
 Files: src/oscp/LearningHome.tsx, Topics.tsx, ResourceContext.tsx; src/reference/StudyPlan.tsx, CheatSheet.tsx; src/app/App.tsx; reader components as needed.
 Interfaces: `/topics/:topicId?`; preserve `/study-plan` and weekly content; `/notes?view=tags`; cheat section URL parameters select collection and section.
-- [ ] Test topic descriptions and relevant resource results, cheat deep links and public/private separation.
-- [ ] Add learning-home sequence, resource discovery and study guidance. Group OSCP navigation into Learn, Practise and Reference. Add reader links back to relevant Mindmap nodes.
-- [ ] Verify previous routes/content/progress and OSAI remain functional; commit.
+- [x] Test topic descriptions and relevant resource results, cheat deep links and public/private separation.
+- [x] Add learning-home sequence, resource discovery and study guidance. Group OSCP navigation into Learn, Practise and Reference. Add reader links back to relevant Mindmap nodes.
+- [x] Verify previous routes/content/progress and OSAI remain functional; commit.
 
 ## Task 4: Release verification
 - [ ] Run npm test, npm run build, generated-index integrity checks.

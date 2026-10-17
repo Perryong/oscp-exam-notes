@@ -1,11 +1,27 @@
-import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import cheatsheet from "./cheatsheet.json";
 import imported from "./imported-cheatsheet.json";
 export default function CheatSheet() {
-  const [collection, setCollection] = useState("imported");
+  const [params, setParams] = useSearchParams();
+  const requestedCollection =
+    params.get("collection") === "previous" ? "previous" : "imported";
+  const selectedSection = params.get("section") || "";
+  const [collection, setCollection] = useState(requestedCollection);
   const [topic, setTopic] = useState("");
   const [q, setQ] = useState(""),
     [message, setMessage] = useState("");
+  useEffect(() => {
+    setCollection(requestedCollection);
+    setQ("");
+    setTopic("");
+  }, [requestedCollection, selectedSection]);
+  useEffect(() => {
+    if (selectedSection)
+      document
+        .getElementById(selectedSection)
+        ?.scrollIntoView?.({ block: "start" });
+  }, [collection, selectedSection]);
   const source =
     collection === "imported"
       ? imported.sections
@@ -29,6 +45,7 @@ export default function CheatSheet() {
             value={collection}
             onChange={(e) => {
               setCollection(e.target.value);
+              setParams({ collection: e.target.value });
               setTopic("");
               setQ("");
               setMessage("");
@@ -87,7 +104,8 @@ export default function CheatSheet() {
         <details
           className="reference-section"
           key={`${collection}-${s.id}`}
-          open={!!q.trim()}
+          id={s.id}
+          open={!!q.trim() || selectedSection === s.id}
         >
           <summary>{s.title}</summary>
           <p className="eyebrow">{s.group}</p>

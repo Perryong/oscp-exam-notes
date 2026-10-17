@@ -1,3 +1,8 @@
+import { Fragment, lazy, Suspense } from "react";
+const LearningHome = lazy(() => import("../oscp/LearningHome"));
+const Mindmap = lazy(() => import("../oscp/Mindmap"));
+const LearningTopics = lazy(() => import("../oscp/Topics"));
+const ResourceContext = lazy(() => import("../oscp/ResourceContext"));
 import KnowledgeVault from "../notebook/KnowledgeVault";
 import OsaiStudyPlan from "../osai/StudyPlan";
 import OsaiLibrary from "../osai/Library";
@@ -19,7 +24,6 @@ import { useAccount } from "./useAccount";
 import AccountPanel from "./AccountPanel";
 import UpdateNotice from "./UpdateNotice";
 import DemoEditor from "../editor/DemoEditor";
-import StudyPlan from "../reference/StudyPlan";
 import CheatSheet from "../reference/CheatSheet";
 import WalkthroughLibrary from "../walkthroughs/WalkthroughLibrary";
 import WalkthroughReader from "../walkthroughs/WalkthroughReader";
@@ -31,7 +35,9 @@ export default function App() {
   return (
     <NotebookProvider key={uid || "public"} uid={uid || null}>
       <div className="app">
-        <aside className="sidebar">
+        <aside
+          className={workspace === "oscp" ? "sidebar oscp-sidebar" : "sidebar"}
+        >
           <NavLink
             className="brand"
             to={workspacePath(workspace, "study-plan")}
@@ -57,18 +63,31 @@ export default function App() {
                 ]
               : [
                   ["/study-plan", "Study plan"],
+                  ["/mindmap", "Mindmap"],
+                  ["/topics", "Concepts"],
                   ["/knowledge-vault", "Knowledge Vault"],
                   ["/machines", "Machines"],
-                  ["/topics", "Topics"],
                   ["/notes", "All notes"],
                   ["/cheat-sheet", "Cheat sheet"],
                   ["/walkthroughs", "Walkthroughs"],
                   ["/settings", "Settings"],
                 ]
             ).map(([to, label]) => (
-              <NavLink key={to} to={to} end={to === "/osai/library"}>
-                {label}
-              </NavLink>
+              <Fragment key={to}>
+                {workspace === "oscp" &&
+                  ["/study-plan", "/machines", "/cheat-sheet"].includes(to) && (
+                    <p className="oscp-nav-group">
+                      {to === "/study-plan"
+                        ? "Learn & connect"
+                        : to === "/machines"
+                          ? "Practise & record"
+                          : "Quick reference"}
+                    </p>
+                  )}
+                <NavLink to={to} end={to === "/osai/library"}>
+                  {label}
+                </NavLink>
+              </Fragment>
             ))}
           </nav>
           <div className="sidebar-foot">
@@ -88,130 +107,160 @@ export default function App() {
               remain available.
             </p>
           )}
-          <Routes>
-            <Route
-              path="/knowledge-vault/:id?"
-              element={<KnowledgeVault key={uid || "public"} uid={uid} />}
-            />
-            <Route path="/osai/library" element={<OsaiLibrary />} />
-            <Route
-              path="/osai/library/:slug"
-              element={<OsaiReader key={location.pathname} uid={uid} />}
-            />
-            <Route
-              path="/osai"
-              element={<Navigate replace to="/osai/study-plan" />}
-            />
-            <Route
-              path="/osai/study-plan"
-              element={<OsaiStudyPlan uid={uid} />}
-            />
-            <Route
-              path="/osai/notes"
-              element={
-                uid ? (
-                  <NotebookView uid={uid} workspace="osai" />
-                ) : (
-                  <AccountPanel user={null} />
-                )
-              }
-            />
-            <Route
-              path="/osai/topics"
-              element={
-                uid ? (
-                  <NotebookView uid={uid} workspace="osai" topics />
-                ) : (
-                  <AccountPanel user={null} />
-                )
-              }
-            />
-            <Route
-              path="/osai/notes/:id"
-              element={
-                uid ? (
-                  <NotePage
-                    key={location.pathname}
+          {workspace === "oscp" && (
+            <Suspense fallback={null}>
+              <ResourceContext uid={uid} />
+            </Suspense>
+          )}
+          <Suspense
+            fallback={
+              <p className="page" role="status">
+                Loading learning workspace…
+              </p>
+            }
+          >
+            <Routes>
+              <Route
+                path="/mindmap"
+                element={<Mindmap key={uid || "public"} uid={uid} />}
+              />
+              <Route
+                path="/topics/:topicId"
+                element={
+                  <LearningTopics
+                    key={location.pathname + (uid || "public")}
                     uid={uid}
-                    workspace="osai"
                   />
-                ) : (
-                  <AccountPanel user={null} />
-                )
-              }
-            />
-            <Route
-              path="/osai/labs"
-              element={
-                uid ? (
-                  <MachineView uid={uid} workspace="osai" />
-                ) : (
-                  <AccountPanel user={null} />
-                )
-              }
-            />
-            <Route
-              path="/osai/trash"
-              element={
-                uid ? (
-                  <TrashView uid={uid} workspace="osai" />
-                ) : (
-                  <AccountPanel user={null} />
-                )
-              }
-            />
-            <Route
-              path="/settings"
-              element={<AccountPanel user={account.user} />}
-            />
-            <Route
-              path="/notes"
-              element={
-                uid ? <NotebookView uid={uid} /> : <AccountPanel user={null} />
-              }
-            />
-            <Route
-              path="/topics"
-              element={
-                uid ? (
-                  <NotebookView uid={uid} topics />
-                ) : (
-                  <AccountPanel user={null} />
-                )
-              }
-            />
-            <Route
-              path="/notes/:id"
-              element={
-                uid ? (
-                  <NotePage key={location.pathname} uid={uid} />
-                ) : (
-                  <AccountPanel user={null} />
-                )
-              }
-            />
-            <Route
-              path="/machines"
-              element={
-                uid ? <MachineView uid={uid} /> : <AccountPanel user={null} />
-              }
-            />
-            <Route
-              path="/trash"
-              element={
-                uid ? <TrashView uid={uid} /> : <AccountPanel user={null} />
-              }
-            />
-            <Route path="/walkthroughs" element={<WalkthroughLibrary />} />
-            <Route
-              path="/walkthroughs/:id"
-              element={<WalkthroughReader key={location.pathname} />}
-            />
-            <Route path="/demo" element={<DemoEditor />} />
-            <Route path="/study-plan" element={<StudyPlan uid={uid} />} />
-            <Route path="/cheat-sheet" element={<CheatSheet />} />
-            <Route path="*" element={<Navigate to="/study-plan" replace />} />
-          </Routes>
+                }
+              />
+              <Route
+                path="/knowledge-vault/:id?"
+                element={<KnowledgeVault key={uid || "public"} uid={uid} />}
+              />
+              <Route path="/osai/library" element={<OsaiLibrary />} />
+              <Route
+                path="/osai/library/:slug"
+                element={<OsaiReader key={location.pathname} uid={uid} />}
+              />
+              <Route
+                path="/osai"
+                element={<Navigate replace to="/osai/study-plan" />}
+              />
+              <Route
+                path="/osai/study-plan"
+                element={<OsaiStudyPlan uid={uid} />}
+              />
+              <Route
+                path="/osai/notes"
+                element={
+                  uid ? (
+                    <NotebookView uid={uid} workspace="osai" />
+                  ) : (
+                    <AccountPanel user={null} />
+                  )
+                }
+              />
+              <Route
+                path="/osai/topics"
+                element={
+                  uid ? (
+                    <NotebookView uid={uid} workspace="osai" topics />
+                  ) : (
+                    <AccountPanel user={null} />
+                  )
+                }
+              />
+              <Route
+                path="/osai/notes/:id"
+                element={
+                  uid ? (
+                    <NotePage
+                      key={location.pathname}
+                      uid={uid}
+                      workspace="osai"
+                    />
+                  ) : (
+                    <AccountPanel user={null} />
+                  )
+                }
+              />
+              <Route
+                path="/osai/labs"
+                element={
+                  uid ? (
+                    <MachineView uid={uid} workspace="osai" />
+                  ) : (
+                    <AccountPanel user={null} />
+                  )
+                }
+              />
+              <Route
+                path="/osai/trash"
+                element={
+                  uid ? (
+                    <TrashView uid={uid} workspace="osai" />
+                  ) : (
+                    <AccountPanel user={null} />
+                  )
+                }
+              />
+              <Route
+                path="/settings"
+                element={<AccountPanel user={account.user} />}
+              />
+              <Route
+                path="/notes"
+                element={
+                  uid ? (
+                    <NotebookView
+                      uid={uid}
+                      topics={
+                        new URLSearchParams(location.search).get("view") ===
+                        "tags"
+                      }
+                    />
+                  ) : (
+                    <AccountPanel user={null} />
+                  )
+                }
+              />
+              <Route
+                path="/topics"
+                element={<LearningTopics key={uid || "public"} uid={uid} />}
+              />
+              <Route
+                path="/notes/:id"
+                element={
+                  uid ? (
+                    <NotePage key={location.pathname} uid={uid} />
+                  ) : (
+                    <AccountPanel user={null} />
+                  )
+                }
+              />
+              <Route
+                path="/machines"
+                element={
+                  uid ? <MachineView uid={uid} /> : <AccountPanel user={null} />
+                }
+              />
+              <Route
+                path="/trash"
+                element={
+                  uid ? <TrashView uid={uid} /> : <AccountPanel user={null} />
+                }
+              />
+              <Route path="/walkthroughs" element={<WalkthroughLibrary />} />
+              <Route
+                path="/walkthroughs/:id"
+                element={<WalkthroughReader key={location.pathname} />}
+              />
+              <Route path="/demo" element={<DemoEditor />} />
+              <Route path="/study-plan" element={<LearningHome uid={uid} />} />
+              <Route path="/cheat-sheet" element={<CheatSheet />} />
+              <Route path="*" element={<Navigate to="/study-plan" replace />} />
+            </Routes>
+          </Suspense>
         </main>
       </div>
     </NotebookProvider>

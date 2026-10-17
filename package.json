@@ -24,7 +24,10 @@
     "import:hacker-docs": "node scripts/import-hacker-docs.mjs",
     "test:hacker-docs": "node --test scripts/import-hacker-docs.test.mjs",
     "test:cheatsheet": "node --test scripts/import-cheatsheet.test.mjs",
-    "import:cheatsheet": "node scripts/import-cheatsheet.mjs"
+    "import:cheatsheet": "node scripts/import-cheatsheet.mjs",
+    "prebuild": "node scripts/build-oscp-index.mjs",
+    "pretest": "node scripts/build-oscp-index.mjs",
+    "index:oscp": "node scripts/build-oscp-index.mjs"
   },
   "dependencies": {
     "@tiptap/extension-task-item": "^3.32.0",

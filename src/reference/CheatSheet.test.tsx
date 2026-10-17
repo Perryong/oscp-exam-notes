@@ -1,6 +1,27 @@
 import { afterEach, expect, test, vi } from "vitest";
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import {
+  cleanup,
+  fireEvent,
+  render as baseRender,
+  screen,
+} from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import type { ReactNode } from "react";
 import CheatSheet from "./CheatSheet";
+const render = (ui: ReactNode) => baseRender(<MemoryRouter>{ui}</MemoryRouter>);
+
+test("map deep links open the correct imported section", () => {
+  baseRender(
+    <MemoryRouter
+      initialEntries={["/cheat-sheet?collection=imported&section=imported-3"]}
+    >
+      <CheatSheet />
+    </MemoryRouter>,
+  );
+  const details = document.getElementById("imported-3");
+  expect(details?.hasAttribute("open")).toBe(true);
+  expect(details?.textContent).toContain("Important Locations");
+});
 
 afterEach(() => {
   cleanup();

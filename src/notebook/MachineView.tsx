@@ -6,8 +6,8 @@ import {
 import { workspacePath } from "../workspaces/routes";
 import { osaiSeedMachines } from "../osai/seeds";
 import { machineWalkthrough } from "../walkthroughs/catalog";
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { validateMachine } from "./validation";
 import ladder from "../reference/ladder.json";
 import { seedMachines } from "./seeds";
@@ -57,10 +57,20 @@ export default function MachineView({
   uid: string;
   workspace?: WorkspaceId;
 }) {
+  const location = useLocation();
   const { machines, notes } = useNotebook(),
     [query, setQuery] = useState(""),
     [error, setError] = useState(""),
     navigate = useNavigate();
+  const scrolledHash = useRef("");
+  useEffect(() => {
+    if (!location.hash || scrolledHash.current === location.hash) return;
+    const target = document.getElementById(location.hash.slice(1));
+    if (target) {
+      target.scrollIntoView?.({ block: "start" });
+      scrolledHash.current = location.hash;
+    }
+  }, [location.hash, machines]);
   const [conflicts, setConflicts] = useState<Conflict<MachineContent>[]>([]);
   useEffect(() => {
     let alive = true;

@@ -1,0 +1,343 @@
+[
+  {
+    "id": "foundations",
+    "title": "Foundations",
+    "stage": "Understand",
+    "summary": "Understand hosts, networks and permissions before choosing a tool.",
+    "prerequisites": [],
+    "keywords": [
+      "network foundations",
+      "networking",
+      "tcp",
+      "udp",
+      "methodology",
+      "scope",
+      "overview",
+      "fundamentals"
+    ],
+    "explanation": "A computer runs processes that may listen for connections. An IP address identifies a network endpoint; a port identifies a service on that endpoint. A response is evidence about one test from one location, not proof that you understand the whole system. Keep the target, time, network position and question beside each observation.",
+    "observations": [
+      "Separate the hostname, address, port and application protocol in your notes.",
+      "A timeout can mean filtering, routing trouble or a stopped service; it does not establish which one.",
+      "Distinguish your own machine, the lab target and any intermediate host."
+    ],
+    "exercise": "Draw your lab connection: your computer → VPN or lab network → target → service. Label each part and explain what you expect to reach.",
+    "misconceptions": [
+      "A tool's output is an observation, not a complete explanation.",
+      "A host responding to one probe does not imply every port is reachable."
+    ],
+    "question": "Can you explain where your request starts, where it goes and which service should answer?"
+  },
+  {
+    "id": "enumeration",
+    "title": "Discovery & enumeration",
+    "stage": "Understand",
+    "summary": "Turn reachable services into a useful picture of the system.",
+    "prerequisites": ["foundations"],
+    "keywords": [
+      "enumeration",
+      "discovery",
+      "nmap",
+      "footprinting",
+      "recon",
+      "dns",
+      "smtp",
+      "snmp",
+      "rpc",
+      "ftp",
+      "scanning",
+      "information gathering"
+    ],
+    "explanation": "Discovery identifies what responds. Enumeration asks what that response reveals: service identity, supported features, exposed names, users or shares. Work from broad observations toward specific questions. Keep confirmed facts separate from guesses so a version banner or hostname does not become an assumed vulnerability.",
+    "observations": [
+      "Record service names and the evidence supporting them.",
+      "Follow up on unfamiliar responses with the relevant protocol reference.",
+      "Notice differences between anonymous access and authenticated access."
+    ],
+    "exercise": "Choose one lab service. Write three columns: observation, possible explanation and next question. Fill them before reading its walkthrough.",
+    "misconceptions": [
+      "A service banner can be incomplete or misleading.",
+      "A longer scan is not automatically a more useful investigation."
+    ],
+    "question": "Which observation changed your understanding of the target, and why?"
+  },
+  {
+    "id": "web",
+    "title": "Web applications",
+    "stage": "Investigate",
+    "summary": "Follow a request from browser input to server response.",
+    "prerequisites": ["foundations", "enumeration"],
+    "keywords": [
+      "web",
+      "http",
+      "burp",
+      "curl",
+      "sql",
+      "injection",
+      "xss",
+      "csrf",
+      "lfi",
+      "rfi",
+      "traversal",
+      "wordpress",
+      "upload",
+      "ssrf",
+      "ssti",
+      "cookie",
+      "session"
+    ],
+    "explanation": "A web application accepts requests, processes data and returns responses. Some state lives in the browser and some on the server. Learn the normal request first: method, path, parameters, cookies and response. Then ask which values the server trusts, how it identifies the user and where it checks access. Authentication and authorization answer different questions.",
+    "observations": [
+      "Compare status, headers and response body together.",
+      "Track which cookie or token identifies a session without treating its presence as proof of authorization.",
+      "Separate client-side display rules from server-side enforcement."
+    ],
+    "exercise": "Describe a normal login or search request in your own lab. Mark the user-controlled values and the server decision each value influences.",
+    "misconceptions": [
+      "A hidden button does not prove a server-side access check exists.",
+      "A changed status code alone does not establish security impact."
+    ],
+    "question": "Where does user input become a server-side decision?"
+  },
+  {
+    "id": "access",
+    "title": "Initial access & sessions",
+    "stage": "Investigate",
+    "summary": "Understand the account and execution context of a lab session.",
+    "prerequisites": ["enumeration", "web"],
+    "keywords": [
+      "initial access",
+      "foothold",
+      "reverse shell",
+      "bind shell",
+      "metasploit",
+      "exploitation",
+      "exploit",
+      "tty",
+      "shells",
+      "client side",
+      "rdp",
+      "winrm",
+      "ssh public"
+    ],
+    "explanation": "A session gives you a particular way to interact with a system under a particular identity. Its environment, working directory, privileges and network position affect what you observe. Distinguish the mechanism that opened the session from the permissions it grants. Keep the original evidence and the limits of the session in your lab notes.",
+    "observations": [
+      "Identify the current account, host and session type.",
+      "Distinguish an application process from an interactive desktop or terminal.",
+      "Record restrictions, environment differences and connection stability."
+    ],
+    "exercise": "For a session in an assigned lab, make a context card: identity, host, process, permissions, connection and evidence. Compare it with the reference walkthrough.",
+    "misconceptions": [
+      "Access to one process is not administrator access.",
+      "A successful connection does not explain the underlying trust failure."
+    ],
+    "question": "What can this session do, and what evidence supports that conclusion?"
+  },
+  {
+    "id": "credentials",
+    "title": "Credentials & authentication",
+    "stage": "Investigate",
+    "summary": "Separate identities, passwords, hashes, keys and permissions.",
+    "prerequisites": ["foundations"],
+    "keywords": [
+      "password",
+      "credential",
+      "hash",
+      "authentication",
+      "john",
+      "hashcat",
+      "key",
+      "ticket",
+      "kerberos",
+      "ntlm",
+      "secrets"
+    ],
+    "explanation": "Authentication establishes an identity; authorization decides what that identity may do. Passwords, hashes, keys and tickets are different objects with different uses. A recovered value matters only when you know its type, origin and scope. Keep sensitive values out of shareable reports and record the security lesson separately.",
+    "observations": [
+      "Identify whether a value is a password, encoded text, hash, key or token.",
+      "Record the associated account and system, not just the value.",
+      "Observe which authentication mechanism a service actually accepts."
+    ],
+    "exercise": "Create a comparison table for password, hash, public key and session token: purpose, where it appears and what it does not prove. Use placeholders for secrets.",
+    "misconceptions": [
+      "Encoding does not provide encryption.",
+      "A valid identity may still lack permission to access a resource."
+    ],
+    "question": "What kind of credential is this, and which identity and service does it belong to?"
+  },
+  {
+    "id": "files",
+    "title": "Files & evidence transfer",
+    "stage": "Practise",
+    "summary": "Move and track lab files without losing their meaning or origin.",
+    "prerequisites": ["foundations", "access"],
+    "keywords": [
+      "file transfer",
+      "files transfer",
+      "download",
+      "uploadserver",
+      "smb share",
+      "file sharing",
+      "important locations"
+    ],
+    "explanation": "File transfer depends on direction, connectivity, permissions and available protocols. Know which host serves the file and which host retrieves it. Preserve original evidence and note where every artifact came from. Checksums help distinguish a complete copy from a changed or truncated file.",
+    "observations": [
+      "Record source, destination, transfer direction and expected filename.",
+      "Check that the destination file is the expected type and size.",
+      "Separate a network failure from a filesystem permission failure."
+    ],
+    "exercise": "Transfer a harmless text file between your own lab machines. Compare its checksum and record the method, direction and result.",
+    "misconceptions": [
+      "A successful HTTP response does not guarantee the downloaded body is the intended file.",
+      "Relative paths depend on the current working directory."
+    ],
+    "question": "Can you trace this file back to its source and verify the copy?"
+  },
+  {
+    "id": "linux",
+    "title": "Linux privilege boundaries",
+    "stage": "Practise",
+    "summary": "Understand how Linux users, processes and file permissions interact.",
+    "prerequisites": ["access", "credentials"],
+    "keywords": [
+      "linux",
+      "sudo",
+      "suid",
+      "capabilities",
+      "cron",
+      "nfs",
+      "unix"
+    ],
+    "explanation": "Linux permissions are attached to users, groups, files and processes. A privilege-boundary problem appears when a more trusted process relies on something a less trusted user can influence. Read ownership and execution context together. The useful question is why a privileged action trusts a specific file, command or configuration.",
+    "observations": [
+      "Distinguish file ownership, write permission and execution permission.",
+      "Identify the account that runs a scheduled job or service.",
+      "Compare expected permissions with the observed lab configuration."
+    ],
+    "exercise": "Diagram one lab service: who starts it, who owns its configuration, who can change its inputs and what privileges it uses. Explain any trust mismatch.",
+    "misconceptions": [
+      "A writable file matters only when something important consumes it.",
+      "A tool listing a candidate does not prove the conditions are satisfied."
+    ],
+    "question": "Which lower-trust input reaches a higher-privilege process?"
+  },
+  {
+    "id": "windows",
+    "title": "Windows privilege boundaries",
+    "stage": "Practise",
+    "summary": "Connect users, tokens, services and filesystem permissions.",
+    "prerequisites": ["access", "credentials"],
+    "keywords": [
+      "windows",
+      "administrator",
+      "token impersonation",
+      "dll",
+      "autorun",
+      "alwaysinstallelevated",
+      "sam and system",
+      "services",
+      "scheduled tasks",
+      "schedules tasks"
+    ],
+    "explanation": "Windows processes run with access tokens and interact with objects controlled by permissions. Services and scheduled tasks can execute in a different context from the current user. Study the whole chain: who can modify an input, which process uses it, and what account that process runs under. Names such as Administrator do not replace evidence about the effective token.",
+    "observations": [
+      "Record the current identity and effective privileges.",
+      "Connect service configuration with file and directory permissions.",
+      "Distinguish user-level access from a privileged process context."
+    ],
+    "exercise": "Choose a service in your own lab. Draw its account, executable, configuration and writable inputs, then describe the intended privilege boundary.",
+    "misconceptions": [
+      "Group membership and the current process's effective privileges can differ.",
+      "A suspicious path alone is not proof of an exploitable configuration."
+    ],
+    "question": "Who controls the input, and whose privileges are used when it is consumed?"
+  },
+  {
+    "id": "active-directory",
+    "title": "Active Directory",
+    "stage": "Connect",
+    "summary": "Understand domain identities and the relationships between them.",
+    "prerequisites": ["windows", "credentials", "enumeration"],
+    "keywords": [
+      "active directory",
+      "domain",
+      "ldap",
+      "kerberos",
+      "bloodhound",
+      "lateral movement",
+      "dcom",
+      "golden ticket",
+      "shadow copies"
+    ],
+    "explanation": "Active Directory connects users, computers, groups and services through directory records, authentication and delegated permissions. A useful map distinguishes membership from authority: being in a group, controlling an account and having access to a service are different relationships. Explain each link before following a chain of links.",
+    "observations": [
+      "Distinguish local accounts from domain identities.",
+      "Label group membership, delegated control and service access separately.",
+      "Check the source and freshness of directory observations."
+    ],
+    "exercise": "Draw a small lab domain with two users, a group and two computers. Label each observed relationship and explain which permissions it actually grants.",
+    "misconceptions": [
+      "A graph edge is a hypothesis until its required conditions are checked.",
+      "Domain membership does not make every host equally accessible."
+    ],
+    "question": "Which identity controls which object, and through what permission?"
+  },
+  {
+    "id": "pivoting",
+    "title": "Routing & pivoting",
+    "stage": "Connect",
+    "summary": "Reason about which network position can reach a service.",
+    "prerequisites": ["foundations", "access"],
+    "keywords": [
+      "pivot",
+      "tunnel",
+      "proxychain",
+      "ligolo",
+      "port forwarding",
+      "port redirection",
+      "routing",
+      "chisel",
+      "networks"
+    ],
+    "explanation": "Reachability changes with network position. A route, proxy or tunnel changes how traffic travels, but does not itself grant application permissions. Draw the path before choosing a forwarding method. Be explicit about which endpoint listens, where the destination is resolved and whether a connection is initiated locally or remotely.",
+    "observations": [
+      "Record the source network and destination network for each test.",
+      "Distinguish a routing problem from a refused application connection.",
+      "Identify which protocols the chosen forwarding mechanism carries."
+    ],
+    "exercise": "Sketch a three-host lab. Mark the reachable interfaces and describe the request and response path through an intermediate host, using no production addresses.",
+    "misconceptions": [
+      "A working tunnel does not prove the destination service accepts your identity.",
+      "A proxy is not the same as a route for every kind of traffic."
+    ],
+    "question": "Can you trace both directions of this connection?"
+  },
+  {
+    "id": "reporting",
+    "title": "Evidence & reporting",
+    "stage": "Review",
+    "summary": "Turn observations into a clear, reproducible explanation.",
+    "prerequisites": ["enumeration", "access"],
+    "keywords": [
+      "report",
+      "evidence",
+      "write-up",
+      "writeup",
+      "documentation",
+      "capture the flag",
+      "methodology"
+    ],
+    "explanation": "A useful report lets another reader understand the conditions, reproduce the observation and assess the impact. Separate what you saw from your interpretation. Keep steps in order and attach the evidence that supports each conclusion. Describe the underlying trust or permission problem rather than relying only on a tool name.",
+    "observations": [
+      "Capture enough context to identify the lab, time and relevant account.",
+      "State assumptions and unsuccessful checks when they affect interpretation.",
+      "Explain impact and a corrective principle with supporting evidence."
+    ],
+    "exercise": "Write a one-page lab finding: context, observation, reproduction summary, evidence, impact and remediation principle. Ask whether a reader could follow it without your memory.",
+    "misconceptions": [
+      "A screenshot alone rarely explains why a result matters.",
+      "A successful command is not a complete finding without context and impact."
+    ],
+    "question": "Could someone else understand and verify your conclusion from these notes?"
+  }
+]
