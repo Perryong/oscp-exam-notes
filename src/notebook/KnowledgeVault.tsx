@@ -14,6 +14,7 @@ import ScreenshotNode, { ImageLoader } from "../editor/ScreenshotNode";
 import { loadImage } from "../firebase/images";
 import type { NoteContent } from "./model";
 import HackerDocs from "./HackerDocs";
+import HackerOriginals from "./HackerOriginals";
 function ReadingBody({ content, uid }: { content: NoteContent; uid: string }) {
   const decoded = useMemo(() => {
     try {
@@ -70,7 +71,10 @@ export default function KnowledgeVault({ uid }: { uid?: string }) {
       .toLowerCase()
       .includes(query.toLowerCase()),
   );
-  if (id === "hacker-docs" || id?.startsWith("hacker-docs--")) {
+  if (id === "hacker-docs" || id?.startsWith("hacker-docs--source-")) {
+    return <HackerOriginals key={id} id={id} />;
+  }
+  if (id?.startsWith("hacker-docs--")) {
     return <HackerDocs key={id} id={id} uid={uid} />;
   }
   return (
@@ -80,16 +84,16 @@ export default function KnowledgeVault({ uid }: { uid?: string }) {
       <p>Your topic notes, images and sources in study order.</p>
       <article className="week-card">
         <div>
-          <p className="eyebrow">NEW · 12 ORDERED LESSONS</p>
+          <p className="eyebrow">FULL SOURCE NOTES AND SCREENSHOTS</p>
           <h2>
             <Link to="/knowledge-vault/hacker-docs">
               Hacker-DOCS study collection
             </Link>
           </h2>
           <p>
-            Network and web foundations with explanations, diagrams, examples
-            and troubleshooting. Copy a lesson into your private notes to add
-            your own evidence.
+            Read the actual Hacker-DOCS notes from your supplied archive:
+            commands, explanations, lab examples, tables and images, organised
+            by topic.
           </p>
         </div>
       </article>

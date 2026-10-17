@@ -51,7 +51,7 @@ export default function HackerDocs({ id, uid }: { id: string; uid?: string }) {
     <section className="page">
       <Link to="/knowledge-vault">← Knowledge Vault</Link>
       <p className="eyebrow">OSCP / HACKER-DOCS STUDY COLLECTION</p>
-      {id === "hacker-docs" ? (
+      {id === "hacker-docs--study-guides" ? (
         <>
           <h1>Network to web. Understand each observation.</h1>
           <p>
@@ -96,13 +96,13 @@ export default function HackerDocs({ id, uid }: { id: string; uid?: string }) {
       ) : !lesson ? (
         <>
           <h1>Lesson not found.</h1>
-          <Link to="/knowledge-vault/hacker-docs">
+          <Link to="/knowledge-vault/hacker-docs--study-guides">
             ← All Hacker-DOCS lessons
           </Link>
         </>
       ) : (
         <>
-          <Link to="/knowledge-vault/hacker-docs">
+          <Link to="/knowledge-vault/hacker-docs--study-guides">
             ← All Hacker-DOCS lessons
           </Link>
           <p className="eyebrow">

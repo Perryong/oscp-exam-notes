@@ -26,6 +26,7 @@ export default defineConfig(({ mode }) => {
         },
         workbox: {
           globPatterns: ["**/*.{js,css,html,svg,png,woff2}"],
+          globIgnores: ["hacker-docs/**"],
           maximumFileSizeToCacheInBytes: 4000000,
           navigateFallback: "/index.html",
           runtimeCaching: [],

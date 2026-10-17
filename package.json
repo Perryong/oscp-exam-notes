@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "test": "vitest run && npm run test:osai-vault",
+    "test": "vitest run && npm run test:osai-vault && npm run test:hacker-docs",
     "typecheck": "tsc --noEmit",
     "build": "npm run typecheck && vite build",
     "preview": "vite preview --host 127.0.0.1",
@@ -20,7 +20,9 @@
     "test:release": "playwright test --config playwright.offline.config.ts",
     "import:walkthroughs": "node scripts/import-walkthroughs.mjs",
     "import:osai-vault": "node scripts/import-osai-vault.mjs",
-    "test:osai-vault": "node --test scripts/import-osai-vault.test.mjs"
+    "test:osai-vault": "node --test scripts/import-osai-vault.test.mjs",
+    "import:hacker-docs": "node scripts/import-hacker-docs.mjs",
+    "test:hacker-docs": "node --test scripts/import-hacker-docs.test.mjs"
   },
   "dependencies": {
     "@tiptap/extension-task-item": "^3.32.0",

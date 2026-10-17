@@ -59,7 +59,7 @@ test("shared lessons can be read signed out without exposing note actions", () =
   ).toBeNull();
 });
 test("collection searches lesson body concepts", () => {
-  open("/knowledge-vault/hacker-docs");
+  open("/knowledge-vault/hacker-docs--study-guides");
   expect(screen.getAllByRole("article")).toHaveLength(12);
   fireEvent.change(
     screen.getByRole("searchbox", { name: "Search Hacker-DOCS lessons" }),
@@ -119,8 +119,10 @@ test("unknown lesson has a way back", () => {
   open("/knowledge-vault/hacker-docs--missing");
   expect(screen.getByText("Lesson not found.")).toBeTruthy();
   expect(
-    screen.getByRole("link", { name: /All Hacker-DOCS lessons/ }),
-  ).toBeTruthy();
+    screen
+      .getByRole("link", { name: /All Hacker-DOCS lessons/ })
+      .getAttribute("href"),
+  ).toBe("/knowledge-vault/hacker-docs--study-guides");
 });
 
 test("editable copies preserve each lesson's prose, examples, flow and sources", () => {
