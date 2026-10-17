@@ -11,6 +11,7 @@ export default function ResourceContext({ uid }: { uid?: string }) {
     location.pathname === "/settings" ||
     location.pathname === "/mindmap" ||
     location.pathname.startsWith("/topics") ||
+    location.pathname.startsWith("/practice-tracks") ||
     location.pathname === "/study-plan"
   )
     return null;

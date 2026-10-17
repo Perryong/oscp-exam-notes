@@ -10,6 +10,7 @@ const [
   previous,
   ladder,
   machineIds,
+  practice,
 ] = await Promise.all(
   [
     "src/oscp/topics.json",
@@ -21,9 +22,26 @@ const [
     "src/reference/cheatsheet.json",
     "src/reference/ladder.json",
     "src/reference/machine-ids.json",
+    "src/oscp/practice-tracks.json",
   ].map(read),
 );
 const resources = [];
+for (const track of practice.tracks) {
+  if (
+    !track.topicIds.length ||
+    track.topicIds.some((id) => !topics.some((t) => t.id === id))
+  )
+    throw Error("Invalid practice topic: " + track.id);
+  resources.push({
+    id: "track:" + track.id,
+    title: track.title,
+    kind: "track",
+    href: "/practice-tracks/" + track.id,
+    collection: "Practice tracks",
+    topicIds: track.topicIds,
+    description: track.summary,
+  });
+}
 const normalize = (s) =>
   s
     .toLowerCase()

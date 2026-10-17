@@ -88,8 +88,9 @@ export default function LearningHome({ uid }: { uid?: string }) {
         <div className="oscp-hero-steps">
           <Link to="/topics">01 · Understand the concept</Link>
           <Link to="/knowledge-vault">02 · Read the full reference</Link>
+          <Link to="/practice-tracks">03 · Follow a practice track</Link>
           <a href="#weekly-practice" onClick={() => setPracticeOpen(true)}>
-            03 · Practise and record evidence
+            04 · Choose your weekly machine
           </a>
         </div>
       </div>

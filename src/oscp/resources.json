@@ -1,5 +1,98 @@
 [
   {
+    "id": "track:enumeration",
+    "title": "Enumeration",
+    "kind": "track",
+    "href": "/practice-tracks/enumeration",
+    "collection": "Practice tracks",
+    "topicIds": [
+      "foundations",
+      "enumeration"
+    ],
+    "description": "Turn service observations into a reasoned next step."
+  },
+  {
+    "id": "track:web",
+    "title": "Web applications",
+    "kind": "track",
+    "href": "/practice-tracks/web",
+    "collection": "Practice tracks",
+    "topicIds": [
+      "web",
+      "credentials"
+    ],
+    "description": "Understand a normal request before comparing access decisions."
+  },
+  {
+    "id": "track:privilege-boundaries",
+    "title": "Linux and Windows privilege boundaries",
+    "kind": "track",
+    "href": "/practice-tracks/privilege-boundaries",
+    "collection": "Practice tracks",
+    "topicIds": [
+      "linux",
+      "windows",
+      "access",
+      "files"
+    ],
+    "description": "Trace which identity controls a file, task or service."
+  },
+  {
+    "id": "track:active-directory",
+    "title": "Active Directory",
+    "kind": "track",
+    "href": "/practice-tracks/active-directory",
+    "collection": "Practice tracks",
+    "topicIds": [
+      "active-directory",
+      "credentials",
+      "windows"
+    ],
+    "description": "Read identities and permissions as a graph of relationships."
+  },
+  {
+    "id": "track:pivoting",
+    "title": "Routing and pivoting",
+    "kind": "track",
+    "href": "/practice-tracks/pivoting",
+    "collection": "Practice tracks",
+    "topicIds": [
+      "pivoting",
+      "enumeration",
+      "access"
+    ],
+    "description": "Explain the path a connection takes through a lab network."
+  },
+  {
+    "id": "track:independent-machines",
+    "title": "Independent machines",
+    "kind": "track",
+    "href": "/practice-tracks/independent-machines",
+    "collection": "Practice tracks",
+    "topicIds": [
+      "enumeration",
+      "web",
+      "access",
+      "linux",
+      "windows",
+      "reporting"
+    ],
+    "description": "Build and revise your own investigation before consulting a solution."
+  },
+  {
+    "id": "track:reporting",
+    "title": "Evidence and reporting",
+    "kind": "track",
+    "href": "/practice-tracks/reporting",
+    "collection": "Practice tracks",
+    "topicIds": [
+      "reporting",
+      "files",
+      "foundations"
+    ],
+    "description": "Turn a lab session into an explanation another learner can reproduce."
+  },
+  {
     "id": "walkthrough:dockerlabs--readme",
     "title": "DockerLabs",
     "kind": "walkthrough",

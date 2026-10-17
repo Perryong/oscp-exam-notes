@@ -17,6 +17,7 @@ export default function Topics({ uid }: { uid?: string }) {
       )
     : [];
   const order = [
+    "track",
     "note",
     "lesson",
     "reference",
@@ -137,8 +138,9 @@ export default function Topics({ uid }: { uid?: string }) {
           <section className="oscp-topic-resources">
             <h2>Read, reference & practise</h2>
             <p className="quiet">
-              Suggested from source titles and metadata; tagged private notes
-              are your own connections. Open each source for its full context.
+              Practice tracks are curated for this concept. Other references are
+              suggested from source metadata; tagged private notes are your own
+              connections. Open each source for its full context.
             </p>
             <div className="oscp-search-row">
               <label>

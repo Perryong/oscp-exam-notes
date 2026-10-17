@@ -26,6 +26,7 @@ export default function Mindmap({ uid }: { uid?: string }) {
       localIds.has(n.id) && !["root", "topic", "collection"].includes(n.kind),
   );
   const sample = [
+    "track",
     "note",
     "lesson",
     "reference",

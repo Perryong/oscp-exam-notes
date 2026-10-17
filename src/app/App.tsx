@@ -1,6 +1,7 @@
 import { Fragment, lazy, Suspense } from "react";
 const LearningHome = lazy(() => import("../oscp/LearningHome"));
 const Mindmap = lazy(() => import("../oscp/Mindmap"));
+const PracticeTracks = lazy(() => import("../oscp/PracticeTracks"));
 const LearningTopics = lazy(() => import("../oscp/Topics"));
 const ResourceContext = lazy(() => import("../oscp/ResourceContext"));
 import KnowledgeVault from "../notebook/KnowledgeVault";
@@ -66,6 +67,7 @@ export default function App() {
                   ["/mindmap", "Mindmap"],
                   ["/topics", "Concepts"],
                   ["/knowledge-vault", "Knowledge Vault"],
+                  ["/practice-tracks", "Practice tracks"],
                   ["/machines", "Machines"],
                   ["/notes", "All notes"],
                   ["/cheat-sheet", "Cheat sheet"],
@@ -75,11 +77,13 @@ export default function App() {
             ).map(([to, label]) => (
               <Fragment key={to}>
                 {workspace === "oscp" &&
-                  ["/study-plan", "/machines", "/cheat-sheet"].includes(to) && (
+                  ["/study-plan", "/practice-tracks", "/cheat-sheet"].includes(
+                    to,
+                  ) && (
                     <p className="oscp-nav-group">
                       {to === "/study-plan"
                         ? "Learn & connect"
-                        : to === "/machines"
+                        : to === "/practice-tracks"
                           ? "Practise & record"
                           : "Quick reference"}
                     </p>
@@ -120,6 +124,10 @@ export default function App() {
             }
           >
             <Routes>
+              <Route
+                path="/practice-tracks/:trackId?"
+                element={<PracticeTracks key={location.pathname} />}
+              />
               <Route
                 path="/mindmap"
                 element={<Mindmap key={uid || "public"} uid={uid} />}

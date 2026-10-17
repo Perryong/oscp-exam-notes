@@ -10,6 +10,7 @@ const colors: Record<string, string> = {
   walkthrough: "#b39cde",
   machine: "#d996aa",
   week: "#afba8b",
+  track: "#d996aa",
   note: "#f4b76c",
 };
 export default function GraphCanvas({

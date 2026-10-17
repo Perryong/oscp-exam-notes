@@ -397,6 +397,36 @@
   font-size: 12px;
   color: var(--muted);
 }
+.practice-exercises {
+  padding-left: 24px;
+}
+.practice-exercises > li {
+  padding: 8px 0 20px 8px;
+  border-bottom: 1px solid var(--border);
+}
+.practice-observation {
+  background: #eef5f1;
+  border-radius: 8px;
+  padding: 14px 18px;
+}
+.practice-observation p {
+  margin-bottom: 0;
+}
+.practice-source {
+  border-top: 1px solid var(--border);
+  padding: 8px 0;
+  overflow-wrap: anywhere;
+}
+.practice-source small {
+  color: var(--muted);
+}
+.practice-next {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
 @media (max-width: 1100px) {
   .mindmap-layout {
     grid-template-columns: minmax(0, 1fr);

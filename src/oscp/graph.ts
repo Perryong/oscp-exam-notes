@@ -24,6 +24,7 @@ export const kindLabel: Record<string, string> = {
   collection: "Collection",
   reference: "Source note",
   lesson: "Study lesson",
+  track: "Practice track",
   cheatsheet: "Cheat sheet",
   walkthrough: "Walkthrough",
   week: "Practice week",
@@ -127,7 +128,11 @@ export function buildGraph(
         addEdge(
           "topic:" + topic,
           r.id,
-          r.kind === "note" ? "Tagged topic" : "Suggested topic",
+          r.kind === "note"
+            ? "Tagged topic"
+            : r.kind === "track"
+              ? "Practise concept"
+              : "Suggested topic",
         );
     for (const link of r.links || [])
       if (runtime.has(link)) addEdge(r.id, link, "Practice link");
