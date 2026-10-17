@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { applyShellUpdate } from "../pwa";
+import { applyShellUpdate, isShellUpdateReady } from "../pwa";
 export default function UpdateNotice() {
-  const [ready, setReady] = useState(false),
+  const [ready, setReady] = useState(isShellUpdateReady),
     [error, setError] = useState("");
   useEffect(() => {
     const ready = () => setReady(true);
     window.addEventListener("notebook-update", ready);
+    setReady(isShellUpdateReady());
     return () => window.removeEventListener("notebook-update", ready);
   }, []);
   return ready ? (
