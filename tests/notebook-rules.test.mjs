@@ -5,6 +5,33 @@ import {doc,setDoc,getDoc,getDocs,collection,writeBatch,serverTimestamp,Timestam
 let env;before(async()=>{env=await initializeTestEnvironment({projectId:'demo-oscp-notebook',firestore:{rules:readFileSync('firestore.rules','utf8')}})});beforeEach(()=>env.clearFirestore());after(()=>env.cleanup());
 const db=()=>env.authenticatedContext('alice').firestore();
 const data=(extra={})=>({title:'Notes',contentJson:'{"type":"doc","content":[{"type":"paragraph"}]}',text:'',tags:[],machineId:null,week:null,attachmentIds:[],schemaVersion:1,deletedAt:null,sourceHtml:null,revision:1,lastMutationId:'mutation-1',createdAt:serverTimestamp(),updatedAt:serverTimestamp(),...extra});
+test('preserves live owner-only immutable import markers and progress', async () => {
+ const d=db(), marker=doc(d,'users/alice/migrationItems/import-1');
+ const markerData={noteId:'import-1',createdAt:serverTimestamp()};
+ await assertFails(setDoc(marker,markerData));
+ const batch=writeBatch(d);
+ batch.set(doc(d,'users/alice/notebookNotes/import-1'),data({lastMutationId:'import-1'}));
+ batch.set(marker,markerData);
+ await assertSucceeds(batch.commit());
+ await assertSucceeds(getDoc(marker));
+ await assertSucceeds(getDocs(collection(d,'users/alice/migrationItems')));
+ await assertFails(setDoc(marker,markerData));
+ const progress=doc(d,'users/alice/importedProgress/source-1');
+ const progressData={completed:true,sourceKey:'legacy-source',createdAt:serverTimestamp()};
+ await assertSucceeds(setDoc(progress,progressData));
+ await assertSucceeds(getDoc(progress));
+ await assertSucceeds(getDocs(collection(d,'users/alice/importedProgress')));
+ await assertFails(setDoc(progress,progressData));
+ for(const change of [{completed:false},{sourceKey:'x'.repeat(301)},{extra:true},{createdAt:Timestamp.fromMillis(0)}])
+  await assertFails(setDoc(doc(d,'users/alice/importedProgress/invalid'),{...progressData,...change}));
+ for(const ref of [marker,progress]) {
+  const deletion=writeBatch(d);deletion.delete(ref);await assertFails(deletion.commit());
+  for(const other of [env.unauthenticatedContext().firestore(),env.authenticatedContext('bob').firestore()]) {
+   await assertFails(getDoc(doc(other,ref.path)));
+   await assertFails(setDoc(doc(other,ref.path),ref===marker?markerData:progressData));
+  }
+ }
+});
 test('owner can create and list notebook notes but other users cannot',async()=>{const ref=doc(db(),'users/alice/notebookNotes/n1');await assertSucceeds(setDoc(ref,data()));await assertSucceeds(getDocs(collection(db(),'users/alice/notebookNotes')));await assertFails(getDoc(doc(env.authenticatedContext('bob').firestore(),ref.path)));await assertFails(getDocs(collection(env.unauthenticatedContext().firestore(),'users/alice/notebookNotes')))});
 test('updates require one revision and exact previous history in the same transaction',async()=>{const d=db(),ref=doc(d,'users/alice/notebookNotes/n1');await setDoc(ref,data());const old=(await getDoc(ref)).data();await assertFails(setDoc(ref,data({...old,revision:2,updatedAt:serverTimestamp(),lastMutationId:'mutation-2'})));const batch=writeBatch(d);batch.set(doc(d,'users/alice/noteHistory/n1/versions/1'),old);batch.set(ref,data({...old,revision:2,lastMutationId:'mutation-2',updatedAt:serverTimestamp()}));await assertSucceeds(batch.commit());await assertFails(setDoc(ref,data({...old,revision:7,updatedAt:serverTimestamp()})))});
 test('rejects UTF-8 overflow, unknown fields, unsafe metadata, and forged timestamps',async()=>{for(const extra of [{text:'你'.repeat(204801)},{extra:true},{tags:[9]},{attachmentIds:['../bob']},{createdAt:Timestamp.fromMillis(0)},{schemaVersion:2},{revision:2}])await assertFails(setDoc(doc(db(),'users/alice/notebookNotes/n1'),data(extra)))});
@@ -47,4 +74,35 @@ test('vault modules permit OSAI progress and note links while rejecting OSCP mem
   await assertSucceeds(setDoc(doc(d,'users/alice/machines/'+id),target));
  }
  await assertFails(setDoc(doc(d,'users/alice/notebookNotes/outside'),data({workspace:'osai',machineId:'osai-vault-m23'})));
+});
+
+test('Automated Pentest seeds, notes and progress are private and isolated on create and update', async () => {
+ const d=db(), ids=['ap-govtech','ap-mapta','ap-xbow-intro','ap-strix','ap-shannon','ap-pentagi','ap-pentestgpt','ap-hexstrike','ap-xbow'];
+ const target={name:'study',platform:'Automated Pentest',os:'',tags:[],legacyKey:null,week:null,progress:'in-progress',workspace:'automated-pentest',revision:1,lastMutationId:'m',createdAt:serverTimestamp(),updatedAt:serverTimestamp()};
+ for (const id of ids) {
+  await assertSucceeds(setDoc(doc(d,'users/alice/notebookNotes/'+id),data({workspace:'automated-pentest',machineId:id})));
+  for (const workspace of ['oscp','osai']) {
+   await assertFails(setDoc(doc(d,'users/alice/machines/'+id),{...target,workspace}));
+   await assertFails(setDoc(doc(d,'users/alice/notebookNotes/wrong'),data({workspace,machineId:id})));
+  }
+  await assertSucceeds(setDoc(doc(d,'users/alice/machines/'+id),target));
+ }
+ for (const id of ['osai-module-foundations','seed-19b66b2bd2aeacc88f751652','ap-unknown']) await assertFails(setDoc(doc(d,'users/alice/notebookNotes/wrong'),data({workspace:'automated-pentest',machineId:id})));
+ const ref=doc(d,'users/alice/machines/ap-govtech'),old=(await getDoc(ref)).data();
+ for (const workspace of ['oscp','osai',null]) await assertFails(setDoc(ref,{...old,workspace,revision:2,lastMutationId:'next',updatedAt:serverTimestamp()}));
+ const removed={...old,revision:2,lastMutationId:'next',updatedAt:serverTimestamp()};delete removed.workspace;await assertFails(setDoc(ref,removed));
+ await assertFails(setDoc(ref,{...old,progress:'invented',revision:2,lastMutationId:'next',updatedAt:serverTimestamp()}));
+ await assertSucceeds(setDoc(ref,{...old,progress:'completed',revision:2,lastMutationId:'next',updatedAt:serverTimestamp()}));
+ for (const client of [env.unauthenticatedContext().firestore(),env.authenticatedContext('bob').firestore()]) {
+  await assertFails(getDoc(doc(client,ref.path)));
+  await assertFails(setDoc(doc(client,'users/alice/machines/ap-mapta'),target));
+  await assertFails(getDoc(doc(client,'users/alice/notebookNotes/ap-govtech')));
+  await assertFails(setDoc(doc(client,'users/alice/notebookNotes/private'),data({workspace:'automated-pentest'})));
+ }
+ const note=doc(d,'users/alice/notebookNotes/ap-govtech'),prior=(await getDoc(note)).data();
+ for (const change of [{workspace:'oscp'},{machineId:'osai-module-foundations'},{workspace:undefined}]) {
+  const b=writeBatch(d),next={...prior,...change,revision:2,lastMutationId:'next',updatedAt:serverTimestamp()};
+  if(next.workspace===undefined)delete next.workspace;
+  b.set(doc(d,'users/alice/noteHistory/ap-govtech/versions/1'),prior);b.set(note,next);await assertFails(b.commit());
+ }
 });

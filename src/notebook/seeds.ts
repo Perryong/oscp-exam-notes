@@ -1,3 +1,4 @@
+import { pentestSeedResources } from "../pentest/seeds";
 import { osaiSeedMachines } from "../osai/seeds";
 import ladder from "../reference/ladder.json";
 import ids from "../reference/machine-ids.json";
@@ -33,10 +34,16 @@ export const seedMachines: Saved<MachineContent>[] = Array.from(
   ).values(),
 );
 
+export const allSeedResources = [
+  ...seedMachines,
+  ...osaiSeedMachines,
+  ...pentestSeedResources,
+];
+
 export function withSeedMachines(machines: Saved<MachineContent>[]) {
   return [
     ...new Map(
-      [...seedMachines, ...osaiSeedMachines, ...machines].map((m) => [m.id, m]),
+      [...allSeedResources, ...machines].map((m) => [m.id, m]),
     ).values(),
   ];
 }
