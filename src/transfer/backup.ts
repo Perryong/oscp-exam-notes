@@ -1,5 +1,4 @@
 import { workspaceOf, sameWorkspace } from "../workspaces/model";
-import { osaiSeedMachines } from "../osai/seeds";
 import { collection, getDocsFromServer } from "firebase/firestore";
 import type {
   NotebookBundle,
@@ -29,7 +28,7 @@ import {
   listConflicts,
   storeRecovery,
 } from "../persistence/local";
-import { seedMachines } from "../notebook/seeds";
+import { allSeedResources } from "../notebook/seeds";
 import { digest } from "./legacy";
 function object(value: unknown): value is Record<string, unknown> {
   return !!value && typeof value === "object" && !Array.isArray(value);
@@ -71,9 +70,7 @@ export function validateBundle(input: unknown): NotebookBundle {
     else throw Error("Invalid recovery kind");
   }
   for (const m of b.machines) {
-    const seed = [...seedMachines, ...osaiSeedMachines].find(
-      (s) => s.id === m.id,
-    );
+    const seed = allSeedResources.find((s) => s.id === m.id);
     if (seed && !sameWorkspace(seed.content, m.content))
       throw Error("Seed workspace mismatch");
   }
@@ -211,9 +208,7 @@ export function remapBundle(
 ) {
   const seedIds = new Set(
     input.machines
-      .filter((m) =>
-        [...seedMachines, ...osaiSeedMachines].some((s) => s.id === m.id),
-      )
+      .filter((m) => allSeedResources.some((s) => s.id === m.id))
       .map((m) => m.id),
   );
   const map =
@@ -240,14 +235,13 @@ export function remapBundle(
       for (const mark of node.marks || [])
         if (
           mark.type === "link" &&
-          /^\/(osai\/)?notes\//.test(mark.attrs?.href || "")
+          /^\/((osai|automated-pentest)\/)?notes\//.test(mark.attrs?.href || "")
         ) {
           const href = mark.attrs!.href as string;
           const id = href.split("/").pop()!;
           if (map[id])
             mark.attrs!.href =
-              (href.startsWith("/osai/") ? "/osai/notes/" : "/notes/") +
-              map[id];
+              href.slice(0, href.lastIndexOf("/") + 1) + map[id];
         }
       for (const child of node.content || []) walk(child);
     }
@@ -367,9 +361,7 @@ export async function collectBackup(uid: string) {
       .filter(Boolean),
   )) {
     if (!machines.some((m) => m.id === id)) {
-      const seed = [...seedMachines, ...osaiSeedMachines].find(
-        (m) => m.id === id,
-      );
+      const seed = allSeedResources.find((m) => m.id === id);
       if (seed) machines.push(seed);
       else
         report.failed.push({
@@ -481,7 +473,7 @@ export async function importBackup(
   for (const m of bundle.machines)
     await record(m.id, async () => {
       // Reuse existing curriculum state without overwriting the owner's progress.
-      if ([...seedMachines, ...osaiSeedMachines].some((s) => s.id === m.id)) {
+      if (allSeedResources.some((s) => s.id === m.id)) {
         const existing = await readEntity<MachineContent>(uid, "machine", m.id);
         if (existing) {
           if (!sameWorkspace(existing.content, m.content))

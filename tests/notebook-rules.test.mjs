@@ -48,3 +48,34 @@ test('vault modules permit OSAI progress and note links while rejecting OSCP mem
  }
  await assertFails(setDoc(doc(d,'users/alice/notebookNotes/outside'),data({workspace:'osai',machineId:'osai-vault-m23'})));
 });
+
+test('Automated Pentest seeds, notes and progress are private and isolated on create and update', async () => {
+ const d=db(), ids=['ap-govtech','ap-mapta','ap-xbow-intro','ap-strix','ap-shannon','ap-pentagi','ap-pentestgpt','ap-hexstrike','ap-xbow'];
+ const target={name:'study',platform:'Automated Pentest',os:'',tags:[],legacyKey:null,week:null,progress:'in-progress',workspace:'automated-pentest',revision:1,lastMutationId:'m',createdAt:serverTimestamp(),updatedAt:serverTimestamp()};
+ for (const id of ids) {
+  await assertSucceeds(setDoc(doc(d,'users/alice/notebookNotes/'+id),data({workspace:'automated-pentest',machineId:id})));
+  for (const workspace of ['oscp','osai']) {
+   await assertFails(setDoc(doc(d,'users/alice/machines/'+id),{...target,workspace}));
+   await assertFails(setDoc(doc(d,'users/alice/notebookNotes/wrong'),data({workspace,machineId:id})));
+  }
+  await assertSucceeds(setDoc(doc(d,'users/alice/machines/'+id),target));
+ }
+ for (const id of ['osai-module-foundations','seed-19b66b2bd2aeacc88f751652','ap-unknown']) await assertFails(setDoc(doc(d,'users/alice/notebookNotes/wrong'),data({workspace:'automated-pentest',machineId:id})));
+ const ref=doc(d,'users/alice/machines/ap-govtech'),old=(await getDoc(ref)).data();
+ for (const workspace of ['oscp','osai',null]) await assertFails(setDoc(ref,{...old,workspace,revision:2,lastMutationId:'next',updatedAt:serverTimestamp()}));
+ const removed={...old,revision:2,lastMutationId:'next',updatedAt:serverTimestamp()};delete removed.workspace;await assertFails(setDoc(ref,removed));
+ await assertFails(setDoc(ref,{...old,progress:'invented',revision:2,lastMutationId:'next',updatedAt:serverTimestamp()}));
+ await assertSucceeds(setDoc(ref,{...old,progress:'completed',revision:2,lastMutationId:'next',updatedAt:serverTimestamp()}));
+ for (const client of [env.unauthenticatedContext().firestore(),env.authenticatedContext('bob').firestore()]) {
+  await assertFails(getDoc(doc(client,ref.path)));
+  await assertFails(setDoc(doc(client,'users/alice/machines/ap-mapta'),target));
+  await assertFails(getDoc(doc(client,'users/alice/notebookNotes/ap-govtech')));
+  await assertFails(setDoc(doc(client,'users/alice/notebookNotes/private'),data({workspace:'automated-pentest'})));
+ }
+ const note=doc(d,'users/alice/notebookNotes/ap-govtech'),prior=(await getDoc(note)).data();
+ for (const change of [{workspace:'oscp'},{machineId:'osai-module-foundations'},{workspace:undefined}]) {
+  const b=writeBatch(d),next={...prior,...change,revision:2,lastMutationId:'next',updatedAt:serverTimestamp()};
+  if(next.workspace===undefined)delete next.workspace;
+  b.set(doc(d,'users/alice/noteHistory/ap-govtech/versions/1'),prior);b.set(note,next);await assertFails(b.commit());
+ }
+});

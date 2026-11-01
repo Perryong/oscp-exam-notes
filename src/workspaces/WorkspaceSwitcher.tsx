@@ -38,6 +38,7 @@ export default function WorkspaceSwitcher({
         >
           <option value="oscp">OSCP</option>
           <option value="osai">OSAI</option>
+          <option value="automated-pentest">Automated Pentest</option>
         </select>
       </label>
       {error && <p role="alert">{error}</p>}

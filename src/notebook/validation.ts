@@ -31,7 +31,7 @@ function fields(x: unknown, keys: string[]): Record<string, unknown> {
     throw Error("Invalid fields");
   if (
     Object.hasOwn(x, "workspace") &&
-    !["oscp", "osai"].includes(
+    !["oscp", "osai", "automated-pentest"].includes(
       (x as Record<string, unknown>).workspace as string,
     )
   )

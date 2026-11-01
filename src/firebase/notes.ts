@@ -1,6 +1,5 @@
 import { sameWorkspace, workspaceOf } from "../workspaces/model";
-import { seedMachines } from "../notebook/seeds";
-import { osaiSeedMachines } from "../osai/seeds";
+import { allSeedResources } from "../notebook/seeds";
 import {
   doc,
   collection,
@@ -89,9 +88,7 @@ export async function commitEntity<T extends NoteContent | MachineContent>(
     }
     if (old && !sameWorkspace(old.content, draft.content))
       throw Error("Cannot change workspace");
-    const reserved = [...seedMachines, ...osaiSeedMachines].find(
-      (m) => m.id === draft.id,
-    );
+    const reserved = allSeedResources.find((m) => m.id === draft.id);
     if (
       kind === "machine" &&
       reserved &&
@@ -104,8 +101,7 @@ export async function commitEntity<T extends NoteContent | MachineContent>(
         const target = await tx.get(doc(db, "users", uid, "machines", id));
         const content = target.exists()
           ? target.data()
-          : [...seedMachines, ...osaiSeedMachines].find((m) => m.id === id)
-              ?.content;
+          : allSeedResources.find((m) => m.id === id)?.content;
         if (!content || workspaceOf(content) !== workspaceOf(draft.content))
           throw Error(
             "Linked target is unavailable or belongs to another workspace",

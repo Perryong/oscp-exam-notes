@@ -1,3 +1,5 @@
+import { workspacePath } from "../workspaces/routes";
+import { workspaceOf } from "../workspaces/model";
 import type { JSONContent } from "@tiptap/core";
 import { zipSync, strToU8 } from "fflate";
 import { collectBackup } from "./backup";
@@ -103,7 +105,7 @@ export async function exportMarkdown(uid: string) {
     images: Record<string, string> = {},
     links = Object.fromEntries(
       bundle.notes.map((n) => [
-        (n.content.workspace === "osai" ? "/osai/notes/" : "/notes/") + n.id,
+        workspacePath(workspaceOf(n.content), "notes", n.id),
         "note-" + n.id + ".md",
       ]),
     );

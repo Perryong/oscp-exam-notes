@@ -1,3 +1,5 @@
+import { resourceById } from "../pentest/catalog";
+import { pentestNoteInitial } from "../pentest/templates";
 import { createMachineTemplate } from "../editor/templates";
 import { createOsaiLabTemplate } from "../osai/templates";
 import { encodeEditor } from "../editor/schema";
@@ -31,21 +33,26 @@ export default function NotebookView({
     [error, setError] = useState(""),
     [creating, setCreating] = useState(false),
     navigate = useNavigate();
-  async function newNote(structured = false) {
+  async function newNote(structured: boolean | "research" | "project" = false) {
     if (creating) return;
     setCreating(true);
     setError("");
     try {
       const initial = structured
-        ? {
-            title: workspace === "osai" ? "AI-300 lab study" : "OSCP box study",
-            ...encodeEditor(
-              workspace === "osai"
-                ? createOsaiLabTemplate()
-                : createMachineTemplate(),
-            ),
-            tags: [workspace === "osai" ? "ai-300-lab" : "oscp-box"],
-          }
+        ? workspace === "automated-pentest"
+          ? pentestNoteInitial(
+              structured === "research" ? "research" : "project",
+            )
+          : {
+              title:
+                workspace === "osai" ? "AI-300 lab study" : "OSCP box study",
+              ...encodeEditor(
+                workspace === "osai"
+                  ? createOsaiLabTemplate()
+                  : createMachineTemplate(),
+              ),
+              tags: [workspace === "osai" ? "ai-300-lab" : "oscp-box"],
+            }
         : undefined;
       const id = await createNote(uid, null, workspace, initial);
       navigate(workspacePath(workspace, "notes", id));
@@ -69,9 +76,23 @@ export default function NotebookView({
         <button disabled={creating} onClick={() => void newNote()}>
           New note
         </button>
-        <button disabled={creating} onClick={() => void newNote(true)}>
-          {workspace === "osai" ? "New AI-300 lab note" : "New OSCP box note"}
-        </button>
+        {workspace === "automated-pentest" ? (
+          <>
+            <button
+              disabled={creating}
+              onClick={() => void newNote("research")}
+            >
+              New research study note
+            </button>
+            <button disabled={creating} onClick={() => void newNote("project")}>
+              New authorized-lab evaluation note
+            </button>
+          </>
+        ) : (
+          <button disabled={creating} onClick={() => void newNote(true)}>
+            {workspace === "osai" ? "New AI-300 lab note" : "New OSCP box note"}
+          </button>
+        )}
         <Link to={workspacePath(workspace, "trash")}>Trash</Link>
       </div>
       <p className="quiet">
@@ -190,6 +211,19 @@ export function NotePage({
       }}
     >
       <Link to={workspacePath(workspace, "notes")}>← All notes</Link>
+      {workspace === "automated-pentest" && (
+        <p>
+          <Link
+            to={
+              value.content.machineId && resourceById(value.content.machineId)
+                ? "/automated-pentest/library/" + value.content.machineId
+                : "/automated-pentest/study-plan"
+            }
+          >
+            ← Return to study
+          </Link>
+        </p>
+      )}
       <div className="row">
         <button
           onClick={() =>

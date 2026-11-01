@@ -4,13 +4,12 @@ import {
   type WorkspaceId,
 } from "../workspaces/model";
 import { workspacePath } from "../workspaces/routes";
-import { osaiSeedMachines } from "../osai/seeds";
 import { machineWalkthrough } from "../walkthroughs/catalog";
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { validateMachine } from "./validation";
 import ladder from "../reference/ladder.json";
-import { seedMachines } from "./seeds";
+import { allSeedResources } from "./seeds";
 import { useNotebook } from "./NotebookContext";
 import { combined, editDraft, createNote } from "./repository";
 import ConflictPanel from "../persistence/ConflictPanel";
@@ -24,7 +23,7 @@ export async function changeMachine(
 ) {
   const value =
     (await combined<MachineContent>(uid, "machine")).find((m) => m.id === id) ||
-    [...seedMachines, ...osaiSeedMachines].find((m) => m.id === id);
+    allSeedResources.find((m) => m.id === id);
   if (!value) throw Error("Machine unavailable");
   const draft = await editDraft(uid, "machine", value);
   const content = {
@@ -95,7 +94,7 @@ export default function MachineView({
   }, [uid]);
   const all = [
     ...new Map(
-      [...seedMachines, ...osaiSeedMachines, ...machines].map((m) => [m.id, m]),
+      [...allSeedResources, ...machines].map((m) => [m.id, m]),
     ).values(),
   ];
   async function add() {
