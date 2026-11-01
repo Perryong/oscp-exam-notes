@@ -37,7 +37,7 @@ The first host emulator run passed rules/integration but failed one browser asse
 
 Coverage includes anonymous/public library access, all nine entries, search/filtering, source links, both templates, blank-note creation, reading progress across sessions, note sync/reload, offline edit recovery, workspace isolation, legacy content preservation, seed restore idempotency, internal Markdown links, history/recovery and adversarial rules checks. Mobile checks cover project-to-note creation, editable command blocks, return-to-study navigation, recent notes and trash. Existing OSCP/AI-300 browser and unit coverage also passed.
 
-All account/note activity used `demo-oscp-notebook` Auth/Firestore emulators and synthetic accounts. No production data was accessed or changed. Resume runtime: Node v26.13.0 and Java 21.0.12.1. No production deployment was performed.
+The implementation and resume validation above used `demo-oscp-notebook` Auth/Firestore emulators and synthetic accounts. Resume runtime: Node v26.13.0 and Java 21.0.12.1. The later explicitly authorized production rollout, preservation of live import rules, 16-rule/18-integration retest, live browser checks and original-data comparison are recorded in [the deployment record](../../deployment.md#automated-pentest-production-deployment-2026-11-02).
 
 ## Screenshots
 
