@@ -5,6 +5,33 @@ import {doc,setDoc,getDoc,getDocs,collection,writeBatch,serverTimestamp,Timestam
 let env;before(async()=>{env=await initializeTestEnvironment({projectId:'demo-oscp-notebook',firestore:{rules:readFileSync('firestore.rules','utf8')}})});beforeEach(()=>env.clearFirestore());after(()=>env.cleanup());
 const db=()=>env.authenticatedContext('alice').firestore();
 const data=(extra={})=>({title:'Notes',contentJson:'{"type":"doc","content":[{"type":"paragraph"}]}',text:'',tags:[],machineId:null,week:null,attachmentIds:[],schemaVersion:1,deletedAt:null,sourceHtml:null,revision:1,lastMutationId:'mutation-1',createdAt:serverTimestamp(),updatedAt:serverTimestamp(),...extra});
+test('preserves live owner-only immutable import markers and progress', async () => {
+ const d=db(), marker=doc(d,'users/alice/migrationItems/import-1');
+ const markerData={noteId:'import-1',createdAt:serverTimestamp()};
+ await assertFails(setDoc(marker,markerData));
+ const batch=writeBatch(d);
+ batch.set(doc(d,'users/alice/notebookNotes/import-1'),data({lastMutationId:'import-1'}));
+ batch.set(marker,markerData);
+ await assertSucceeds(batch.commit());
+ await assertSucceeds(getDoc(marker));
+ await assertSucceeds(getDocs(collection(d,'users/alice/migrationItems')));
+ await assertFails(setDoc(marker,markerData));
+ const progress=doc(d,'users/alice/importedProgress/source-1');
+ const progressData={completed:true,sourceKey:'legacy-source',createdAt:serverTimestamp()};
+ await assertSucceeds(setDoc(progress,progressData));
+ await assertSucceeds(getDoc(progress));
+ await assertSucceeds(getDocs(collection(d,'users/alice/importedProgress')));
+ await assertFails(setDoc(progress,progressData));
+ for(const change of [{completed:false},{sourceKey:'x'.repeat(301)},{extra:true},{createdAt:Timestamp.fromMillis(0)}])
+  await assertFails(setDoc(doc(d,'users/alice/importedProgress/invalid'),{...progressData,...change}));
+ for(const ref of [marker,progress]) {
+  const deletion=writeBatch(d);deletion.delete(ref);await assertFails(deletion.commit());
+  for(const other of [env.unauthenticatedContext().firestore(),env.authenticatedContext('bob').firestore()]) {
+   await assertFails(getDoc(doc(other,ref.path)));
+   await assertFails(setDoc(doc(other,ref.path),ref===marker?markerData:progressData));
+  }
+ }
+});
 test('owner can create and list notebook notes but other users cannot',async()=>{const ref=doc(db(),'users/alice/notebookNotes/n1');await assertSucceeds(setDoc(ref,data()));await assertSucceeds(getDocs(collection(db(),'users/alice/notebookNotes')));await assertFails(getDoc(doc(env.authenticatedContext('bob').firestore(),ref.path)));await assertFails(getDocs(collection(env.unauthenticatedContext().firestore(),'users/alice/notebookNotes')))});
 test('updates require one revision and exact previous history in the same transaction',async()=>{const d=db(),ref=doc(d,'users/alice/notebookNotes/n1');await setDoc(ref,data());const old=(await getDoc(ref)).data();await assertFails(setDoc(ref,data({...old,revision:2,updatedAt:serverTimestamp(),lastMutationId:'mutation-2'})));const batch=writeBatch(d);batch.set(doc(d,'users/alice/noteHistory/n1/versions/1'),old);batch.set(ref,data({...old,revision:2,lastMutationId:'mutation-2',updatedAt:serverTimestamp()}));await assertSucceeds(batch.commit());await assertFails(setDoc(ref,data({...old,revision:7,updatedAt:serverTimestamp()})))});
 test('rejects UTF-8 overflow, unknown fields, unsafe metadata, and forged timestamps',async()=>{for(const extra of [{text:'你'.repeat(204801)},{extra:true},{tags:[9]},{attachmentIds:['../bob']},{createdAt:Timestamp.fromMillis(0)},{schemaVersion:2},{revision:2}])await assertFails(setDoc(doc(db(),'users/alice/notebookNotes/n1'),data(extra)))});

@@ -208,6 +208,31 @@ service cloud.firestore {
       allow delete: if isOwner(uid);
     }
 
+    // Import markers and progress are owner-only and immutable. A marker must
+    // accompany the first revision of its matching destination in one commit.
+    function validImportMarker(d, id) {
+      return d.keys().hasAll(['noteId','createdAt']) && d.keys().hasOnly(['noteId','createdAt']) &&
+        d.noteId == id && d.createdAt == request.time;
+    }
+    function validImportedProgress(d) {
+      return d.keys().hasAll(['completed','sourceKey','createdAt']) && d.keys().hasOnly(['completed','sourceKey','createdAt']) &&
+        d.completed == true && bounded(d.sourceKey,300) && d.createdAt == request.time;
+    }
+    match /users/{userId}/migrationItems/{id} {
+      allow read: if isOwner(userId);
+      allow create: if isOwner(userId) && pathId(id) && validImportMarker(request.resource.data, id) &&
+        !exists(/databases/$(database)/documents/users/$(userId)/notebookNotes/$(id)) &&
+        getAfter(/databases/$(database)/documents/users/$(userId)/notebookNotes/$(id)).data.revision == 1 &&
+        getAfter(/databases/$(database)/documents/users/$(userId)/notebookNotes/$(id)).data.lastMutationId == id;
+      allow update, delete: if false;
+    }
+    match /users/{userId}/importedProgress/{id} {
+      allow read: if isOwner(userId);
+      allow create: if isOwner(userId) && pathId(id) && validImportedProgress(request.resource.data);
+      allow update, delete: if false;
+    }
+
+
     // Everything else is denied by default.
   }
 }
