@@ -17,13 +17,14 @@ test("downloaded notebook and edited draft survive an offline reload", async ({
   await page.getByLabel("Password", { exact: true }).fill(password);
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
   await expect(page.getByText(`Signed in as ${email}`)).toBeVisible();
-  await page.getByRole("link", { name: "All notes", exact: true }).click();
+  await page.getByRole("link", { name: "Notes", exact: true }).click();
   await page.getByRole("button", { name: "New note", exact: true }).click();
   await page.getByLabel("Note title").fill("Offline commands");
   await expect(page.getByText("Synced", { exact: true })).toBeVisible({
     timeout: 15000,
   });
   const url = page.url();
+  await page.getByText("More", { exact: true }).click();
   await page.getByRole("link", { name: "Settings", exact: true }).click();
   await page
     .getByRole("button", { name: "Download for offline", exact: true })

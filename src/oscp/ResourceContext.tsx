@@ -9,6 +9,9 @@ export default function ResourceContext({ uid }: { uid?: string }) {
   if (
     location.pathname.startsWith("/osai") ||
     location.pathname === "/settings" ||
+    location.pathname === "/demo" ||
+    location.pathname === "/library" ||
+    location.pathname.startsWith("/notes") ||
     location.pathname === "/mindmap" ||
     location.pathname.startsWith("/topics") ||
     location.pathname.startsWith("/practice-tracks") ||

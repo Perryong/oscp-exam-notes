@@ -230,7 +230,7 @@ export default function NoteEditor({
     };
   }, [key]);
   return (
-    <section>
+    <section className="note-editor">
       <input
         className="note-title"
         aria-label="Note title"
@@ -241,63 +241,75 @@ export default function NoteEditor({
           persist({ ...content.current, title: e.target.value });
         }}
       />
-      <input
-        aria-label="Tags"
-        disabled={recoveryOnly}
-        placeholder="Tags, separated by commas"
-        value={tags}
-        onChange={(e) => {
-          setTags(e.target.value);
-          persist({
-            ...content.current,
-            tags: [
-              ...new Set(
-                e.target.value
-                  .split(",")
-                  .map((t) => t.trim())
-                  .filter(Boolean),
-              ),
-            ],
-          });
-        }}
-      />
-      <div className="row">
+      <div role="status" className="status editor-save-status">
+        {status}
+      </div>
+      <details className="note-details">
+        <summary>Details</summary>
         <label>
-          Machine
-          <select
-            aria-label="Linked machine"
-            disabled={recoveryOnly}
-            defaultValue={draft.content.machineId || ""}
-            onChange={(e) =>
-              persist({ ...content.current, machineId: e.target.value || null })
-            }
-          >
-            <option value="">General note</option>
-            {machines.map((m) => (
-              <option key={m.id} value={m.id}>
-                {m.content.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Week
+          Tags
           <input
-            aria-label="Study week"
+            aria-label="Tags"
             disabled={recoveryOnly}
-            type="number"
-            min="1"
-            max="500"
-            defaultValue={draft.content.week || ""}
-            onChange={(e) =>
+            placeholder="Tags, separated by commas"
+            value={tags}
+            onChange={(e) => {
+              setTags(e.target.value);
               persist({
                 ...content.current,
-                week: e.target.value ? Number(e.target.value) : null,
-              })
-            }
+                tags: [
+                  ...new Set(
+                    e.target.value
+                      .split(",")
+                      .map((t) => t.trim())
+                      .filter(Boolean),
+                  ),
+                ],
+              });
+            }}
           />
         </label>
-      </div>
+        <div className="row">
+          <label>
+            Machine
+            <select
+              aria-label="Linked machine"
+              disabled={recoveryOnly}
+              defaultValue={draft.content.machineId || ""}
+              onChange={(e) =>
+                persist({
+                  ...content.current,
+                  machineId: e.target.value || null,
+                })
+              }
+            >
+              <option value="">General note</option>
+              {machines.map((m) => (
+                <option key={m.id} value={m.id}>
+                  {m.content.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Week
+            <input
+              aria-label="Study week"
+              disabled={recoveryOnly}
+              type="number"
+              min="1"
+              max="500"
+              defaultValue={draft.content.week || ""}
+              onChange={(e) =>
+                persist({
+                  ...content.current,
+                  week: e.target.value ? Number(e.target.value) : null,
+                })
+              }
+            />
+          </label>
+        </div>
+      </details>
       <div className="toolbar">
         {[
           ["Bold", () => editor?.chain().focus().toggleBold().run()],
@@ -344,7 +356,7 @@ export default function NoteEditor({
             {String(label)}
           </button>
         ))}
-        <label className="quiet">
+        <label className="screenshot-control">
           Screenshot
           <input
             aria-label="Add screenshot"
@@ -370,9 +382,6 @@ export default function NoteEditor({
           <EditorContent editor={editor} />
         </div>
       </ImageLoader.Provider>
-      <div role="status" className="status">
-        {status}
-      </div>
       {error && (
         <div role="alert" className="error">
           {error}

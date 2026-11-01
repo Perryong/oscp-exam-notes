@@ -120,21 +120,21 @@ label select {
   color: #71868b;
   margin: 44px 12px 16px;
 }
-nav {
+.sidebar nav {
   display: grid;
   gap: 6px;
 }
-nav a {
+.sidebar nav a {
   color: #acbdc5;
   padding: 12px 16px;
   border-radius: 7px;
   font-size: 14px;
 }
-nav a.active {
+.sidebar nav a.active {
   background: #24483f;
   color: #bdf1da;
 }
-nav a:hover {
+.sidebar nav a:hover {
   background: #1e333a;
   text-decoration: none;
 }
@@ -433,6 +433,7 @@ pre {
 .toolbar {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 4px;
   margin: 12px 0;
 }
@@ -501,13 +502,13 @@ pre {
   .sidebar-foot {
     display: none;
   }
-  nav {
+  .sidebar nav {
     display: flex;
     overflow-x: auto;
     gap: 3px;
     margin-top: 15px;
   }
-  nav a {
+  .sidebar nav a {
     white-space: nowrap;
     font-size: 12px;
     padding: 10px;
@@ -932,4 +933,209 @@ pre {
     position: static;
     max-height: 16rem;
   }
+}
+
+/* Compact workspace navigation and writing surface. */
+.sidebar {
+  overflow-y: auto;
+}
+.workspace-navigation {
+  margin: 12px 0 24px;
+}
+.more-navigation {
+  margin-top: 12px;
+}
+.more-navigation > summary {
+  cursor: pointer;
+  padding: 12px 16px;
+  color: #c9d6dc;
+}
+.more-navigation[open] > summary {
+  color: #bdf1da;
+}
+.note-editor .editor-save-status {
+  margin: 6px 0;
+  font-size: 12px;
+}
+.note-details {
+  border-bottom: 1px solid var(--border);
+  padding: 4px 0;
+}
+.note-details > summary {
+  cursor: pointer;
+  padding: 10px 0;
+  color: var(--muted);
+}
+.note-details .row > label {
+  flex: 1;
+  min-width: 120px;
+}
+.note-editor .toolbar button {
+  min-height: 40px;
+  padding: 8px 10px;
+}
+.toolbar .screenshot-control {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  min-height: 40px;
+  margin: 0;
+  font-size: 12px;
+  cursor: pointer;
+  overflow: hidden;
+}
+.screenshot-control input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.screenshot-control:focus-within {
+  outline: 3px solid #89c7b7;
+  outline-offset: 3px;
+}
+.library-collections,
+.study-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.library-collections article,
+.study-actions > div {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  padding: 20px;
+}
+.library-collections h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+.study-actions small {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.study-actions a,
+.study-actions button {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 760px) {
+  .sidebar {
+    display: grid;
+    grid-template-columns: 1fr 110px;
+    gap: 10px;
+    padding: 12px 16px;
+    overflow: visible;
+  }
+  .sidebar .brand {
+    align-self: center;
+    font-size: 12px;
+    gap: 7px;
+  }
+  .sidebar .brand small {
+    display: none;
+  }
+  .sidebar .brand-icon {
+    font-size: 20px;
+  }
+  .sidebar .workspace-switcher {
+    margin: 0;
+  }
+  .sidebar .workspace-switcher label {
+    font-size: 10px;
+    gap: 2px;
+    margin: 0;
+  }
+  .sidebar .workspace-switcher select {
+    margin-top: 2px;
+    padding: 8px;
+    min-height: 40px;
+  }
+  .workspace-navigation {
+    grid-column: 1 / -1;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px;
+    align-items: start;
+  }
+  .sidebar nav.primary-nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    overflow: visible;
+    margin: 0;
+    gap: 2px;
+  }
+  .sidebar nav.primary-nav a {
+    text-align: center;
+    padding: 13px 5px;
+    font-size: 12px;
+  }
+  .more-navigation {
+    position: relative;
+    margin: 0;
+  }
+  .more-navigation > summary {
+    padding: 13px 6px;
+    font-size: 12px;
+    min-height: 44px;
+  }
+  .more-navigation nav {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 220px;
+    z-index: 20;
+    display: grid;
+    margin: 4px 0 0;
+    padding: 8px;
+    background: #111d24;
+    border: 1px solid #46615d;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px #0003;
+  }
+  .sidebar .more-navigation nav a {
+    white-space: normal;
+    min-height: 44px;
+    padding: 12px;
+  }
+  .topbar {
+    padding: 8px 18px;
+  }
+  .note-editor .toolbar button,
+  .toolbar .screenshot-control {
+    min-height: 44px;
+  }
+  .study-actions {
+    gap: 8px;
+    margin: 16px 0;
+  }
+  .study-actions > div {
+    padding: 14px;
+  }
+}
+.module-details > summary,
+.library-about > summary {
+  cursor: pointer;
+  padding: 12px 0;
+}
+.module-progress {
+  font-size: 13px;
+  color: var(--muted);
+}
+.module-details .quiet {
+  max-width: 44ch;
+  font-size: 12px;
+}
+.walkthrough-summary {
+  font-size: 14px;
+  color: var(--muted);
 }

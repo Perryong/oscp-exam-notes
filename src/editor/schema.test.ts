@@ -44,18 +44,29 @@ test("rejects unknown nodes and executable links", () => {
     ),
   ).toThrow();
 });
-test("machine template has five clear sections", () => {
-  expect(
-    createMachineTemplate()
-      .content?.filter((n) => n.type === "heading")
-      .map((n) => n.content?.[0].text),
-  ).toEqual([
+test("OSCP box template captures objectives, commands, evidence and findings", () => {
+  const template = createMachineTemplate();
+  const encoded = encodeEditor(template);
+  const headings = template.content
+    ?.filter((n) => n.type === "heading")
+    .map((n) => n.content?.[0].text);
+  for (const heading of [
+    "Objectives and authorized scope",
     "Enumeration",
     "Initial access",
     "Privilege escalation",
+    "Commands and results",
     "Evidence",
+    "Findings",
     "Lessons learned",
-  ]);
+    "References and next steps",
+  ]) {
+    expect(headings).toContain(heading);
+  }
+  expect(template.content?.some((n) => n.type === "codeBlock")).toBe(true);
+  expect(encoded.text).toContain("Expected result");
+  expect(encoded.text).toContain("Evidence ID");
+  expect(() => decodeEditor(encoded.contentJson)).not.toThrow();
 });
 
 test("pasted unsupported URI protocols remain readable text that can be saved", async () => {
