@@ -101,3 +101,13 @@ Live checks passed in a fresh anonymous Chrome context at 390×844: four primary
 The release changes no resource data, persistence code, notebook schema, Firebase configuration, Firestore rules or indexes. No production note documents were written, migrated or deleted. Private-account creation/sync/conflict/offline behavior was verified in emulators during implementation; it was not repeated against the owner's live notes. Fresh pre-deploy tests passed: 113 unit tests and 10 importer tests. Existing repository-wide formatting warnings remain confined to three unchanged files.
 
 Existing installed clients retain the app's normal **Update after saving** prompt and unsaved-edit guard. This deployment did not push or merge the Git branch.
+
+## Structured study templates production deployment (2026-11-01)
+
+Explicitly authorized after local implementation and review. Source commit: `3860fea`. Vercel deployment: `dpl_8h7DyySHiDWnsxk5HqEeUxJaQyba`, status READY, promoted to https://oscp-exam-notes.vercel.app. Previous deployment: `dpl_75Xb3Stp6wVkzaFbCctiwhk6FP2b`.
+
+A clean archive of committed source was built with the existing production environment. Local environment files, old build artifacts and the unrelated machine-guide draft were excluded. Vercel typecheck, Vite build and PWA generation passed; the staged production bundle contained both template creation actions and required sections before promotion.
+
+Live authenticated checks used the owner's existing Chrome session and the normal Update after saving flow. Created one clearly labelled test note with New OSCP box note and one with New AI-300 lab note. Verified all 10 OSCP headings and all 13 AI-300 headings, with one command/prompt code block each. Renamed each test note, waited for Synced, reloaded and confirmed that the title and complete rendered template body were retained. The note lists contained exactly one new note per workspace; all 14 pre-existing OSCP note links and summaries matched the pre-test snapshot. AI-300 had no existing note entries. The two test notes remain available for inspection.
+
+No existing note was edited or deleted, and no migration, Firebase settings, rules or index changes were made. Resource datasets, repository/storage code and schemas remain unchanged. Live Bashed JSON and Hacker-DOCS catalog responses matched repository bytes. Existing credentials were reused; this was not a fresh-password or separate-device test. No Git branch was pushed or merged.
