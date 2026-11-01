@@ -1,3 +1,6 @@
+import { createMachineTemplate } from "../editor/templates";
+import { createOsaiLabTemplate } from "../osai/templates";
+import { encodeEditor } from "../editor/schema";
 import { workspaceOf, type WorkspaceId } from "../workspaces/model";
 import { workspacePath } from "../workspaces/routes";
 import { useEffect, useState, useRef } from "react";
@@ -26,7 +29,32 @@ export default function NotebookView({
     machines = all.machines.filter((m) => workspaceOf(m.content) === workspace),
     [query, setQuery] = useState(""),
     [error, setError] = useState(""),
+    [creating, setCreating] = useState(false),
     navigate = useNavigate();
+  async function newNote(structured = false) {
+    if (creating) return;
+    setCreating(true);
+    setError("");
+    try {
+      const initial = structured
+        ? {
+            title: workspace === "osai" ? "AI-300 lab study" : "OSCP box study",
+            ...encodeEditor(
+              workspace === "osai"
+                ? createOsaiLabTemplate()
+                : createMachineTemplate(),
+            ),
+            tags: [workspace === "osai" ? "ai-300-lab" : "oscp-box"],
+          }
+        : undefined;
+      const id = await createNote(uid, null, workspace, initial);
+      navigate(workspacePath(workspace, "notes", id));
+    } catch (e) {
+      setError(String(e));
+    } finally {
+      setCreating(false);
+    }
+  }
   return (
     <section className="page">
       <p className="eyebrow">YOUR PRIVATE NOTES</p>
@@ -38,17 +66,20 @@ export default function NotebookView({
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button
-          onClick={() =>
-            void createNote(uid, null, workspace)
-              .then((id) => navigate(workspacePath(workspace, "notes", id)))
-              .catch((e) => setError(String(e)))
-          }
-        >
+        <button disabled={creating} onClick={() => void newNote()}>
           New note
+        </button>
+        <button disabled={creating} onClick={() => void newNote(true)}>
+          {workspace === "osai" ? "New AI-300 lab note" : "New OSCP box note"}
         </button>
         <Link to={workspacePath(workspace, "trash")}>Trash</Link>
       </div>
+      <p className="quiet">
+        Start blank with New note, or use a study template for objectives,
+        commands, evidence, findings and lessons learned. Link a machine or lab
+        in Details.
+      </p>
+      {creating && <p role="status">Creating note…</p>}
       {topics && (
         <div className="tags">
           {[...new Set(notes.flatMap((n) => n.content.tags))].map((t) => (

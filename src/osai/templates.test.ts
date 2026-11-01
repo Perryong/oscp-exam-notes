@@ -20,8 +20,23 @@ test("OSAI lab template captures reproducible evidence and attributed source", (
     "Impact",
     "Mitigations",
     "References",
+    "Findings",
+    "Lessons learned",
   ])
     expect(encoded.text).toContain(title);
   expect(encoded.contentJson).toContain("https://example.com/lesson");
   expect(() => decodeEditor(encoded.contentJson)).not.toThrow();
+});
+
+test("AI lab template has editable experiment prompts and independent fresh documents", () => {
+  const one = createOsaiLabTemplate();
+  const two = createOsaiLabTemplate();
+  expect(one.content?.some((n) => n.type === "codeBlock")).toBe(true);
+  expect(encodeEditor(one).text).toContain("Evidence ID");
+  expect(encodeEditor(one).text).toContain("Success criterion");
+  one.content!.push({
+    type: "paragraph",
+    content: [{ type: "text", text: "My result" }],
+  });
+  expect(encodeEditor(two).text).not.toContain("My result");
 });
