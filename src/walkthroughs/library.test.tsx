@@ -44,7 +44,31 @@ test("updated-guides shortcut makes all 119 conceptual guides discoverable", asy
   await userEvent.click(
     screen.getByRole("button", { name: "Show 119 updated guides" }),
   );
+  expect(screen.getAllByRole("article")).toHaveLength(24);
+  while (screen.queryByRole("button", { name: "Show more walkthroughs" })) {
+    await userEvent.click(
+      screen.getByRole("button", { name: "Show more walkthroughs" }),
+    );
+  }
   expect(screen.getAllByRole("article")).toHaveLength(119);
   expect(screen.getByRole("link", { name: "Forest" })).toBeTruthy();
   expect(screen.queryByRole("link", { name: "Bashed" })).toBeNull();
+});
+
+test("search resets the visible batch without hiding matching resources", async () => {
+  render(
+    <MemoryRouter>
+      <WalkthroughLibrary />
+    </MemoryRouter>,
+  );
+  const user = userEvent.setup();
+  expect(screen.getAllByRole("article")).toHaveLength(24);
+  await user.click(
+    screen.getByRole("button", { name: "Show more walkthroughs" }),
+  );
+  expect(screen.getAllByRole("article")).toHaveLength(48);
+  await user.type(screen.getByLabelText("Search walkthroughs"), "Forest");
+  expect(screen.getByRole("link", { name: "Forest" })).toBeTruthy();
+  await user.clear(screen.getByLabelText("Search walkthroughs"));
+  expect(screen.getAllByRole("article")).toHaveLength(24);
 });

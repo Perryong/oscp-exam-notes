@@ -12,7 +12,7 @@ test("references remain public and account sign-in/sign-out is explicit", async 
   expect(created.ok()).toBeTruthy();
   await page.goto("/study-plan");
   await expect(
-    page.getByRole("heading", { name: "Study plan", exact: true }),
+    page.getByRole("heading", { name: "Today", exact: true }),
   ).toBeVisible();
   await page.goto("/settings");
   await expect(
@@ -22,6 +22,7 @@ test("references remain public and account sign-in/sign-out is explicit", async 
   await page.getByLabel("Password", { exact: true }).fill(password);
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
   await expect(page.getByText(`Signed in as ${email}`)).toBeVisible();
+  await page.getByText("More", { exact: true }).click();
   await page.getByRole("link", { name: "Settings", exact: true }).click();
   await expect(page.getByText(`Signed in as ${email}`)).toBeVisible();
   await page.getByRole("button", { name: "Sign out", exact: true }).click();

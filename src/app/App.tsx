@@ -1,4 +1,6 @@
-import { Fragment, lazy, Suspense } from "react";
+import WorkspaceNav from "./WorkspaceNav";
+import LibraryHome from "../reference/LibraryHome";
+import { lazy, Suspense } from "react";
 const LearningHome = lazy(() => import("../oscp/LearningHome"));
 const Mindmap = lazy(() => import("../oscp/Mindmap"));
 const PracticeTracks = lazy(() => import("../oscp/PracticeTracks"));
@@ -49,51 +51,7 @@ export default function App() {
             </span>
           </NavLink>
           <WorkspaceSwitcher workspace={workspace} />
-          <p className="nav-label">YOUR WORKSPACE</p>
-          <nav>
-            {(workspace === "osai"
-              ? [
-                  ["/osai/study-plan", "Study plan"],
-                  ["/osai/library/osai-vault", "OSAI Vault"],
-                  ["/osai/library/owasp-resources", "OWASP Resources"],
-                  ["/osai/labs", "Labs"],
-                  ["/osai/topics", "Topics"],
-                  ["/osai/notes", "All notes"],
-                  ["/osai/library", "Learning library"],
-                  ["/settings", "Settings"],
-                ]
-              : [
-                  ["/study-plan", "Study plan"],
-                  ["/mindmap", "Mindmap"],
-                  ["/topics", "Concepts"],
-                  ["/knowledge-vault", "Knowledge Vault"],
-                  ["/practice-tracks", "Practice tracks"],
-                  ["/machines", "Machines"],
-                  ["/notes", "All notes"],
-                  ["/cheat-sheet", "Cheat sheet"],
-                  ["/walkthroughs", "Walkthroughs"],
-                  ["/settings", "Settings"],
-                ]
-            ).map(([to, label]) => (
-              <Fragment key={to}>
-                {workspace === "oscp" &&
-                  ["/study-plan", "/practice-tracks", "/cheat-sheet"].includes(
-                    to,
-                  ) && (
-                    <p className="oscp-nav-group">
-                      {to === "/study-plan"
-                        ? "Learn & connect"
-                        : to === "/practice-tracks"
-                          ? "Practise & record"
-                          : "Quick reference"}
-                    </p>
-                  )}
-                <NavLink to={to} end={to === "/osai/library"}>
-                  {label}
-                </NavLink>
-              </Fragment>
-            ))}
-          </nav>
+          <WorkspaceNav workspace={workspace} />
           <div className="sidebar-foot">
             <span className="dot" /> Personal notebook
             <p>Practice. Document. Repeat.</p>
@@ -124,6 +82,14 @@ export default function App() {
             }
           >
             <Routes>
+              <Route
+                path="/library"
+                element={<LibraryHome workspace="oscp" />}
+              />
+              <Route
+                path="/osai/resources"
+                element={<LibraryHome workspace="osai" />}
+              />
               <Route
                 path="/practice-tracks/:trackId?"
                 element={<PracticeTracks key={location.pathname} />}

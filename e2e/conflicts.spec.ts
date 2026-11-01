@@ -25,7 +25,7 @@ test("two devices retain both versions and offer a separate copy", async ({
     await expect(page.getByText(`Signed in as ${email}`)).toBeVisible();
   }
   await login(one);
-  await one.getByRole("link", { name: "All notes", exact: true }).click();
+  await one.getByRole("link", { name: "Notes", exact: true }).click();
   await one.getByRole("button", { name: "New note", exact: true }).click();
   await one.bringToFront();
   await one.getByLabel("Note title").fill("Original");

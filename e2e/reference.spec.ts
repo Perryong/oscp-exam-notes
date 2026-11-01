@@ -3,6 +3,7 @@ test("study plan retains machines and walkthroughs on desktop and mobile", async
   page,
 }) => {
   await page.goto("/study-plan");
+  await page.getByText("Weekly practice plan", { exact: true }).click();
   await expect(
     page.getByRole("heading", { name: "Study plan", exact: true }),
   ).toBeVisible();

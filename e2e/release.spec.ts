@@ -20,13 +20,14 @@ for (const width of [390, 1440])
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/study-plan");
     await expect(
-      page.getByRole("heading", { name: "Study plan", exact: true }),
+      page.getByRole("heading", { name: "Today", exact: true }),
     ).toBeVisible();
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= window.innerWidth,
       ),
     ).toBe(true);
+    await page.getByText("Weekly practice plan", { exact: true }).click();
     await page
       .getByRole("button", { name: "Walkthrough for Markup", exact: true })
       .click();

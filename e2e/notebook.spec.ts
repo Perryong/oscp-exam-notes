@@ -14,7 +14,7 @@ test("create, search, sync, trash and restore a personal note", async ({
   await page.getByLabel("Password", { exact: true }).fill(password);
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
   await expect(page.getByText(`Signed in as ${email}`)).toBeVisible();
-  await page.getByRole("link", { name: "All notes", exact: true }).click();
+  await page.getByRole("link", { name: "Notes", exact: true }).click();
   await page.getByRole("button", { name: "New note", exact: true }).click();
   await page.getByLabel("Note title").fill("Enumeration evidence");
   await expect(page.getByText("Synced", { exact: true })).toBeVisible({
@@ -32,7 +32,7 @@ test("create, search, sync, trash and restore a personal note", async ({
   await page
     .getByRole("button", { name: "Restore Enumeration evidence" })
     .click();
-  await page.getByRole("link", { name: "All notes", exact: true }).click();
+  await page.getByRole("link", { name: "Notes", exact: true }).click();
   await expect(
     page.getByRole("link", { name: "Enumeration evidence" }),
   ).toBeVisible();
@@ -52,11 +52,12 @@ test("machine progress is shared between study plan and machines", async ({
   await page.getByLabel("Password", { exact: true }).fill(password);
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
   await expect(page.getByText(`Signed in as ${email}`)).toBeVisible();
-  await page.getByRole("link", { name: "Study plan", exact: true }).click();
+  await page.getByRole("link", { name: "Today", exact: true }).click();
+  await page.getByText("Weekly practice plan", { exact: true }).click();
   await page
     .getByLabel("Progress for Markup", { exact: true })
     .selectOption("completed");
-  await page.getByRole("link", { name: "Machines", exact: true }).click();
+  await page.getByRole("link", { name: "Practice", exact: true }).click();
   await page.getByLabel("Search machines").fill("Markup");
   await expect(
     page.getByLabel("Progress for Markup", { exact: true }),

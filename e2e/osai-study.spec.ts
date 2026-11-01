@@ -16,6 +16,10 @@ test("OSAI progress and lesson notes survive reload without mixing OSCP", async 
   await expect(page.getByText(`Signed in as ${email}`)).toBeVisible();
   await page.goto("/osai/study-plan");
   await page
+    .getByText("Study checklist & progress", { exact: true })
+    .first()
+    .click();
+  await page
     .getByLabel("Progress for Overview & Adversary Mindset")
     .selectOption("completed");
   await expect(page.getByText("1 / 23 completed")).toBeVisible();

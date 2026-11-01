@@ -1,3 +1,4 @@
+import StudyActions from "./StudyActions";
 import { Link, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import StudyPlan from "../reference/StudyPlan";
@@ -29,15 +30,13 @@ export default function LearningHome({ uid }: { uid?: string }) {
       <div className="oscp-heading">
         <div>
           <p className="eyebrow">OSCP / YOUR LEARNING HOME</p>
-          <h1>Understand. Practise. Connect.</h1>
+          <h1>Today</h1>
           <p className="subtitle">
             A clear route through your notes, references and lab practice.
           </p>
         </div>
-        <Link className="oscp-link-button" to="/mindmap">
-          Explore Mindmap ↗
-        </Link>
       </div>
+      <StudyActions uid={uid} workspace="oscp" />
       <label>
         Search the OSCP library
         <input
@@ -68,32 +67,19 @@ export default function LearningHome({ uid }: { uid?: string }) {
           <Link to="/mindmap">Browse the complete content index →</Link>
         </div>
       )}
-      <div className="oscp-hero">
-        <div>
-          <p className="eyebrow">ONE CONCEPT AT A TIME</p>
-          <h2>
-            Know what you’re looking for.
-            <br />
-            Then choose the next step.
-          </h2>
-          <p>
-            Start with a short explanation, read the original notes, and test
-            your understanding in a lab. The Mindmap keeps the connections
-            visible.
-          </p>
-          <Link className="oscp-link-button" to="/topics/foundations">
-            Start with foundations →
-          </Link>
-        </div>
-        <div className="oscp-hero-steps">
-          <Link to="/topics">01 · Understand the concept</Link>
-          <Link to="/knowledge-vault">02 · Read the full reference</Link>
-          <Link to="/practice-tracks">03 · Follow a practice track</Link>
-          <a href="#weekly-practice" onClick={() => setPracticeOpen(true)}>
-            04 · Choose your weekly machine
-          </a>
-        </div>
-      </div>
+      <details
+        className="oscp-week-plan"
+        id="weekly-practice"
+        open={practiceOpen}
+        onToggle={(e) => setPracticeOpen(e.currentTarget.open)}
+      >
+        <summary>Weekly practice plan</summary>
+        <p className="subtitle">
+          Your existing machine sequence and saved progress. Expand a machine to
+          find its walkthrough.
+        </p>
+        <StudyPlan uid={uid} />
+      </details>
       <div className="section-title">
         <h2>Your learning path</h2>
         <Link to="/topics">Browse all concepts →</Link>
@@ -126,34 +112,6 @@ export default function LearningHome({ uid }: { uid?: string }) {
           </article>
         ))}
       </div>
-      <h2 style={{ marginTop: 32 }}>Keep your references close</h2>
-      <div className="oscp-shortcuts">
-        <Link to="/knowledge-vault">
-          Knowledge Vault<small>Full source notes and screenshots</small>
-        </Link>
-        <Link to="/cheat-sheet">
-          Cheat sheets<small>Searchable commands by topic</small>
-        </Link>
-        <Link to="/walkthroughs">
-          Walkthroughs<small>Compare explanations and evidence</small>
-        </Link>
-        <Link to="/notes">
-          My notes<small>Record what you understand</small>
-        </Link>
-      </div>
-      <details
-        className="oscp-week-plan"
-        id="weekly-practice"
-        open={practiceOpen}
-        onToggle={(e) => setPracticeOpen(e.currentTarget.open)}
-      >
-        <summary>Weekly practice plan</summary>
-        <p className="subtitle">
-          Your existing machine sequence and saved progress. Expand a machine to
-          find its walkthrough.
-        </p>
-        <StudyPlan uid={uid} />
-      </details>
     </section>
   );
 }

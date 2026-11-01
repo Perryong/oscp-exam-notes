@@ -39,6 +39,7 @@ test("matching study machine links to its written guide and missing articles rec
   page,
 }) => {
   await page.goto("/study-plan");
+  await page.getByText("Weekly practice plan", { exact: true }).click();
   await page
     .getByRole("button", { name: "Walkthrough for Bashed", exact: true })
     .click();

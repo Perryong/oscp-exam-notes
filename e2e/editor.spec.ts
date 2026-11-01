@@ -38,6 +38,6 @@ test("failed persistence keeps text and blocks navigation", async ({
   await page.goto("/demo");
   await page.getByLabel("Note title").fill("Do not lose me");
   await expect(page.getByRole("alert")).toContainText("Disk full");
-  await page.getByRole("link", { name: "Study plan", exact: true }).click();
+  await page.getByRole("link", { name: "Today", exact: true }).click();
   await expect(page.getByLabel("Note title")).toHaveValue("Do not lose me");
 });

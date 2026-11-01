@@ -81,7 +81,8 @@ export default function KnowledgeVault({ uid }: { uid?: string }) {
     <section className="page">
       <p className="eyebrow">OSCP / KNOWLEDGE LIBRARY</p>
       <h1>OSCP Knowledge Vault</h1>
-      <p>Your topic notes, images and sources in study order.</p>
+      <p>Browse source material or return to your private topic notes.</p>
+      <h2>Source collection</h2>
       <article className="week-card">
         <div>
           <p className="eyebrow">FULL SOURCE NOTES AND SCREENSHOTS</p>
@@ -97,6 +98,7 @@ export default function KnowledgeVault({ uid }: { uid?: string }) {
           </p>
         </div>
       </article>
+      <h2>My topic notes</h2>
       {!uid && (
         <p>
           <Link to="/settings">
@@ -104,99 +106,110 @@ export default function KnowledgeVault({ uid }: { uid?: string }) {
           </Link>
         </p>
       )}
-      <input
-        aria-label="Search knowledge vault"
-        placeholder="Search topics or commands…"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      <div className="knowledge-layout">
-        <nav className="lesson-toc" aria-label="Vault topics">
-          <Link to="/knowledge-vault">All topics</Link>
-          {matches.map((n) => (
-            <Link
-              key={n.id}
-              aria-current={n.id === id ? "page" : undefined}
-              to={"/knowledge-vault/" + n.id}
-            >
-              {n.content.title.replace(/^Discord resources\s*·\s*/, "")}
-            </Link>
-          ))}
-        </nav>
-        <div>
-          {!id && (
-            <>
-              <p>{topics.length} topics · Private to your account</p>
-              <div className="osai-grid">
-                {matches.map((n) => (
-                  <article className="week-card" key={n.id}>
-                    <div>
-                      <h2>
-                        <Link to={"/knowledge-vault/" + n.id}>
-                          {n.content.title.replace(
-                            /^Discord resources\s*·\s*/,
-                            "",
-                          )}
-                        </Link>
-                      </h2>
-                      <p>
-                        {n.content.attachmentIds.length} images ·{" "}
-                        {n.content.tags
-                          .filter((t) => t !== "discord-resources")
-                          .join(", ")}
-                      </p>
-                      <Link to={"/knowledge-vault/" + n.id}>Read topic →</Link>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </>
-          )}
-          {id && !selected && (
-            <p>This topic is unavailable, in Trash, or has not synced yet.</p>
-          )}
-          {selected && uid && (
-            <>
-              <h2>
-                {selected.content.title.replace(
-                  /^Discord resources\s*·\s*/,
-                  "",
-                )}
-              </h2>
-              <div className="row">
-                <Link to={"/notes/" + selected.id}>Edit note</Link>
-                <Link to="/knowledge-vault">Back to topics</Link>
-              </div>
-              <div className="walkthrough-body vault-body">
-                <ReadingBody
-                  key={uid + selected.id}
-                  uid={uid}
-                  content={selected.content}
-                />
-              </div>
-              <nav className="row" aria-label="Topic navigation">
-                {index > 0 && (
-                  <Link to={"/knowledge-vault/" + topics[index - 1].id}>
-                    ← Previous topic
-                  </Link>
-                )}
-                {index < topics.length - 1 && (
-                  <Link to={"/knowledge-vault/" + topics[index + 1].id}>
-                    Next topic →
-                  </Link>
-                )}
-              </nav>
-            </>
-          )}
-          {!matches.length && (
-            <p>
-              {topics.length
-                ? "No matching topics. Try another search."
-                : "Your private topic notes appear here after sign-in and sync. Copy a study lesson or tag a note knowledge-vault to include it."}
-            </p>
-          )}
-        </div>
-      </div>
+      {uid && (
+        <>
+          <label>
+            Search my topic notes
+            <input
+              aria-label="Search knowledge vault"
+              placeholder="Search topics or commands…"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+          </label>
+          <div className="knowledge-layout">
+            <nav className="lesson-toc" aria-label="Vault topics">
+              <Link to="/knowledge-vault">All topics</Link>
+              {matches.map((n) => (
+                <Link
+                  key={n.id}
+                  aria-current={n.id === id ? "page" : undefined}
+                  to={"/knowledge-vault/" + n.id}
+                >
+                  {n.content.title.replace(/^Discord resources\s*·\s*/, "")}
+                </Link>
+              ))}
+            </nav>
+            <div>
+              {!id && (
+                <>
+                  <p>{topics.length} topics · Private to your account</p>
+                  <div className="osai-grid">
+                    {matches.map((n) => (
+                      <article className="week-card" key={n.id}>
+                        <div>
+                          <h2>
+                            <Link to={"/knowledge-vault/" + n.id}>
+                              {n.content.title.replace(
+                                /^Discord resources\s*·\s*/,
+                                "",
+                              )}
+                            </Link>
+                          </h2>
+                          <p>
+                            {n.content.attachmentIds.length} images ·{" "}
+                            {n.content.tags
+                              .filter((t) => t !== "discord-resources")
+                              .join(", ")}
+                          </p>
+                          <Link to={"/knowledge-vault/" + n.id}>
+                            Read topic →
+                          </Link>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </>
+              )}
+              {id && !selected && (
+                <p>
+                  This topic is unavailable, in Trash, or has not synced yet.
+                </p>
+              )}
+              {selected && uid && (
+                <>
+                  <h2>
+                    {selected.content.title.replace(
+                      /^Discord resources\s*·\s*/,
+                      "",
+                    )}
+                  </h2>
+                  <div className="row">
+                    <Link to={"/notes/" + selected.id}>Edit note</Link>
+                    <Link to="/knowledge-vault">Back to topics</Link>
+                  </div>
+                  <div className="walkthrough-body vault-body">
+                    <ReadingBody
+                      key={uid + selected.id}
+                      uid={uid}
+                      content={selected.content}
+                    />
+                  </div>
+                  <nav className="row" aria-label="Topic navigation">
+                    {index > 0 && (
+                      <Link to={"/knowledge-vault/" + topics[index - 1].id}>
+                        ← Previous topic
+                      </Link>
+                    )}
+                    {index < topics.length - 1 && (
+                      <Link to={"/knowledge-vault/" + topics[index + 1].id}>
+                        Next topic →
+                      </Link>
+                    )}
+                  </nav>
+                </>
+              )}
+              {!matches.length && (
+                <p>
+                  {topics.length
+                    ? "No matching topics. Try another search."
+                    : "Your private topic notes appear here after sign-in and sync. Copy a study lesson or tag a note knowledge-vault to include it."}
+                </p>
+              )}
+            </div>
+          </div>
+        </>
+      )}
     </section>
   );
 }
