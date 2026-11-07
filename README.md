@@ -5,6 +5,7 @@ A week-by-week OSCP practice ladder built from the LainKusanagi OSCP-like list, 
 - Tick off boxes as you root them.
 - Every box links to a recognised walkthrough (0xdf, IppSec, OffSec official, VulnHub, community GitHub write-ups). HackTheBox boxes with an IppSec video show his chapter outline inside the app.
 - Each week has a notes editor with headings, lists, code blocks for commands, and screenshots (paste, drag or the Image button).
+- **Weekly template**: open an empty week’s Notes and choose **Start weekly template** for Goals, Attempts, What I learned, Where I got stuck, and Progress. It combines [Learning Process and Penetration Testing Process](learning-process.html#weekly-template-guide), including the assessment stages, evidence, reporting, and independent retries. Existing text and images are never replaced.
 - **All notes** lists every week you've written up, searches across notes, commands and box names, and exports everything as one Markdown file.
 - **Cheat sheet** opens a searchable reference built from the [oscp_cheat_sheet_2025](https://github.com/Perryong/oscp_cheat_sheet_2025) repo: 19 sections (enumeration, reverse shells, privesc, Active Directory, tunnelling, and more), with collapsible sections and copy buttons on code blocks.
 - **Calendar** lays the plan out on real dates in a month or week view. Pick the day week 1 starts, and each week's boxes spread across that week. Move a box to another day by dragging it (on a computer) or with its date field (on a phone). Tick boxes, open walkthroughs and open notes right from the calendar.
@@ -75,3 +76,5 @@ npx -y firebase-tools@latest emulators:exec --only firestore "npm --prefix tests
 ## Firebase agent skills
 
 The Firebase agent skills are installed in `.agents/skills` (with Claude Code links in `.claude/skills`), via `npx skills add firebase/agent-skills --agent=codex`. Use them for any Firebase work on this repo.
+
+To check weekly template insertion and note preservation, serve the repository on a separate localhost origin (for example, `python3 -m http.server 8879`) and open `/tests/weekly-template.html` without signing in. The checks restore the local notes they use.

@@ -229,8 +229,10 @@ li .mv input{width:auto;height:auto;accent-color:auto}
       <button class="btn" type="button" data-cmd="pre">Code block</button>
       <button class="btn" type="button" data-cmd="copy">Copy code</button>
       <button class="btn" type="button" data-cmd="img" id="imgbtn">Image</button>
+      <button class="btn" type="button" id="weekly-template-btn" disabled>Start weekly template</button>
       <input type="file" id="imgfile" accept="image/*" multiple class="sr" tabindex="-1" aria-hidden="true">
     </div>
+    <p class="muted" style="margin:8px 18px">Template for empty notes · <a href="learning-process.html#weekly-template-guide" target="_blank" rel="noopener">Learning Process &amp; Penetration Testing Process guide ↗</a></p>
     <div class="dlg-body" style="padding:0">
       <div class="ed" id="ed" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Notes for this week" spellcheck="false"
         data-ph="Write what worked: enumeration, foothold, privesc. Use Code block for commands, and paste or drop screenshots here."></div>
@@ -238,6 +240,53 @@ li .mv input{width:auto;height:auto;accent-color:auto}
     <div class="dlg-foot"><span id="nstatus" role="status" aria-live="polite"></span><span id="nwhere"></span></div>
   </div>
 </dialog>
+
+<template id="weekly-template">
+  <h3>Goals</h3>
+  <ul>
+    <li>Skill I want to demonstrate independently:</li>
+    <li>Starting point: what I already know and what I need to learn:</li>
+    <li>Targets, scope, lab rules, and available practice time:</li>
+    <li>Success criteria: what evidence will show I achieved my goal?</li>
+  </ul>
+  <h3>Attempts</h3>
+  <p>For each attempt: date/time, target, stage, hypothesis, command/action, expected result, actual result, evidence, and next decision. Repeat this log for each target.</p>
+  <ol>
+    <li>Pre-engagement: objective, target scope, and constraints.</li>
+    <li>Information gathering: hosts, services, versions, roles, and confirmed facts.</li>
+    <li>Vulnerability assessment: suspected weakness, prerequisites, and how I checked it.</li>
+    <li>Exploitation: why I chose this path, changes made, result, and access gained.</li>
+    <li>Post-exploitation: local enumeration, privilege level, and new information.</li>
+    <li>Lateral movement: source/destination, reachability, access used, and result, if relevant.</li>
+    <li>Proof of concept: reproducible steps, command output, screenshots, and demonstrated impact.</li>
+    <li>Post-engagement: cleanup, report notes, remediation ideas, and retest evidence.</li>
+  </ol>
+  <p>Return to enumeration when new evidence changes the picture; these stages are flexible.</p>
+  <h3>What I learned</h3>
+  <ul>
+    <li>Underlying concept: why did this work or fail?</li>
+    <li>How would I recognize and adapt it on another target?</li>
+    <li>How could the weakness be fixed or detected?</li>
+    <li>Technical explanation and a plain-language impact summary:</li>
+    <li>What can I now reproduce from scratch without a walkthrough?</li>
+  </ul>
+  <h3>Where I got stuck</h3>
+  <ul>
+    <li>Exact blocker, current position, and object I am investigating:</li>
+    <li>Known facts, unknown information, and assumptions to test:</li>
+    <li>What I tried, what happened, and the simplest next check:</li>
+    <li>Precise question to ask for help, including evidence and prior attempts:</li>
+    <li>Attention, frustration, breaks, and what helped me restart:</li>
+  </ul>
+  <h3>Progress</h3>
+  <ul>
+    <li>Goal outcome and evidence compared with my starting point:</li>
+    <li>Completed independently / with hints / with a walkthrough:</li>
+    <li>Gaps found by comparing my notes with a walkthrough after my own attempt:</li>
+    <li>Report and evidence ready? Could someone reproduce the result?</li>
+    <li>Next practice task, independent retry, and priority for next week:</li>
+  </ul>
+</template>
 
 <dialog id="an" aria-labelledby="an-title">
   <div class="dlg">
@@ -581,6 +630,16 @@ const textOf = html => new DOMParser().parseFromString(`<body>${html}</body>`, "
 /* ---------- notes: editor ---------- */
 const ed = $("ed");
 let curWeek = null, saveTimer = null, dirty = false;
+let notesLoaded = false;
+function updateTemplateButton(){
+  $("weekly-template-btn").disabled = !notesLoaded || !!ed.textContent.trim() || !!ed.querySelector("img");
+}
+$("weekly-template-btn").onclick = () => {
+  updateTemplateButton();
+  if ($("weekly-template-btn").disabled) return;
+  ed.innerHTML = clean($("weekly-template").innerHTML);
+  updateTemplateButton(); ed.focus(); queueSave();
+};
 async function fillImages(root){
   if (!backend.imageSrc) return;
   for (const img of root.querySelectorAll("img[data-fimg]:not([src])")) {
@@ -589,6 +648,7 @@ async function fillImages(root){
 }
 async function openNotes(week){
   curWeek = week; dirty = false;
+  notesLoaded = false; updateTemplateButton();
   const w = PLAN.find(x=>x.week===week);
   $("nt-title").textContent = `Week ${week} notes`;
   $("nt-sub").textContent = w.boxes.map(b=>b.name).join(" · ");
@@ -601,10 +661,11 @@ async function openNotes(week){
   catch (e) { status("Couldn't load your saved notes. Close and reopen to try again.", "bad"); return; }
   if (curWeek !== week) return;
   ed.innerHTML = clean(html);
+  notesLoaded = true; updateTemplateButton();
   fillImages(ed);
   status(html ? "Saved" : "", html ? "ok" : "");
 }
-function queueSave(){ dirty = true; status("Unsaved changes…"); clearTimeout(saveTimer); saveTimer = setTimeout(flush, 1200); }
+function queueSave(){ updateTemplateButton(); dirty = true; status("Unsaved changes…"); clearTimeout(saveTimer); saveTimer = setTimeout(flush, 1200); }
 // Firebase images are stored separately, so the note keeps only their ids
 function serialize(){ const c = ed.cloneNode(true); c.querySelectorAll("img[data-fimg]").forEach(i => i.removeAttribute("src")); return clean(c.innerHTML); }
 let saving = Promise.resolve();
