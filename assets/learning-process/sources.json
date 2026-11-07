@@ -1,0 +1,76 @@
+[
+  {
+    "section": 11,
+    "file": "Trolley_Problem.png",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Trolley_Problem.svg/1920px-Trolley_Problem.svg.png",
+    "credit": "Zapyon (vector), based on McGeddon; includes elements by BjørnN, Orem, and MCruz (WMF). CC BY-SA 4.0. Unmodified PNG rendering from Wikimedia Commons.",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "https://commons.wikimedia.org/wiki/File:Trolley_Problem.svg"
+  },
+  {
+    "section": 11,
+    "file": "TrolleyProblem.png",
+    "source": "https://cdn.services-k8s.prod.aws.htb.systems/content/modules/9/TrolleyProblem.png",
+    "credit": "Hack The Box Academy; original diagram creators retain their rights"
+  },
+  {
+    "section": 16,
+    "file": "NEW_yerkes-dodson-law.png",
+    "source": "https://cdn.services-k8s.prod.aws.htb.systems/content/modules/9/NEW_yerkes-dodson-law.png",
+    "credit": "Hack The Box Academy; original diagram creators retain their rights"
+  },
+  {
+    "section": 16,
+    "file": "NEW_The-Comfort-Zone-diagram.png",
+    "source": "https://cdn.services-k8s.prod.aws.htb.systems/content/modules/9/NEW_The-Comfort-Zone-diagram.png",
+    "credit": "Hack The Box Academy; original diagram creators retain their rights"
+  },
+  {
+    "section": 18,
+    "file": "Questioning1.png",
+    "source": "https://cdn.services-k8s.prod.aws.htb.systems/content/modules/9/Questioning1.png",
+    "credit": "Hack The Box Academy; original diagram creators retain their rights"
+  },
+  {
+    "section": 18,
+    "file": "Questioning2.png",
+    "source": "https://cdn.services-k8s.prod.aws.htb.systems/content/modules/9/Questioning2.png",
+    "credit": "Hack The Box Academy; original diagram creators retain their rights"
+  },
+  {
+    "section": 18,
+    "file": "Questioning3.png",
+    "source": "https://cdn.services-k8s.prod.aws.htb.systems/content/modules/9/Questioning3.png",
+    "credit": "Hack The Box Academy; original diagram creators retain their rights"
+  },
+  {
+    "section": 18,
+    "file": "Questioning4.png",
+    "source": "https://cdn.services-k8s.prod.aws.htb.systems/content/modules/9/Questioning4.png",
+    "credit": "Hack The Box Academy; original diagram creators retain their rights"
+  },
+  {
+    "section": 18,
+    "file": "Questioning5.png",
+    "source": "https://cdn.services-k8s.prod.aws.htb.systems/content/modules/9/Questioning5.png",
+    "credit": "Hack The Box Academy; original diagram creators retain their rights"
+  },
+  {
+    "section": 18,
+    "file": "Questioning6.png",
+    "source": "https://cdn.services-k8s.prod.aws.htb.systems/content/modules/9/Questioning6.png",
+    "credit": "Hack The Box Academy; original diagram creators retain their rights"
+  },
+  {
+    "section": 18,
+    "file": "Questioning7.png",
+    "source": "https://cdn.services-k8s.prod.aws.htb.systems/content/modules/9/Questioning7.png",
+    "credit": "Hack The Box Academy; original diagram creators retain their rights"
+  },
+  {
+    "section": 19,
+    "file": "NEW_Vision.png",
+    "source": "https://cdn.services-k8s.prod.aws.htb.systems/content/modules/9/NEW_Vision.png",
+    "credit": "Hack The Box Academy; original diagram creators retain their rights"
+  }
+]

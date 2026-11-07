@@ -70,6 +70,23 @@ test("images: owner can add, read and delete; never edit; others locked out", as
   await assertSucceeds(addDoc(collection(db, "users/alice/images"), { data: big, createdAt: serverTimestamp() }));
 });
 
+test("calendar: owner can save and read it; schema enforced; others locked out", async () => {
+  const cal = (extra = {}) => ({ start: "2026-10-19", moves: { "HackTheBox|Nibbles": "2026-10-21" }, updatedAt: serverTimestamp(), ...extra });
+  const ref = doc(alice(), "users/alice/meta/calendar");
+  await assertSucceeds(setDoc(ref, cal()));
+  await assertSucceeds(getDoc(ref));
+  await assertSucceeds(setDoc(ref, cal({ moves: {} })));
+  await assertFails(getDoc(doc(bob(), "users/alice/meta/calendar")));
+  await assertFails(setDoc(doc(bob(), "users/alice/meta/calendar"), cal()));
+  await assertFails(getDoc(doc(anon(), "users/alice/meta/calendar")));
+  await assertFails(setDoc(ref, cal({ start: "next monday" })));                  // bad date
+  await assertFails(setDoc(ref, cal({ moves: "x" })));                            // wrong type
+  await assertFails(setDoc(ref, cal({ extra: 1 })));                              // schema pollution
+  await assertFails(setDoc(ref, cal({ updatedAt: Timestamp.fromMillis(0) })));   // forged time
+  await assertFails(setDoc(doc(alice(), "users/alice/meta/other"), cal()));       // only "calendar" exists
+  await assertSucceeds(deleteDoc(ref));
+});
+
 test("nothing outside users/<uid>/notes and users/<uid>/images is reachable", async () => {
   await assertFails(setDoc(doc(alice(), "users/alice"), { anything: true }));
   await assertFails(setDoc(doc(alice(), "users/alice/other/x"), { anything: true }));

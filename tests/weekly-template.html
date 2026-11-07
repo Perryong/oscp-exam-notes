@@ -1,0 +1,59 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Weekly template checks</title>
+<h1>Weekly template checks</h1><p>Run on a separate localhost origin with no signed-in account. Tests restore the local notes they use.</p><pre id="results">Running…</pre><iframe title="OSCP notes under test" src="../index.html?weekly-template-test=calendar-integration" width="900" height="700"></iframe>
+<script type="module">
+const frame = document.querySelector('iframe'), results = document.querySelector('#results');
+const assert = (condition, message) => { if (!condition) throw new Error(message); };
+await new Promise(resolve => frame.addEventListener('load', resolve, { once: true }));
+const app = frame.contentWindow, doc = app.document;
+const weeks = [166, 167, 168], backups = new Map(weeks.map(w => [w, app.localStorage.getItem('oscp-note-' + w)]));
+try {
+  assert(app.eval('backend.kind') === 'local', 'Use a signed-out localhost origin for this test.');
+  const button = doc.querySelector('#weekly-template-btn');
+  assert(button, 'Empty notes must offer a weekly template button.');
+  app.localStorage.removeItem('oscp-note-168');
+  await app.openNotes(168);
+  assert(!button.disabled, 'Template must be available after an empty note loads.');
+  assert(!app.localStorage.getItem('oscp-note-168'), 'Opening empty notes must not save a template.');
+  button.click(); await app.flush();
+  const editor = doc.querySelector('#ed');
+  assert(editor.querySelectorAll('h3').length === 5, 'Template must include five reflection headings.');
+  assert(editor.innerText.includes('Information gathering') && editor.innerText.includes('Proof of concept'), 'Template must include the assessment workflow.');
+  const markdown = app.toMd(editor);
+  assert(markdown.includes('Goals') && markdown.includes('Proof of concept') && markdown.includes('Progress'), 'Template headings and workflow must survive Markdown export.');
+  const saved = app.localStorage.getItem('oscp-note-168');
+  assert(saved && saved.includes('Goals'), 'Inserted template must be saved.');
+  button.click(); await app.flush();
+  assert(editor.querySelectorAll('h3').length === 5, 'Repeated template clicks must not duplicate content.');
+  doc.querySelector('#nt-close').click();
+  await app.openNotes(168);
+  assert(editor.querySelectorAll('h3').length === 5, 'Template must survive reopening.');
+  assert(button.disabled, 'Saved content must disable template insertion.');
+  const existing = '<h3>My existing notes</h3><p>Keep my commands and evidence.</p><img alt="Evidence" src="data:image/png;base64,iVBORw0KGgo=">';
+  app.localStorage.setItem('oscp-note-167', existing);
+  await app.openNotes(167);
+  const before = editor.innerHTML;
+  button.click(); await app.flush();
+  assert(editor.innerHTML === before && editor.querySelector('img'), 'Existing text and images must remain untouched.');
+  assert(app.localStorage.getItem('oscp-note-167') === existing, 'Existing saved notes must remain untouched.');
+  app.localStorage.setItem('oscp-note-167', '<p><br></p><img alt="Only evidence" src="data:image/png;base64,iVBORw0KGgo=">');
+  await app.openNotes(167);
+  button.click(); await app.flush();
+  assert(editor.querySelector('img') && !editor.querySelector('h3'), 'Image-only notes must be preserved.');
+  app.localStorage.removeItem('oscp-note-166');
+  await app.openNotes(166);
+  editor.innerHTML = '<p>Unsaved draft</p>';
+  editor.dispatchEvent(new app.Event('input', { bubbles: true }));
+  button.click(); await app.flush();
+  assert(editor.innerText === 'Unsaved draft', 'Template must not replace unsaved typing.');
+  results.textContent = 'PASS: empty-note insertion, autosave, repeat-click protection, reopen, existing text/images, image-only notes, Markdown export, and unsaved draft protection.';
+} catch (error) {
+  results.textContent = 'FAIL: ' + error.message;
+} finally {
+  await app.flush();
+  if (doc.querySelector('#nt').open) doc.querySelector('#nt').close();
+  for (const [week, value] of backups) {
+    if (value === null) app.localStorage.removeItem('oscp-note-' + week);
+    else app.localStorage.setItem('oscp-note-' + week, value);
+  }
+}
+</script></html>
