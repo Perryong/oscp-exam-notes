@@ -1,0 +1,429 @@
+[
+  {
+    "slug": "osai-vault",
+    "title": "OSAI Vault",
+    "group": "OSAI Vault",
+    "summary": "Full reference text \u00b7 23 modules \u00b7 Imported from your supplied HTML without summarization.",
+    "attribution": "Source: Kongsec \u00b7 User-supplied HTML \u00b7 Imported 2026-10-15. Source claims are preserved as written, not independently verified.",
+    "checkedAt": "2026-10-15",
+    "owasp": [],
+    "contents": [
+      {
+        "id": "vault-m0",
+        "title": "Overview & Adversary Mindset"
+      },
+      {
+        "id": "vault-m1",
+        "title": "AI/ML Fundamentals for Attackers"
+      },
+      {
+        "id": "vault-m2",
+        "title": "LLM Architecture Deep Dive"
+      },
+      {
+        "id": "vault-m3",
+        "title": "AI Attack Surface Map"
+      },
+      {
+        "id": "vault-m4",
+        "title": "Prompt Injection"
+      },
+      {
+        "id": "vault-m5",
+        "title": "Jailbreaking Techniques"
+      },
+      {
+        "id": "vault-m6",
+        "title": "Data Exfiltration via LLM"
+      },
+      {
+        "id": "vault-m7",
+        "title": "Insecure Output Handling"
+      },
+      {
+        "id": "vault-m8",
+        "title": "RAG Pipeline Attacks"
+      },
+      {
+        "id": "vault-m9",
+        "title": "Agent & Tool Hijacking"
+      },
+      {
+        "id": "vault-m10",
+        "title": "Multi-Agent Exploitation"
+      },
+      {
+        "id": "vault-m11",
+        "title": "Model Extraction"
+      },
+      {
+        "id": "vault-m12",
+        "title": "Data Poisoning"
+      },
+      {
+        "id": "vault-m13",
+        "title": "AI Supply Chain Attacks"
+      },
+      {
+        "id": "vault-m14",
+        "title": "AI Infra Recon"
+      },
+      {
+        "id": "vault-m15",
+        "title": "API & Endpoint Attacks"
+      },
+      {
+        "id": "vault-m16",
+        "title": "Model Serving Exploits"
+      },
+      {
+        "id": "vault-m17",
+        "title": "Case Studies & CVEs"
+      },
+      {
+        "id": "vault-m18",
+        "title": "Red Team Scenarios"
+      },
+      {
+        "id": "vault-m19",
+        "title": "OWASP LLM Top 10"
+      },
+      {
+        "id": "vault-m20",
+        "title": "Tools Arsenal"
+      },
+      {
+        "id": "vault-m21",
+        "title": "Labs & Practice"
+      },
+      {
+        "id": "vault-m22",
+        "title": "Exam Prep"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Kongsec \u2014 original source",
+        "url": "https://kongsec.github.io/OSAINotesResearch/",
+        "kind": "community"
+      }
+    ]
+  },
+  {
+    "slug": "foundations",
+    "title": "AI foundations",
+    "group": "Learning path",
+    "summary": "Understand the application around a model and identify where trust changes.",
+    "sources": [
+      {
+        "title": "OffSec AI-300 overview",
+        "url": "https://www.offsec.com/courses/ai-300/",
+        "kind": "official"
+      },
+      {
+        "title": "OWASP LLM Top 10 (2025)",
+        "url": "https://genai.owasp.org/llm-top-10/",
+        "kind": "official"
+      },
+      {
+        "title": "Kongsec community training vault",
+        "url": "https://kongsec.github.io/OSAINotesResearch/",
+        "kind": "community"
+      }
+    ],
+    "checkedAt": "2026-10-15",
+    "owasp": ["LLM01:2025", "LLM06:2025"]
+  },
+  {
+    "slug": "prompt-output",
+    "title": "Prompt and output security",
+    "group": "Learning path",
+    "summary": "Separate instruction manipulation from downstream security impact.",
+    "sources": [
+      {
+        "title": "OffSec AI-300 overview",
+        "url": "https://www.offsec.com/courses/ai-300/",
+        "kind": "official"
+      },
+      {
+        "title": "OWASP LLM Top 10 (2025)",
+        "url": "https://genai.owasp.org/llm-top-10/",
+        "kind": "official"
+      },
+      {
+        "title": "Kongsec community training vault",
+        "url": "https://kongsec.github.io/OSAINotesResearch/",
+        "kind": "community"
+      }
+    ],
+    "checkedAt": "2026-10-15",
+    "owasp": ["LLM01:2025", "LLM02:2025", "LLM05:2025", "LLM07:2025"]
+  },
+  {
+    "slug": "retrieval",
+    "title": "Retrieval and RAG",
+    "group": "Learning path",
+    "summary": "Trace document provenance and access control through retrieval.",
+    "sources": [
+      {
+        "title": "OffSec AI-300 overview",
+        "url": "https://www.offsec.com/courses/ai-300/",
+        "kind": "official"
+      },
+      {
+        "title": "OWASP LLM Top 10 (2025)",
+        "url": "https://genai.owasp.org/llm-top-10/",
+        "kind": "official"
+      },
+      {
+        "title": "Kongsec community training vault",
+        "url": "https://kongsec.github.io/OSAINotesResearch/",
+        "kind": "community"
+      }
+    ],
+    "checkedAt": "2026-10-15",
+    "owasp": ["LLM01:2025", "LLM04:2025", "LLM08:2025"]
+  },
+  {
+    "slug": "agents",
+    "title": "Agents and tool boundaries",
+    "group": "Learning path",
+    "summary": "Assess the point where generated decisions become real actions.",
+    "sources": [
+      {
+        "title": "OffSec AI-300 overview",
+        "url": "https://www.offsec.com/courses/ai-300/",
+        "kind": "official"
+      },
+      {
+        "title": "OWASP LLM Top 10 (2025)",
+        "url": "https://genai.owasp.org/llm-top-10/",
+        "kind": "official"
+      },
+      {
+        "title": "Kongsec community training vault",
+        "url": "https://kongsec.github.io/OSAINotesResearch/",
+        "kind": "community"
+      }
+    ],
+    "checkedAt": "2026-10-15",
+    "owasp": ["LLM01:2025", "LLM06:2025"]
+  },
+  {
+    "slug": "models-data",
+    "title": "Models and data",
+    "group": "Learning path",
+    "summary": "Review model artifacts, training inputs, and dependency provenance.",
+    "sources": [
+      {
+        "title": "OffSec AI-300 overview",
+        "url": "https://www.offsec.com/courses/ai-300/",
+        "kind": "official"
+      },
+      {
+        "title": "OWASP LLM Top 10 (2025)",
+        "url": "https://genai.owasp.org/llm-top-10/",
+        "kind": "official"
+      },
+      {
+        "title": "Kongsec community training vault",
+        "url": "https://kongsec.github.io/OSAINotesResearch/",
+        "kind": "community"
+      }
+    ],
+    "checkedAt": "2026-10-15",
+    "owasp": ["LLM03:2025", "LLM04:2025", "LLM02:2025"]
+  },
+  {
+    "slug": "infrastructure",
+    "title": "AI infrastructure",
+    "group": "Learning path",
+    "summary": "Connect AI components to familiar application and infrastructure controls.",
+    "sources": [
+      {
+        "title": "OffSec AI-300 overview",
+        "url": "https://www.offsec.com/courses/ai-300/",
+        "kind": "official"
+      },
+      {
+        "title": "OWASP LLM Top 10 (2025)",
+        "url": "https://genai.owasp.org/llm-top-10/",
+        "kind": "official"
+      },
+      {
+        "title": "Kongsec community training vault",
+        "url": "https://kongsec.github.io/OSAINotesResearch/",
+        "kind": "community"
+      }
+    ],
+    "checkedAt": "2026-10-15",
+    "owasp": ["LLM03:2025", "LLM06:2025", "LLM10:2025"]
+  },
+  {
+    "slug": "assessment",
+    "title": "Assessment and reporting",
+    "group": "Learning path",
+    "summary": "Turn experiments into evidence another reader can reproduce.",
+    "sources": [
+      {
+        "title": "OffSec AI-300 overview",
+        "url": "https://www.offsec.com/courses/ai-300/",
+        "kind": "official"
+      },
+      {
+        "title": "OWASP LLM Top 10 (2025)",
+        "url": "https://genai.owasp.org/llm-top-10/",
+        "kind": "official"
+      },
+      {
+        "title": "Kongsec community training vault",
+        "url": "https://kongsec.github.io/OSAINotesResearch/",
+        "kind": "community"
+      }
+    ],
+    "checkedAt": "2026-10-15",
+    "owasp": ["LLM01:2025", "LLM06:2025"]
+  },
+  {
+    "slug": "glossary",
+    "title": "AI security glossary",
+    "group": "Resources",
+    "summary": "Definitions for reading and documenting AI security experiments.",
+    "sources": [
+      {
+        "title": "OffSec AI-300 overview",
+        "url": "https://www.offsec.com/courses/ai-300/",
+        "kind": "official"
+      },
+      {
+        "title": "OWASP LLM Top 10 (2025)",
+        "url": "https://genai.owasp.org/llm-top-10/",
+        "kind": "official"
+      },
+      {
+        "title": "Kongsec community training vault",
+        "url": "https://kongsec.github.io/OSAINotesResearch/",
+        "kind": "community"
+      }
+    ],
+    "checkedAt": "2026-10-15",
+    "owasp": []
+  },
+  {
+    "slug": "owasp-2025",
+    "title": "OWASP LLM Top 10 \u00b7 2025",
+    "group": "Resources",
+    "summary": "Map findings to the correct edition of the OWASP risks.",
+    "sources": [
+      {
+        "title": "OffSec AI-300 overview",
+        "url": "https://www.offsec.com/courses/ai-300/",
+        "kind": "official"
+      },
+      {
+        "title": "OWASP LLM Top 10 (2025)",
+        "url": "https://genai.owasp.org/llm-top-10/",
+        "kind": "official"
+      },
+      {
+        "title": "Kongsec community training vault",
+        "url": "https://kongsec.github.io/OSAINotesResearch/",
+        "kind": "community"
+      }
+    ],
+    "checkedAt": "2026-10-15",
+    "owasp": []
+  },
+  {
+    "slug": "resources",
+    "title": "Reading and practice resources",
+    "group": "Resources",
+    "summary": "A source-aware reading queue for your own study notes.",
+    "sources": [
+      {
+        "title": "OWASP educational resources",
+        "url": "https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki/Educational-Resources",
+        "kind": "official"
+      },
+      {
+        "title": "OffSec AI-300 overview",
+        "url": "https://www.offsec.com/courses/ai-300/",
+        "kind": "official"
+      },
+      {
+        "title": "OWASP LLM Top 10 (2025)",
+        "url": "https://genai.owasp.org/llm-top-10/",
+        "kind": "official"
+      },
+      {
+        "title": "Kongsec community training vault",
+        "url": "https://kongsec.github.io/OSAINotesResearch/",
+        "kind": "community"
+      }
+    ],
+    "checkedAt": "2026-10-15",
+    "owasp": []
+  },
+  {
+    "slug": "exam-preparation",
+    "title": "OSAI exam preparation",
+    "group": "Resources",
+    "summary": "Verified timing, evidence preparation, and a personal readiness checklist.",
+    "sources": [
+      {
+        "title": "Official OSAI exam guide",
+        "url": "https://help.offsec.com/hc/en-us/articles/46593096734612-OSAI-Exam-Guide",
+        "kind": "official"
+      },
+      {
+        "title": "Kongsec community training vault",
+        "url": "https://kongsec.github.io/OSAINotesResearch/",
+        "kind": "community"
+      }
+    ],
+    "checkedAt": "2026-10-15",
+    "owasp": []
+  },
+  {
+    "slug": "owasp-resources",
+    "title": "OWASP educational resources",
+    "group": "Resources",
+    "summary": "93 additional references organised by AI security topic, with practice labs, research, videos and tools.",
+    "checkedAt": "2026-10-16",
+    "attribution": "Directory: OWASP community educational resources. Categorisation and module mapping: Fieldnotes.",
+    "owasp": [],
+    "contents": [
+      {
+        "id": "resources-0",
+        "title": "Prompt injection and jailbreaking"
+      },
+      {
+        "id": "resources-1",
+        "title": "Agent security and defenses"
+      },
+      {
+        "id": "resources-2",
+        "title": "Data and model security"
+      },
+      {
+        "id": "resources-3",
+        "title": "Threat modelling and guidance"
+      },
+      {
+        "id": "resources-4",
+        "title": "Research papers and videos"
+      },
+      {
+        "id": "resources-5",
+        "title": "Practice labs and tools"
+      }
+    ],
+    "sources": [
+      {
+        "title": "OWASP educational directory",
+        "url": "https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki/Educational-Resources",
+        "kind": "community"
+      }
+    ]
+  }
+]

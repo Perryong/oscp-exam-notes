@@ -1,4 +1,40 @@
 {
   "indexes": [],
-  "fieldOverrides": []
+  "fieldOverrides": [
+    {
+      "collectionGroup": "notebookNotes",
+      "fieldPath": "contentJson",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "notebookNotes",
+      "fieldPath": "text",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "notebookNotes",
+      "fieldPath": "sourceHtml",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "versions",
+      "fieldPath": "contentJson",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "versions",
+      "fieldPath": "text",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "versions",
+      "fieldPath": "sourceHtml",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "images",
+      "fieldPath": "data",
+      "indexes": []
+    }
+  ]
 }

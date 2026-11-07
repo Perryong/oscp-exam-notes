@@ -1,94 +1,53 @@
-# oscp-exam-notes
+# OSCP Fieldnotes
 
-A week-by-week OSCP practice ladder built from the LainKusanagi OSCP-like list, ordered easiest to hardest, with at least 2 hours of practice per week.
+A personal OSCP study notebook: preserved study ladder and cheat sheet, machine progress, rich notes and command blocks, screenshots, private device sync, conflict recovery, history, migration, JSON backups and Markdown exports.
 
-- Tick off boxes as you root them.
-- Every box links to a recognised walkthrough (0xdf, IppSec, OffSec official, VulnHub, community GitHub write-ups). HackTheBox boxes with an IppSec video show his chapter outline inside the app.
-- Each week has a notes editor with headings, lists, code blocks for commands, and screenshots (paste, drag or the Image button).
-- **Weekly template**: open an empty week’s Notes and choose **Start weekly template** for Goals, Attempts, What I learned, Where I got stuck, and Progress. It combines [Learning Process and Penetration Testing Process](learning-process.html#weekly-template-guide), including the assessment stages, evidence, reporting, and independent retries. Existing text and images are never replaced.
-- **All notes** lists every week you've written up, searches across notes, commands and box names, and exports everything as one Markdown file.
-- **Cheat sheet** opens a searchable reference built from the [oscp_cheat_sheet_2025](https://github.com/Perryong/oscp_cheat_sheet_2025) repo: 19 sections (enumeration, reverse shells, privesc, Active Directory, tunnelling, and more), with collapsible sections and copy buttons on code blocks.
-- **Calendar** lays the plan out on real dates in a month or week view. Pick the day week 1 starts, and each week's boxes spread across that week. Move a box to another day by dragging it (on a computer) or with its date field (on a phone). Tick boxes, open walkthroughs and open notes right from the calendar.
+The app is a React/Vite static SPA deployed to Vercel. Firebase Authentication and Standard-edition Cloud Firestore provide private cloud storage. IndexedDB saves drafts first; online transactions compare revisions before publishing changes. Offline edits remain local until reconciliation.
 
-- **HTB calendar**: in Calendar, select **HTB study** to view the 51-week schedule. Module checkboxes track whole-module completion across all its weeks and save in this browser, separately from machine progress. Each HTB week, including checkpoints, opens its own notes with the weekly template, normal notes sync, All notes search, and Markdown export. This does not update completion on HTB.
-- **HTB study schedule** opens the [personal 10-hour weekly plan](htb-study-schedule.html), based on the 7 November 2026 progress snapshot: 27 remaining modules, 44 course weeks, and 7 checkpoint weeks. Select a week number to open that week in Calendar. It keeps the existing machine calendar intact. Dates and allocations are saved in [the schedule snapshot](htb-study-schedule.json); progress is not automatically synchronized.
-- **Learning Process** opens [study notes for all 20 HTB sections](learning-process.html), with 12 locally stored source diagrams, lesson links, and OSCP practice prompts. Image credits and original URLs are recorded in [the source manifest](assets/learning-process/sources.json).
+## Local development
 
-It's a static site: `index.html`, reference pages, and `firebase-config.js`. Nothing needs building.
-
-## Local preview
-
-From the repository root, run this command using Python 3:
+Use Node 24 and Java 21+ for Firebase emulators.
 
 ```sh
-python3 -m http.server 8000 --bind 127.0.0.1
+npm ci
+npm --prefix tests ci
+cp .env.example .env.local
+npx firebase emulators:start --project demo-oscp-notebook --only auth,firestore
+# In another terminal:
+npm run dev
 ```
 
-Open http://127.0.0.1:8000 in your browser. Press Ctrl+C in the terminal to stop the server. No build or dependency installation is needed for this static preview.
+Create an email/password test account in the Auth emulator UI. `/demo` is a local-only editor that needs no Firebase account. Do not use production accounts/data in tests.
 
-## Where notes are saved
-
-Notes and screenshots are stored in the Firebase project **oscp-notes**, using Firebase Authentication (email and password) and Cloud Firestore.
-
-| Situation | Where notes go |
-|---|---|
-| Signed in | Firestore, under `users/<your uid>/`, synced on every device |
-| Not signed in | This browser only (local storage) |
-
-The first time you sign in, notes already written in that browser are copied up to Firestore. A week that already exists in Firestore is never overwritten.
-
-Data layout:
-
-- `users/{uid}/notes/week-{n}`: `html`, `text` (for search), `week`, `updatedAt`. Machine weeks use 1–168; HTB study weeks 1–51 reserve IDs 201–251. The UI and exports label them as HTB weeks. Existing security rules already accept these IDs (up to 500).
-- `users/{uid}/images/{id}`: `data` (the screenshot as a base64 data URL, under 1 MiB), `createdAt`
-- `users/{uid}/meta/calendar`: `start` (the day week 1 starts, `YYYY-MM-DD`), `moves` (boxes moved off their planned day: box → `YYYY-MM-DD`), `updatedAt`
-
-Screenshots are Firestore documents, so the project doesn't need Cloud Storage or a paid plan. The rules in [`firestore.rules`](firestore.rules) only let a signed-in user read and write their own `users/<uid>/` data, and they check every field.
-
-## One-time Firebase setup
-
-The web app is already registered in `oscp-notes`, and its config is in [`firebase-config.js`](firebase-config.js). To finish, run this once on your own computer from the repo root:
-
-```bash
-bash setup-firebase.sh
+```sh
+npm test
+npm run typecheck
+npm run build
+npm run format:check
+npm run test:emulators
+# Build with VITE_FIREBASE_MODE=emulator for the production-preview tests:
+VITE_FIREBASE_MODE=emulator npm run build
+npx firebase emulators:exec --project demo-oscp-notebook --only auth,firestore 'npm run test:release'
 ```
 
-It does four things:
+Playwright uses installed Chrome; override `PLAYWRIGHT_CHANNEL` if needed. Auth runs on 9199 and Firestore on 8180. The production-preview tests run on 4174; development browser tests use 4173.
 
-1. Signs you in to the Firebase CLI (`npx -y firebase-tools@latest login`) and selects `oscp-notes`.
-2. Uses the existing `(default)` Firestore database, or creates one (Standard edition, `asia-southeast1` Singapore).
-3. Tests the security rules in the Firestore emulator ([`tests/rules.test.mjs`](tests/rules.test.mjs)). This needs Java 21 or newer (`brew install openjdk@21`).
-4. Turns on Email/Password sign-in and deploys the rules (`deploy --only auth,firestore`).
+## Deploy and migrate
 
-Then open the site, enter your email and a password, and press **Create account**.
+Read [deployment instructions](docs/deployment.md) before publishing. Enable Email/Password and provision your personal account in Firebase Console. Preview deployments require a separate Firebase test project. Production and preview web configurations are build-time environment variables; no Admin SDK credentials belong in the frontend.
 
-**Recommended:** once your account exists, stop anyone else from signing up. In the Firebase console, go to **Authentication → Settings → User actions** and untick **Enable create (sign-up)**.
+Preserve the old origin and export browser-only notes before changing domains. See [legacy export instructions](docs/legacy-export.md). Imports are explicit and preserve source HTML. JSON backups include current notes, trash and retained history; Markdown ZIPs contain readable notes and relative image files. Missing data produces an explicitly partial export.
 
-After pulling a change to `firestore.rules` (the calendar added one), deploy the rules again:
+Use Settings → Download for offline before relying on an offline session. The first visit requires a connection. Browser storage can be evicted; maintain cloud sync and portable backups. Screenshot bodies are retained even after notes are deleted; Settings can calculate their total stored size on request.
 
-```bash
-npx -y firebase-tools@latest deploy --only firestore:rules --project oscp-notes
-```
+The design and implementation plan live under `docs/superpowers/`. No live Firebase or Vercel deployment is performed by building locally.
 
-Until you do, the calendar still works but saves in that browser only.
+## HTB Academy schedule and calendar
 
-To rerun only the rules tests:
+Open `/htb-study` for the full 51-week plan or `/calendar?week=1` for week and month views. The OSCP Today page and More menu link to both. The original progress snapshot (7 November 2026), module allocations, checkpoint weeks and 10-hour weekly budget are preserved. This is a planning baseline, with no automatic HTB account synchronization.
 
-```bash
-npm --prefix tests install
-npx -y firebase-tools@latest emulators:exec --only firestore "npm --prefix tests test"
-```
+Signed-in module completion uses the existing revisioned notebook sync and backup system. Signed-out completion uses the original browser progress keys and remains separate from cloud progress. Course progress records are hidden from the machine ladder and note attachment picker. Weekly notes use weeks 201–251, distinct from the machine ladder, and include goals, attempts, lessons, blockers, progress and the Penetration Testing Process stages. Opening a week reuses its existing active note, including an explicitly imported legacy note; trashed and permanently deleted records are protected.
 
-## Deploy on Vercel
+If a previous site's weekly note exists locally or in the current Firebase project, import it through Settings before opening that week's new note. Original data is not migrated or overwritten automatically. Old `/index.html?htb-week=N` links open the corresponding calendar week. The Learning Process reference, testing guide and 12 source diagrams remain available at `/learning-process.html`.
 
-1. Go to [vercel.com/new](https://vercel.com/new) and import `Perryong/oscp-exam-notes`.
-2. Keep the defaults. There's no build command or framework, and the output is the repo root.
-3. Click **Deploy**. Every push to `main` redeploys.
-
-## Firebase agent skills
-
-The Firebase agent skills are installed in `.agents/skills` (with Claude Code links in `.claude/skills`), via `npx skills add firebase/agent-skills --agent=codex`. Use them for any Firebase work on this repo.
-
-To check weekly template insertion and note preservation, serve the repository on a separate localhost origin (for example, `python3 -m http.server 8879`) and open `/tests/weekly-template.html` without signing in. The checks restore the local notes they use.
-
-The HTB calendar regression checks run at `/tests/htb-calendar.html` on a signed-out localhost origin. They check allocations, whole-module completion, separate weekly notes, checkpoint notes, and preservation of the machine calendar.
+The superseded standalone schedule source is retained at `tests/fixtures/legacy-htb-study-schedule.html`; `/htb-study-schedule.html` is now a React redirect. Legacy calendar security rules and their owner-access tests are retained alongside the React notebook rules when integrating main.

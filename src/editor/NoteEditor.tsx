@@ -1,0 +1,421 @@
+import { useEffect, useRef, useState, useCallback } from "react";
+import { useBlocker } from "react-router-dom";
+import { useEditor, EditorContent, ReactNodeViewRenderer } from "@tiptap/react";
+import type {
+  Draft,
+  NoteContent,
+  ImageRecord,
+  Saved,
+  MachineContent,
+} from "../notebook/model";
+import {
+  extensions,
+  encodeEditor,
+  decodeEditor,
+  Screenshot,
+  safeLink,
+} from "./schema";
+import { saveDraft, getLocalImage, putLocalImage } from "../persistence/local";
+import { validateNote } from "../notebook/validation";
+import { prepareImage } from "./images";
+import ScreenshotNode, { ImageLoader } from "./ScreenshotNode";
+const guards = new Map<string, { work: Promise<void>; unsafe: boolean }>();
+export async function beforeLeaveEditor() {
+  await Promise.all([...guards.values()].map((g) => g.work));
+  return [...guards.values()].every((g) => !g.unsafe);
+}
+type Props = {
+  machines?: Saved<MachineContent>[];
+  uid: string;
+  draft: Draft<NoteContent>;
+  onDraft?: (draft: Draft<NoteContent>) => void;
+  loadImage?: (id: string) => Promise<ImageRecord | null>;
+};
+export default function NoteEditor({
+  uid,
+  draft,
+  onDraft,
+  loadImage,
+  machines = [],
+}: Props) {
+  const current = useRef(draft),
+    content = useRef(draft.content),
+    alive = useRef(true),
+    key = uid + ":" + draft.id;
+  const [title, setTitle] = useState(draft.content.title),
+    [tags, setTags] = useState(draft.content.tags.join(", ")),
+    [status, setStatus] = useState("Saved locally"),
+    [error, setError] = useState(""),
+    [busy, setBusy] = useState(false),
+    [recoveryOnly, setRecoveryOnly] = useState(false);
+  const guard = useRef({ work: Promise.resolve(), unsafe: false });
+  const persist = useCallback(
+    (value: NoteContent) => {
+      content.current = value;
+      guard.current.unsafe = true;
+      setBusy(true);
+      setStatus("Unsaved");
+      guards.set(key, guard.current);
+      guard.current.work = guard.current.work.then(async () => {
+        try {
+          validateNote(value);
+          const result = await saveDraft(
+            {
+              ...current.current,
+              content: value,
+              mutationId: crypto.randomUUID(),
+            },
+            current.current.localRevision,
+          );
+          if (result.kind === "conflict") {
+            if (content.current === value) guard.current.unsafe = false;
+            if (alive.current) {
+              setRecoveryOnly(true);
+              setBusy(false);
+              setStatus("Saved as recovery copy");
+              setError(
+                "Another tab changed this note. Your edit is saved in Settings recovery copies. Reload the latest note before editing again.",
+              );
+            }
+            return;
+          }
+          current.current = result.draft;
+          if (alive.current) {
+            onDraft?.(result.draft);
+            setError("");
+          }
+          if (content.current === value) {
+            guard.current.unsafe = false;
+            if (alive.current) {
+              setBusy(false);
+              setStatus("Saved locally");
+            }
+          }
+        } catch (e) {
+          guard.current.unsafe = true;
+          if (alive.current) {
+            setBusy(false);
+            setError(e instanceof Error ? e.message : "Could not save locally");
+            setStatus("Save failed");
+          }
+        }
+      });
+    },
+    [key, onDraft],
+  );
+  const editor = useEditor(
+    {
+      extensions: [
+        ...extensions.filter((e) => e.name !== "screenshot"),
+        Screenshot.extend({
+          addNodeView() {
+            return ReactNodeViewRenderer(ScreenshotNode);
+          },
+        }),
+      ],
+      content: decodeEditor(draft.content.contentJson),
+      immediatelyRender: false,
+      onUpdate: ({ editor }) => {
+        const live = editor.getJSON();
+        content.current = {
+          ...content.current,
+          contentJson: JSON.stringify(live),
+          text: editor.getText(),
+        };
+        guard.current.unsafe = true;
+        guards.set(key, guard.current);
+        try {
+          persist({ ...content.current, ...encodeEditor(live) });
+        } catch (e) {
+          setError(String(e));
+          setStatus("Save failed");
+          guard.current.unsafe = true;
+        }
+      },
+      editorProps: {
+        attributes: {
+          "aria-label": "Note content",
+          role: "textbox",
+          "aria-multiline": "true",
+        },
+        handlePaste: (_view, event) => {
+          const files = [...(event.clipboardData?.files || [])];
+          if (files.length) {
+            void addImages(files);
+            return true;
+          }
+          return false;
+        },
+        handleDrop: (_view, event) => {
+          const files = [...(event.dataTransfer?.files || [])];
+          if (files.length) {
+            void addImages(files);
+            return true;
+          }
+          return false;
+        },
+      },
+    },
+    [draft.id, uid],
+  );
+  useEffect(() => {
+    editor?.setEditable(!recoveryOnly, false);
+  }, [editor, recoveryOnly]);
+  async function addImages(files: File[]) {
+    for (const file of files) {
+      try {
+        setBusy(true);
+        guard.current.unsafe = true;
+        const origin = { ...current.current };
+        const image = await prepareImage(file);
+        await putLocalImage(uid, image);
+        if (!alive.current || editor?.isDestroyed) {
+          const doc = decodeEditor(origin.content.contentJson);
+          doc.content = [
+            ...(doc.content || []),
+            {
+              type: "screenshot",
+              attrs: { imageId: image.id, alt: file.name.slice(0, 200) },
+            },
+          ];
+          await saveDraft(
+            {
+              ...origin,
+              content: { ...origin.content, ...encodeEditor(doc) },
+              mutationId: crypto.randomUUID(),
+            },
+            origin.localRevision,
+          );
+          return;
+        }
+        editor
+          ?.chain()
+          .focus()
+          .insertContent({
+            type: "screenshot",
+            attrs: { imageId: image.id, alt: file.name.slice(0, 200) },
+          })
+          .run();
+      } catch (e) {
+        setError(String(e));
+      } finally {
+        if (alive.current) setBusy(false);
+      }
+    }
+  }
+  const imageLoader = useCallback(
+    async (id: string) =>
+      (await getLocalImage(uid, id)) || (await loadImage?.(id)) || null,
+    [uid, loadImage],
+  );
+  const blocker = useBlocker(() => guard.current.unsafe || busy);
+  useEffect(() => {
+    if (blocker.state === "blocked")
+      void beforeLeaveEditor().then((ok) => ok && blocker.proceed());
+  }, [blocker]);
+  useEffect(() => {
+    alive.current = true;
+    guards.set(key, guard.current);
+    const unload = (event: BeforeUnloadEvent) => {
+      if (guard.current.unsafe) {
+        event.preventDefault();
+        event.returnValue = "";
+      }
+    };
+    window.addEventListener("beforeunload", unload);
+    return () => {
+      alive.current = false;
+      window.removeEventListener("beforeunload", unload);
+      if (!guard.current.unsafe) guards.delete(key);
+    };
+  }, [key]);
+  return (
+    <section className="note-editor">
+      <input
+        className="note-title"
+        aria-label="Note title"
+        disabled={recoveryOnly}
+        value={title}
+        onChange={(e) => {
+          setTitle(e.target.value);
+          persist({ ...content.current, title: e.target.value });
+        }}
+      />
+      <div role="status" className="status editor-save-status">
+        {status}
+      </div>
+      <details className="note-details">
+        <summary>Details</summary>
+        <label>
+          Tags
+          <input
+            aria-label="Tags"
+            disabled={recoveryOnly}
+            placeholder="Tags, separated by commas"
+            value={tags}
+            onChange={(e) => {
+              setTags(e.target.value);
+              persist({
+                ...content.current,
+                tags: [
+                  ...new Set(
+                    e.target.value
+                      .split(",")
+                      .map((t) => t.trim())
+                      .filter(Boolean),
+                  ),
+                ],
+              });
+            }}
+          />
+        </label>
+        <div className="row">
+          <label>
+            Machine
+            <select
+              aria-label="Linked machine"
+              disabled={recoveryOnly}
+              defaultValue={draft.content.machineId || ""}
+              onChange={(e) =>
+                persist({
+                  ...content.current,
+                  machineId: e.target.value || null,
+                })
+              }
+            >
+              <option value="">General note</option>
+              {machines.map((m) => (
+                <option key={m.id} value={m.id}>
+                  {m.content.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Week
+            <input
+              aria-label="Study week"
+              disabled={recoveryOnly}
+              type="number"
+              min="1"
+              max="500"
+              defaultValue={draft.content.week || ""}
+              onChange={(e) =>
+                persist({
+                  ...content.current,
+                  week: e.target.value ? Number(e.target.value) : null,
+                })
+              }
+            />
+          </label>
+        </div>
+      </details>
+      <div className="toolbar">
+        {[
+          ["Bold", () => editor?.chain().focus().toggleBold().run()],
+          ["Italic", () => editor?.chain().focus().toggleItalic().run()],
+          [
+            "Heading",
+            () => editor?.chain().focus().toggleHeading({ level: 2 }).run(),
+          ],
+          [
+            "Bullet list",
+            () => editor?.chain().focus().toggleBulletList().run(),
+          ],
+          ["Checklist", () => editor?.chain().focus().toggleTaskList().run()],
+          ["Code block", () => editor?.chain().focus().toggleCodeBlock().run()],
+          [
+            "Link",
+            () => {
+              const href = prompt("HTTPS URL or /notes/note-id");
+              if (href && safeLink(href))
+                editor?.chain().focus().setLink({ href }).run();
+            },
+          ],
+          [
+            "Copy code",
+            async () => {
+              const text =
+                editor?.state.selection.$from.parent.textContent ||
+                editor?.getText() ||
+                "";
+              try {
+                await navigator.clipboard.writeText(text);
+              } catch {
+                setError("Select the code to copy it.");
+              }
+            },
+          ],
+        ].map(([label, action]) => (
+          <button
+            type="button"
+            disabled={recoveryOnly}
+            key={String(label)}
+            onClick={action as () => void}
+          >
+            {String(label)}
+          </button>
+        ))}
+        <label className="screenshot-control">
+          Screenshot
+          <input
+            aria-label="Add screenshot"
+            disabled={recoveryOnly}
+            type="file"
+            accept="image/png,image/jpeg,image/webp,image/gif"
+            multiple
+            onChange={(e) => {
+              void addImages([...(e.target.files || [])]);
+              e.target.value = "";
+            }}
+          />
+        </label>
+      </div>
+      <ImageLoader.Provider value={imageLoader}>
+        <div
+          className="editor"
+          onInputCapture={() => {
+            guard.current.unsafe = true;
+            setStatus("Unsaved");
+          }}
+        >
+          <EditorContent editor={editor} />
+        </div>
+      </ImageLoader.Provider>
+      {error && (
+        <div role="alert" className="error">
+          {error}
+          <div className="row">
+            {recoveryOnly ? (
+              <button onClick={() => location.reload()}>
+                Reload latest saved note
+              </button>
+            ) : (
+              <button onClick={() => persist(content.current)}>
+                Retry local save
+              </button>
+            )}
+            <button
+              onClick={() => {
+                const a = document.createElement("a");
+                a.href = URL.createObjectURL(
+                  new Blob([JSON.stringify(content.current)], {
+                    type: "application/json",
+                  }),
+                );
+                a.download = "unsaved-note.json";
+                a.click();
+                setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+              }}
+            >
+              Export current draft
+            </button>
+          </div>
+        </div>
+      )}
+      {blocker.state === "blocked" && (
+        <button onClick={() => blocker.reset()}>Keep editing</button>
+      )}
+    </section>
+  );
+}

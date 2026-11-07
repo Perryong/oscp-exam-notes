@@ -1,0 +1,10 @@
+import 'fake-indexeddb/auto';
+import {test,expect,beforeAll} from 'vitest';
+import {signInAnonymously} from 'firebase/auth';
+import {getClient} from '../../src/firebase/client';
+import {commitNote} from '../../src/firebase/notes';
+import {purgeNote} from '../../src/notebook/repository';
+import {draft} from '../fixtures/builders';
+let uid:string;beforeAll(async()=>{uid=(await signInAnonymously(getClient().auth)).user.uid});
+test('concurrent restoration prevents permanent deletion',async()=>{const a=draft({uid,id:crypto.randomUUID()});await commitNote(uid,{...a,content:{...a.content,deletedAt:1}});await commitNote(uid,{...a,baseRevision:1,mutationId:crypto.randomUUID()});await expect(purgeNote(uid,a.id,1)).rejects.toThrow('changed')});
+test('purged note cannot be resurrected by a lost create retry',async()=>{const a=draft({uid,id:crypto.randomUUID()});await commitNote(uid,{...a,content:{...a.content,deletedAt:1}});await purgeNote(uid,a.id,1);await expect(commitNote(uid,a)).rejects.toThrow()});

@@ -1,0 +1,453 @@
+{
+  "reviewedAt": "2026-10-17",
+  "sources": {
+    "tricks": {
+      "name": "OSCP-Tricks-2023",
+      "repository": "Perryong/OSCP-Tricks-2023",
+      "commit": "0898b2b8fd2ba754a30ebd0541f8bbe57a6586f2",
+      "credit": "rodolfomarianocy / Perryong"
+    },
+    "pen": {
+      "name": "PEN-200-OSCP",
+      "repository": "Perryong/PEN-200-OSCP",
+      "commit": "f7e0af078dad676f46059d0252f79cb7c7247e5b",
+      "credit": "jenriquezv / Perryong"
+    }
+  },
+  "tracks": [
+    {
+      "id": "enumeration",
+      "title": "Enumeration",
+      "level": "Focused drill",
+      "duration": "45–60 minutes",
+      "summary": "Turn service observations into a reasoned next step.",
+      "topicIds": ["foundations", "enumeration"],
+      "explanation": "Enumeration is a process of reducing uncertainty. A reachable port, a service banner and an authenticated response are different kinds of evidence. Build a small inventory, attach a confidence level to each claim, then choose a follow-up that can confirm or disprove it. The goal is to understand what is exposed and why it matters, rather than collect the largest output file.",
+      "setup": "Use one assigned lab host with a known address and two or more services. Keep its console available so you can compare remote observations with the actual configuration.",
+      "steps": [
+        {
+          "title": "Define the question",
+          "action": "Record the host, permitted services and your starting network position. Predict which services you expect before inspecting them.",
+          "expected": "A short scope statement and a prediction that you can later compare with evidence."
+        },
+        {
+          "title": "Build a service inventory",
+          "action": "Use the discovery and service-enumeration references below. For each observation record address, port, protocol, response and confidence. Keep raw output alongside your table.",
+          "expected": "Each row distinguishes an observed fact from an inferred product or version."
+        },
+        {
+          "title": "Validate one finding",
+          "action": "Choose one service and make a normal protocol request in the lab. Compare its response with your initial identification and the lab console.",
+          "expected": "Agreement increases confidence; disagreement produces a new question instead of an unsupported conclusion."
+        },
+        {
+          "title": "Choose the next check",
+          "action": "Rank three follow-ups by what they would teach you. Carry out the most informative one and explain how it changed your view.",
+          "expected": "A decision supported by evidence, including an explanation of what remains unknown."
+        }
+      ],
+      "troubleshooting": [
+        "No response: check the lab is running, the address is current and the VPN or route reaches it before interpreting silence as filtering.",
+        "Conflicting service names: distinguish a port-number guess from a protocol response; a banner can be customized or hidden."
+      ],
+      "evidence": [
+        "Service inventory with confidence labels",
+        "Raw output and one validation response",
+        "Three next questions, ordered by value"
+      ],
+      "checkpoint": "Can you explain why an open port does not establish the service version or a vulnerability?",
+      "sources": [
+        {
+          "source": "tricks",
+          "path": "information_gathering.md",
+          "label": "Host discovery and service enumeration"
+        },
+        {
+          "source": "pen",
+          "path": "README.md#recon-and-vulnerabilities-discovery",
+          "label": "Recon and vulnerabilities discovery"
+        }
+      ],
+      "related": [
+        {
+          "label": "Browse enumeration references",
+          "href": "/topics/enumeration"
+        }
+      ]
+    },
+    {
+      "id": "web",
+      "title": "Web applications",
+      "level": "Guided lab",
+      "duration": "60–90 minutes",
+      "summary": "Understand a normal request before comparing access decisions.",
+      "topicIds": ["web", "credentials"],
+      "explanation": "A browser interface is only one view of an application. The server receives methods, paths, headers, cookies and a body, then decides what the caller may do. Authentication identifies a caller; authorization checks whether that caller may access a particular resource. Comparing otherwise identical requests helps you isolate which input affected a decision.",
+      "setup": "Use a training web application and two lab accounts with different roles. Choose a harmless resource owned by the first account. Use the lab's browser or an intercepting proxy to inspect requests.",
+      "steps": [
+        {
+          "title": "Capture the baseline",
+          "action": "Perform a normal login and resource read. Annotate the method, path, session identifier and response. Redact session secrets in your notes.",
+          "expected": "A baseline showing how the application identifies your current account."
+        },
+        {
+          "title": "Write the access rule",
+          "action": "Describe who should be able to read the chosen resource. Repeat the ordinary action with the second lab account and while signed out.",
+          "expected": "A three-row comparison separating expected access from observed access."
+        },
+        {
+          "title": "Change one input",
+          "action": "In an assigned access-control exercise, change only the resource identifier or session context as directed by the lab. Compare body content as well as status and redirects.",
+          "expected": "Evidence of the server's actual decision; a status-code difference alone is not a completed finding."
+        },
+        {
+          "title": "Explain the boundary",
+          "action": "Use the references to classify the behavior. State where the server should check identity and ownership, then repeat your baseline to rule out an expired session.",
+          "expected": "A clear explanation of the trust boundary and a repeatable comparison."
+        }
+      ],
+      "troubleshooting": [
+        "Every request redirects: confirm the session is still valid and check for CSRF requirements before drawing conclusions.",
+        "Results change unexpectedly: remove cached responses from the comparison and keep request inputs consistent; note rate limits or application state changes."
+      ],
+      "evidence": [
+        "Annotated baseline request with secrets removed",
+        "Expected-versus-observed access table",
+        "One finding or a supported explanation that the check held"
+      ],
+      "checkpoint": "Could another learner reproduce your comparison without knowing your password or session token?",
+      "sources": [
+        {
+          "source": "tricks",
+          "path": "web_application_attacks.md",
+          "label": "Web application reference"
+        },
+        {
+          "source": "pen",
+          "path": "README.md#web-attacks",
+          "label": "Web attacks reference"
+        }
+      ],
+      "related": [
+        {
+          "label": "Read web concepts and connected labs",
+          "href": "/topics/web"
+        },
+        { "label": "Browse walkthroughs", "href": "/walkthroughs" }
+      ]
+    },
+    {
+      "id": "privilege-boundaries",
+      "title": "Linux and Windows privilege boundaries",
+      "level": "Paired lab",
+      "duration": "60–90 minutes per OS",
+      "summary": "Trace which identity controls a file, task or service.",
+      "topicIds": ["linux", "windows", "access", "files"],
+      "explanation": "A process runs with an identity and a set of permissions. A configuration becomes interesting when a less-privileged identity can influence something consumed by a more-privileged process. Identifying that relationship requires more than finding a writable file: you must establish who writes it, who reads or executes it, and when that happens.",
+      "setup": "Use separate Linux and Windows training VMs with a standard lab account and console access. Take a snapshot. Start with a deliberately configured demonstration service or scheduled task supplied by your lab.",
+      "steps": [
+        {
+          "title": "Record your starting identity",
+          "action": "Inspect your current user, group membership and effective permissions using the matching OS reference. Separate local privileges from domain membership.",
+          "expected": "A baseline that explains what your account can already do."
+        },
+        {
+          "title": "Trace one execution chain",
+          "action": "Choose a lab service or scheduled task. Record its owner, execution identity, launch configuration and referenced files. Inspect permissions on the files and their parent directories.",
+          "expected": "A chain from configuration to file to process, with the responsible identities labeled."
+        },
+        {
+          "title": "Test a harmless assumption",
+          "action": "Follow the training exercise's non-destructive validation, or use a disposable file to test the relevant read/write permission. Compare the observed result with the displayed permissions.",
+          "expected": "A verified permission fact. A writable location is a clue, not proof that a privileged process will consume it."
+        },
+        {
+          "title": "Compare and repair",
+          "action": "Repeat the analysis on the other OS. In your own snapshot, tighten the demonstration permission, repeat the check and restore the lab.",
+          "expected": "A before/after comparison explaining which relationship the correction removed."
+        }
+      ],
+      "troubleshooting": [
+        "A permission looks correct but access fails: check the actual process identity, group changes, inheritance and restrictions on parent paths.",
+        "A task does not behave as expected: distinguish a stopped service, an untriggered schedule and a permission failure; consult the lab's logs."
+      ],
+      "evidence": [
+        "Identity and permission baseline",
+        "Execution-chain diagram for each OS",
+        "Before/after validation and restoration note"
+      ],
+      "checkpoint": "Which exact connection lets one identity influence another, and what evidence proves that connection?",
+      "sources": [
+        {
+          "source": "tricks",
+          "path": "linux_enumeration_and_privilege_escalation.md",
+          "label": "Linux enumeration reference"
+        },
+        {
+          "source": "tricks",
+          "path": "windows_enumeration_and_privilege_escalation.md",
+          "label": "Windows enumeration reference"
+        },
+        {
+          "source": "pen",
+          "path": "README.md#privilege-escalation",
+          "label": "Privilege escalation reference"
+        }
+      ],
+      "related": [
+        { "label": "Linux concepts and references", "href": "/topics/linux" },
+        {
+          "label": "Windows concepts and references",
+          "href": "/topics/windows"
+        }
+      ]
+    },
+    {
+      "id": "active-directory",
+      "title": "Active Directory",
+      "level": "Identity lab",
+      "duration": "90 minutes",
+      "summary": "Read identities and permissions as a graph of relationships.",
+      "topicIds": ["active-directory", "credentials", "windows"],
+      "explanation": "Active Directory links users, groups, computers and services. Membership and delegated permissions describe different relationships: being in a group is not the same as having control over every object. A useful map includes the kind and direction of each relationship, the identity that observed it, and the evidence behind it.",
+      "setup": "Use an assigned AD training domain with a domain user and documented lab scope. Start with a small set of known objects, such as one user, two groups, one workstation and one shared resource.",
+      "steps": [
+        {
+          "title": "Establish domain context",
+          "action": "Record the domain, account, workstation, DNS configuration and time. Identify whether each account name in your notes is local or domain-scoped.",
+          "expected": "An unambiguous description of the identity and environment used for the observations."
+        },
+        {
+          "title": "Map memberships",
+          "action": "Use the enumeration references to inspect the chosen objects and their group relationships. Draw arrows and label direct versus nested membership.",
+          "expected": "A small graph where every edge can be traced to an observation."
+        },
+        {
+          "title": "Compare permissions",
+          "action": "Inspect the assigned object's permissions and a normal access attempt on the lab resource. Explain how the relevant group or delegated right relates to the result.",
+          "expected": "A distinction between directory relationships, authentication and the resource's access decision."
+        },
+        {
+          "title": "Challenge one inference",
+          "action": "Choose one path that appears to grant access. Check every edge and record any missing prerequisite. Describe a permission change that would break the path.",
+          "expected": "A supported path or a clearly documented reason why the apparent path is incomplete."
+        }
+      ],
+      "troubleshooting": [
+        "Domain queries fail: verify lab DNS, time synchronization and the account's domain before changing tools.",
+        "Graph and access result disagree: check nested groups, session freshness, local permissions and whether the displayed relationship was collected with a different account."
+      ],
+      "evidence": [
+        "Labeled user–group–resource diagram",
+        "Permission observations with collection context",
+        "One validated or rejected path and its reason"
+      ],
+      "checkpoint": "Can you explain each edge in your diagram without relying on a tool's color or risk label?",
+      "sources": [
+        {
+          "source": "tricks",
+          "path": "active_directory.md",
+          "label": "Active Directory notes"
+        },
+        {
+          "source": "pen",
+          "path": "README.md#ad",
+          "label": "AD enumeration and permissions"
+        }
+      ],
+      "related": [
+        {
+          "label": "Explore AD concepts and labs",
+          "href": "/topics/active-directory"
+        }
+      ]
+    },
+    {
+      "id": "pivoting",
+      "title": "Routing and pivoting",
+      "level": "Network lab",
+      "duration": "60–90 minutes",
+      "summary": "Explain the path a connection takes through a lab network.",
+      "topicIds": ["pivoting", "enumeration", "access"],
+      "explanation": "A connection succeeds only if its path, listener and destination agree. Forwarding one port is different from routing a network or sending application traffic through a proxy. Name resolution can happen in a different place from the connection itself. Drawing these steps makes failures easier to locate and prevents a tunnel from becoming a black box.",
+      "setup": "Use a training network with a learner host, a gateway you control and an internal test service. Obtain the lab's addresses and permitted route. Use a harmless service request as the connectivity check.",
+      "steps": [
+        {
+          "title": "Draw the baseline path",
+          "action": "Record interfaces, subnets and the service's listening address. Mark which host can reach the service before any forwarding is configured.",
+          "expected": "A diagram that distinguishes direct reachability from the path you intend to create."
+        },
+        {
+          "title": "Choose the mechanism",
+          "action": "From the forwarding references, select the lab's prescribed mechanism. Describe which host listens, which initiates the connection, which destination receives it and where DNS resolves.",
+          "expected": "A written prediction of the route, including the return path."
+        },
+        {
+          "title": "Validate each hop",
+          "action": "Follow the assigned lab setup. Test the harmless service first from the gateway and then through the configured path. Record the difference between connection failure and application refusal.",
+          "expected": "Evidence locating success or failure at a specific hop rather than simply saying the tunnel works."
+        },
+        {
+          "title": "Remove and retest",
+          "action": "Remove your lab forwarding configuration and repeat the check. Confirm the baseline is restored and annotate which applications were affected.",
+          "expected": "A reproducible before/during/after comparison and a clean lab state."
+        }
+      ],
+      "troubleshooting": [
+        "Gateway works but learner host fails: inspect listener address, chosen port and whether the client is actually using the proxy or forward.",
+        "Address works but name fails: identify where DNS is queried; do not assume all traffic, UDP or hostname resolution follows a TCP-only forward."
+      ],
+      "evidence": [
+        "Network diagram with connection direction",
+        "Per-hop observations and DNS location",
+        "Cleanup and baseline retest"
+      ],
+      "checkpoint": "Could you predict which traffic will bypass your chosen forwarding mechanism?",
+      "sources": [
+        {
+          "source": "tricks",
+          "path": "port_forwarding_and_tunneling.md",
+          "label": "Port forwarding and tunneling"
+        },
+        {
+          "source": "pen",
+          "path": "README.md#pivoting",
+          "label": "Pivoting reference"
+        }
+      ],
+      "related": [
+        {
+          "label": "Routing concepts and references",
+          "href": "/topics/pivoting"
+        }
+      ]
+    },
+    {
+      "id": "independent-machines",
+      "title": "Independent machines",
+      "level": "Integrated practice",
+      "duration": "Two focused sessions",
+      "summary": "Build and revise your own investigation before consulting a solution.",
+      "topicIds": [
+        "enumeration",
+        "web",
+        "access",
+        "linux",
+        "windows",
+        "reporting"
+      ],
+      "explanation": "Machine practice combines several skills under uncertainty. A walkthrough reveals the successful path but usually hides the decisions that came before it. Your learning comes from recording alternatives, testing assumptions and knowing why you changed direction. Treat references as tools for answering a specific question, then return to your own evidence.",
+      "setup": "Choose an available machine from your existing weekly plan or the source repository's machine lists. Match it to a topic you have already practised. Record the platform, reset state and allowed scope. Set a session time budget before opening its solution.",
+      "steps": [
+        {
+          "title": "Start without the solution",
+          "action": "Build a service inventory and write two possible investigation paths. Identify the evidence that would make each path worth following.",
+          "expected": "An initial decision log grounded in observations rather than the walkthrough title."
+        },
+        {
+          "title": "Work one hypothesis",
+          "action": "Follow the lab's objectives, record each meaningful action and keep failed attempts. At your time checkpoint, summarize what you know and what blocks the next step.",
+          "expected": "A short list of verified facts and a precise blocker, even if the machine is not completed."
+        },
+        {
+          "title": "Use the smallest useful hint",
+          "action": "Consult a topic reference first. If still blocked, read only the relevant walkthrough section. Record the clue you missed, then continue the exercise yourself.",
+          "expected": "A distinction between independent reasoning, reference-assisted work and solution-assisted work."
+        },
+        {
+          "title": "Repeat the weak section",
+          "action": "After a reset, repeat the section that required help and explain the prerequisite you overlooked. Link your machine note to the relevant concept and walkthrough.",
+          "expected": "A repeatable explanation of the decision, not just a remembered command sequence."
+        }
+      ],
+      "troubleshooting": [
+        "A walkthrough differs from your instance: compare platform, version and reset state before assuming the same path applies.",
+        "You keep repeating attempts: stop and write the hypothesis, predicted result and actual result. Change one assumption at a time."
+      ],
+      "evidence": [
+        "Decision log including failed hypotheses",
+        "Hints used and why they were needed",
+        "Reset-and-repeat notes linked to the machine"
+      ],
+      "checkpoint": "Can you describe the clue that selected each step and an alternative that you ruled out?",
+      "sources": [
+        {
+          "source": "tricks",
+          "path": "README.md#machines-list",
+          "label": "Machine lists and practice platforms"
+        },
+        {
+          "source": "pen",
+          "path": "README.md",
+          "label": "Technical reference during practice"
+        }
+      ],
+      "related": [
+        {
+          "label": "Choose from the weekly machine plan",
+          "href": "/study-plan?week=1"
+        },
+        { "label": "Open machines and your lab notes", "href": "/machines" },
+        { "label": "Compare with walkthroughs", "href": "/walkthroughs" }
+      ]
+    },
+    {
+      "id": "reporting",
+      "title": "Evidence and reporting",
+      "level": "Reproduction exercise",
+      "duration": "45–60 minutes",
+      "summary": "Turn a lab session into an explanation another learner can reproduce.",
+      "topicIds": ["reporting", "files", "foundations"],
+      "explanation": "A useful report connects a claim to evidence and explains its consequence. Screenshots are supporting material, not a replacement for context. A reader should know the starting conditions, action, observed result and reason the result matters. Include uncertainty explicitly so a later reader can distinguish a tested observation from an assumption.",
+      "setup": "Use one completed lab and its saved notes. Keep the lab available for a reset and use non-sensitive demonstration data. This exercise builds reporting habits; it is not an official exam submission template.",
+      "steps": [
+        {
+          "title": "State the finding",
+          "action": "Write a short title, affected lab component, starting conditions and impact. Separate what you demonstrated from possible consequences you did not test.",
+          "expected": "A concrete claim with an explicit evidence boundary."
+        },
+        {
+          "title": "Make the steps reproducible",
+          "action": "Reconstruct the sequence from your notes. Include the relevant command or request, explain placeholders and attach only the output that supports each step. Link the original reference you consulted.",
+          "expected": "A numbered sequence that still makes sense without the screenshots."
+        },
+        {
+          "title": "Review the evidence",
+          "action": "Check that every image has a caption, target context and matching step. Remove lab passwords and session tokens. Explain a corrective control and how you would verify it.",
+          "expected": "Evidence that supports the claim without exposing unnecessary secrets."
+        },
+        {
+          "title": "Reproduce from the report",
+          "action": "Reset the exercise and follow only your written steps. Mark each missing prerequisite, correct the report and record whether the same observation occurs.",
+          "expected": "A report whose steps have been checked, or a clearly stated limitation when reproduction is incomplete."
+        }
+      ],
+      "troubleshooting": [
+        "A screenshot lacks context: add the host, identity and action in the caption, or recapture it in the lab.",
+        "Reproduction fails: compare the reset state, permissions, versions and omitted setup before editing the conclusion."
+      ],
+      "evidence": [
+        "One finding with numbered reproduction steps",
+        "Captioned evidence and source links",
+        "A reproduction checklist and remediation rationale"
+      ],
+      "checkpoint": "Could someone distinguish your proven result from your assumptions using only the report?",
+      "sources": [
+        {
+          "source": "tricks",
+          "path": "README.md#template-report",
+          "label": "Reporting templates and further reading"
+        },
+        {
+          "source": "pen",
+          "path": "README.md",
+          "label": "Reference for checking technical terminology"
+        }
+      ],
+      "related": [
+        { "label": "Read reporting concepts", "href": "/topics/reporting" },
+        { "label": "Write or revise your notes", "href": "/notes" }
+      ]
+    }
+  ]
+}

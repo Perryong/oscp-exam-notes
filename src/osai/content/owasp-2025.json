@@ -1,0 +1,26 @@
+{
+  "slug": "owasp-2025",
+  "title": "OWASP LLM Top 10 · 2025",
+  "group": "Resources",
+  "summary": "Map findings to the correct edition of the OWASP risks.",
+  "sources": [
+    {
+      "title": "OffSec AI-300 overview",
+      "url": "https://www.offsec.com/courses/ai-300/",
+      "kind": "official"
+    },
+    {
+      "title": "OWASP LLM Top 10 (2025)",
+      "url": "https://genai.owasp.org/llm-top-10/",
+      "kind": "official"
+    },
+    {
+      "title": "Kongsec community training vault",
+      "url": "https://kongsec.github.io/OSAINotesResearch/",
+      "kind": "community"
+    }
+  ],
+  "checkedAt": "2026-10-15",
+  "owasp": [],
+  "html": "<p>This is the 2025 taxonomy. Identifiers from earlier editions can refer to different risks; always record the edition in a finding.</p><table><thead><tr><th>Identifier</th><th>Risk</th><th>Study connection</th></tr></thead><tbody><tr><td>LLM01:2025</td><td>Prompt Injection</td><td><a href=\"/osai/library/prompt-output\">prompt output</a></td></tr><tr><td>LLM02:2025</td><td>Sensitive Information Disclosure</td><td><a href=\"/osai/library/prompt-output\">prompt output</a></td></tr><tr><td>LLM03:2025</td><td>Supply Chain</td><td><a href=\"/osai/library/models-data\">models data</a></td></tr><tr><td>LLM04:2025</td><td>Data and Model Poisoning</td><td><a href=\"/osai/library/models-data\">models data</a></td></tr><tr><td>LLM05:2025</td><td>Improper Output Handling</td><td><a href=\"/osai/library/prompt-output\">prompt output</a></td></tr><tr><td>LLM06:2025</td><td>Excessive Agency</td><td><a href=\"/osai/library/agents\">agents</a></td></tr><tr><td>LLM07:2025</td><td>System Prompt Leakage</td><td><a href=\"/osai/library/prompt-output\">prompt output</a></td></tr><tr><td>LLM08:2025</td><td>Vector and Embedding Weaknesses</td><td><a href=\"/osai/library/retrieval\">retrieval</a></td></tr><tr><td>LLM09:2025</td><td>Misinformation</td><td><a href=\"/osai/library/assessment\">assessment</a></td></tr><tr><td>LLM10:2025</td><td>Unbounded Consumption</td><td><a href=\"/osai/library/infrastructure\">infrastructure</a></td></tr></tbody></table><p>A category is a reporting aid, not proof of vulnerability or an exam scoring rule. Explain the violated boundary, observed effect, and mitigation separately.</p>"
+}

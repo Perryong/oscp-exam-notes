@@ -1,0 +1,31 @@
+{
+  "slug": "resources",
+  "title": "Reading and practice resources",
+  "group": "Resources",
+  "summary": "A source-aware reading queue for your own study notes.",
+  "sources": [
+    {
+      "title": "OWASP educational resources",
+      "url": "https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki/Educational-Resources",
+      "kind": "official"
+    },
+    {
+      "title": "OffSec AI-300 overview",
+      "url": "https://www.offsec.com/courses/ai-300/",
+      "kind": "official"
+    },
+    {
+      "title": "OWASP LLM Top 10 (2025)",
+      "url": "https://genai.owasp.org/llm-top-10/",
+      "kind": "official"
+    },
+    {
+      "title": "Kongsec community training vault",
+      "url": "https://kongsec.github.io/OSAINotesResearch/",
+      "kind": "community"
+    }
+  ],
+  "checkedAt": "2026-10-15",
+  "owasp": [],
+  "html": "<h2>Start with primary guidance</h2><p>Use OffSec for course scope and exam requirements. Use OWASP’s risk pages for the taxonomy and mitigations. Kongsec provides community study ideas; its claims need independent verification.</p><h2>Choose a practice resource</h2><p>The OWASP educational directory links research, training material, and practice environments. Select a resource that states its scope and access conditions. Record the provider, URL, topic, cost if applicable, and date checked before starting.</p><h2>Read with a question</h2><ol><li>Write the boundary or behavior you want to understand.</li><li>Find the original paper, vendor advisory, or official documentation behind a claim.</li><li>Record the affected version, prerequisites, demonstrated impact, and limitations.</li><li>Create a personal lab note and link the source.</li><li>Record whether you reproduced the result, only read it, or could not verify it.</li></ol><h2>Source quality</h2><p>An educational directory is a discovery aid. Listing a tool or article does not verify its effectiveness or current availability. Do not treat community exam predictions as official requirements.</p>"
+}
