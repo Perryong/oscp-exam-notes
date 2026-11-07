@@ -14,6 +14,16 @@ A week-by-week OSCP practice ladder built from the LainKusanagi OSCP-like list, 
 
 It's a static site: `index.html`, reference pages, and `firebase-config.js`. Nothing needs building.
 
+## Local preview
+
+From the repository root, run this command using Python 3:
+
+```sh
+python3 -m http.server 8000 --bind 127.0.0.1
+```
+
+Open http://127.0.0.1:8000 in your browser. Press Ctrl+C in the terminal to stop the server. No build or dependency installation is needed for this static preview.
+
 ## Where notes are saved
 
 Notes and screenshots are stored in the Firebase project **oscp-notes**, using Firebase Authentication (email and password) and Cloud Firestore.
