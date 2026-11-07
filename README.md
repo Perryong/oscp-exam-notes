@@ -10,7 +10,8 @@ A week-by-week OSCP practice ladder built from the LainKusanagi OSCP-like list, 
 - **Cheat sheet** opens a searchable reference built from the [oscp_cheat_sheet_2025](https://github.com/Perryong/oscp_cheat_sheet_2025) repo: 19 sections (enumeration, reverse shells, privesc, Active Directory, tunnelling, and more), with collapsible sections and copy buttons on code blocks.
 - **Calendar** lays the plan out on real dates in a month or week view. Pick the day week 1 starts, and each week's boxes spread across that week. Move a box to another day by dragging it (on a computer) or with its date field (on a phone). Tick boxes, open walkthroughs and open notes right from the calendar.
 
-- **HTB study schedule** opens the [personal 10-hour weekly plan](htb-study-schedule.html), based on the 7 November 2026 progress snapshot: 27 remaining modules, 44 course weeks, and 7 checkpoint weeks. It keeps the existing machine calendar intact. Dates and allocations are saved in [the schedule snapshot](htb-study-schedule.json); progress is not automatically synchronized.
+- **HTB calendar**: in Calendar, select **HTB study** to view the 51-week schedule. Module checkboxes track whole-module completion across all its weeks and save in this browser, separately from machine progress. Each HTB week, including checkpoints, opens its own notes with the weekly template, normal notes sync, All notes search, and Markdown export. This does not update completion on HTB.
+- **HTB study schedule** opens the [personal 10-hour weekly plan](htb-study-schedule.html), based on the 7 November 2026 progress snapshot: 27 remaining modules, 44 course weeks, and 7 checkpoint weeks. Select a week number to open that week in Calendar. It keeps the existing machine calendar intact. Dates and allocations are saved in [the schedule snapshot](htb-study-schedule.json); progress is not automatically synchronized.
 - **Learning Process** opens [study notes for all 20 HTB sections](learning-process.html), with 12 locally stored source diagrams, lesson links, and OSCP practice prompts. Image credits and original URLs are recorded in [the source manifest](assets/learning-process/sources.json).
 
 It's a static site: `index.html`, reference pages, and `firebase-config.js`. Nothing needs building.
@@ -38,7 +39,7 @@ The first time you sign in, notes already written in that browser are copied up 
 
 Data layout:
 
-- `users/{uid}/notes/week-{n}`: `html`, `text` (for search), `week`, `updatedAt`
+- `users/{uid}/notes/week-{n}`: `html`, `text` (for search), `week`, `updatedAt`. Machine weeks use 1–168; HTB study weeks 1–51 reserve IDs 201–251. The UI and exports label them as HTB weeks. Existing security rules already accept these IDs (up to 500).
 - `users/{uid}/images/{id}`: `data` (the screenshot as a base64 data URL, under 1 MiB), `createdAt`
 - `users/{uid}/meta/calendar`: `start` (the day week 1 starts, `YYYY-MM-DD`), `moves` (boxes moved off their planned day: box → `YYYY-MM-DD`), `updatedAt`
 
@@ -89,3 +90,5 @@ npx -y firebase-tools@latest emulators:exec --only firestore "npm --prefix tests
 The Firebase agent skills are installed in `.agents/skills` (with Claude Code links in `.claude/skills`), via `npx skills add firebase/agent-skills --agent=codex`. Use them for any Firebase work on this repo.
 
 To check weekly template insertion and note preservation, serve the repository on a separate localhost origin (for example, `python3 -m http.server 8879`) and open `/tests/weekly-template.html` without signing in. The checks restore the local notes they use.
+
+The HTB calendar regression checks run at `/tests/htb-calendar.html` on a signed-out localhost origin. They check allocations, whole-module completion, separate weekly notes, checkpoint notes, and preservation of the machine calendar.

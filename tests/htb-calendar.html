@@ -1,0 +1,53 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>HTB calendar checks</title><h1>HTB calendar checks</h1><pre id="results">Running…</pre><iframe title="OSCP calendar under test" src="../index.html?htb-calendar-test=2" width="1000" height="750"></iframe>
+<script type="module">
+const frame=document.querySelector('iframe'), results=document.querySelector('#results');
+const assert=(ok,msg)=>{if(!ok)throw Error(msg)};
+await new Promise(r=>frame.addEventListener('load',r,{once:true}));
+const app=frame.contentWindow,doc=app.document;
+const saved=new Map(['oscp-ladder','oscp-note-201','oscp-cal-track','oscp-cal-view'].map(k=>[k,app.localStorage.getItem(k)]));
+try{
+ assert(app.eval('backend.kind')==='local','Use a signed-out localhost origin.');
+ const track=doc.querySelector('#cal-track');assert(track,'Calendar must offer an HTB study view.');
+ doc.querySelector('#calbtn').click();track.value='htb';track.dispatchEvent(new app.Event('change',{bubbles:true}));
+ await app.loadHtb();
+ app.eval('calCursor=calPick="2026-11-09";calView="week";renderCal()');
+ const planned = app.schedule();
+ for (const week of app.eval('HTB.weeks')) {
+   const blocks = [...planned.entries()].filter(([d])=>d>=week.start&&d<=week.end);
+   assert(blocks.length===5,'Every HTB week must have five study days.');
+   assert(blocks.reduce((n,[,items])=>n+items.reduce((h,it)=>h+it.hours,0),0)===10,'Each calendar week must total 10 hours.');
+ }
+
+ assert(doc.querySelector('[data-htb-module="77"]'),'Week 1 must show Getting Started.');
+ assert(doc.querySelector('[data-htb-notes="1"]'),'Week 1 must offer its notes.');
+ app.eval('calCursor=calPick="2026-11-23";renderCal()');
+ const checkbox=doc.querySelector('[data-htb-module="112"]');assert(checkbox,'Week 3 must show Footprinting.');
+ checkbox.checked=true;checkbox.dispatchEvent(new app.Event('change',{bubbles:true}));
+ app.eval('calCursor=calPick="2026-11-30";renderCal()');
+ assert(doc.querySelector('[data-htb-module="112"]').checked,'Module completion must carry to every allocation.');
+ const completion=JSON.parse(app.localStorage.getItem('oscp-ladder'));
+ assert(completion['htb-module-112']===1,'Module completion must persist.');
+ app.eval('calCursor=calPick="2026-11-09";renderCal()');
+ app.localStorage.removeItem('oscp-note-201');
+ doc.querySelector('[data-htb-notes="1"]').click();await new Promise(r=>setTimeout(r,50));
+ assert(doc.querySelector('#nt-title').textContent==='HTB week 1 notes','HTB notes must have a clear title.');
+ const editor=doc.querySelector('#ed');editor.innerHTML='<p>HTB-specific notes</p>';
+ editor.dispatchEvent(new app.Event('input',{bubbles:true}));await app.flush();doc.querySelector('#nt').close();
+ doc.querySelector('[data-htb-notes="1"]').click();await new Promise(r=>setTimeout(r,50));
+ assert(editor.textContent==='HTB-specific notes','HTB week must reopen its separate saved note.');
+ await app.flush();doc.querySelector('#nt').close();
+ doc.querySelector('#allnotes').click();
+ assert(doc.querySelector('#an-list').textContent.includes('HTB week 1'),'All notes must identify HTB weeks.');doc.querySelector('#an').close();
+ app.eval('calCursor=calPick="2026-12-21";renderCal()');
+ assert(doc.querySelector('[data-htb-notes="7"]'),'Checkpoint weeks must also offer notes.');
+ app.eval('calView="month";calCursor=calPick="2026-11-09";renderCal()');
+ assert(doc.querySelector('.cal-grid') && doc.querySelector('[data-htb-notes="1"]'),'Month view must include study items and weekly notes.');
+ assert(doc.querySelector('.chip').getAttribute('draggable')==='false','HTB allocations must not alter machine date overrides.');
+
+ track.value='machines';track.dispatchEvent(new app.Event('change',{bubbles:true}));
+ assert(doc.querySelector('[data-box]'),'Machine calendar must still render.');
+ results.textContent='PASS: HTB allocations, persistent module completion across weeks, separate weekly notes, All notes, checkpoint notes, and machine calendar.';
+}catch(e){results.textContent='FAIL: '+e.message}finally{
+ await app.flush();for(const[k,v]of saved){v===null?app.localStorage.removeItem(k):app.localStorage.setItem(k,v)}
+}
+</script></html>

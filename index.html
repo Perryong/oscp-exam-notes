@@ -316,6 +316,7 @@ li .mv input{width:auto;height:auto;accent-color:auto}
   <div class="dlg">
     <div class="dlg-head"><div style="flex:1;min-width:0"><h2 id="cal-title">Calendar</h2><p id="cal-sub"></p></div><button class="x" type="button" id="cal-close" aria-label="Close calendar">×</button></div>
     <div class="cal-bar">
+      <label class="cal-start">Plan <select id="cal-track"><option value="machines">Machine ladder</option><option value="htb">HTB study</option></select></label>
       <span class="cal-nav"><button type="button" class="btn" id="cal-prev" aria-label="Previous">‹</button><button type="button" class="btn" id="cal-today">Today</button><button type="button" class="btn" id="cal-next" aria-label="Next">›</button></span>
       <b id="cal-label" aria-live="polite"></b>
       <span class="cal-nav" id="cal-view" role="group" aria-label="View"><button type="button" class="btn" data-v="month">Month</button><button type="button" class="btn" data-v="week">Week</button></span>
@@ -348,6 +349,28 @@ try { done = JSON.parse(ls.get("oscp-ladder") || "{}") || {}; } catch(e) {}
 let active = +ls.get("oscp-ladder-tab") || 0;
 const noted = new Set();          // week numbers that have notes
 function save(){ ls.set("oscp-ladder", JSON.stringify(done)); }
+
+// Reserve note weeks 201–251 for Academy weeks; machine notes remain 1–168.
+const HTB_NOTE_BASE = 200;
+let HTB = null, htbPromise = null;
+let calTrack = ls.get("oscp-cal-track") === "htb" ? "htb" : "machines";
+async function loadHtb(){
+  if (!htbPromise) htbPromise = fetch("htb-study-schedule.json").then(r => {
+    if (!r.ok) throw new Error("Schedule unavailable");
+    return r.json();
+  }).then(data => {
+    if (!Array.isArray(data.weeks) || data.weeks.length !== 51 || !Array.isArray(data.remaining_modules)) throw new Error("Invalid schedule");
+    HTB = data; return data;
+  }).catch(e => { htbPromise = null; throw e; });
+  return htbPromise;
+}
+function weekInfo(n){
+  const h = n > HTB_NOTE_BASE && n <= HTB_NOTE_BASE + 51;
+  const w = h && HTB?.weeks.find(w => w.week === n - HTB_NOTE_BASE);
+  const names = h ? (w?.allocations.map(a => HTB.remaining_modules.find(m => m.id === a.module)?.title).join(" · ") || "Checkpoint, practice, and review")
+    : (PLAN.find(w => w.week === n)?.boxes.map(b => b.name).join(" · ") || "");
+  return { title: h ? `HTB week ${n - HTB_NOTE_BASE}` : `Week ${n}`, names };
+}
 
 /* calendar state: week 1's start date, plus boxes moved off their planned day ({box key: "YYYY-MM-DD"}) */
 const DAY = 864e5, ISO = /^\d{4}-\d{2}-\d{2}$/;
@@ -649,9 +672,9 @@ async function fillImages(root){
 async function openNotes(week){
   curWeek = week; dirty = false;
   notesLoaded = false; updateTemplateButton();
-  const w = PLAN.find(x=>x.week===week);
-  $("nt-title").textContent = `Week ${week} notes`;
-  $("nt-sub").textContent = w.boxes.map(b=>b.name).join(" · ");
+  const info = weekInfo(week);
+  $("nt-title").textContent = `${info.title} notes`;
+  $("nt-sub").textContent = info.names;
   $("nwhere").textContent = backend.where;
   ed.innerHTML = ""; status("Loading…");
   if (!$("nt").open) $("nt").showModal();
@@ -701,12 +724,12 @@ function renderAll(){
   const q = $("an-q").value.trim().toLowerCase();
   const weeks = [...notesCache.keys()].sort((a, b) => a - b);
   const rows = weeks.map(w => {
-    const plan = PLAN.find(x => x.week === w), boxes = plan ? plan.boxes.map(b => b.name).join(" · ") : "";
-    const t = noteText(w, notesCache.get(w)), hay = (boxes + " " + t).toLowerCase();
+    const info = weekInfo(w), boxes = info.names;
+    const t = noteText(w, notesCache.get(w)), hay = (info.title + " " + boxes + " " + t).toLowerCase();
     if (q && !hay.includes(q)) return "";
     const i = q ? t.toLowerCase().indexOf(q) : -1, start = Math.max(0, i - 40);
     const snip = (i >= 0 ? (start ? "…" : "") + t.slice(start, start + 160) : t.slice(0, 160)).replace(/\s+/g, " ");
-    return `<li><button type="button" class="an-item" data-w="${w}"><b>Week ${w}</b> <span class="tag">${esc(boxes)}</span><span class="snip">${esc(snip) || "(screenshots only)"}</span></button></li>`;
+    return `<li><button type="button" class="an-item" data-w="${w}"><b>${esc(info.title)}</b> <span class="tag">${esc(boxes)}</span><span class="snip">${esc(snip) || "(screenshots only)"}</span></button></li>`;
   }).filter(Boolean);
   $("an-list").innerHTML = rows.join("") || `<li class="muted">${weeks.length ? "No notes match that search." : "No notes yet. Open a week and press Notes to start."}</li>`;
   $("an-count").textContent = `${rows.length} of ${weeks.length} weeks`;
@@ -782,9 +805,9 @@ $("an-export").onclick = async () => {
   try {
     let md = `# OSCP practice notes\n\nExported ${new Date().toISOString().slice(0, 10)}\n`;
     for (const w of [...notesCache.keys()].sort((a, b) => a - b)) {
-      const plan = PLAN.find(x => x.week === w), box = document.createElement("div");
+      const info = weekInfo(w), box = document.createElement("div");
       box.innerHTML = clean(notesCache.get(w)); await fillImages(box);
-      md += `\n\n## Week ${w}${plan ? " — " + plan.boxes.map(b => b.name).join(", ") : ""}\n` + toMd(box).replace(/\n{3,}/g, "\n\n");
+      md += `\n\n## ${info.title}${info.names ? " — " + info.names : ""}\n` + toMd(box).replace(/\n{3,}/g, "\n\n");
     }
     const a = document.createElement("a");
     a.href = URL.createObjectURL(new Blob([md], { type: "text/markdown" }));
@@ -902,6 +925,28 @@ const fmtD = (s, o) => parseD(s).toLocaleDateString(undefined, { timeZone: "UTC"
 const planDate = (wi, i, n) => iso(new Date(+parseD(cal.start) + (wi * 7 + Math.floor(i * 7 / n)) * DAY));
 function schedule(){
   const m = new Map();
+  if (calTrack === "htb") {
+    for (const w of HTB?.weeks || []) {
+      const work = [...w.allocations];
+      if (w.practice_hours) work.push({ module: null, hours: w.practice_hours });
+      let slot = 0, used = 0;
+      for (const allocation of work) {
+        let left = allocation.hours;
+        while (left > 0) {
+          const hours = Math.min(2 - used, left), d = iso(new Date(+parseD(w.start) + [0, 2, 3, 5][slot] * DAY));
+          const a = allocation.module ? { module: allocation.module, hours } : null;
+          const name = a ? HTB.remaining_modules.find(x => x.id === a.module).title : "Catch-up or independent practice";
+          if (!m.has(d)) m.set(d, []);
+          m.get(d).push({ htb: true, w, a, hours, b: { name, tier: 1 } });
+          left -= hours; used += hours;
+          if (used === 2) { slot++; used = 0; }
+        }
+      }
+      const review = iso(new Date(+parseD(w.start) + 6 * DAY));
+      m.set(review, [{ htb: true, w, a: null, hours: 2, b: { name: "Independent retry + weekly notes", tier: 1 } }]);
+    }
+    return m;
+  }
   PLAN.forEach((w, wi) => w.boxes.forEach((b, i) => {
     const plan = planDate(wi, i, w.boxes.length), d = cal.moves[key(b)] || plan;
     if (!m.has(d)) m.set(d, []);
@@ -909,7 +954,18 @@ function schedule(){
   }));
   return m;
 }
+const calendarKey = it => it.htb ? (it.a ? "htb-module-" + it.a.module : "") : key(it.b);
+function htbWeekHeader(d){
+  const w = HTB?.weeks.find(w => w.start <= d && w.end >= d);
+  if (!w) return "<p class='muted'>No HTB study week planned for this date.</p>";
+  return `<div class="ag"><b>HTB week ${w.week} · 10 hours</b> <button class="btn" type="button" data-htb-notes="${w.week}">Open HTB week ${w.week} notes</button><p class="muted">${fmtD(w.start, { day: "numeric", month: "short" })} – ${fmtD(w.end, { day: "numeric", month: "short", year: "numeric" })} · ${esc(w.kind)}</p></div>`;
+}
 function agendaItem(it, d){
+  if (it.htb) {
+    if (!it.a) return `<li class="ag"><span class="name">${esc(it.b.name)} · ${it.hours} h</span><p class="muted">Record goals, attempts, lessons, blockers, and progress.</p></li>`;
+    const module = HTB.remaining_modules.find(m => m.id === it.a.module);
+    return `<li class="ag"><label><input type="checkbox" data-htb-module="${module.id}" ${done[calendarKey(it)] ? "checked" : ""}><span class="name">${esc(module.title)}</span><span class="tag">${it.a.hours} h planned · mark whole module complete</span></label><div class="links"><a class="read" href="${esc(module.source)}" target="_blank" rel="noopener">Open module ↗</a></div></li>`;
+  }
   const k = key(it.b), moved = d !== it.plan;
   return `<li class="ag"><label><input type="checkbox" data-k="${esc(k)}" ${done[k] ? "checked" : ""}><span class="name">${esc(it.b.name)}</span>` +
     `<span class="tag">${esc(it.b.platform)} · week ${it.w.week}</span><span class="lvl" style="--c:var(${LVLC[it.b.tier]})">${it.b.rating}${it.b.est ? " est." : ""}</span></label>` +
@@ -920,15 +976,21 @@ function agendaItem(it, d){
 function agendaDay(S, d){
   const items = S.get(d) || [];
   return `<h3 class="ag-day${d === todayIso() ? " today" : ""}">${fmtD(d, { weekday: "long", month: "short", day: "numeric" })}<span>${d === todayIso() ? "today" : ""}</span></h3>` +
-    (items.length ? `<ul>${items.map(it => agendaItem(it, d)).join("")}</ul>` : `<p class="muted">Nothing planned. Catch up on notes or pull the next box forward.</p>`);
+    (items.length ? `<ul>${items.map(it => agendaItem(it, d)).join("")}</ul>` : `<p class="muted">${calTrack === "htb" ? "No study block planned. Rest or revisit this week’s notes." : "Nothing planned. Catch up on notes or pull the next box forward."}</p>`);
 }
 function renderCal(){
   const S = schedule(), cur = parseD(calCursor), today = todayIso();
   $("cal-start").value = cal.start;
+  $("cal-start").closest("label").hidden = calTrack === "htb";
+  $("cal-track").value = calTrack;
   const last = PLAN.length * 7 - 1;
   $("cal-sub").textContent = `Week 1 starts ${fmtD(cal.start, { day: "numeric", month: "short", year: "numeric" })} · the plan ends ${fmtD(iso(new Date(+parseD(cal.start) + last * DAY)), { day: "numeric", month: "short", year: "numeric" })}`;
+  if (calTrack === "htb") {
+    const complete = HTB?.remaining_modules.filter(m => done["htb-module-" + m.id]).length || 0;
+    $("cal-sub").textContent = `HTB study · ${complete} of 27 scheduled modules complete · 51 weeks`;
+  }
   $("cal-view").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === calView));
-  let h = "";
+  let h = calTrack === "htb" ? htbWeekHeader(calView === "month" ? calPick : calCursor) : "";
   if (calView === "month") {
     const first = iso(new Date(Date.UTC(cur.getUTCFullYear(), cur.getUTCMonth(), 1))), gs = +parseD(mondayOf(first));
     let days = Array.from({ length: 42 }, (_, i) => iso(new Date(gs + i * DAY)));
@@ -937,11 +999,11 @@ function renderCal(){
     h += `<div class="cal-grid">` + ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].map(x => `<div class="cal-dow">${x}</div>`).join("") +
       days.map(d => {
         const items = S.get(d) || [], out = parseD(d).getUTCMonth() !== cur.getUTCMonth();
-        return `<div class="cal-day${out ? " out" : ""}${d === today ? " today" : ""}${d === calPick ? " pick" : ""}" data-d="${d}" role="button" tabindex="0" aria-label="${fmtD(d, { weekday: "long", month: "long", day: "numeric" })}, ${items.length} box${items.length === 1 ? "" : "es"}">` +
+        return `<div class="cal-day${out ? " out" : ""}${d === today ? " today" : ""}${d === calPick ? " pick" : ""}" data-d="${d}" role="button" tabindex="0" aria-label="${fmtD(d, { weekday: "long", month: "long", day: "numeric" })}, ${items.length} ${calTrack === "htb" ? "study items" : "boxes"}">` +
           `<span class="cal-n">${parseD(d).getUTCDate()}</span>` +
-          items.slice(0, 3).map(it => `<span class="chip${done[key(it.b)] ? " done" : ""}" style="--c:var(${LVLC[it.b.tier]})" draggable="true" data-k="${esc(key(it.b))}" title="${esc(it.b.name)} · week ${it.w.week}">${esc(it.b.name)}</span>`).join("") +
+          items.slice(0, 3).map(it => `<span class="chip${done[calendarKey(it)] ? " done" : ""}" style="--c:var(${LVLC[it.b.tier]})" draggable="${!it.htb}" data-k="${esc(calendarKey(it))}" title="${esc(it.b.name)} · week ${it.w.week}">${esc(it.b.name)}</span>`).join("") +
           (items.length > 3 ? `<span class="more">+${items.length - 3} more</span>` : "") +
-          (items.length ? `<span class="dots" aria-hidden="true">${items.map(it => done[key(it.b)] ? "○" : "●").join("")}</span>` : "") + `</div>`;
+          (items.length ? `<span class="dots" aria-hidden="true">${items.map(it => done[calendarKey(it)] ? "○" : "●").join("")}</span>` : "") + `</div>`;
       }).join("") + `</div>` + agendaDay(S, calPick);
   } else {
     const m = +parseD(mondayOf(calCursor)), days = Array.from({ length: 7 }, (_, i) => iso(new Date(m + i * DAY)));
@@ -949,6 +1011,7 @@ function renderCal(){
     h += days.map(d => agendaDay(S, d)).join("");
   }
   $("cal-body").innerHTML = h;
+  if (calTrack === "htb") calMsg(`Module completion stays in this browser. Notes: ${backend.where}.`);
 }
 function moveBox(k, d){
   if (!ISO.test(d)) return;
@@ -968,6 +1031,7 @@ const body = $("cal-body");
 body.addEventListener("click", e => {
   const t = e.target;
   const box = t.closest("[data-box]"); if (box) { const [wi, bi] = box.dataset.box.split(":").map(Number); openWalk(PLAN[wi], PLAN[wi].boxes[bi]); return; }
+  const hn = t.closest("[data-htb-notes]"); if (hn) { openNotes(HTB_NOTE_BASE + +hn.dataset.htbNotes); return; }
   const n = t.closest("[data-notes]"); if (n) { openNotes(+n.dataset.notes); return; }
   const r = t.closest("[data-reset]"); if (r) { delete cal.moves[r.dataset.reset]; pushCal(); renderCal(); return; }
   const day = t.closest(".cal-day"); if (day) { calPick = day.dataset.d; renderCal(); body.querySelector(".ag-day")?.scrollIntoView({ block: "nearest", behavior: "smooth" }); }
@@ -975,7 +1039,11 @@ body.addEventListener("click", e => {
 body.addEventListener("keydown", e => { const day = e.target.closest(".cal-day"); if (day && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); day.click(); } });
 body.addEventListener("change", e => {
   const t = e.target;
-  if (t.dataset.mv) moveBox(t.dataset.mv, t.value);
+  if (t.dataset.htbModule) {
+    const k = "htb-module-" + t.dataset.htbModule;
+    t.checked ? done[k] = 1 : delete done[k]; save(); renderCal();
+  }
+  else if (t.dataset.mv) moveBox(t.dataset.mv, t.value);
   else if (t.dataset.k) { t.checked ? done[t.dataset.k] = 1 : delete done[t.dataset.k]; save(); renderStats(); renderList(); renderCal(); }
 });
 // desktop: drag a box onto another day
@@ -983,9 +1051,24 @@ body.addEventListener("dragstart", e => { const c = e.target.closest(".chip"); i
 body.addEventListener("dragover", e => { const day = e.target.closest(".cal-day"); if (day) { e.preventDefault(); body.querySelectorAll(".drop").forEach(x => x !== day && x.classList.remove("drop")); day.classList.add("drop"); } });
 body.addEventListener("dragleave", e => { if (!body.contains(e.relatedTarget)) body.querySelectorAll(".drop").forEach(x => x.classList.remove("drop")); });
 body.addEventListener("drop", e => { const day = e.target.closest(".cal-day"), k = e.dataTransfer.getData("text/plain"); if (day && k) { e.preventDefault(); calPick = day.dataset.d; moveBox(k, day.dataset.d); } });
-$("calbtn").onclick = () => { calMsg(calSync ? "" : "Saved in this browser only. Sign in to sync your calendar."); renderCal(); $("cal").showModal(); };
+$("cal-track").onchange = async e => {
+  calTrack = e.target.value === "htb" ? "htb" : "machines"; ls.set("oscp-cal-track", calTrack);
+  if (calTrack === "htb") {
+    try { await loadHtb(); calCursor = calPick = HTB.weeks.find(w => w.start <= todayIso() && w.end >= todayIso())?.start || HTB.weeks[0].start; }
+    catch(e) { calMsg("Couldn't load the HTB schedule. Reload and try again.", "bad"); }
+  }
+  renderCal();
+};
+$("calbtn").onclick = async () => {
+  if (calTrack === "htb") { try { await loadHtb(); } catch(e) { calTrack = "machines"; } }
+ calMsg(calSync ? "" : "Saved in this browser only. Sign in to sync your calendar."); renderCal(); $("cal").showModal(); };
 $("cal-close").onclick = () => $("cal").close();
 
+loadHtb().then(() => { if ($("an").open) renderAll(); }).catch(() => {});
 renderStats(); renderTabs(); renderList();
+const htbWeekParam = Number(new URLSearchParams(location.search).get("htb-week"));
+if (Number.isInteger(htbWeekParam) && htbWeekParam >= 1 && htbWeekParam <= 51) {
+  loadHtb().then(() => { calTrack = "htb"; calView = "week"; calCursor = calPick = HTB.weeks[htbWeekParam - 1].start; $("calbtn").click(); }).catch(() => {});
+}
 </script>
 </body></html>
