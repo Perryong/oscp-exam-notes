@@ -1139,3 +1139,47 @@ pre {
   font-size: 14px;
   color: var(--muted);
 }
+
+.pentest-resource {
+  margin: 1.25rem 0;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: white;
+  overflow-wrap: anywhere;
+}
+.pentest-resource h2 {
+  margin-top: 0.5rem;
+}
+.pentest-caveat {
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+}
+.pentest-actions,
+.pentest-links,
+.pentest-filters {
+  margin: 1rem 0;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.pentest-filters label,
+.pentest-actions label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.pentest-filters input,
+.pentest-filters select {
+  max-width: 100%;
+}
+.pentest-revision {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 600px) {
+  .pentest-resource {
+    padding: 1rem;
+  }
+  .pentest-filters label {
+    width: 100%;
+  }
+}

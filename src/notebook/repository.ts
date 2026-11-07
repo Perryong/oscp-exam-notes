@@ -1,3 +1,5 @@
+import { pentestNoteInitial } from "../pentest/templates";
+import { resourceById } from "../pentest/catalog";
 import { createOsaiLabTemplate } from "../osai/templates";
 import { workspaceOf, type WorkspaceId } from "../workspaces/model";
 import { withSeedMachines } from "./seeds";
@@ -159,6 +161,12 @@ export async function createNote(
             workspace === "osai"
               ? createOsaiLabTemplate()
               : createMachineTemplate(),
+          )
+        : {}),
+      ...(workspace === "automated-pentest" && machineId
+        ? pentestNoteInitial(
+            resourceById(machineId)?.kind || "project",
+            resourceById(machineId),
           )
         : {}),
       ...initial,

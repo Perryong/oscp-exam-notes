@@ -1,3 +1,5 @@
+import { workspaceLabel } from "../workspaces/model";
+const PentestWorkspace = lazy(() => import("../pentest/Workspace"));
 import WorkspaceNav from "./WorkspaceNav";
 import LibraryHome from "../reference/LibraryHome";
 import { lazy, Suspense } from "react";
@@ -47,7 +49,8 @@ export default function App() {
           >
             <span className="brand-icon">⌘</span>
             <span>
-              FIELDNOTES<small>{workspace.toUpperCase()} STUDY WORKSPACE</small>
+              FIELDNOTES
+              <small>{workspaceLabel(workspace)} STUDY WORKSPACE</small>
             </span>
           </NavLink>
           <WorkspaceSwitcher workspace={workspace} />
@@ -60,7 +63,7 @@ export default function App() {
         <main>
           <UpdateNotice />
           <header className="topbar">
-            <span>{workspace.toUpperCase()} / Personal workspace</span>
+            <span>{workspaceLabel(workspace)} / Personal workspace</span>
             <span className="badge">Study edition</span>
           </header>
           {account.error && (
@@ -82,6 +85,71 @@ export default function App() {
             }
           >
             <Routes>
+              <Route
+                path="/automated-pentest"
+                element={
+                  <Navigate replace to="/automated-pentest/study-plan" />
+                }
+              />
+              {(
+                [
+                  ["study-plan", "today"],
+                  ["practice", "practice"],
+                  ["library", "library"],
+                  ["library/:id", "resource"],
+                ] as const
+              ).map(([path, page]) => (
+                <Route
+                  key={path}
+                  path={"/automated-pentest/" + path}
+                  element={
+                    <PentestWorkspace
+                      key={location.pathname + (uid || "public")}
+                      page={page}
+                      uid={uid}
+                    />
+                  }
+                />
+              ))}
+              <Route
+                path="/automated-pentest/notes"
+                element={
+                  uid ? (
+                    <NotebookView
+                      key="pentest-notes"
+                      uid={uid}
+                      workspace="automated-pentest"
+                    />
+                  ) : (
+                    <AccountPanel user={null} />
+                  )
+                }
+              />
+              <Route
+                path="/automated-pentest/notes/:id"
+                element={
+                  uid ? (
+                    <NotePage
+                      key={location.pathname}
+                      uid={uid}
+                      workspace="automated-pentest"
+                    />
+                  ) : (
+                    <AccountPanel user={null} />
+                  )
+                }
+              />
+              <Route
+                path="/automated-pentest/trash"
+                element={
+                  uid ? (
+                    <TrashView uid={uid} workspace="automated-pentest" />
+                  ) : (
+                    <AccountPanel user={null} />
+                  )
+                }
+              />
+
               <Route
                 path="/library"
                 element={<LibraryHome workspace="oscp" />}

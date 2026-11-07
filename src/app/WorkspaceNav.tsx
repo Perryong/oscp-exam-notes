@@ -18,19 +18,29 @@ export default function WorkspaceNav({
           ["/cheat-sheet", "Cheat sheet"],
           ["/walkthroughs", "Walkthroughs"],
         ]
-      : [
-          ["/osai/topics", "Topics"],
-          ["/osai/library/osai-vault", "OSAI Vault"],
-          ["/osai/library/owasp-resources", "OWASP Resources"],
-          ["/osai/library", "Learning library"],
-        ];
+      : workspace === "automated-pentest"
+        ? [["/automated-pentest/trash", "Trash"]]
+        : [
+            ["/osai/topics", "Topics"],
+            ["/osai/library/osai-vault", "OSAI Vault"],
+            ["/osai/library/owasp-resources", "OWASP Resources"],
+            ["/osai/library", "Learning library"],
+          ];
   return (
     <div className="workspace-navigation">
       <nav aria-label="Primary" className="primary-nav">
         <NavLink to={workspacePath(workspace, "study-plan")}>Today</NavLink>
         <NavLink to={workspacePath(workspace, "targets")}>Practice</NavLink>
         <NavLink to={workspacePath(workspace, "notes")}>Notes</NavLink>
-        <NavLink to={workspace === "oscp" ? "/library" : "/osai/resources"}>
+        <NavLink
+          to={
+            workspace === "oscp"
+              ? "/library"
+              : workspace === "osai"
+                ? "/osai/resources"
+                : "/automated-pentest/library"
+          }
+        >
           Library
         </NavLink>
       </nav>
