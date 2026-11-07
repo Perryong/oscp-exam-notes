@@ -9,7 +9,9 @@ A week-by-week OSCP practice ladder built from the LainKusanagi OSCP-like list, 
 - **Cheat sheet** opens a searchable reference built from the [oscp_cheat_sheet_2025](https://github.com/Perryong/oscp_cheat_sheet_2025) repo: 19 sections (enumeration, reverse shells, privesc, Active Directory, tunnelling, and more), with collapsible sections and copy buttons on code blocks.
 - **Calendar** lays the plan out on real dates in a month or week view. Pick the day week 1 starts, and each week's boxes spread across that week. Move a box to another day by dragging it (on a computer) or with its date field (on a phone). Tick boxes, open walkthroughs and open notes right from the calendar.
 
-It's a static site: `index.html` plus `firebase-config.js`. Nothing needs building.
+- **Learning Process** opens [study notes for all 20 HTB sections](learning-process.html), with 12 locally stored source diagrams, lesson links, and OSCP practice prompts. Image credits and original URLs are recorded in [the source manifest](assets/learning-process/sources.json).
+
+It's a static site: `index.html`, reference pages, and `firebase-config.js`. Nothing needs building.
 
 ## Where notes are saved
 
