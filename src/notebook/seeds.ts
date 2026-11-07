@@ -1,3 +1,4 @@
+import { htbSeedMachines } from "../htb/seeds";
 import { pentestSeedResources } from "../pentest/seeds";
 import { osaiSeedMachines } from "../osai/seeds";
 import ladder from "../reference/ladder.json";
@@ -36,6 +37,7 @@ export const seedMachines: Saved<MachineContent>[] = Array.from(
 
 export const allSeedResources = [
   ...seedMachines,
+  ...htbSeedMachines,
   ...osaiSeedMachines,
   ...pentestSeedResources,
 ];

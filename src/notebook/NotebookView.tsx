@@ -1,3 +1,4 @@
+import { isHtbModule } from "../htb/seeds";
 import { resourceById } from "../pentest/catalog";
 import { pentestNoteInitial } from "../pentest/templates";
 import { createMachineTemplate } from "../editor/templates";
@@ -28,7 +29,9 @@ export default function NotebookView({
 }) {
   const all = useNotebook(),
     notes = all.notes.filter((n) => workspaceOf(n.content) === workspace),
-    machines = all.machines.filter((m) => workspaceOf(m.content) === workspace),
+    machines = all.machines.filter(
+      (m) => workspaceOf(m.content) === workspace && !isHtbModule(m.id),
+    ),
     [query, setQuery] = useState(""),
     [error, setError] = useState(""),
     [creating, setCreating] = useState(false),
@@ -272,7 +275,7 @@ export function NotePage({
           uid={uid}
           draft={draft}
           machines={machines.filter(
-            (m) => workspaceOf(m.content) === workspace,
+            (m) => workspaceOf(m.content) === workspace && !isHtbModule(m.id),
           )}
           onDraft={() => setStatus("Saved locally")}
           loadImage={(image) => loadImage(uid, image)}

@@ -1,3 +1,4 @@
+import { isHtbModule } from "../htb/seeds";
 import {
   workspaceOf,
   sameWorkspace,
@@ -164,7 +165,9 @@ export default function MachineView({
         </button>
       </div>
       {all
-        .filter((m) => workspaceOf(m.content) === workspace)
+        .filter(
+          (m) => workspaceOf(m.content) === workspace && !isHtbModule(m.id),
+        )
         .filter((m) =>
           `${m.content.name} ${m.content.platform} ${m.content.os} ${m.content.tags.join(" ")} ${m.content.week || ""}`
             .toLowerCase()

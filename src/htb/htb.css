@@ -1,0 +1,133 @@
+.htb-study {
+  max-width: 1250px;
+}
+.htb-controls,
+.htb-week-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 18px 0;
+}
+.htb-controls label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.htb-controls select {
+  max-width: 100%;
+  padding: 9px;
+}
+.htb-controls [role="group"] {
+  display: flex;
+  gap: 6px;
+}
+.htb-controls [aria-pressed="true"] {
+  border-color: var(--accent, #183d39);
+  font-weight: bold;
+}
+.htb-sessions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 12px;
+}
+.htb-sessions .week-card {
+  display: block;
+  min-width: 0;
+}
+.htb-session {
+  padding: 10px 0;
+  border-top: 1px solid var(--line, #d6ddd5);
+  overflow-wrap: anywhere;
+}
+.htb-completion {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  min-height: 44px;
+  font-size: 0.9rem;
+}
+.htb-completion input {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+.htb-table {
+  overflow: auto;
+  margin: 24px 0;
+}
+.htb-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.htb-table td,
+.htb-table th {
+  padding: 16px 12px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line, #d6ddd5);
+}
+.htb-table th {
+  min-width: 180px;
+}
+.htb-table td {
+  min-width: 220px;
+}
+.htb-table small {
+  display: block;
+  font-weight: normal;
+  margin-top: 6px;
+}
+.htb-month {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+.htb-month button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  min-width: 0;
+  min-height: 100px;
+  text-align: left;
+  overflow: hidden;
+  padding: 8px;
+}
+.htb-month small {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+.htb-dow {
+  text-align: center;
+  font-weight: bold;
+}
+.htb-month .htb-out {
+  opacity: 0.55;
+}
+.htb-month .htb-selected {
+  outline: 2px solid var(--accent, #183d39);
+  outline-offset: -2px;
+}
+@media (max-width: 600px) {
+  .htb-month button {
+    min-height: 65px;
+    padding: 6px;
+  }
+  .htb-month small {
+    display: none;
+  }
+  .htb-sessions {
+    grid-template-columns: 1fr;
+  }
+  .htb-controls label {
+    flex-wrap: wrap;
+  }
+  .htb-controls select {
+    width: 100%;
+  }
+}

@@ -37,6 +37,17 @@ export default function LearningHome({ uid }: { uid?: string }) {
         </div>
       </div>
       <StudyActions uid={uid} workspace="oscp" />
+      <article className="week-card">
+        <h2>HTB Academy · 10 hours each week</h2>
+        <p>
+          Follow your 51-week path, track module completion and open weekly
+          reflection notes.
+        </p>
+        <div className="row">
+          <Link to="/calendar">Open HTB calendar →</Link>
+          <Link to="/htb-study">Full HTB schedule</Link>
+        </div>
+      </article>
       <label>
         Search the OSCP library
         <input

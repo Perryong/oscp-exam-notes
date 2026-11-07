@@ -1,0 +1,1026 @@
+{
+  "checked_on": "2026-11-07",
+  "timezone": "Asia/Kuala_Lumpur",
+  "path": "Penetration Tester",
+  "source": "https://academy.hackthebox.com/app/paths/16/path-progress",
+  "observed_path_percent": 3,
+  "completed_modules": [
+    {
+      "id": 90,
+      "title": "Penetration Testing Process"
+    }
+  ],
+  "outside_path_completed": [
+    {
+      "id": 9,
+      "title": "Learning Process"
+    }
+  ],
+  "weekly_hours": 10,
+  "course_hours_per_week": 8,
+  "review_hours_per_week": 2,
+  "study_hours_per_displayed_day": 8,
+  "assumptions": [
+    "Start Monday 9 November 2026; no deadline supplied.",
+    "Convert displayed day estimates to 8 study hours for planning; this is not an HTB time guarantee.",
+    "Budget all 8 hours of Getting Started because no completed sections were verified.",
+    "Use path order; insert an 8-hour catch-up block plus 2-hour review after every six course weeks.",
+    "The final 4 unallocated course hours are independent capstone replay.",
+    "This is a dated snapshot, not a live HTB sync or a prediction of exam readiness."
+  ],
+  "remaining_modules": [
+    {
+      "id": 77,
+      "title": "Getting Started",
+      "displayed_estimate": "8 hours",
+      "planned_hours": 8,
+      "status": "In progress on path; no completed sections verified",
+      "source": "https://academy.hackthebox.com/app/module/77"
+    },
+    {
+      "id": 19,
+      "title": "Network Enumeration with Nmap",
+      "displayed_estimate": "7 hours",
+      "planned_hours": 7,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/19"
+    },
+    {
+      "id": 112,
+      "title": "Footprinting",
+      "displayed_estimate": "2 days",
+      "planned_hours": 16,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/112"
+    },
+    {
+      "id": 144,
+      "title": "Information Gathering - Web Edition",
+      "displayed_estimate": "8 hours",
+      "planned_hours": 8,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/144"
+    },
+    {
+      "id": 108,
+      "title": "Vulnerability Assessment",
+      "displayed_estimate": "2 hours",
+      "planned_hours": 2,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/108"
+    },
+    {
+      "id": 24,
+      "title": "File Transfers",
+      "displayed_estimate": "3 hours",
+      "planned_hours": 3,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/24"
+    },
+    {
+      "id": 115,
+      "title": "Shells & Payloads",
+      "displayed_estimate": "2 days",
+      "planned_hours": 16,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/115"
+    },
+    {
+      "id": 39,
+      "title": "Using the Metasploit Framework",
+      "displayed_estimate": "5 hours",
+      "planned_hours": 5,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/39"
+    },
+    {
+      "id": 147,
+      "title": "Password Attacks",
+      "displayed_estimate": "3 days",
+      "planned_hours": 24,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/147"
+    },
+    {
+      "id": 116,
+      "title": "Attacking Common Services",
+      "displayed_estimate": "8 hours",
+      "planned_hours": 8,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/116"
+    },
+    {
+      "id": 158,
+      "title": "Pivoting, Tunneling, and Port Forwarding",
+      "displayed_estimate": "2 days",
+      "planned_hours": 16,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/158"
+    },
+    {
+      "id": 143,
+      "title": "Active Directory Enumeration & Attacks",
+      "displayed_estimate": "7 days",
+      "planned_hours": 56,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/143"
+    },
+    {
+      "id": 110,
+      "title": "Using Web Proxies",
+      "displayed_estimate": "8 hours",
+      "planned_hours": 8,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/110"
+    },
+    {
+      "id": 54,
+      "title": "Attacking Web Applications with Ffuf",
+      "displayed_estimate": "5 hours",
+      "planned_hours": 5,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/54"
+    },
+    {
+      "id": 57,
+      "title": "Login Brute Forcing",
+      "displayed_estimate": "6 hours",
+      "planned_hours": 6,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/57"
+    },
+    {
+      "id": 33,
+      "title": "SQL Injection Fundamentals",
+      "displayed_estimate": "8 hours",
+      "planned_hours": 8,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/33"
+    },
+    {
+      "id": 58,
+      "title": "SQLMap Essentials",
+      "displayed_estimate": "4 hours",
+      "planned_hours": 4,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/58"
+    },
+    {
+      "id": 103,
+      "title": "Cross-Site Scripting (XSS)",
+      "displayed_estimate": "6 hours",
+      "planned_hours": 6,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/103"
+    },
+    {
+      "id": 23,
+      "title": "File Inclusion",
+      "displayed_estimate": "8 hours",
+      "planned_hours": 8,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/23"
+    },
+    {
+      "id": 136,
+      "title": "File Upload Attacks",
+      "displayed_estimate": "8 hours",
+      "planned_hours": 8,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/136"
+    },
+    {
+      "id": 109,
+      "title": "Command Injections",
+      "displayed_estimate": "6 hours",
+      "planned_hours": 6,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/109"
+    },
+    {
+      "id": 134,
+      "title": "Web Attacks",
+      "displayed_estimate": "2 days",
+      "planned_hours": 16,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/134"
+    },
+    {
+      "id": 113,
+      "title": "Attacking Common Applications",
+      "displayed_estimate": "4 days",
+      "planned_hours": 32,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/113"
+    },
+    {
+      "id": 51,
+      "title": "Linux Privilege Escalation",
+      "displayed_estimate": "8 hours",
+      "planned_hours": 8,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/51"
+    },
+    {
+      "id": 67,
+      "title": "Windows Privilege Escalation",
+      "displayed_estimate": "4 days",
+      "planned_hours": 32,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/67"
+    },
+    {
+      "id": 162,
+      "title": "Documentation & Reporting",
+      "displayed_estimate": "2 days",
+      "planned_hours": 16,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/162"
+    },
+    {
+      "id": 163,
+      "title": "Attacking Enterprise Networks",
+      "displayed_estimate": "2 days",
+      "planned_hours": 16,
+      "status": "Not completed on path",
+      "source": "https://academy.hackthebox.com/app/module/163"
+    }
+  ],
+  "weeks": [
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 77,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 1,
+      "start": "2026-11-09",
+      "end": "2026-11-15"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 19,
+          "hours": 7
+        },
+        {
+          "module": 112,
+          "hours": 1
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 2,
+      "start": "2026-11-16",
+      "end": "2026-11-22"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 112,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 3,
+      "start": "2026-11-23",
+      "end": "2026-11-29"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 112,
+          "hours": 7
+        },
+        {
+          "module": 144,
+          "hours": 1
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 4,
+      "start": "2026-11-30",
+      "end": "2026-12-06"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 144,
+          "hours": 7
+        },
+        {
+          "module": 108,
+          "hours": 1
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 5,
+      "start": "2026-12-07",
+      "end": "2026-12-13"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 108,
+          "hours": 1
+        },
+        {
+          "module": 24,
+          "hours": 3
+        },
+        {
+          "module": 115,
+          "hours": 4
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 6,
+      "start": "2026-12-14",
+      "end": "2026-12-20"
+    },
+    {
+      "kind": "Checkpoint and catch-up",
+      "allocations": [],
+      "review_hours": 2,
+      "practice_hours": 8,
+      "week": 7,
+      "start": "2026-12-21",
+      "end": "2026-12-27"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 115,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 8,
+      "start": "2026-12-28",
+      "end": "2027-01-03"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 115,
+          "hours": 4
+        },
+        {
+          "module": 39,
+          "hours": 4
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 9,
+      "start": "2027-01-04",
+      "end": "2027-01-10"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 39,
+          "hours": 1
+        },
+        {
+          "module": 147,
+          "hours": 7
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 10,
+      "start": "2027-01-11",
+      "end": "2027-01-17"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 147,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 11,
+      "start": "2027-01-18",
+      "end": "2027-01-24"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 147,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 12,
+      "start": "2027-01-25",
+      "end": "2027-01-31"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 147,
+          "hours": 1
+        },
+        {
+          "module": 116,
+          "hours": 7
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 13,
+      "start": "2027-02-01",
+      "end": "2027-02-07"
+    },
+    {
+      "kind": "Checkpoint and catch-up",
+      "allocations": [],
+      "review_hours": 2,
+      "practice_hours": 8,
+      "week": 14,
+      "start": "2027-02-08",
+      "end": "2027-02-14"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 116,
+          "hours": 1
+        },
+        {
+          "module": 158,
+          "hours": 7
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 15,
+      "start": "2027-02-15",
+      "end": "2027-02-21"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 158,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 16,
+      "start": "2027-02-22",
+      "end": "2027-02-28"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 158,
+          "hours": 1
+        },
+        {
+          "module": 143,
+          "hours": 7
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 17,
+      "start": "2027-03-01",
+      "end": "2027-03-07"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 143,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 18,
+      "start": "2027-03-08",
+      "end": "2027-03-14"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 143,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 19,
+      "start": "2027-03-15",
+      "end": "2027-03-21"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 143,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 20,
+      "start": "2027-03-22",
+      "end": "2027-03-28"
+    },
+    {
+      "kind": "Checkpoint and catch-up",
+      "allocations": [],
+      "review_hours": 2,
+      "practice_hours": 8,
+      "week": 21,
+      "start": "2027-03-29",
+      "end": "2027-04-04"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 143,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 22,
+      "start": "2027-04-05",
+      "end": "2027-04-11"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 143,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 23,
+      "start": "2027-04-12",
+      "end": "2027-04-18"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 143,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 24,
+      "start": "2027-04-19",
+      "end": "2027-04-25"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 143,
+          "hours": 1
+        },
+        {
+          "module": 110,
+          "hours": 7
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 25,
+      "start": "2027-04-26",
+      "end": "2027-05-02"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 110,
+          "hours": 1
+        },
+        {
+          "module": 54,
+          "hours": 5
+        },
+        {
+          "module": 57,
+          "hours": 2
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 26,
+      "start": "2027-05-03",
+      "end": "2027-05-09"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 57,
+          "hours": 4
+        },
+        {
+          "module": 33,
+          "hours": 4
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 27,
+      "start": "2027-05-10",
+      "end": "2027-05-16"
+    },
+    {
+      "kind": "Checkpoint and catch-up",
+      "allocations": [],
+      "review_hours": 2,
+      "practice_hours": 8,
+      "week": 28,
+      "start": "2027-05-17",
+      "end": "2027-05-23"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 33,
+          "hours": 4
+        },
+        {
+          "module": 58,
+          "hours": 4
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 29,
+      "start": "2027-05-24",
+      "end": "2027-05-30"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 103,
+          "hours": 6
+        },
+        {
+          "module": 23,
+          "hours": 2
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 30,
+      "start": "2027-05-31",
+      "end": "2027-06-06"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 23,
+          "hours": 6
+        },
+        {
+          "module": 136,
+          "hours": 2
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 31,
+      "start": "2027-06-07",
+      "end": "2027-06-13"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 136,
+          "hours": 6
+        },
+        {
+          "module": 109,
+          "hours": 2
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 32,
+      "start": "2027-06-14",
+      "end": "2027-06-20"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 109,
+          "hours": 4
+        },
+        {
+          "module": 134,
+          "hours": 4
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 33,
+      "start": "2027-06-21",
+      "end": "2027-06-27"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 134,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 34,
+      "start": "2027-06-28",
+      "end": "2027-07-04"
+    },
+    {
+      "kind": "Checkpoint and catch-up",
+      "allocations": [],
+      "review_hours": 2,
+      "practice_hours": 8,
+      "week": 35,
+      "start": "2027-07-05",
+      "end": "2027-07-11"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 134,
+          "hours": 4
+        },
+        {
+          "module": 113,
+          "hours": 4
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 36,
+      "start": "2027-07-12",
+      "end": "2027-07-18"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 113,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 37,
+      "start": "2027-07-19",
+      "end": "2027-07-25"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 113,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 38,
+      "start": "2027-07-26",
+      "end": "2027-08-01"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 113,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 39,
+      "start": "2027-08-02",
+      "end": "2027-08-08"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 113,
+          "hours": 4
+        },
+        {
+          "module": 51,
+          "hours": 4
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 40,
+      "start": "2027-08-09",
+      "end": "2027-08-15"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 51,
+          "hours": 4
+        },
+        {
+          "module": 67,
+          "hours": 4
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 41,
+      "start": "2027-08-16",
+      "end": "2027-08-22"
+    },
+    {
+      "kind": "Checkpoint and catch-up",
+      "allocations": [],
+      "review_hours": 2,
+      "practice_hours": 8,
+      "week": 42,
+      "start": "2027-08-23",
+      "end": "2027-08-29"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 67,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 43,
+      "start": "2027-08-30",
+      "end": "2027-09-05"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 67,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 44,
+      "start": "2027-09-06",
+      "end": "2027-09-12"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 67,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 45,
+      "start": "2027-09-13",
+      "end": "2027-09-19"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 67,
+          "hours": 4
+        },
+        {
+          "module": 162,
+          "hours": 4
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 46,
+      "start": "2027-09-20",
+      "end": "2027-09-26"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 162,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 47,
+      "start": "2027-09-27",
+      "end": "2027-10-03"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 162,
+          "hours": 4
+        },
+        {
+          "module": 163,
+          "hours": 4
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 48,
+      "start": "2027-10-04",
+      "end": "2027-10-10"
+    },
+    {
+      "kind": "Checkpoint and catch-up",
+      "allocations": [],
+      "review_hours": 2,
+      "practice_hours": 8,
+      "week": 49,
+      "start": "2027-10-11",
+      "end": "2027-10-17"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 163,
+          "hours": 8
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 0,
+      "week": 50,
+      "start": "2027-10-18",
+      "end": "2027-10-24"
+    },
+    {
+      "kind": "Course and labs",
+      "allocations": [
+        {
+          "module": 163,
+          "hours": 4
+        }
+      ],
+      "review_hours": 2,
+      "practice_hours": 4,
+      "week": 51,
+      "start": "2027-10-25",
+      "end": "2027-10-31"
+    }
+  ]
+}

@@ -163,3 +163,39 @@ test("curriculum restore keeps seed identity, progress and note associations", (
     }),
   ).toThrow("workspace");
 });
+
+test("HTB backup restore keeps module completion identity and reserved weekly notes", () => {
+  const id = "htb-module-112";
+  const restored = remapBundle(
+    validateBundle({
+      ...bundle({
+        machines: [
+          saved(
+            id,
+            machineContent({
+              workspace: "oscp",
+              platform: "HTB Academy",
+              week: null,
+              progress: "completed",
+            }),
+          ),
+        ],
+        notes: [
+          saved(
+            "htb-week-201",
+            noteContent({
+              title: "HTB week 1 notes",
+              week: 201,
+              machineId: null,
+            }),
+          ),
+        ],
+      }),
+      version: 2,
+    }),
+  ).bundle;
+  expect(restored.machines[0].id).toBe(id);
+  expect(restored.machines[0].content.progress).toBe("completed");
+  expect(restored.notes[0].content.week).toBe(201);
+  expect(restored.notes[0].content.machineId).toBeNull();
+});

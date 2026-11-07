@@ -11,6 +11,8 @@ export default function WorkspaceNav({
   const secondary =
     workspace === "oscp"
       ? [
+          ["/htb-study", "HTB study schedule"],
+          ["/calendar", "HTB calendar"],
           ["/topics", "Concepts"],
           ["/mindmap", "Mindmap"],
           ["/practice-tracks", "Practice tracks"],

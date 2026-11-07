@@ -41,3 +41,11 @@ Preserve the old origin and export browser-only notes before changing domains. S
 Use Settings → Download for offline before relying on an offline session. The first visit requires a connection. Browser storage can be evicted; maintain cloud sync and portable backups. Screenshot bodies are retained even after notes are deleted; Settings can calculate their total stored size on request.
 
 The design and implementation plan live under `docs/superpowers/`. No live Firebase or Vercel deployment is performed by building locally.
+
+## HTB Academy schedule and calendar
+
+Open `/htb-study` for the full 51-week plan or `/calendar?week=1` for week and month views. The OSCP Today page and More menu link to both. The original progress snapshot (7 November 2026), module allocations, checkpoint weeks and 10-hour weekly budget are preserved. This is a planning baseline, with no automatic HTB account synchronization.
+
+Signed-in module completion uses the existing revisioned notebook sync and backup system. Signed-out completion uses the original browser progress keys and remains separate from cloud progress. Course progress records are hidden from the machine ladder and note attachment picker. Weekly notes use weeks 201–251, distinct from the machine ladder, and include goals, attempts, lessons, blockers, progress and the Penetration Testing Process stages. Opening a week reuses its existing active note, including an explicitly imported legacy note; trashed and permanently deleted records are protected.
+
+If a previous site's weekly note exists locally or in the current Firebase project, import it through Settings before opening that week's new note. Original data is not migrated or overwritten automatically. Old `/index.html?htb-week=N` links open the corresponding calendar week. The Learning Process reference, testing guide and 12 source diagrams remain available at `/learning-process.html`.

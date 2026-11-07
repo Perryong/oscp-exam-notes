@@ -3,6 +3,7 @@ const PentestWorkspace = lazy(() => import("../pentest/Workspace"));
 import WorkspaceNav from "./WorkspaceNav";
 import LibraryHome from "../reference/LibraryHome";
 import { lazy, Suspense } from "react";
+const HtbStudy = lazy(() => import("../htb/HtbStudy"));
 const LearningHome = lazy(() => import("../oscp/LearningHome"));
 const Mindmap = lazy(() => import("../oscp/Mindmap"));
 const PracticeTracks = lazy(() => import("../oscp/PracticeTracks"));
@@ -298,6 +299,26 @@ export default function App() {
                 element={<WalkthroughReader key={location.pathname} />}
               />
               <Route path="/demo" element={<DemoEditor />} />
+              <Route
+                path="/htb-study"
+                element={<HtbStudy key={uid || "public"} uid={uid} />}
+              />
+              <Route
+                path="/calendar"
+                element={
+                  <HtbStudy
+                    key={"calendar:" + (uid || "public")}
+                    uid={uid}
+                    calendar
+                  />
+                }
+              />
+              <Route
+                path="/htb-study-schedule.html"
+                element={<Navigate replace to="/htb-study" />}
+              />
+              <Route path="/" element={<LegacyHome />} />
+              <Route path="/index.html" element={<LegacyHome />} />
               <Route path="/study-plan" element={<LearningHome uid={uid} />} />
               <Route path="/cheat-sheet" element={<CheatSheet />} />
               <Route path="*" element={<Navigate to="/study-plan" replace />} />
@@ -306,5 +327,20 @@ export default function App() {
         </main>
       </div>
     </NotebookProvider>
+  );
+}
+
+function LegacyHome() {
+  const { search } = useLocation();
+  const week = Number(new URLSearchParams(search).get("htb-week"));
+  return (
+    <Navigate
+      replace
+      to={
+        Number.isInteger(week) && week >= 1 && week <= 51
+          ? `/calendar?week=${week}`
+          : "/study-plan"
+      }
+    />
   );
 }
