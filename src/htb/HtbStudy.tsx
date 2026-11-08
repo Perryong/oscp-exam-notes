@@ -161,6 +161,7 @@ export default function HtbStudy({
         <Link to={"/calendar?week=" + weekNumber}>Calendar</Link>
         <a href="/getting-started.html">Getting Started guide</a>
         <a href="/nmap-study-guide.html">Nmap study guide</a>
+        <a href="/footprinting-study-guide.html">Footprinting guide</a>
         <a href="/learning-process.html#weekly-template-guide">
           Learning Process &amp; testing guide
         </a>

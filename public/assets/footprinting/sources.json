@@ -1,0 +1,30 @@
+[
+  {
+    "file": "enumeration-methodology.png",
+    "credit": "Hack The Box Academy",
+    "source": "https://cdn.services-k8s.prod.aws.htb.systems/content/modules/112/enum-method33.png",
+    "lesson": "https://academy.hackthebox.com/app/module/112/section/1185",
+    "caption": "HTB Academy’s enumeration model, reproduced as a credited study reference. Open the full-size image to read its detailed branches."
+  },
+  {
+    "file": "service-atlas.svg",
+    "credit": "OSCP Fieldnotes — original illustration",
+    "source": "Original vector illustration authored for this guide",
+    "lesson": "https://academy.hackthebox.com/app/module/112/section/1066",
+    "caption": "Original service atlas: common ports guide discovery; protocols and configuration require verification."
+  },
+  {
+    "file": "access-boundaries.svg",
+    "credit": "OSCP Fieldnotes — original illustration",
+    "source": "Original vector illustration authored for this guide",
+    "lesson": "https://academy.hackthebox.com/app/module/112/section/1067",
+    "caption": "Original permission diagram: reachability, protocol, identity, visibility and operations are separate observations."
+  },
+  {
+    "file": "evidence-chain.svg",
+    "credit": "OSCP Fieldnotes — original illustration",
+    "source": "Original vector illustration authored for this guide",
+    "lesson": "https://academy.hackthebox.com/app/module/112/section/1078",
+    "caption": "Original lab workflow: connect clues through scope, narrow checks and recorded evidence."
+  }
+]

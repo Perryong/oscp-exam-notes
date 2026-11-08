@@ -1,0 +1,1183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Footprinting study guide · OSCP Fieldnotes</title>
+    <meta
+      name="description"
+      content="Original companion to all 21 HTB Footprinting lessons: service enumeration, 34 code blocks, four credited images and lab evidence templates."
+    />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f5f6f2;
+        --surface: #fff;
+        --ink: #20333b;
+        --muted: #59676b;
+        --line: #d8e0dc;
+        --accent: #087f69;
+        --code: #14252c;
+        --code-ink: #e8f1ef;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #111d24;
+          --surface: #192b32;
+          --ink: #e6efed;
+          --muted: #a8bab7;
+          --line: #35474c;
+          --accent: #7fd5bf;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-padding-top: 24px;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          17px/1.75 system-ui,
+          sans-serif;
+      }
+      main {
+        max-width: 1000px;
+        margin: auto;
+        padding: 32px 24px 72px;
+        min-width: 0;
+      }
+      a {
+        color: var(--accent);
+        text-underline-offset: 3px;
+        overflow-wrap: anywhere;
+      }
+      a:focus-visible,
+      summary:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 4px;
+      }
+      header {
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--line);
+      }
+      header nav {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .eyebrow,
+      .meta,
+      figcaption,
+      .back {
+        font-size: 0.84rem;
+        color: var(--muted);
+      }
+      .eyebrow {
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        margin-top: 28px;
+      }
+      h1,
+      h2,
+      h3 {
+        line-height: 1.25;
+        letter-spacing: -0.025em;
+      }
+      h1 {
+        font-size: clamp(2rem, 6vw, 3.2rem);
+        margin: 10px 0 16px;
+      }
+      h2 {
+        font-size: 1.55rem;
+        margin-top: 40px;
+        padding-top: 22px;
+        border-top: 1px solid var(--line);
+      }
+      h3 {
+        font-size: 1.18rem;
+      }
+      p {
+        max-width: 80ch;
+      }
+      details {
+        margin: 28px 0;
+        padding: 20px 24px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+      }
+      summary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      details ol {
+        columns: 2;
+        column-gap: 36px;
+        padding-left: 24px;
+      }
+      details li {
+        break-inside: avoid;
+        margin: 8px 0;
+      }
+      pre {
+        max-width: 100%;
+        padding: 20px;
+        overflow: auto;
+        background: var(--code);
+        color: var(--code-ink);
+        border-radius: 10px;
+        line-height: 1.65;
+        font-size: 0.87rem;
+        tab-size: 4;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      }
+      figure {
+        margin: 28px 0;
+        padding: 14px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+      }
+      figure img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: auto;
+        background: #fff;
+      }
+      figcaption {
+        margin-top: 12px;
+        line-height: 1.6;
+      }
+      .back {
+        margin-top: 36px;
+        margin-bottom: -28px;
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        margin-top: 40px;
+        padding-top: 24px;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      @media (max-width: 600px) {
+        main {
+          padding: 24px 16px 48px;
+        }
+        details {
+          padding: 16px;
+        }
+        details ol {
+          columns: 1;
+        }
+        pre {
+          padding: 14px;
+          font-size: 0.8rem;
+        }
+        figure {
+          padding: 8px;
+        }
+        h2 {
+          font-size: 1.35rem;
+        }
+      }
+      @media print {
+        body {
+          background: #fff;
+          color: #000;
+        }
+        main {
+          max-width: none;
+          padding: 0;
+        }
+        details,
+        .back {
+          display: none;
+        }
+        pre {
+          white-space: pre-wrap;
+          background: #eee;
+          color: #000;
+        }
+        figure,
+        pre {
+          break-inside: avoid;
+        }
+        a {
+          color: inherit;
+        }
+      }
+
+      .table-scroll {
+        overflow: auto;
+        max-width: 100%;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      caption {
+        text-align: left;
+        font-weight: 700;
+        margin: 12px 0;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 12px;
+        border: 1px solid var(--line);
+        vertical-align: top;
+      }
+      td:first-child {
+        white-space: nowrap;
+        font-family: ui-monospace, monospace;
+      }
+      figure img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <nav aria-label="Study navigation">
+          <a href="/study-plan">Today</a><a href="/calendar">HTB calendar</a
+          ><a href="/htb-study">HTB schedule</a
+          ><a href="/nmap-study-guide.html">Nmap guide</a>
+        </nav>
+        <p class="eyebrow">HTB ACADEMY · MODULE 112</p>
+        <h1>Footprinting study guide</h1>
+        <p>
+          Build a reliable picture of services, identities and permissions. An
+          original study companion covering all 21 lessons, with 34 code blocks,
+          four images and practical evidence checkpoints.
+        </p>
+        <p class="meta">
+          Based on
+          <a href="https://academy.hackthebox.com/app/module/112"
+            >HTB Academy: Footprinting</a
+          >
+          · Reviewed 9 November 2026 · No assessment answers
+        </p>
+      </header>
+      <aside class="callout">
+        <strong>Before using the examples.</strong> Use only assigned lab
+        targets and permitted operations. Replace ALL_CAPS placeholders with the
+        exercise’s values; commands are independent examples, not a script to
+        run wholesale. Keep passwords at interactive prompts and private
+        evidence in your own notes. No targets are contacted by this page.
+      </aside>
+      <nav id="contents" aria-label="Contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#section-1">01. Enumeration Principles</a></li>
+          <li><a href="#section-2">02. Enumeration Methodology</a></li>
+          <li><a href="#section-3">03. Domain Information</a></li>
+          <li><a href="#section-4">04. Cloud Resources</a></li>
+          <li><a href="#section-5">05. Staff</a></li>
+          <li><a href="#section-6">06. FTP</a></li>
+          <li><a href="#section-7">07. SMB</a></li>
+          <li><a href="#section-8">08. NFS</a></li>
+          <li><a href="#section-9">09. DNS</a></li>
+          <li><a href="#section-10">10. SMTP</a></li>
+          <li><a href="#section-11">11. IMAP / POP3</a></li>
+          <li><a href="#section-12">12. SNMP</a></li>
+          <li><a href="#section-13">13. MySQL</a></li>
+          <li><a href="#section-14">14. MSSQL</a></li>
+          <li><a href="#section-15">15. Oracle TNS</a></li>
+          <li><a href="#section-16">16. IPMI</a></li>
+          <li>
+            <a href="#section-17">17. Linux Remote Management Protocols</a>
+          </li>
+          <li>
+            <a href="#section-18">18. Windows Remote Management Protocols</a>
+          </li>
+          <li><a href="#section-19">19. Footprinting Lab - Easy</a></li>
+          <li><a href="#section-20">20. Footprinting Lab - Medium</a></li>
+          <li><a href="#section-21">21. Footprinting Lab - Hard</a></li>
+        </ol>
+      </nav>
+      <section aria-labelledby="study-session">
+        <h2 id="study-session">Use this in a study session</h2>
+        <p>
+          Spend 15 minutes recalling service roles and setting one goal, 60
+          minutes on a bounded lab question, and 15 minutes reviewing evidence.
+          Split this large module across your 10-hour study week as needed. In
+          your weekly note, record goals, attempts, what you learned, where you
+          got stuck and progress. Mark a lesson complete only when you can
+          explain the result and its limits.
+        </p>
+      </section>
+      <section id="section-1">
+        <h2>01. Enumeration Principles</h2>
+        <p>
+          Footprinting builds a supported picture of an environment: what
+          exists, what each service exposes, and which questions remain. Work in
+          short loops: observe, form a hypothesis, choose a narrow check, record
+          the result, then revise. A banner is a clue, not proof of the exact
+          software or its security. A failed probe may reflect filtering,
+          privileges or an incorrect protocol assumption.
+        </p>
+        <p>
+          Keep observed facts separate from interpretations. Reading third-party
+          public records differs from sending requests to a target; visiting its
+          website or querying its authoritative DNS still interacts with
+          infrastructure. Agree on scope, allowed techniques and rate limits
+          before active checks. The examples here use assigned lab systems and
+          synthetic identifiers.
+        </p>
+        <pre><code class="language-text">Observation: TCP 445 responds on ASSIGNED_LAB_IP
+Hypothesis: SMB service; permissions unknown
+Next check: identify protocol and list shares in the allowed identity context
+Evidence: timestamp, command, output, identity and target
+Result / uncertainty: ...</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Before starting, write down the
+          authorized targets and one question you want each probe to answer.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/1060"
+            >HTB source lesson — Enumeration Principles</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <section id="section-2">
+        <h2>02. Enumeration Methodology</h2>
+        <p>
+          HTB organizes enumeration into six layers: Internet Presence, Gateway,
+          Accessible Services, Processes, Privileges and OS Setup. Treat this as
+          a course model for organizing questions, rather than a universal
+          network standard or a rigid order. Infrastructure clues lead to hosts;
+          service behavior suggests processes; a verified identity reveals a
+          different view of permissions and operating-system configuration.
+        </p>
+        <p>
+          Revisit earlier layers when evidence changes. A hostname found in a
+          permitted share might explain a certificate name or identify a service
+          to verify, but discovering that hostname does not add it to scope.
+          Preserve the relationship and request scope clarification when needed.
+        </p>
+        <figure>
+          <img
+            src="/assets/footprinting/enumeration-methodology.png"
+            alt="HTB Academy’s enumeration model, reproduced as a credited study reference. Open the full-size image to read its detailed branches."
+            loading="lazy"
+            width="1040"
+          />
+          <figcaption>
+            HTB Academy’s enumeration model, reproduced as a credited study
+            reference. Open the full-size image to read its detailed branches.
+            Credit: Hack The Box Academy.
+            <a href="/assets/footprinting/enumeration-methodology.png"
+              >Open full-size image</a
+            >
+            ·
+            <a href="https://academy.hackthebox.com/app/module/112/section/1185"
+              >Image context</a
+            >
+          </figcaption>
+        </figure>
+        <pre><code class="language-text">Internet presence → names, addresses, public services
+Gateway → routing and filtering observations
+Accessible services → protocol, version clues, entry requirements
+Processes → application behavior and dependencies
+Privileges → identity and permitted operations
+OS setup → configuration and trust relationships</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Choose a layer for each finding. Record
+          the next unanswered question, not just another tool to run.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/1185"
+            >HTB source lesson — Enumeration Methodology</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <section id="section-3">
+        <h2>03. Domain Information</h2>
+        <p>
+          Build a small inventory of names and their sources. A and AAAA records
+          map names to addresses; MX identifies mail routing; NS and SOA
+          describe DNS authority; TXT may disclose verification or mail-policy
+          metadata. Query explicit record types rather than assuming an ANY
+          query returns everything. State which resolver answered and whether a
+          result is authoritative or cached.
+        </p>
+        <p>
+          Certificate-transparency records and historical DNS can suggest
+          related names. Dates matter: a former certificate name, shared address
+          or third-party provider does not establish current ownership or
+          authorization. Verify a candidate against the agreed scope before
+          contacting it. Record negative results too; absence from one source is
+          not proof that a service does not exist.
+        </p>
+        <pre><code class="language-bash">DOMAIN=lab.example
+DNS_SERVER=ASSIGNED_DNS_IP
+dig @&quot;$DNS_SERVER&quot; &quot;$DOMAIN&quot; A
+dig @&quot;$DNS_SERVER&quot; &quot;$DOMAIN&quot; AAAA
+dig @&quot;$DNS_SERVER&quot; &quot;$DOMAIN&quot; MX</code></pre>
+        <pre><code class="language-bash">dig @&quot;$DNS_SERVER&quot; &quot;$DOMAIN&quot; NS
+dig @&quot;$DNS_SERVER&quot; &quot;$DOMAIN&quot; SOA
+dig @&quot;$DNS_SERVER&quot; &quot;$DOMAIN&quot; TXT</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Create a name → address → evidence-source
+          table. Mark historical names and unresolved ownership questions.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/1061"
+            >HTB source lesson — Domain Information</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <section id="section-4">
+        <h2>04. Cloud Resources</h2>
+        <p>
+          Cloud hostnames can suggest S3, Azure Blob Storage, Google Cloud
+          Storage or hosted application services. First determine the provider,
+          the exact resource name and whether the resource is explicitly in
+          scope. Provider ownership of an address is different from customer
+          ownership of a resource. Public application assets are often
+          intentional.
+        </p>
+        <p>
+          Distinguish permission to list a container from permission to read a
+          known object, and both from permission to write. A listing denial does
+          not establish object privacy. For a known lab bucket, inspect only the
+          permitted listing or a small designated test object; avoid guessing
+          names, bulk mirroring or uploading test files. Keep tokens, signed
+          URLs and recovered secrets out of public notes.
+        </p>
+        <pre><code class="language-bash"># Only a known, explicitly authorized lab bucket
+BUCKET=ASSIGNED_LAB_BUCKET
+aws s3 ls &quot;s3://$BUCKET/&quot; --no-sign-request</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Capture the provider, resource
+          identifier, tested operation and observed permission separately.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/1062"
+            >HTB source lesson — Cloud Resources</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <section id="section-5">
+        <h2>05. Staff</h2>
+        <p>
+          Organization-owned job postings, technical articles and public
+          repositories can reveal vocabulary, product families and deployment
+          practices. Use those clues to prioritize verification on authorized
+          systems. A job advert mentioning a database does not prove the current
+          production version or that every subsidiary uses it.
+        </p>
+        <p>
+          Prefer technical evidence over personal profiling. Record the
+          publication date and confidence, and avoid copying personal contact
+          information, contacting employees or testing credentials found in
+          public sources. If a potential secret appears, use the agreed
+          reporting process rather than validating it against a real service.
+          The goal is a defensible technology hypothesis, not a list of people.
+        </p>
+        <pre><code class="language-text">Source URL / publication date: ...
+Technical clue: approved posting mentions a managed database
+Hypothesis: verify database protocol on an in-scope lab service
+Confidence / age / alternative explanations: ...
+Validation evidence: ...</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Write one technology hypothesis and a
+          specific authorized observation that would confirm or weaken it.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/1065"
+            >HTB source lesson — Staff</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <section id="section-6">
+        <h2>06. FTP</h2>
+        <p>
+          FTP normally uses TCP 21 for its control connection and a separate
+          data connection. Passive data ports are negotiated; active-mode server
+          data connections commonly originate from TCP 20. A successful login
+          does not guarantee the data channel works through a firewall. Check
+          the connection mode before interpreting a stalled listing.
+        </p>
+        <p>
+          FTPS is not SFTP: FTPS adds TLS to FTP, while SFTP runs over SSH. TFTP
+          is another protocol, commonly using UDP 69, without FTP-style login.
+          Test anonymous access only when allowed, then compare it with a
+          supplied account. Read a designated lab file rather than recursively
+          downloading everything. The named Nmap scripts below check service
+          information and anonymous listing, so confirm their behavior with
+          script help first.
+        </p>
+        <figure>
+          <img
+            src="/assets/footprinting/service-atlas.svg"
+            alt="Original service atlas: common ports guide discovery; protocols and configuration require verification."
+            loading="lazy"
+            width="1040"
+            height="620"
+          />
+          <figcaption>
+            Original service atlas: common ports guide discovery; protocols and
+            configuration require verification. Credit: OSCP Fieldnotes —
+            original illustration.
+            <a href="/assets/footprinting/service-atlas.svg"
+              >Open full-size image</a
+            >
+            ·
+            <a href="https://academy.hackthebox.com/app/module/112/section/1066"
+              >Image context</a
+            >
+          </figcaption>
+        </figure>
+        <pre><code class="language-bash">TARGET=ASSIGNED_LAB_IP
+nmap --script-help ftp-syst,ftp-anon
+nmap -sV -p21 --script ftp-syst,ftp-anon &quot;$TARGET&quot;</code></pre>
+        <pre><code class="language-text">$ ftp -p ASSIGNED_LAB_IP
+Name: SUPPLIED_LAB_USER
+Password: [enter at prompt]
+ftp&gt; status
+ftp&gt; pwd
+ftp&gt; ls
+ftp&gt; get KNOWN_LAB_FILE
+ftp&gt; bye</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Explain whether each result came from
+          authentication, directory permissions or a data-channel problem.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/1066"
+            >HTB source lesson — FTP</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <section id="section-7">
+        <h2>07. SMB</h2>
+        <p>
+          SMB commonly uses TCP 445, with older NetBIOS transport on TCP 139.
+          Keep anonymous, guest and authenticated observations separate. Some
+          servers map an attempted identity to guest, so record what the server
+          actually accepted. Modern SMB does not imply SMB1 support.
+        </p>
+        <p>
+          A visible share does not prove access to its contents or permission to
+          write. Share configuration and underlying filesystem permissions both
+          influence the result. Use a supplied account interactively so its
+          password is not embedded in the command. Inspect known directories
+          within scope; do not upload a permission-test file unless the exercise
+          explicitly calls for writes. A null-session RPC response is evidence
+          about that request, not a general authorization bypass.
+        </p>
+        <figure>
+          <img
+            src="/assets/footprinting/access-boundaries.svg"
+            alt="Original permission diagram: reachability, protocol, identity, visibility and operations are separate observations."
+            loading="lazy"
+            width="1040"
+            height="620"
+          />
+          <figcaption>
+            Original permission diagram: reachability, protocol, identity,
+            visibility and operations are separate observations. Credit: OSCP
+            Fieldnotes — original illustration.
+            <a href="/assets/footprinting/access-boundaries.svg"
+              >Open full-size image</a
+            >
+            ·
+            <a href="https://academy.hackthebox.com/app/module/112/section/1067"
+              >Image context</a
+            >
+          </figcaption>
+        </figure>
+        <pre><code class="language-bash">smbclient -N -L &quot;//$TARGET&quot;
+# Optional null-session information check, only in the allowed lab
+rpcclient -N -U &#x27;&#x27; &quot;$TARGET&quot; -c &#x27;srvinfo&#x27;</code></pre>
+        <pre><code class="language-bash">SHARE=VERIFIED_LAB_SHARE
+LAB_USER=SUPPLIED_LAB_USER
+smbclient &quot;//$TARGET/$SHARE&quot; -U &quot;$LAB_USER&quot;
+# Enter password at the prompt; use pwd, ls and exit interactively</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Build a matrix of identity, visible
+          share, readable path and tested operation. Leave untested writes
+          marked unknown.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/1067"
+            >HTB source lesson — SMB</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <section id="section-8">
+        <h2>08. NFS</h2>
+        <p>
+          NFS commonly uses port 2049. NFSv3 often also depends on rpcbind on
+          port 111 and auxiliary RPC services; NFSv4 can operate without those
+          discovery services. Consequently, an empty showmount result does not
+          rule out a v4-only export. NFSv4 does not automatically require
+          Kerberos: inspect the security flavor rather than inferring it from
+          the version.
+        </p>
+        <p>
+          With AUTH_SYS, numeric user and group IDs matter. root_squash maps
+          requests from UID 0 to an anonymous identity; it does not make all
+          other file access safe. A client-side read-only mount reduces
+          accidental writes but does not prove the export is read-only on the
+          server. Mount only the verified export and unmount it when finished.
+        </p>
+        <pre><code class="language-bash">rpcinfo -p &quot;$TARGET&quot;
+showmount -e &quot;$TARGET&quot;</code></pre>
+        <pre><code class="language-bash">mkdir -p mnt/nfs
+# Replace VERIFIED_EXPORT with the exact authorized export path
+sudo mount -t nfs -o ro,nosuid,nodev &quot;$TARGET:/VERIFIED_EXPORT&quot; mnt/nfs
+ls -ln mnt/nfs
+sudo umount mnt/nfs</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Note the NFS version, export path,
+          security flavor and numeric ownership, including any unresolved
+          assumptions.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/1068"
+            >HTB source lesson — NFS</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <section id="section-9">
+        <h2>09. DNS</h2>
+        <p>
+          DNS uses UDP and TCP 53. Distinguish authoritative answers, recursive
+          resolution and cached data. Query a known server for a known zone. A
+          version.bind response may expose a configured string, but it is not
+          reliable proof of the implementation or patch level.
+        </p>
+        <p>
+          A zone transfer can reveal many records at once, but attempt it only
+          for an explicitly authorized lab zone and nameserver. AXFR normally
+          uses TCP. A refused transfer means this request was denied; it does
+          not mean the zone has no records or that all DNS configuration is
+          sound. Compare discovered records with scope before probing any
+          resulting addresses. Keep broad dictionary enumeration out of the
+          initial baseline.
+        </p>
+        <pre><code class="language-bash">dig @&quot;$DNS_SERVER&quot; &quot;$DOMAIN&quot; SOA
+dig @&quot;$DNS_SERVER&quot; &quot;$DOMAIN&quot; NS
+dig @&quot;$DNS_SERVER&quot; version.bind CH TXT</code></pre>
+        <pre><code class="language-bash"># Explicitly authorized zone-transfer test only
+dig @&quot;$DNS_SERVER&quot; &quot;$DOMAIN&quot; AXFR</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Explain which server supplied each answer
+          and whether the transfer result changes your next question.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/1069"
+            >HTB source lesson — DNS</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <section id="section-10">
+        <h2>10. SMTP</h2>
+        <p>
+          SMTP sends and relays mail. TCP 25 commonly handles relay, 587
+          submission with STARTTLS, and 465 submission with implicit TLS. EHLO
+          capabilities describe advertised features; they do not by themselves
+          establish relay permission, a valid account or successful
+          authentication. STARTTLS upgrades a connection and is separate from
+          login.
+        </p>
+        <p>
+          Begin with greeting and capability evidence. Do not send test mail,
+          enumerate recipients or attempt relay without explicit exercise
+          authorization. Responses to account checks can be obscured by
+          catch-all behavior and policy. For TLS checks, use the verified mail
+          hostname and a trusted CA; a matching certificate and a successful TLS
+          handshake still do not prove mailbox access.
+        </p>
+        <pre><code class="language-text">$ nc ASSIGNED_LAB_IP 25
+EHLO lab.example
+QUIT
+# Record the greeting and capabilities; no message is submitted</code></pre>
+        <pre><code class="language-bash">MAIL_HOST=VERIFIED_LAB_MAIL_HOST
+LAB_CA=/path/to/supplied-lab-ca.pem
+openssl s_client -starttls smtp -connect &quot;$TARGET:587&quot; \
+  -servername &quot;$MAIL_HOST&quot; -verify_return_error \
+  -verify_hostname &quot;$MAIL_HOST&quot; -CAfile &quot;$LAB_CA&quot;
+# After TLS negotiation: EHLO lab.example, then QUIT</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Distinguish a transport finding, an
+          authentication finding and a relay-policy finding in your notes.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/1072"
+            >HTB source lesson — SMTP</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <section id="section-11">
+        <h2>11. IMAP / POP3</h2>
+        <p>
+          IMAP synchronizes mailbox state; POP3 provides message retrieval with
+          deletion behavior controlled by client commands and server policy.
+          Neither protocol is the mail-submission service. IMAP commonly uses
+          TCP 143 with STARTTLS or 993 with implicit TLS; POP3 uses 110 with
+          STARTTLS or 995 with implicit TLS.
+        </p>
+        <p>
+          Capabilities can be observed before login where supported. A
+          successful login or mailbox listing is different from permission to
+          read a particular message. Use only supplied accounts and designated
+          lab messages, and avoid destructive mailbox commands. With curl,
+          omitting the password from --user requests it interactively. The
+          example keeps hostname verification intact while connecting to the
+          assigned address.
+        </p>
+        <pre><code class="language-bash">curl --cacert &quot;$LAB_CA&quot; --resolve &quot;$MAIL_HOST:993:$TARGET&quot; \
+  --user &quot;$LAB_USER&quot; &quot;imaps://$MAIL_HOST/&quot;</code></pre>
+        <pre><code class="language-text"># Inside a verified TLS IMAP session
+a1 CAPABILITY
+a2 LOGOUT
+
+# Inside a verified TLS POP3 session
+CAPA
+QUIT</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Record the transport, certificate name,
+          accepted identity and exact mailbox operation; do not publish message
+          contents.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/1073"
+            >HTB source lesson — IMAP / POP3</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <section id="section-12">
+        <h2>12. SNMP</h2>
+        <p>
+          SNMP agents commonly receive queries on UDP 161, while traps commonly
+          go to UDP 162. OIDs identify objects in a management information tree.
+          Query a small known subtree before considering a wider walk: device
+          metadata can be sensitive even when it does not contain credentials.
+        </p>
+        <p>
+          SNMPv1 and v2c community strings travel without protocol encryption.
+          SNMPv3 supports several security levels; only choosing an
+          authenticated, private mode provides both authentication and
+          encryption. Do not infer confidentiality from “v3” alone. Use a
+          supplied lab community rather than guessing strings. CLI arguments can
+          appear in process listings and logs, so use only disposable lab values
+          in these examples. Avoid SET operations, which can change device
+          state.
+        </p>
+        <pre><code class="language-bash">LAB_COMMUNITY=SUPPLIED_DISPOSABLE_LAB_COMMUNITY
+snmpget -v2c -c &quot;$LAB_COMMUNITY&quot; &quot;$TARGET&quot; 1.3.6.1.2.1.1.1.0</code></pre>
+        <pre><code class="language-bash"># Bounded system subtree, rather than walking the entire device
+snmpwalk -v2c -c &quot;$LAB_COMMUNITY&quot; &quot;$TARGET&quot; 1.3.6.1.2.1.1</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Associate each useful OID with its
+          meaning and distinguish the agent description from independently
+          verified facts.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/1075"
+            >HTB source lesson — SNMP</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <section id="section-13">
+        <h2>13. MySQL</h2>
+        <p>
+          MySQL commonly listens on TCP 3306. A greeting may identify a product
+          family, but successful login requires an allowed account and host
+          context. The identity requested by a client can differ from the
+          effective account selected by the server. TLS defaults and
+          verification settings vary by client version; inspect the installed
+          client and lab connection requirements rather than disabling
+          encryption to make a connection work.
+        </p>
+        <p>
+          Start with version, identity, visible schemas and grants. A schema
+          name is metadata, not permission to read every table. Query only the
+          designated dataset when required, and avoid account tables, dumps and
+          configuration changes. The interactive -p option prompts for a
+          password instead of placing it on the command line.
+        </p>
+        <pre><code class="language-bash">mysql --host=&quot;$TARGET&quot; --port=3306 --user=&quot;$LAB_USER&quot; -p</code></pre>
+        <pre><code class="language-sql">SELECT VERSION(), CURRENT_USER(), USER();
+SHOW DATABASES;
+SHOW GRANTS;
+-- In an explicitly permitted schema:
+USE VERIFIED_LAB_SCHEMA;
+SHOW TABLES;</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Compare requested identity, effective
+          account and grants. Explain why visible schema metadata is not a
+          data-access finding.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/1238"
+            >HTB source lesson — MySQL</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <section id="section-14">
+        <h2>14. MSSQL</h2>
+        <p>
+          Microsoft SQL Server often uses TCP 1433 for TDS, but named instances
+          can listen on other ports. SQL Browser discovery commonly uses UDP
+          1434 and is not always enabled. A client application such as SSMS is
+          not evidence that a particular server or instance is reachable.
+        </p>
+        <p>
+          Separate SQL authentication from Windows authentication. Use the
+          connection mode the lab actually supplies and preserve credential
+          prompts. The Impacket command below selects Windows authentication; a
+          supplied SQL login uses the corresponding SQL-authentication
+          connection instead, without that flag. Begin with identity and
+          database metadata. Visibility of a database does not prove
+          administrative rights, operating-system command execution or access to
+          its contents.
+        </p>
+        <pre><code class="language-bash"># Replace each synthetic identifier; password is requested interactively
+impacket-mssqlclient &#x27;LAB_DOMAIN/LAB_USER@ASSIGNED_LAB_IP&#x27; -windows-auth</code></pre>
+        <pre><code class="language-sql">SELECT @@VERSION;
+SELECT SYSTEM_USER, ORIGINAL_LOGIN();
+SELECT name FROM sys.databases;</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Write down the instance address,
+          authentication mode, effective login and database visibility. Keep
+          untested privileges unknown.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/1246"
+            >HTB source lesson — MSSQL</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <section id="section-15">
+        <h2>15. Oracle TNS</h2>
+        <p>
+          An Oracle listener commonly accepts connections on TCP 1521 and
+          directs them to registered services. An open listener is not the same
+          as a usable database session. SID and service name are not
+          interchangeable: obtain the identifier required by the exercise and
+          use the matching connection syntax. The Easy Connect example below
+          uses a service name.
+        </p>
+        <p>
+          TNS does not automatically imply encrypted transport. Follow the lab’s
+          Oracle Net or TLS configuration instead of assuming port 1521 protects
+          credentials. After an authorized login, inspect your current user,
+          session privileges and owned table metadata. Avoid default-password
+          guessing, SYSDBA bypass attempts and automated tool modes that upload
+          files or perform broad checks.
+        </p>
+        <pre><code class="language-bash">nmap -sV -p1521 &quot;$TARGET&quot;
+ORACLE_SERVICE=VERIFIED_LAB_SERVICE
+sqlplus -L &quot;${LAB_USER}@//${TARGET}:1521/${ORACLE_SERVICE}&quot;</code></pre>
+        <pre><code class="language-sql">SELECT USER FROM dual;
+SELECT privilege FROM session_privs;
+SELECT table_name FROM user_tables;</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Explain the listener → service →
+          authenticated session relationship, including what each observation
+          does not establish.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/2117"
+            >HTB source lesson — Oracle TNS</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <section id="section-16">
+        <h2>16. IPMI</h2>
+        <p>
+          IPMI exposes out-of-band hardware management through a baseboard
+          management controller, often on UDP 623. A BMC operates independently
+          of the host operating system but still needs appropriate standby power
+          and network access. Treat its management interface as a distinct asset
+          with its own scope and identity.
+        </p>
+        <p>
+          A version response confirms only the observed management protocol
+          behavior. It does not establish a weak password or vulnerable
+          authentication configuration. Prefer a narrow version check and, with
+          supplied credentials, a read-only controller-information request. Do
+          not reset power, change configuration, capture authentication material
+          or run password attacks as part of this baseline.
+        </p>
+        <pre><code class="language-bash">sudo nmap -sU -p623 --script ipmi-version &quot;$TARGET&quot;
+# Read-only controller information; -a prompts for the supplied password
+ipmitool -I lanplus -H &quot;$TARGET&quot; -U &quot;$LAB_USER&quot; -a mc info</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Keep host-OS evidence and controller
+          evidence separate. Explain why their availability can differ.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/1245"
+            >HTB source lesson — IPMI</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <section id="section-17">
+        <h2>17. Linux Remote Management Protocols</h2>
+        <p>
+          SSH commonly uses TCP 22 for remote access. Verify the host-key
+          fingerprint through the lab’s trusted channel before accepting a new
+          host; do not bypass host-key checking to remove a warning. Verbose
+          client output helps separate name resolution, transport negotiation,
+          host identity and account authentication failures.
+        </p>
+        <p>
+          An rsync daemon commonly uses TCP 873 and rsync:// URLs; rsync over
+          SSH is a different transport. A module listing does not establish
+          permission to read every path or write files. Legacy rexec, rlogin and
+          rsh commonly use TCP 512, 513 and 514, with trust models worth
+          investigating in an assigned legacy lab. UDP 514 is commonly syslog,
+          so include the transport when describing a port.
+        </p>
+        <pre><code class="language-bash">ssh -v &quot;$LAB_USER@$TARGET&quot;
+# Verify the displayed fingerprint against the supplied trusted value</code></pre>
+        <pre><code class="language-bash"># List authorized daemon modules without copying their contents
+rsync --list-only &quot;rsync://$TARGET/&quot;
+# After verifying a permitted module name:
+rsync --list-only &quot;rsync://$TARGET/VERIFIED_MODULE/&quot;</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Explain whether a failure occurred before
+          authentication, during authentication or when accessing a requested
+          object.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/1240"
+            >HTB source lesson — Linux Remote Management Protocols</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <section id="section-18">
+        <h2>18. Windows Remote Management Protocols</h2>
+        <p>
+          RDP commonly uses TCP 3389. WinRM commonly uses 5985 for HTTP and 5986
+          for HTTPS. WMI over DCOM uses RPC endpoint mapping on TCP 135 plus
+          negotiated ports; a CIM session over WSMan is a different transport.
+          Identify the mechanism instead of grouping all Windows management
+          under one open port.
+        </p>
+        <p>
+          HTTP on 5985 alone does not prove management messages are plaintext:
+          negotiated Kerberos or NTLM message encryption can apply. Verify
+          authentication and transport configuration. For RDP, use the installed
+          FreeRDP executable, confirm certificate identity and enter credentials
+          at its prompt. The PowerShell example uses HTTPS WSMan with a verified
+          hostname and trusted certificate; it reads OS metadata and removes the
+          session afterward.
+        </p>
+        <pre><code class="language-bash">nmap -sV -p135,3389,5985,5986 --script rdp-ntlm-info &quot;$TARGET&quot;
+# Some installations name this executable xfreerdp3
+xfreerdp /v:&quot;$TARGET&quot; /u:&quot;$LAB_USER&quot;</code></pre>
+        <pre><code class="language-powershell">$cred = Get-Credential
+$options = New-CimSessionOption -UseSsl
+$session = New-CimSession -ComputerName &#x27;VERIFIED_LAB_HOST&#x27; -SessionOption $options -Credential $cred
+Get-CimInstance -ClassName Win32_OperatingSystem -CimSession $session
+Remove-CimSession $session</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Identify which result belongs to RDP,
+          DCOM or WSMan and which identity produced it.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/1242"
+            >HTB source lesson — Windows Remote Management Protocols</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <section id="section-19">
+        <h2>19. Footprinting Lab - Easy</h2>
+        <p>
+          Treat the easy lab as a complete enumeration exercise rather than a
+          race to an answer. Read the current task and use only its assigned
+          target, account and allowed services. Start with the internal DNS
+          context, connect verified names to services, and inspect only files
+          that the task permits. Do not copy the module’s credentials into a
+          public guide or reuse them elsewhere.
+        </p>
+        <p>
+          Preserve a short evidence chain: the clue, why it justified the next
+          check, the authenticated context and the observed result. If a request
+          fails, compare protocol, hostname and permissions before changing
+          tools. Keep aggressive exploitation out of a footprinting task. The
+          template below deliberately contains no flag or assessment solution.
+        </p>
+        <figure>
+          <img
+            src="/assets/footprinting/evidence-chain.svg"
+            alt="Original lab workflow: connect clues through scope, narrow checks and recorded evidence."
+            loading="lazy"
+            width="1040"
+            height="620"
+          />
+          <figcaption>
+            Original lab workflow: connect clues through scope, narrow checks
+            and recorded evidence. Credit: OSCP Fieldnotes — original
+            illustration.
+            <a href="/assets/footprinting/evidence-chain.svg"
+              >Open full-size image</a
+            >
+            ·
+            <a href="https://academy.hackthebox.com/app/module/112/section/1078"
+              >Image context</a
+            >
+          </figcaption>
+        </figure>
+        <pre><code class="language-text">Easy lab evidence
+Scope / supplied identity: [store secrets privately]
+DNS observation: ...
+Verified service and permitted path: ...
+Command → relevant output → interpretation: ...
+Next narrow check / reason: ...
+What I learned / what remains uncertain: ...</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Explain your evidence chain aloud before
+          submitting an answer in HTB.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/1078"
+            >HTB source lesson — Footprinting Lab - Easy</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <section id="section-20">
+        <h2>20. Footprinting Lab - Medium</h2>
+        <p>
+          The medium lab adds opportunities to connect findings across services.
+          Read the current scenario carefully: an additional internal system is
+          in scope only when the exercise explicitly includes it. A path,
+          hostname or account hint found on one service is a hypothesis to
+          verify, not permission to follow every relationship.
+        </p>
+        <p>
+          Keep a service matrix that records transport, authentication context
+          and accessible metadata. Compare a clue with an independent
+          observation before drawing a conclusion. When blocked, return to the
+          exact unanswered question: is the name correct, is the service
+          reachable, did the account authenticate, or was an operation denied?
+          Change one assumption at a time and retain the failed attempt in your
+          private notes.
+        </p>
+        <pre><code class="language-text">Source service / observed clue: ...
+Related asset / explicit scope basis: ...
+Hypothesis: ...
+Smallest verification / identity used: ...
+Observed result / alternative explanation: ...
+Evidence link and next step: ...</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Find one cross-service relationship and
+          document why it is supported, without publishing credentials or
+          answers.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/1079"
+            >HTB source lesson — Footprinting Lab - Medium</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <section id="section-21">
+        <h2>21. Footprinting Lab - Hard</h2>
+        <p>
+          For the hard lab, separate mail handling, remote management and
+          backup-related services into distinct roles. Build a relationship map
+          from observed names, protocol behavior and authorized metadata. Do not
+          assume that a shared hostname, account name or apparent backup path
+          gives the same access on every service.
+        </p>
+        <p>
+          Work from your evidence log, not from an ever-growing command list.
+          Time-box an unproductive hypothesis, record why it stalled and return
+          to the service matrix. A useful completion record explains which
+          observations established the result and what remains unverified.
+          Submit assessment answers only in HTB; keep flags, recovered files and
+          secret material out of the public application.
+        </p>
+        <pre><code class="language-text">Hard lab review
+Service roles / verified relationships: ...
+Strongest evidence / authenticated context: ...
+Attempt that failed / corrected assumption: ...
+Remaining uncertainty / next authorized check: ...
+Progress: [not started / investigating / evidence complete]
+Weekly reflection: goal, attempts, learning, blockers, next action</code></pre>
+        <p>
+          <strong>Checkpoint:</strong> Finish with a reproducible explanation
+          and one improvement to your next weekly study session.
+        </p>
+        <p class="meta">
+          <a href="https://academy.hackthebox.com/app/module/112/section/1080"
+            >HTB source lesson — Footprinting Lab - Hard</a
+          >
+        </p>
+        <p class="back"><a href="#contents">Back to contents</a></p>
+      </section>
+      <footer>
+        <h2>Sources and image credits</h2>
+        <p>
+          These are original summaries and adapted examples, not a reproduction
+          of HTB’s full lessons. Use the linked source lessons for
+          demonstrations, current lab instructions and interactive questions.
+          Images and provenance are listed in the
+          <a href="/assets/footprinting/sources.json">image manifest</a>; three
+          diagrams are original OSCP Fieldnotes illustrations and one is
+          credited to HTB Academy.
+        </p>
+        <p>
+          Command references:
+          <a href="https://nmap.org/book/man.html">Nmap reference guide</a>,
+          <a
+            href="https://www.samba.org/samba/docs/current/man-html/smbclient.1.html"
+            >smbclient manual</a
+          >,
+          <a href="https://man7.org/linux/man-pages/man5/nfs.5.html"
+            >Linux NFS options</a
+          >,
+          <a href="https://docs.openssl.org/3.5/man1/openssl-s_client/"
+            >OpenSSL s_client</a
+          >,
+          <a href="https://dev.mysql.com/doc/refman/8.4/en/connecting.html"
+            >MySQL connections</a
+          >,
+          <a
+            href="https://learn.microsoft.com/en-us/powershell/module/cimcmdlets/new-cimsession"
+            >PowerShell CIM sessions</a
+          >. Consult installed tool help for version-specific options.
+        </p>
+        <p>
+          <a href="/study-plan">Return to Today</a> ·
+          <a href="/calendar">Plan the next study session</a>
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>

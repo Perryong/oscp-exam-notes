@@ -44,6 +44,8 @@ The design and implementation plan live under `docs/superpowers/`. No live Fireb
 
 ## HTB Academy schedule and calendar
 
+The public [Footprinting study guide](public/footprinting-study-guide.html) covers all 21 module lessons with original summaries, 34 code blocks, three original diagrams and one credited HTB methodology image. Open `/footprinting-study-guide.html` from Today or the HTB calendar. The [image manifest](public/assets/footprinting/sources.json) records provenance; assessment sections provide evidence templates without answers.
+
 The public [Network Enumeration with Nmap study guide](public/nmap-study-guide.html) covers all 12 module lessons with original explanations, 21 code blocks, three original SVG diagrams and one credited HTB report image. Open `/nmap-study-guide.html` from Today or the HTB calendar. The [image manifest](public/assets/nmap/sources.json) records provenance; the lab sections give evidence templates rather than answers.
 
 The public [Getting Started study guide](public/getting-started.html) covers all 23 module lessons with original explanations, 20 command/code blocks, practice checkpoints and four credited course figures. Open `/getting-started.html`, or use the links on Today and the HTB calendar. Image provenance is recorded in [the source manifest](public/assets/getting-started/sources.json). Personal note contents and progress are not included in this reference.
