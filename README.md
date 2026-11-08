@@ -44,6 +44,8 @@ The design and implementation plan live under `docs/superpowers/`. No live Fireb
 
 ## HTB Academy schedule and calendar
 
+The public [Network Enumeration with Nmap study guide](public/nmap-study-guide.html) covers all 12 module lessons with original explanations, 21 code blocks, three original SVG diagrams and one credited HTB report image. Open `/nmap-study-guide.html` from Today or the HTB calendar. The [image manifest](public/assets/nmap/sources.json) records provenance; the lab sections give evidence templates rather than answers.
+
 The public [Getting Started study guide](public/getting-started.html) covers all 23 module lessons with original explanations, 20 command/code blocks, practice checkpoints and four credited course figures. Open `/getting-started.html`, or use the links on Today and the HTB calendar. Image provenance is recorded in [the source manifest](public/assets/getting-started/sources.json). Personal note contents and progress are not included in this reference.
 
 Open `/htb-study` for the full 51-week plan or `/calendar?week=1` for week and month views. The OSCP Today page and More menu link to both. The original progress snapshot (7 November 2026), module allocations, checkpoint weeks and 10-hour weekly budget are preserved. This is a planning baseline, with no automatic HTB account synchronization.

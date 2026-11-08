@@ -1,0 +1,30 @@
+[
+  {
+    "file": "enumeration-workflow.svg",
+    "credit": "OSCP Fieldnotes \u2014 original illustration",
+    "source": "Original vector illustration authored for this study guide",
+    "lesson": "https://academy.hackthebox.com/app/module/19/section/99",
+    "caption": "Original OSCP Fieldnotes diagram: scope, discovery, port mapping, service probes, verification and evidence."
+  },
+  {
+    "file": "syn-response-map.svg",
+    "credit": "OSCP Fieldnotes \u2014 original illustration",
+    "source": "Original vector illustration authored for this study guide",
+    "lesson": "https://academy.hackthebox.com/app/module/19/section/102",
+    "caption": "Original OSCP Fieldnotes diagram of SYN responses and a contrasting UDP silence case."
+  },
+  {
+    "file": "nmap-report.png",
+    "credit": "Hack The Box Academy",
+    "source": "https://cdn.services-k8s.prod.aws.htb.systems/content/modules/19/nmap-report.png",
+    "lesson": "https://academy.hackthebox.com/app/module/19/section/104",
+    "caption": "HTB Academy historical report screenshot. This illustrates output formatting, not your lab results."
+  },
+  {
+    "file": "timing-evidence.svg",
+    "credit": "OSCP Fieldnotes \u2014 original illustration",
+    "source": "Original vector illustration authored for this study guide",
+    "lesson": "https://academy.hackthebox.com/app/module/19/section/105",
+    "caption": "Original OSCP Fieldnotes diagram: compare one changed setting while preserving the same scope and evidence."
+  }
+]

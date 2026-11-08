@@ -47,6 +47,7 @@ export default function LearningHome({ uid }: { uid?: string }) {
           <Link to="/calendar">Open HTB calendar →</Link>
           <Link to="/htb-study">Full HTB schedule</Link>
           <a href="/getting-started.html">Getting Started guide</a>
+          <a href="/nmap-study-guide.html">Nmap study guide</a>
         </div>
       </article>
       <label>

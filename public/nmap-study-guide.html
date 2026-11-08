@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Network Enumeration with Nmap study guide · OSCP Fieldnotes</title>
+    <meta
+      name="description"
+      content="Original study companion for all 12 HTB Nmap lessons, with 21 code blocks, four images, port-state interpretation and lab evidence templates."
+    />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f5f6f2;
+        --surface: #fff;
+        --ink: #20333b;
+        --muted: #59676b;
+        --line: #d8e0dc;
+        --accent: #087f69;
+        --code: #14252c;
+        --code-ink: #e8f1ef;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #111d24;
+          --surface: #192b32;
+          --ink: #e6efed;
+          --muted: #a8bab7;
+          --line: #35474c;
+          --accent: #7fd5bf;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-padding-top: 24px;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          17px/1.75 system-ui,
+          sans-serif;
+      }
+      main {
+        max-width: 1000px;
+        margin: auto;
+        padding: 32px 24px 72px;
+        min-width: 0;
+      }
+      a {
+        color: var(--accent);
+        text-underline-offset: 3px;
+        overflow-wrap: anywhere;
+      }
+      a:focus-visible,
+      summary:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 4px;
+      }
+      header {
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--line);
+      }
+      header nav {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .eyebrow,
+      .meta,
+      figcaption,
+      .back {
+        font-size: 0.84rem;
+        color: var(--muted);
+      }
+      .eyebrow {
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        margin-top: 28px;
+      }
+      h1,
+      h2,
+      h3 {
+        line-height: 1.25;
+        letter-spacing: -0.025em;
+      }
+      h1 {
+        font-size: clamp(2rem, 6vw, 3.2rem);
+        margin: 10px 0 16px;
+      }
+      h2 {
+        font-size: 1.55rem;
+        margin-top: 40px;
+        padding-top: 22px;
+        border-top: 1px solid var(--line);
+      }
+      h3 {
+        font-size: 1.18rem;
+      }
+      p {
+        max-width: 80ch;
+      }
+      details {
+        margin: 28px 0;
+        padding: 20px 24px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+      }
+      summary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      details ol {
+        columns: 2;
+        column-gap: 36px;
+        padding-left: 24px;
+      }
+      details li {
+        break-inside: avoid;
+        margin: 8px 0;
+      }
+      pre {
+        max-width: 100%;
+        padding: 20px;
+        overflow: auto;
+        background: var(--code);
+        color: var(--code-ink);
+        border-radius: 10px;
+        line-height: 1.65;
+        font-size: 0.87rem;
+        tab-size: 4;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      }
+      figure {
+        margin: 28px 0;
+        padding: 14px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+      }
+      figure img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: auto;
+        background: #fff;
+      }
+      figcaption {
+        margin-top: 12px;
+        line-height: 1.6;
+      }
+      .back {
+        margin-top: 36px;
+        margin-bottom: -28px;
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        margin-top: 40px;
+        padding-top: 24px;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      @media (max-width: 600px) {
+        main {
+          padding: 24px 16px 48px;
+        }
+        details {
+          padding: 16px;
+        }
+        details ol {
+          columns: 1;
+        }
+        pre {
+          padding: 14px;
+          font-size: 0.8rem;
+        }
+        figure {
+          padding: 8px;
+        }
+        h2 {
+          font-size: 1.35rem;
+        }
+      }
+      @media print {
+        body {
+          background: #fff;
+          color: #000;
+        }
+        main {
+          max-width: none;
+          padding: 0;
+        }
+        details,
+        .back {
+          display: none;
+        }
+        pre {
+          white-space: pre-wrap;
+          background: #eee;
+          color: #000;
+        }
+        figure,
+        pre {
+          break-inside: avoid;
+        }
+        a {
+          color: inherit;
+        }
+      }
+
+      .table-scroll {
+        overflow: auto;
+        max-width: 100%;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      caption {
+        text-align: left;
+        font-weight: 700;
+        margin: 12px 0;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 12px;
+        border: 1px solid var(--line);
+        vertical-align: top;
+      }
+      td:first-child {
+        white-space: nowrap;
+        font-family: ui-monospace, monospace;
+      }
+      figure img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <nav aria-label="Study navigation">
+          <a href="/study-plan">← Today</a
+          ><a href="/calendar?week=2">HTB calendar</a
+          ><a href="/getting-started.html">Getting Started guide</a>
+        </nav>
+        <p class="eyebrow">ENUMERATION · HTB ACADEMY MODULE 19</p>
+        <h1>Network Enumeration with Nmap study guide</h1>
+        <p>
+          Ask a question. Choose a probe. Interpret the response. Preserve the
+          evidence.
+        </p>
+        <p class="meta">12 lesson summaries · 21 code blocks · 4 images</p>
+        <p>
+          Original companion to
+          <a href="https://academy.hackthebox.com/app/module/19"
+            >HTB Academy’s Network Enumeration with Nmap</a
+          >, checked against the official Nmap documentation. Open each source
+          lesson for the complete course and interactive exercises. The lab
+          sections provide a method, not answers or completion claims.
+        </p>
+      </header>
+      <details open id="contents">
+        <summary>Contents · 12 sections</summary>
+        <ol>
+          <li><a href="#section-1">01. Enumeration</a></li>
+          <li><a href="#section-2">02. Introduction to Nmap</a></li>
+          <li><a href="#section-3">03. Host Discovery</a></li>
+          <li><a href="#section-4">04. Host and Port Scanning</a></li>
+          <li><a href="#section-5">05. Saving the Results</a></li>
+          <li><a href="#section-6">06. Service Enumeration</a></li>
+          <li><a href="#section-7">07. Nmap Scripting Engine</a></li>
+          <li><a href="#section-8">08. Performance</a></li>
+          <li><a href="#section-9">09. Firewall and IDS/IPS Evasion</a></li>
+          <li>
+            <a href="#section-10"
+              >10. Firewall and IDS/IPS Evasion - Easy Lab</a
+            >
+          </li>
+          <li>
+            <a href="#section-11"
+              >11. Firewall and IDS/IPS Evasion - Medium Lab</a
+            >
+          </li>
+          <li>
+            <a href="#section-12"
+              >12. Firewall and IDS/IPS Evasion - Hard Lab</a
+            >
+          </li>
+        </ol>
+      </details>
+      <h3>Set up a reproducible lab session</h3>
+      <p>
+        These are command templates, not executed results. Use your assigned
+        training target. The examples assume Linux; raw-packet scans normally
+        need sudo. Save each run under a fresh stem rather than overwriting
+        evidence.
+      </p>
+      <pre><code># Run in your Linux training VM. Replace the placeholders first.
+export TARGET=&#x27;REPLACE_WITH_ASSIGNED_LAB_IP&#x27;
+export PORTS=&#x27;22,80,443&#x27;  # Examples: replace with ports relevant to your task.
+mkdir -p ~/htb/nmap/{scope,scans,reports,notes}
+cd ~/htb/nmap
+printf &#x27;%s\n&#x27; &quot;$TARGET&quot; &gt; scope/targets.txt
+nmap --version</code></pre>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-1">01. Enumeration</h2>
+      <p>
+        Enumeration turns observations into a model of the target. Begin with a
+        question, select a probe that can answer it, record the response and
+        decide what remains unknown. A list of open ports is a starting point,
+        not a finished assessment. Keep facts, guesses and next tests separate.
+        The workflow diagram shows why useful enumeration is iterative.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> For one observed service, write
+        the evidence, an alternative explanation and the next smallest test.
+      </p>
+      <pre><code>Observation ledger
+Target / scope:
+Network position and VPN profile:
+Question:
+Command and options:
+Observed response / saved output:
+Interpretation and confidence:
+Alternative explanation:
+Next test:</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/19/section/99"
+          >HTB source lesson — Enumeration</a
+        >
+      </p>
+      <figure>
+        <a
+          href="/assets/nmap/enumeration-workflow.svg"
+          aria-label="Open Enumeration is an evidence loop image"
+          ><img
+            src="/assets/nmap/enumeration-workflow.svg"
+            alt="Enumeration is an evidence loop"
+            loading="lazy"
+        /></a>
+        <figcaption>
+          Original OSCP Fieldnotes diagram: scope, discovery, port mapping,
+          service probes, verification and evidence.
+          <a href="/assets/nmap/enumeration-workflow.svg"
+            >Open full-size image</a
+          >.
+        </figcaption>
+      </figure>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-2">02. Introduction to Nmap</h2>
+      <p>
+        Nmap combines host discovery, port scanning, service probes, OS
+        fingerprinting and scripts. These are distinct phases with different
+        network effects. Choose scan type, options and target explicitly. On
+        Linux, raw-packet scans such as SYN scanning normally need elevated
+        privileges; an unprivileged TCP connect scan uses the operating system’s
+        connection mechanism. The default scan covers common TCP ports, not
+        every TCP and UDP port.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Explain the purpose of each flag
+        before running a command, and record your installed version.
+      </p>
+      <pre><code>nmap --version
+nmap --help
+# A basic scan of the assigned host, saving a baseline:
+nmap -n --reason -oA scans/initial &quot;$TARGET&quot;</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/19/section/100"
+          >HTB source lesson — Introduction to Nmap</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-3">03. Host Discovery</h2>
+      <p>
+        Host discovery asks which addresses respond to selected probes. No
+        answer can reflect filtering, packet loss or an unavailable system. On a
+        local Ethernet network, privileged Nmap normally uses ARP for IPv4 or
+        Neighbor Discovery for IPv6; an ICMP option alone does not remove that
+        behavior. Use -sn for discovery without a port scan. Use -sL -n to
+        inspect the target list without probing hosts or performing reverse DNS.
+        -Pn skips discovery and assumes targets should be scanned; it does not
+        prove that a host is online.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Compare target-list expansion,
+        discovery responses and a targeted -Pn follow-up without mixing their
+        conclusions.
+      </p>
+      <pre><code>nmap -sL -n -iL scope/targets.txt
+sudo nmap -sn -n --reason -iL scope/targets.txt -oA scans/discovery</code></pre>
+      <pre><code># Isolate ICMP echo behavior rather than substituting ARP discovery:
+sudo nmap -sn -n -PE --disable-arp-ping --packet-trace &quot;$TARGET&quot;
+# A focused follow-up when discovery may be filtered:
+sudo nmap -Pn -n -p &quot;$PORTS&quot; --reason -oA scans/no-discovery &quot;$TARGET&quot;</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/19/section/101"
+          >HTB source lesson — Host Discovery</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-4">04. Host and Port Scanning</h2>
+      <p>
+        Keep TCP and UDP results separate. In a SYN scan, SYN/ACK supports open
+        and RST supports closed; filtering errors or repeated silence can
+        produce filtered. A connect scan completes a TCP connection. UDP often
+        gives no response, so open|filtered is not proof of an open UDP service.
+        Use --reason and narrowly scoped packet traces to connect a reported
+        state to the evidence that produced it. A full TCP port range does not
+        include a full UDP scan.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Explain one result using the
+        probe, reply, protocol and scan type. Use the state table and response
+        diagram below.
+      </p>
+      <pre><code># Privileged SYN scan; -p- covers TCP ports 1 through 65535 here.
+sudo nmap -sS -p- -n --reason -oA scans/all-tcp &quot;$TARGET&quot;
+# Explicit connect scan for comparison on selected ports:
+nmap -sT -p &quot;$PORTS&quot; -n --reason -oA scans/connect &quot;$TARGET&quot;</code></pre>
+      <pre><code># Targeted UDP follow-up: change these example ports to match the task.
+sudo nmap -sU -sV -p 53,161 -n --reason -oA scans/udp &quot;$TARGET&quot;</code></pre>
+      <pre><code># Inspect one TCP port; packet traces can be large on wider scans.
+sudo nmap -sS -Pn -n -p 80 --reason --packet-trace &quot;$TARGET&quot;</code></pre>
+      <div class="table-scroll">
+        <table>
+          <caption>
+            Interpret port states in the context of the scan type
+          </caption>
+          <thead>
+            <tr>
+              <th>State</th>
+              <th>Meaning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>open</td>
+              <td>A service accepted the relevant probe.</td>
+            </tr>
+            <tr>
+              <td>closed</td>
+              <td>
+                The port is reachable, with no listening service indicated.
+              </td>
+            </tr>
+            <tr>
+              <td>filtered</td>
+              <td>Filtering prevents a clear open/closed decision.</td>
+            </tr>
+            <tr>
+              <td>unfiltered</td>
+              <td>
+                An ACK probe received a response; open versus closed remains
+                unknown.
+              </td>
+            </tr>
+            <tr>
+              <td>open|filtered</td>
+              <td>
+                The scan cannot distinguish an open service from filtering.
+              </td>
+            </tr>
+            <tr>
+              <td>closed|filtered</td>
+              <td>
+                The idle-scan result cannot distinguish closed from filtered.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/19/section/102"
+          >HTB source lesson — Host and Port Scanning</a
+        >
+      </p>
+      <figure>
+        <a
+          href="/assets/nmap/syn-response-map.svg"
+          aria-label="Open Interpret TCP SYN replies in context image"
+          ><img
+            src="/assets/nmap/syn-response-map.svg"
+            alt="Interpret TCP SYN replies in context"
+            loading="lazy"
+        /></a>
+        <figcaption>
+          Original OSCP Fieldnotes diagram of SYN responses and a contrasting
+          UDP silence case.
+          <a href="/assets/nmap/syn-response-map.svg">Open full-size image</a>.
+        </figcaption>
+      </figure>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-5">05. Saving the Results</h2>
+      <p>
+        Preserve raw results as you work. -oN produces readable normal output,
+        -oX produces XML for structured processing, and -oG produces the older
+        grepable format. -oA writes all three with one stem. Keep command,
+        target, time and network position alongside each result. Prefer XML for
+        reliable parsing rather than brittle text extraction. HTML reports are
+        transformations of XML, not a direct Nmap output mode. The credited
+        report screenshot is a historical example, not your result.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Create a fresh output stem, locate
+        all three files and produce a readable HTML report from the XML.
+      </p>
+      <pre><code>sudo nmap -sV -p &quot;$PORTS&quot; -n -oA scans/services &quot;$TARGET&quot;
+ls -l scans/services.nmap scans/services.xml scans/services.gnmap</code></pre>
+      <pre><code># xsltproc must be installed; adjust the stylesheet path for your system.
+xsltproc -o reports/services.html /usr/share/nmap/nmap.xsl scans/services.xml
+# Some systems also support the XML document’s embedded stylesheet:
+# xsltproc scans/services.xml -o reports/services.html</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/19/section/104"
+          >HTB source lesson — Saving the Results</a
+        >
+      </p>
+      <figure>
+        <a
+          href="/assets/nmap/nmap-report.png"
+          aria-label="Open Example HTML report created from XML image"
+          ><img
+            src="/assets/nmap/nmap-report.png"
+            alt="Example HTML report created from XML"
+            loading="lazy"
+        /></a>
+        <figcaption>
+          HTB Academy historical report screenshot. This illustrates output
+          formatting, not your lab results.
+          <a href="/assets/nmap/nmap-report.png">Open full-size image</a>.
+        </figcaption>
+      </figure>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-6">06. Service Enumeration</h2>
+      <p>
+        A port number suggests a conventional service; it does not establish the
+        actual application. -sV sends probes and matches responses to service
+        signatures. Start with ports already discovered, then investigate
+        uncertain services. --version-light uses a smaller probe set. A banner
+        can omit versions or be misleading; corroborate it with protocol
+        behavior. OS guesses and service versions are hypotheses, not proof that
+        a vulnerability is exploitable. Progress reporting does not itself speed
+        up a scan.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> For one port, distinguish the
+        port-based label, probe-derived product evidence and a manually observed
+        response.
+      </p>
+      <pre><code>sudo nmap -sV --version-light -p &quot;$PORTS&quot; -n -oA scans/versions-light &quot;$TARGET&quot;
+sudo nmap -sV -p &quot;$PORTS&quot; -n --stats-every 10s -oA scans/versions &quot;$TARGET&quot;
+# Optional OS fingerprinting when the exercise calls for it:
+# sudo nmap -O --osscan-limit -n -oA scans/os &quot;$TARGET&quot;</code></pre>
+      <pre><code># Example banner inspection only when the assigned host exposes SMTP:
+nc -nv &quot;$TARGET&quot; 25
+# For a discovered HTTP service:
+curl -I &quot;http://$TARGET/&quot;</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/19/section/103"
+          >HTB source lesson — Service Enumeration</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-7">07. Nmap Scripting Engine</h2>
+      <p>
+        NSE scripts perform service-specific checks. -sC selects the default
+        set; --script can select exact names or categories. Read script help and
+        prerequisites first. Category labels are not a guarantee that a script
+        fits your scope, and a vulnerability-script finding needs validation.
+        Broad categories can include intrusive behavior or external lookups. -A
+        combines OS detection, version detection, default scripts and
+        traceroute; it is not simply a faster scan.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Choose one named script that
+        answers a specific question and explain why its prerequisites are
+        satisfied.
+      </p>
+      <pre><code># Local help; inspect what the named scripts do.
+nmap --script-help http-title,http-headers,banner</code></pre>
+      <pre><code># Only on the relevant web ports discovered in your authorized lab:
+nmap -sV -p 80,443 --script http-title,http-headers -n -oA scans/http-scripts &quot;$TARGET&quot;</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/19/section/108"
+          >HTB source lesson — Nmap Scripting Engine</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-8">08. Performance</h2>
+      <p>
+        Tuning changes the balance between time, traffic and completeness. Keep
+        target, ports and network position constant while changing one setting.
+        Tight response timeouts or fewer retries can hide slow responses; high
+        minimum rates can force traffic faster than a path handles well. -T3 is
+        the default timing template, while -T4 assumes a reasonably fast,
+        reliable path. Keep both result sets and investigate differences rather
+        than treating a faster run as automatically better.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Compare elapsed time and
+        discovered states between a baseline and one controlled timing change.
+      </p>
+      <pre><code>sudo nmap -sS -T3 -p &quot;$PORTS&quot; -n -oA scans/timing-baseline &quot;$TARGET&quot;
+sudo nmap -sS -T4 -p &quot;$PORTS&quot; -n -oA scans/timing-t4 &quot;$TARGET&quot;</code></pre>
+      <pre><code># ndiff is an optional Nmap-suite tool. Review changes in saved XML.
+ndiff scans/timing-baseline.xml scans/timing-t4.xml
+# Also retain the original Nmap output and elapsed-time summaries.</code></pre>
+      <p>
+        <code>--max-retries</code> limits retransmissions; RTT options adjust
+        response waiting; <code>--min-rate</code> requests a minimum probe rate
+        while <code>--max-rate</code> caps the probe rate. Treat reduced
+        coverage as a possible accuracy loss and retest conservatively.
+      </p>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/19/section/105"
+          >HTB source lesson — Performance</a
+        >
+      </p>
+      <figure>
+        <a
+          href="/assets/nmap/timing-evidence.svg"
+          aria-label="Open Compare timing changes against a baseline image"
+          ><img
+            src="/assets/nmap/timing-evidence.svg"
+            alt="Compare timing changes against a baseline"
+            loading="lazy"
+        /></a>
+        <figcaption>
+          Original OSCP Fieldnotes diagram: compare one changed setting while
+          preserving the same scope and evidence.
+          <a href="/assets/nmap/timing-evidence.svg">Open full-size image</a>.
+        </figcaption>
+      </figure>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-9">09. Firewall and IDS/IPS Evasion</h2>
+      <p>
+        Filtering, alerting and active prevention are different mechanisms.
+        Compare a small SYN scan with an ACK scan to investigate packet
+        handling. ACK scanning can classify filtered versus unfiltered, but does
+        not identify open ports. A source-port change tests a particular policy
+        assumption; using port 53 does not turn TCP traffic into DNS. Raw-probe
+        options may not apply to service detection or NSE connections. No option
+        guarantees invisibility or a bypass. Decoys, source spoofing and
+        fragmentation are controlled-lab experiments, not universal fixes.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Change one probe property and
+        describe the observed policy behavior, including what the evidence
+        cannot establish.
+      </p>
+      <pre><code>sudo nmap -sS -Pn -n -p &quot;$PORTS&quot; --reason -oA scans/syn-policy &quot;$TARGET&quot;
+sudo nmap -sA -Pn -n -p &quot;$PORTS&quot; --reason -oA scans/ack-policy &quot;$TARGET&quot;</code></pre>
+      <pre><code># One lab port only; first compare against the baseline without this flag.
+export LAB_PORT=&#x27;REPLACE_WITH_ONE_ASSIGNED_LAB_PORT&#x27;
+sudo nmap -sS -Pn -n -p &quot;$LAB_PORT&quot; --source-port 53 --reason -oA scans/source-port-test &quot;$TARGET&quot;</code></pre>
+      <p>
+        <code>-n</code> disables name resolution.
+        <code>--dns-servers</code> selects DNS resolvers; it does not proxy the
+        port scan. Decoy addresses and spoofed sources require an appropriate
+        controlled topology and reply path. Fragmented raw IPv4 probes can be
+        reassembled or normalized by the path; they do not fragment every Nmap
+        application connection.
+      </p>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/19/section/106"
+          >HTB source lesson — Firewall and IDS/IPS Evasion</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-10">10. Firewall and IDS/IPS Evasion - Easy Lab</h2>
+      <p>
+        The easy lab introduces an observable detection policy. Read the current
+        question and permitted target before choosing the smallest scan that can
+        answer it. Where the exercise exposes an alert/status page, record the
+        starting count and the change after one controlled attempt. Avoid a
+        broad scan bundle that makes it impossible to attribute an alert to a
+        probe. This section provides a method and evidence template, not an
+        operating-system answer or completed lab result.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Build a baseline and connect each
+        alert change to a single documented test.
+      </p>
+      <pre><code>Easy lab experiment
+Question in my own words:
+Assigned target and scope:
+Starting alert / status observation:
+One probe and reason for choosing it:
+Observed response and alert change:
+Conclusion / uncertainty:
+Next smallest test:</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/19/section/117"
+          >HTB source lesson — Firewall and IDS/IPS Evasion - Easy Lab</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-11">11. Firewall and IDS/IPS Evasion - Medium Lab</h2>
+      <p>
+        Read the modified environment as a new experiment; earlier assumptions
+        may no longer hold. The module specifically calls for UDP as the VPN
+        transport in this lab. That is separate from selecting UDP port scanning
+        with -sU. Confirm the required connection profile in your own lab
+        environment, then gather evidence for the question. Do not assume that a
+        changed or absent response means the service disappeared.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Record VPN transport separately
+        from target protocol, and change only one scan variable per comparison.
+      </p>
+      <pre><code>Medium lab comparison
+VPN profile / transport required by the exercise:
+Target protocol and port:
+Baseline command and output stem:
+One changed scan option:
+Observed response:
+Alternative explanation:
+Independent confirmation:</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/19/section/118"
+          >HTB source lesson — Firewall and IDS/IPS Evasion - Medium Lab</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-12">12. Firewall and IDS/IPS Evasion - Hard Lab</h2>
+      <p>
+        The final lab asks you to adapt to another defensive change.
+        Re-enumerate rather than reusing a previous service label or answer.
+        Build a hypothesis about the specific behavior that differs, test it
+        narrowly and validate any recovered service information with an
+        appropriate protocol interaction. Preserve the successful command and
+        the failed alternatives so you can explain why the result changed.
+        Finish with evidence and remediation, not only an answer submission.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Produce a short, reproducible
+        report without copying a walkthrough or prefilled flag.
+      </p>
+      <pre><code>Hard lab report
+Scope and objective:
+Baseline observations:
+Hypothesis about filtering / service behavior:
+Controlled test and saved output:
+Independent service confirmation:
+What this result proves / does not prove:
+Defensive improvement:
+Hints used and independent retry plan:</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/19/section/119"
+          >HTB source lesson — Firewall and IDS/IPS Evasion - Hard Lab</a
+        >
+      </p>
+      <h2 id="references">References and image credits</h2>
+      <ul>
+        <li>
+          <a href="https://nmap.org/book/man-host-discovery.html"
+            >Nmap documentation — Host discovery</a
+          >
+        </li>
+        <li>
+          <a href="https://nmap.org/book/man-port-scanning-basics.html"
+            >Nmap documentation — Port-state definitions</a
+          >
+        </li>
+        <li>
+          <a href="https://nmap.org/book/nse-usage.html"
+            >Nmap documentation — NSE usage</a
+          >
+        </li>
+        <li>
+          <a href="https://nmap.org/book/man-performance.html"
+            >Nmap documentation — Timing and performance</a
+          >
+        </li>
+        <li>
+          <a href="https://nmap.org/book/man-bypass-firewalls-ids.html"
+            >Nmap documentation — Firewall / IDS options</a
+          >
+        </li>
+        <li>
+          <a href="https://nmap.org/book/output-formats-output-to-html.html"
+            >Nmap documentation — Creating HTML reports</a
+          >
+        </li>
+      </ul>
+      <p>
+        Three diagrams are original vector illustrations. The historical HTML
+        report image is credited to Hack The Box Academy. See the
+        <a href="/assets/nmap/sources.json">image source manifest</a>.
+      </p>
+      <footer>
+        <p>
+          <a href="#contents">Return to the section list</a> ·
+          <a href="/htb-study">Full HTB schedule</a> ·
+          <a href="/learning-process.html">Learning Process reference</a>
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
