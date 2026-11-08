@@ -159,6 +159,7 @@ export default function HtbStudy({
       <div className="row">
         <Link to="/htb-study">Full schedule</Link>
         <Link to={"/calendar?week=" + weekNumber}>Calendar</Link>
+        <a href="/getting-started.html">Getting Started guide</a>
         <a href="/learning-process.html#weekly-template-guide">
           Learning Process &amp; testing guide
         </a>

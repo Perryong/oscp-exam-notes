@@ -1,0 +1,30 @@
+[
+  {
+    "file": "GettingStarted.png",
+    "source": "https://cdn.services-k8s.prod.aws.htb.systems/content/modules/77/GettingStarted.png",
+    "lesson": "https://academy.hackthebox.com/app/module/77/section/723",
+    "credit": "Hack The Box Academy",
+    "caption": "Figure A \u2014 VPN network boundary"
+  },
+  {
+    "file": "getting_started_tmux_3.jpg",
+    "source": "https://cdn.services-k8s.prod.aws.htb.systems/content/modules/77/getting_started_tmux_3.jpg",
+    "lesson": "https://academy.hackthebox.com/app/module/77/section/847",
+    "credit": "Hack The Box Academy",
+    "caption": "Figure B \u2014 separate terminal panes"
+  },
+  {
+    "file": "nibbles_comment1.png",
+    "source": "https://cdn.services-k8s.prod.aws.htb.systems/content/modules/77/nibbles_comment1.png",
+    "lesson": "https://academy.hackthebox.com/app/module/77/section/851",
+    "credit": "Hack The Box Academy",
+    "caption": "Figure C \u2014 a clue in page source"
+  },
+  {
+    "file": "upload.png",
+    "source": "https://cdn.services-k8s.prod.aws.htb.systems/content/modules/77/upload.png",
+    "lesson": "https://academy.hackthebox.com/app/module/77/section/852",
+    "credit": "Hack The Box Academy",
+    "caption": "Figure D \u2014 examine the upload boundary"
+  }
+]

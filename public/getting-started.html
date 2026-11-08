@@ -1,0 +1,981 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Getting Started study guide · OSCP Fieldnotes</title>
+    <meta
+      name="description"
+      content="An original study companion for all 23 Getting Started lessons, with 20 code blocks, practice checkpoints and four credited HTB Academy figures."
+    />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f5f6f2;
+        --surface: #fff;
+        --ink: #20333b;
+        --muted: #59676b;
+        --line: #d8e0dc;
+        --accent: #087f69;
+        --code: #14252c;
+        --code-ink: #e8f1ef;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #111d24;
+          --surface: #192b32;
+          --ink: #e6efed;
+          --muted: #a8bab7;
+          --line: #35474c;
+          --accent: #7fd5bf;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-padding-top: 24px;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          17px/1.75 system-ui,
+          sans-serif;
+      }
+      main {
+        max-width: 1000px;
+        margin: auto;
+        padding: 32px 24px 72px;
+        min-width: 0;
+      }
+      a {
+        color: var(--accent);
+        text-underline-offset: 3px;
+        overflow-wrap: anywhere;
+      }
+      a:focus-visible,
+      summary:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 4px;
+      }
+      header {
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--line);
+      }
+      header nav {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .eyebrow,
+      .meta,
+      figcaption,
+      .back {
+        font-size: 0.84rem;
+        color: var(--muted);
+      }
+      .eyebrow {
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        margin-top: 28px;
+      }
+      h1,
+      h2,
+      h3 {
+        line-height: 1.25;
+        letter-spacing: -0.025em;
+      }
+      h1 {
+        font-size: clamp(2rem, 6vw, 3.2rem);
+        margin: 10px 0 16px;
+      }
+      h2 {
+        font-size: 1.55rem;
+        margin-top: 40px;
+        padding-top: 22px;
+        border-top: 1px solid var(--line);
+      }
+      h3 {
+        font-size: 1.18rem;
+      }
+      p {
+        max-width: 80ch;
+      }
+      details {
+        margin: 28px 0;
+        padding: 20px 24px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+      }
+      summary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      details ol {
+        columns: 2;
+        column-gap: 36px;
+        padding-left: 24px;
+      }
+      details li {
+        break-inside: avoid;
+        margin: 8px 0;
+      }
+      pre {
+        max-width: 100%;
+        padding: 20px;
+        overflow: auto;
+        background: var(--code);
+        color: var(--code-ink);
+        border-radius: 10px;
+        line-height: 1.65;
+        font-size: 0.87rem;
+        tab-size: 4;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      }
+      figure {
+        margin: 28px 0;
+        padding: 14px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+      }
+      figure img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: auto;
+        background: #fff;
+      }
+      figcaption {
+        margin-top: 12px;
+        line-height: 1.6;
+      }
+      .back {
+        margin-top: 36px;
+        margin-bottom: -28px;
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        margin-top: 40px;
+        padding-top: 24px;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      @media (max-width: 600px) {
+        main {
+          padding: 24px 16px 48px;
+        }
+        details {
+          padding: 16px;
+        }
+        details ol {
+          columns: 1;
+        }
+        pre {
+          padding: 14px;
+          font-size: 0.8rem;
+        }
+        figure {
+          padding: 8px;
+        }
+        h2 {
+          font-size: 1.35rem;
+        }
+      }
+      @media print {
+        body {
+          background: #fff;
+          color: #000;
+        }
+        main {
+          max-width: none;
+          padding: 0;
+        }
+        details,
+        .back {
+          display: none;
+        }
+        pre {
+          white-space: pre-wrap;
+          background: #eee;
+          color: #000;
+        }
+        figure,
+        pre {
+          break-inside: avoid;
+        }
+        a {
+          color: inherit;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <nav aria-label="Study navigation">
+          <a href="/study-plan">← Today</a
+          ><a href="/calendar?week=1">HTB calendar</a
+          ><a href="/htb-study">Full schedule</a>
+        </nav>
+        <p class="eyebrow">FOUNDATIONS · HTB ACADEMY MODULE 77</p>
+        <h1>Getting Started study guide</h1>
+        <p>
+          Understand the idea. Inspect the evidence. Practise in your lab.
+          Explain what changed.
+        </p>
+        <p class="meta">
+          23 lesson summaries · 20 code blocks · 4 credited course figures
+        </p>
+        <p>
+          Based on
+          <a href="https://academy.hackthebox.com/app/module/77"
+            >HTB Academy’s Getting Started</a
+          >. This is an original companion, not a replacement for the complete
+          course. Open the source lessons for their full explanations and
+          interactive exercises.
+        </p>
+      </header>
+      <details open id="contents">
+        <summary>Contents · 23 sections</summary>
+        <ol>
+          <li><a href="#section-1">01. Infosec Overview</a></li>
+          <li>
+            <a href="#section-2">02. Getting Started with a Pentest Distro</a>
+          </li>
+          <li><a href="#section-3">03. Staying Organized</a></li>
+          <li><a href="#section-4">04. Connecting Using VPN</a></li>
+          <li><a href="#section-5">05. Common Terms</a></li>
+          <li><a href="#section-6">06. Basic Tools</a></li>
+          <li><a href="#section-7">07. Service Scanning</a></li>
+          <li><a href="#section-8">08. Web Enumeration</a></li>
+          <li><a href="#section-9">09. Public Exploits</a></li>
+          <li><a href="#section-10">10. Types of Shells</a></li>
+          <li><a href="#section-11">11. Privilege Escalation</a></li>
+          <li><a href="#section-12">12. Transferring Files</a></li>
+          <li><a href="#section-13">13. Starting Out</a></li>
+          <li><a href="#section-14">14. Navigating HTB</a></li>
+          <li><a href="#section-15">15. Nibbles - Enumeration</a></li>
+          <li><a href="#section-16">16. Nibbles - Web Footprinting</a></li>
+          <li><a href="#section-17">17. Nibbles - Initial Foothold</a></li>
+          <li><a href="#section-18">18. Nibbles - Privilege Escalation</a></li>
+          <li>
+            <a href="#section-19"
+              >19. Nibbles - Alternate User Method - Metasploit</a
+            >
+          </li>
+          <li><a href="#section-20">20. Common Pitfalls</a></li>
+          <li><a href="#section-21">21. Getting Help</a></li>
+          <li><a href="#section-22">22. Next Steps</a></li>
+          <li><a href="#section-23">23. Knowledge Check</a></li>
+        </ol>
+      </details>
+      <p>
+        Original explanations, adapted command examples and selected credited
+        course figures for HTB Academy module 77. Use this companion alongside
+        the linked lessons and exercises.
+      </p>
+      <h3>Using the command examples</h3>
+      <p>
+        Commands are templates, not executed results. Run them only against your
+        assigned training target. Replace the placeholders and check required
+        tools first. Commands that run on the target are labelled; your local
+        shell variables are not automatically present in a remote shell. Product
+        versions and historical screenshots are examples, not guarantees about
+        the current lab.
+      </p>
+      <pre><code># In your Linux lab VM; replace these before using later examples.
+export TARGET=&#x27;REPLACE_WITH_ASSIGNED_LAB_IP&#x27;
+export LHOST=&#x27;REPLACE_WITH_YOUR_TUN0_IP&#x27;
+export WORDLIST=&#x27;/usr/share/seclists/Discovery/Web-Content/common.txt&#x27;
+mkdir -p ~/htb/getting-started/{scope,notes,scans,logs,evidence,transfers}
+cd ~/htb/getting-started</code></pre>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-1">01. Infosec Overview</h2>
+      <p>
+        Information security protects confidentiality, integrity and
+        availability. A pentest is a scoped investigation that turns technical
+        weaknesses into evidence of business risk. Distinguish offensive testing
+        from defensive monitoring, and separate a reproducible finding from an
+        untested suspicion. Risk work includes discovering threats, estimating
+        likelihood and impact, selecting a response and checking whether
+        conditions change.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> For one lab weakness, explain
+        which part of the CIA triad is affected and what a defender could
+        change.
+      </p>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/721"
+          >HTB source lesson — Infosec Overview</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-2">02. Getting Started with a Pentest Distro</h2>
+      <p>
+        Use an isolated Linux lab VM or HTB Pwnbox. Parrot is the course
+        example; understanding the operating system matters more than collecting
+        tools. Keep a clean baseline, snapshots and a repeatable setup
+        checklist. Record architecture and tool availability before blaming an
+        exploit. Keep unrelated personal and assessment data outside the lab
+        environment.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Identify your OS, architecture and
+        available tools; record the snapshot or Pwnbox session you used.
+      </p>
+      <pre><code>cat /etc/os-release
+uname -m
+command -v nmap curl nc ssh python3 tmux</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/722"
+          >HTB source lesson — Getting Started with a Pentest Distro</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-3">03. Staying Organized</h2>
+      <p>
+        Keep scope, notes, scans, logs, evidence and transfer files in separate
+        folders. Each attempt should connect a hypothesis to a command, an
+        observation and a next action. Save useful techniques in a reusable
+        reference, while keeping machine-specific evidence with that machine.
+        Credentials and VPN profiles belong in protected local storage, not a
+        public write-up.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Create the folder layout and
+        record one command with its expected and actual result.
+      </p>
+      <pre><code>mkdir -p ~/htb/getting-started/{scope,notes,scans,logs,evidence,transfers}
+cd ~/htb/getting-started
+find . -maxdepth 2 -type d
+# Optional terminal transcript; type exit when finished.
+script -a logs/session.log</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/766"
+          >HTB source lesson — Staying Organized</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-4">04. Connecting Using VPN</h2>
+      <p>
+        The lab VPN adds a tunnel interface and routes to the training network.
+        A connected-looking terminal alone does not prove that the assigned
+        target is reachable. Check the client completion message, tunnel address
+        and route selection separately. The profile must match Academy access;
+        the main HTB platform can use a different profile. Figure A illustrates
+        the network boundary.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Explain which route will carry
+        traffic to your assigned target, then verify it.
+      </p>
+      <pre><code>sudo openvpn /path/to/your-academy-profile.ovpn
+# In another terminal:
+ip -br address show tun0
+ip route
+ip route get &quot;$TARGET&quot;</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/723"
+          >HTB source lesson — Connecting Using VPN</a
+        >
+      </p>
+      <figure>
+        <img
+          src="/assets/getting-started/GettingStarted.png"
+          alt="Network diagram showing a remote user connecting through a VPN server to a private network."
+          loading="lazy"
+        />
+        <figcaption>
+          Figure A — VPN network boundary. HTB Academy source figure, retained
+          for study with credit.
+          <a href="https://academy.hackthebox.com/app/module/77/section/723"
+            >Source lesson</a
+          >.
+        </figcaption>
+      </figure>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-5">05. Common Terms</h2>
+      <p>
+        A shell interprets commands. A port identifies a transport endpoint; the
+        service listening there speaks an application protocol. An open port is
+        an observation, not proof of a vulnerability. HTTP is a request/response
+        protocol used by web applications; SSH provides authenticated remote
+        access. Know the difference between your local shell and a shell running
+        on the target.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Label the local host, remote host,
+        protocol and port for one connection.
+      </p>
+      <pre><code>id
+ps -p $$ -o comm=
+ss -lntup</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/724"
+          >HTB source lesson — Common Terms</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-6">06. Basic Tools</h2>
+      <p>
+        SSH provides authenticated remote sessions. Netcat can open a basic TCP
+        connection and inspect a service banner. Tmux keeps independent terminal
+        panes available for scanning, a listener and notes; Figure B shows this
+        arrangement. Vim is a terminal editor. Learn how to save and exit before
+        editing anything important: insert mode uses i; Escape returns to normal
+        mode; :wq saves and exits; :q! abandons changes.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Use separate terminal panes for
+        observation and notes. Practise editing a disposable file.
+      </p>
+      <pre><code>ssh LAB_USER@&quot;$TARGET&quot;
+nc -nv &quot;$TARGET&quot; 22
+tmux new -s htb
+vim notes/session.md
+# Tmux: Ctrl-b then % splits vertically; Ctrl-b then d detaches.
+# Resume later:
+tmux attach -t htb</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/847"
+          >HTB source lesson — Basic Tools</a
+        >
+      </p>
+      <figure>
+        <img
+          src="/assets/getting-started/getting_started_tmux_3.jpg"
+          alt="Two terminal panes for keeping independent lab tasks visible."
+          loading="lazy"
+        />
+        <figcaption>
+          Figure B — separate terminal panes. HTB Academy source figure,
+          retained for study with credit.
+          <a href="https://academy.hackthebox.com/app/module/77/section/847"
+            >Source lesson</a
+          >.
+        </figcaption>
+      </figure>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-7">07. Service Scanning</h2>
+      <p>
+        Enumerate the assigned host before selecting an exploit. Start with a
+        manageable scan, widen coverage, then inspect the services on discovered
+        ports. Save raw output so you can revisit assumptions. Product banners
+        can be incomplete or misleading, and distribution backports mean a
+        version number alone does not establish exploitability. Enumerate FTP,
+        SMB and HTTP with tools that understand those protocols.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Build a table of port, protocol,
+        observed product/version, evidence and next test.
+      </p>
+      <pre><code>nmap -sV --open -oA scans/initial &quot;$TARGET&quot;
+nmap -p- --open -oA scans/all-tcp &quot;$TARGET&quot;
+# Example focused follow-up: replace 22,80 with discovered ports.
+nmap -sC -sV -p 22,80 -oA scans/focused &quot;$TARGET&quot;
+# Optional protocol-specific checks when these services are in scope:
+smbclient -N -L &quot;//$TARGET&quot;
+ftp -p &quot;$TARGET&quot;</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/726"
+          >HTB source lesson — Service Scanning</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-8">08. Web Enumeration</h2>
+      <p>
+        Inspect the page, response headers, HTML source, links and redirects
+        before guessing paths. Technology detection suggests hypotheses;
+        validate them against direct evidence. Directory discovery can reveal
+        functionality that is absent from navigation. robots.txt is a clue, not
+        access control. A status code needs context: compare response size and
+        body to detect wildcard or custom error pages.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> For every interesting URL, record
+        status, what it exposed and why it changes your next step.
+      </p>
+      <pre><code>curl -i &quot;http://$TARGET/&quot;
+curl -s &quot;http://$TARGET/robots.txt&quot;
+whatweb &quot;http://$TARGET/&quot;
+gobuster dir -u &quot;http://$TARGET/&quot; -w &quot;$WORDLIST&quot; -o scans/web-paths.txt</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/728"
+          >HTB source lesson — Web Enumeration</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-9">09. Public Exploits</h2>
+      <p>
+        Search with an observed product and version, then read the exploit and
+        its prerequisites. Check authentication requirements, platform,
+        architecture, affected configuration and expected side effects.
+        Metasploit options distinguish the remote target from the address that
+        receives a callback. A framework check is evidence to assess, not a
+        universal guarantee. Do not run an unknown downloaded program just
+        because its title looks relevant.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Write a short applicability
+        checklist before attempting one lab proof of concept.
+      </p>
+      <pre><code>searchsploit &quot;PRODUCT VERSION&quot;
+msfconsole
+# Inside msfconsole:
+search PRODUCT
+info MODULE_NAME
+# After selecting the matching module:
+show options
+show payloads</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/843"
+          >HTB source lesson — Public Exploits</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-10">10. Types of Shells</h2>
+      <p>
+        A reverse shell connects from the target to your listener; a bind shell
+        listens on the target for your client. A web shell receives commands
+        through HTTP and may not behave like an interactive terminal. Identify
+        which host runs each command, the connection direction and the effective
+        account. A PTY can improve terminal behavior, but does not grant extra
+        privileges.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Draw the connection direction and
+        verify the identity of the account you obtained.
+      </p>
+      <pre><code># Your lab VM: listen on the address reachable through the VPN.
+nc -lvnp 4444
+# Inside an existing authorized Linux target shell:
+id
+whoami
+command -v python3
+python3 -c &#x27;import pty; pty.spawn(&quot;/bin/bash&quot;)&#x27;
+# A bind-shell client connection, if a lab exercise explicitly sets one up:
+# nc &quot;$TARGET&quot; TARGET_LISTENER_PORT</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/725"
+          >HTB source lesson — Types of Shells</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-11">11. Privilege Escalation</h2>
+      <p>
+        Initial code execution often runs as a limited account. Investigate its
+        identity, group memberships, sudo rules, file permissions, scheduled
+        tasks and installed software. A useful path depends on a specific trust
+        relationship: for example, a privileged process consuming a file
+        writable by a less privileged account. Enumeration scripts suggest
+        leads; verify them manually. Prefer well-understood misconfigurations
+        over unstable kernel attacks.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> For a candidate escalation,
+        identify the controlled input, privileged consumer and evidence of the
+        boundary failure.
+      </p>
+      <pre><code>id
+uname -a
+sudo -l
+ls -ld /etc/cron* /var/spool/cron 2&gt;/dev/null
+find / -perm -4000 -type f 2&gt;/dev/null</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/844"
+          >HTB source lesson — Privilege Escalation</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-12">12. Transferring Files</h2>
+      <p>
+        Move only the files needed for the lab. Keep a dedicated transfer
+        directory, avoid accidentally serving your whole home folder, and stop
+        the temporary server afterward. HTTP is convenient; SCP uses an
+        authenticated encrypted session. Base64 represents bytes as text but
+        does not encrypt them. Compare hashes to distinguish a transfer problem
+        from an execution problem.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Transfer a harmless text file and
+        verify the same SHA-256 hash at both ends.
+      </p>
+      <pre><code># Your VM: serve only the transfer directory.
+cd ~/htb/getting-started/transfers
+python3 -m http.server 8000 --bind &quot;$LHOST&quot;
+# Target shell: replace VPN_IP with your VM tunnel address.
+curl -f http://VPN_IP:8000/example.txt -o /tmp/example.txt
+sha256sum /tmp/example.txt
+# Alternative from your VM when SSH credentials are available:
+scp example.txt LAB_USER@&quot;$TARGET&quot;:/tmp/example.txt</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/849"
+          >HTB source lesson — Transferring Files</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-13">13. Starting Out</h2>
+      <p>
+        Use guided practice to understand a process, then exploratory practice
+        to see whether you can choose the next step yourself. Copying a
+        successful command is weaker evidence of learning than explaining its
+        inputs and adapting it to a new situation. Keep hints small and record
+        them. A second attempt without the walkthrough is the bridge between
+        following a lesson and solving a lab independently.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Replay one small task without the
+        guide, and write down the first point at which you need help.
+      </p>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/727"
+          >HTB source lesson — Starting Out</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-14">14. Navigating HTB</h2>
+      <p>
+        Academy modules provide lessons and exercises; other HTB areas provide
+        machines, challenges, tracks and larger labs. Choose the environment
+        that fits the skill you are practising, and keep the target IP and
+        access method associated with that environment. Rankings and platform
+        activity are not substitutes for demonstrated understanding. The module
+        contains older interface screenshots; use the current platform labels
+        when following navigation.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Locate your current module,
+        assigned exercise target and connection method without relying on an old
+        screenshot.
+      </p>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/731"
+          >HTB source lesson — Navigating HTB</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-15">15. Nibbles - Enumeration</h2>
+      <p>
+        The Nibbles case study joins the earlier skills into a chain: enumerate
+        a Linux host, investigate its web application, obtain initial access and
+        examine a privileged file relationship. Begin by collecting service
+        evidence, not by assuming the historical walkthrough IP is still your
+        target. Save an initial scan and a focused follow-up. Explain why each
+        exposed service deserves its next test.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Produce your own service inventory
+        before opening the next walkthrough stage.
+      </p>
+      <pre><code>nmap -sV --open -oA scans/nibbles-initial &quot;$TARGET&quot;
+# Example follow-up when 22 and 80 were actually observed:
+nmap -sC -sV -p 22,80 -oA scans/nibbles-focused &quot;$TARGET&quot;
+curl -i &quot;http://$TARGET/&quot;</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/850"
+          >HTB source lesson — Nibbles - Enumeration</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-16">16. Nibbles - Web Footprinting</h2>
+      <p>
+        A sparse home page can still reveal useful clues in its source. In this
+        case study, a comment points toward the Nibbleblog application; Figure C
+        shows that clue. Inspect the application, documentation, version
+        evidence and exposed directories. Keep observed facts separate from
+        guesses about credentials. Avoid broad password guessing: a lockout can
+        obscure the real problem and interfere with learning.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Explain the evidence that supports
+        the application/version identification and the next hypothesis.
+      </p>
+      <pre><code>curl -s &quot;http://$TARGET/&quot;
+whatweb &quot;http://$TARGET/nibbleblog/&quot;
+curl -s &quot;http://$TARGET/nibbleblog/README&quot;
+gobuster dir -u &quot;http://$TARGET/nibbleblog/&quot; -w &quot;$WORDLIST&quot; -o scans/nibbleblog-paths.txt</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/851"
+          >HTB source lesson — Nibbles - Web Footprinting</a
+        >
+      </p>
+      <figure>
+        <img
+          src="/assets/getting-started/nibbles_comment1.png"
+          alt="An HTML comment points to the Nibbleblog application path."
+          loading="lazy"
+        />
+        <figcaption>
+          Figure C — a clue in page source. HTB Academy source figure, retained
+          for study with credit.
+          <a href="https://academy.hackthebox.com/app/module/77/section/851"
+            >Source lesson</a
+          >.
+        </figcaption>
+      </figure>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-17">17. Nibbles - Initial Foothold</h2>
+      <p>
+        Authenticated administration does not automatically mean
+        operating-system access. The walkthrough examines whether an
+        image-upload feature accepts executable PHP and whether the server
+        executes the uploaded file. Figure D identifies the relevant feature.
+        Start with a small identity proof, verify the response and effective
+        account, then follow the lab lesson for its shell demonstration.
+        Distinguish a UI warning from proof that an uploaded file failed.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Record the upload behavior,
+        resulting path and returned identity; explain the server-side trust
+        boundary.
+      </p>
+      <pre><code># Minimal identity proof for the assigned vulnerable training application:
+&lt;?php system(&#x27;id&#x27;); ?&gt;
+# After the lab confirms the actual uploaded location:
+# curl &quot;http://$TARGET/VERIFIED_UPLOADED_PATH&quot;
+# Inside the resulting authorized session:
+id
+whoami
+pwd</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/852"
+          >HTB source lesson — Nibbles - Initial Foothold</a
+        >
+      </p>
+      <figure>
+        <img
+          src="/assets/getting-started/upload.png"
+          alt="Nibbleblog My image plugin configuration with a file-upload field."
+          loading="lazy"
+        />
+        <figcaption>
+          Figure D — examine the upload boundary. HTB Academy source figure,
+          retained for study with credit.
+          <a href="https://academy.hackthebox.com/app/module/77/section/852"
+            >Source lesson</a
+          >.
+        </figcaption>
+      </figure>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-18">18. Nibbles - Privilege Escalation</h2>
+      <p>
+        The important lesson is the relationship between a sudo-authorized
+        script and the account allowed to modify that script. Inspect the
+        archive and file before making changes. Compare ownership and
+        permissions with the sudo rule, and explain how running
+        attacker-controlled script content with greater privileges changes the
+        boundary. Record any lab changes and cleanup. Remediation includes
+        restricting write access and removing unnecessary privileged execution.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Write a finding with prerequisite
+        access, the writable path, sudo evidence, impact and a concrete fix.
+      </p>
+      <pre><code>unzip -l personal.zip
+# Extract only inside your authorized lab workspace when appropriate.
+unzip personal.zip
+sudo -l
+ls -l personal/stuff/monitor.sh
+namei -l personal/stuff/monitor.sh
+sed -n &#x27;1,80p&#x27; personal/stuff/monitor.sh</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/853"
+          >HTB source lesson — Nibbles - Privilege Escalation</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-19">19. Nibbles - Alternate User Method - Metasploit</h2>
+      <p>
+        The framework route automates a similar application-level weakness.
+        Compare its requirements and resulting session with your manual
+        approach. Set the assigned target, discovered application path, obtained
+        lab credentials and reachable callback address explicitly. Recheck
+        options before running. Automation is most useful when you can explain
+        the underlying request and why it should work.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Compare manual and framework
+        attempts: prerequisites, evidence, session type, side effects and
+        recovery steps.
+      </p>
+      <pre><code># In msfconsole, for the assigned vulnerable Nibbles lab:
+search nibbleblog
+use exploit/multi/http/nibbleblog_file_upload
+show options
+set RHOSTS ASSIGNED_LAB_IP
+set TARGETURI /nibbleblog/
+set USERNAME LAB_USERNAME
+set PASSWORD LAB_PASSWORD
+set LHOST YOUR_VPN_IP
+set LPORT 4444
+show options
+check
+# Run only after matching the lab prerequisites and verifying options:
+# run</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/854"
+          >HTB source lesson — Nibbles - Alternate User Method - Metasploit</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-20">20. Common Pitfalls</h2>
+      <p>
+        Troubleshoot from the connection outward: is the profile correct, is the
+        tunnel up, does the route select it, is the target running, and is the
+        relevant service listening? A failed ping alone does not establish that
+        a host is down. A browser may also be sending traffic into a proxy whose
+        intercept is paused. Check proxy behavior before changing system-wide
+        networking or security settings.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Change one variable at a time and
+        record which observation ruled out each cause.
+      </p>
+      <pre><code>ip -4 address show tun0
+ip route get &quot;$TARGET&quot;
+nc -vz &quot;$TARGET&quot; 80
+curl --connect-timeout 5 -I &quot;http://$TARGET/&quot;
+# Compare a direct request if you suspect a local proxy:
+curl --noproxy &#x27;*&#x27; --connect-timeout 5 -I &quot;http://$TARGET/&quot;</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/730"
+          >HTB source lesson — Common Pitfalls</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-21">21. Getting Help</h2>
+      <p>
+        A useful question contains enough context for another person to
+        reproduce the difficulty. State the goal, environment, exact command,
+        expected result, actual result and checks already performed. Ask for the
+        smallest hint that will unblock your reasoning, then retry
+        independently. Follow the community rules and avoid publishing flags,
+        credentials or spoilers from restricted exercises.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Prepare a concise help request
+        using the template below.
+      </p>
+      <pre><code>Goal:
+Assigned lab / environment:
+Exact command:
+Expected result:
+Actual result / sanitized error:
+Checks already tried:
+Specific question:
+Hint used and what I learned:</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/729"
+          >HTB source lesson — Getting Help</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-22">22. Next Steps</h2>
+      <p>
+        Build confidence with a manageable retired easy machine, then repeat the
+        process on a different target with less guidance. Choose a narrow
+        weakness to practise rather than chasing a rank or a long list of boxes.
+        Maintain reusable notes, review repeated mistakes and explain findings
+        clearly. In your existing plan, finish Getting Started before moving on
+        to Network Enumeration with Nmap.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Set one measurable next-session
+        goal and one independent-retry goal.
+      </p>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/732"
+          >HTB source lesson — Next Steps</a
+        >
+      </p>
+      <p class="back"><a href="#contents">Back to contents</a></p>
+      <h2 id="section-23">23. Knowledge Check</h2>
+      <p>
+        Use the assessment as an independent test of the whole method. Enumerate
+        services, investigate web functionality, validate a plausible weakness,
+        obtain the required lab access and inspect privileges. Keep your own
+        evidence trail rather than searching for a flag or copying a
+        walkthrough. If stuck, identify the stage and smallest missing fact. A
+        complete note should let you reproduce your work and explain a
+        remediation.
+      </p>
+      <p>
+        <strong>Practice checkpoint:</strong> Write your own short report:
+        scope, observations, hypotheses, attempts, verified outcome, blockers,
+        hints and next retry. Do not prefill results.
+      </p>
+      <pre><code>Assessment evidence log
+Target / scope:
+Discovered services:
+Web and technology evidence:
+Hypothesis and prerequisite checks:
+Attempt / observed result:
+Identity and privilege evidence:
+Remediation:
+Hints used:
+Independent replay result:</code></pre>
+      <p>
+        <a href="https://academy.hackthebox.com/app/module/77/section/859"
+          >HTB source lesson — Knowledge Check</a
+        >
+      </p>
+      <h2>Selected course figures — image credits</h2>
+      <p>
+        The four images below are selected illustrations from HTB Academy, not
+        screenshots of your completed practice. They remain credited to their
+        original source. The full set of course images stays on the linked
+        lesson pages.
+      </p>
+      <ol>
+        <li>
+          Figure A — GettingStarted.png: VPN network diagram. Source:
+          <a href="https://academy.hackthebox.com/app/module/77/section/723"
+            >Connecting Using VPN</a
+          >.
+        </li>
+        <li>
+          Figure B — getting_started_tmux_3.jpg: terminal panes for simultaneous
+          tasks. Source:
+          <a href="https://academy.hackthebox.com/app/module/77/section/847"
+            >Basic Tools</a
+          >.
+        </li>
+        <li>
+          Figure C — nibbles_comment1.png: a source-code comment as an
+          enumeration clue. Source:
+          <a href="https://academy.hackthebox.com/app/module/77/section/851"
+            >Nibbles — Web Footprinting</a
+          >.
+        </li>
+        <li>
+          Figure D — upload.png: the My image plugin upload interface. Source:
+          <a href="https://academy.hackthebox.com/app/module/77/section/852"
+            >Nibbles — Initial Foothold</a
+          >.
+        </li>
+      </ol>
+      <p></p>
+      <footer>
+        <p>
+          Course text is summarized in original wording. Selected figures remain
+          credited to Hack The Box Academy; full image sources are listed in the
+          <a href="/assets/getting-started/sources.json">image manifest</a>.
+          Commands are lab templates and do not report completed work. Your
+          private notes and progress remain in your notebook.
+        </p>
+        <p>
+          <a href="#contents">Return to the section list</a> ·
+          <a href="/learning-process.html">Learning Process reference</a>
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>

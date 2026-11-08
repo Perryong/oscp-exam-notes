@@ -44,6 +44,8 @@ The design and implementation plan live under `docs/superpowers/`. No live Fireb
 
 ## HTB Academy schedule and calendar
 
+The public [Getting Started study guide](public/getting-started.html) covers all 23 module lessons with original explanations, 20 command/code blocks, practice checkpoints and four credited course figures. Open `/getting-started.html`, or use the links on Today and the HTB calendar. Image provenance is recorded in [the source manifest](public/assets/getting-started/sources.json). Personal note contents and progress are not included in this reference.
+
 Open `/htb-study` for the full 51-week plan or `/calendar?week=1` for week and month views. The OSCP Today page and More menu link to both. The original progress snapshot (7 November 2026), module allocations, checkpoint weeks and 10-hour weekly budget are preserved. This is a planning baseline, with no automatic HTB account synchronization.
 
 Signed-in module completion uses the existing revisioned notebook sync and backup system. Signed-out completion uses the original browser progress keys and remains separate from cloud progress. Course progress records are hidden from the machine ladder and note attachment picker. Weekly notes use weeks 201–251, distinct from the machine ladder, and include goals, attempts, lessons, blockers, progress and the Penetration Testing Process stages. Opening a week reuses its existing active note, including an explicitly imported legacy note; trashed and permanently deleted records are protected.
